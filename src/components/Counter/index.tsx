@@ -1,4 +1,6 @@
 import styles from "./styles.module.css";
+
+import { Time } from "../Time";
 import { useEffect, useState } from "react";
 
 function updateCounter(start: Date) {
@@ -47,9 +49,10 @@ export function Counter() {
         const start = new Date("2026-01-17T00:00:00");
 
         setTime(updateCounter(start));
+
         const interval = setInterval(() => {
             setTime(updateCounter(start));
-        }, 60000);
+        }, 1000);
 
         return () => clearInterval(interval);
     }, []);
@@ -59,30 +62,11 @@ export function Counter() {
             <p className={styles.title}>Desde 2026</p>
 
             <div className={styles.timeGrid}>
-                <div className={styles.timeItem}>
-                    <span className={styles.timeValue}>{time.years}</span>
-                    <span className={styles.timeLabel}>Anos</span>
-                </div>
-
-                <div className={styles.timeItem}>
-                    <span className={styles.timeValue}>{time.months}</span>
-                    <span className={styles.timeLabel}>Meses</span>
-                </div>
-
-                <div className={styles.timeItem}>
-                    <span className={styles.timeValue}>{time.days}</span>
-                    <span className={styles.timeLabel}>Dias</span>
-                </div>
-
-                <div className={styles.timeItem}>
-                    <span className={styles.timeValue}>{time.hours}</span>
-                    <span className={styles.timeLabel}>Horas</span>
-                </div>
-
-                <div className={styles.timeItem}>
-                    <span className={styles.timeValue}>{time.minutes}</span>
-                    <span className={styles.timeLabel}>Minutos</span>
-                </div>
+                <Time value={time.years} label="Anos" />
+                <Time value={time.months} label="Meses" />
+                <Time value={time.days} label="Dias" />
+                <Time value={time.hours} label="Horas" />
+                <Time value={time.minutes} label="Minutos" />
             </div>
         </div>
     );
