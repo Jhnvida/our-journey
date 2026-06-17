@@ -1,0 +1,50 @@
+.counter {
+    width: 100%;
+    margin-bottom: 8rem;
+    text-align: center;
+}
+
+.title {
+    margin-bottom: 2rem;
+
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+}
+
+.timeGrid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.timeItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.timeValue {
+    color: var(--text);
+    font-size: 4.5rem;
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.timeLabel {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+
+    margin-top: 0.5rem;
+}

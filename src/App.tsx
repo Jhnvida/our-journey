@@ -1,7 +1,10 @@
+import { Content } from "./components/Content";
+import { Counter } from "./components/Counter";
+
 export function App() {
     return (
-        <>
-            <h1>Hello!</h1>
-        </>
+        <Content>
+            <Counter />
+        </Content>
     );
 }
