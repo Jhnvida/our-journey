@@ -1,0 +1,75 @@
+.chapters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-width: 600px;
+    padding: 4rem 0 8rem 0;
+    margin: 0 auto;
+}
+
+.sectionTitle {
+    color: var(--text-muted);
+    font-size: var(--overline-size);
+    font-weight: var(--overline-weight);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: var(--overline-spacing);
+
+    margin-bottom: 0.5rem;
+}
+
+.sectionSubtitle {
+    color: var(--text);
+    font-size: 2rem;
+    font-weight: 100;
+    text-align: center;
+    letter-spacing: -0.02em;
+
+    margin-bottom: 4rem;
+}
+
+.chapterList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    width: 100%;
+}
+
+.chapterItem {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+
+    border-radius: var(--radius-xl);
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    border-radius: 50%;
+    border: 1px solid var(--border-base);
+
+    flex-shrink: 0;
+    color: var(--bg-surface);
+    transition: all 0.2s ease-in-out;
+}
+
+.chapterText {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--text-primary);
+}
+
+.checked {
+    background-color: var(--text-primary);
+    border-color: var(--text-primary);
+}

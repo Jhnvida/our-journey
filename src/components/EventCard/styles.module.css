@@ -3,14 +3,16 @@
     flex-direction: column;
     align-items: center;
     gap: 3rem;
+
     width: 100%;
 }
 
 .eventImage {
     width: 100%;
-    max-width: 450px;
+    max-width: 100%;
     aspect-ratio: 3 / 4;
     object-fit: cover;
+
     filter: grayscale(100%);
     opacity: 0.85;
     transition:
@@ -27,16 +29,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    max-width: 100%;
     text-align: center;
-    max-width: 400px;
 }
 
 .eventDate {
     color: var(--text-muted);
-    font-size: 0.65rem;
-    font-weight: 400;
+    font-size: var(--overline-size);
+    font-weight: var(--overline-weight);
     text-transform: uppercase;
-    letter-spacing: 0.4em;
+    letter-spacing: var(--overline-spacing);
+
     margin-bottom: 1.5rem;
 }
 
@@ -45,8 +49,9 @@
     font-size: 2.5rem;
     font-weight: 100;
     line-height: 1.2;
-    margin-bottom: 1rem;
     letter-spacing: -0.02em;
+
+    margin-bottom: 1rem;
 }
 
 .eventDescription {
@@ -57,17 +62,19 @@
 }
 
 .subEventsList {
-    margin-top: 2.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
     width: 100%;
+    margin-top: 2.5rem;
 }
 
 .subEventItem {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+
     padding-left: 1rem;
     border-left: 1px solid var(--border-base);
 }
@@ -97,9 +104,14 @@
         flex-direction: row-reverse;
     }
 
+    .eventImage {
+        max-width: 450px;
+    }
+
     .eventContent {
         align-items: flex-start;
         text-align: left;
+        max-width: 400px;
     }
 
     .timelineEvent.reverse .eventContent {

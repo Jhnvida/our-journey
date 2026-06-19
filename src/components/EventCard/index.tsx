@@ -1,5 +1,4 @@
 import styles from "./styles.module.css";
-
 import type { Event } from "../../types/global";
 
 type EventProps = {

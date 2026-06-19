@@ -27,7 +27,7 @@
     --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
 
-    --transition-fast: 300ms ease;
-    --transition-slow: 700ms ease;
-    --transition-image: 1000ms ease;
+    --overline-size: 0.65rem;
+    --overline-weight: 400;
+    --overline-spacing: 0.4em;
 }
