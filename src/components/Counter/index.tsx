@@ -2,8 +2,7 @@ import styles from "./styles.module.css";
 
 import { Time } from "../Time";
 import { useEffect, useState } from "react";
-
-const start = new Date("2026-01-17T00:00:00");
+import { supabase } from "../../utils/supabase";
 
 function updateCounter(start: Date) {
     const now = new Date();
@@ -40,15 +39,28 @@ function updateCounter(start: Date) {
 }
 
 export function Counter() {
-    const [time, setTime] = useState(() => updateCounter(start));
+    const [date, setDate] = useState<Date | null>(null);
+    const [time, setTime] = useState({ years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0 });
 
     useEffect(() => {
+        async function getDate() {
+            const { data: settings } = await supabase.from("settings").select("relationship_start_date").single();
+            if (settings?.relationship_start_date) setDate(new Date(settings.relationship_start_date));
+        }
+
+        getDate();
+    }, []);
+
+    useEffect(() => {
+        if (!date) return;
+
+        setTime(updateCounter(date));
         const interval = setInterval(() => {
-            setTime(updateCounter(start));
+            setTime(updateCounter(date));
         }, 1000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [date]);
 
     return (
         <div className={styles.counter}>

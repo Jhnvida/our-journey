@@ -1,27 +1,39 @@
 import styles from "./styles.module.css";
 import { Check } from "lucide-react";
 
+import { useEffect, useState } from "react";
+import { supabase } from "../../utils/supabase";
+
 type Chapter = {
+    id: string;
     text: string;
     done: boolean;
 };
 
-const chapters: Chapter[] = [
-    { text: "Descobrir um novo lugar juntos na nossa cidade.", done: true },
-    { text: "Fazer uma viagem de fim de semana juntos.", done: false },
-    { text: "Assistir ao nascer do sol de mãos dadas.", done: false },
-    { text: "Preparar um jantar especial a dois.", done: false },
-];
-
 export function Chapters() {
+    const [chapters, setChapters] = useState<Chapter[]>([]);
+
+    useEffect(() => {
+        async function getChapters() {
+            const { data: chapters } = await supabase
+                .from("chapters")
+                .select(`text, done`)
+                .order("order_index", { ascending: true });
+
+            if (chapters) setChapters(chapters as unknown as Chapter[]);
+        }
+
+        getChapters();
+    }, []);
+
     return (
-        <section className={styles.chapters}>
+        <div className={styles.chapters}>
             <h2 className={styles.sectionTitle}>Próximos Capítulos</h2>
             <p className={styles.sectionSubtitle}>O que o futuro nos reserva</p>
 
             <ul className={styles.chapterList}>
-                {chapters.map((chapter, index) => (
-                    <li key={index} className={styles.chapterItem}>
+                {chapters.map((chapter) => (
+                    <li key={chapter.id} className={styles.chapterItem}>
                         <div className={`${styles.checkbox} ${chapter.done ? styles.checked : ""}`}>
                             {chapter.done && <Check size={14} strokeWidth={3} />}
                         </div>
@@ -29,6 +41,6 @@ export function Chapters() {
                     </li>
                 ))}
             </ul>
-        </section>
+        </div>
     );
 }
