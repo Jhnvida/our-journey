@@ -13,6 +13,7 @@ function updateCounter(start: Date) {
     let days = now.getDate() - start.getDate();
     let hours = now.getHours() - start.getHours();
     let minutes = now.getMinutes() - start.getMinutes();
+    let seconds = now.getSeconds() - start.getSeconds();
 
     if (minutes < 0) {
         minutes += 60;
@@ -35,7 +36,7 @@ function updateCounter(start: Date) {
         years--;
     }
 
-    return { years, months, days, hours, minutes };
+    return { years, months, days, hours, minutes, seconds };
 }
 
 export function Counter() {
@@ -59,6 +60,7 @@ export function Counter() {
                 <Time value={time.days} label="Dias" />
                 <Time value={time.hours} label="Horas" />
                 <Time value={time.minutes} label="Minutos" />
+                <Time value={time.seconds} label="Segundos" />
             </div>
         </div>
     );
