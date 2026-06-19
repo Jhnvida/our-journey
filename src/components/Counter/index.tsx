@@ -3,6 +3,8 @@ import styles from "./styles.module.css";
 import { Time } from "../Time";
 import { useEffect, useState } from "react";
 
+const start = new Date("2026-01-17T00:00:00");
+
 function updateCounter(start: Date) {
     const now = new Date();
 
@@ -37,19 +39,9 @@ function updateCounter(start: Date) {
 }
 
 export function Counter() {
-    const [time, setTime] = useState({
-        years: 0,
-        months: 0,
-        days: 0,
-        hours: 0,
-        minutes: 0,
-    });
+    const [time, setTime] = useState(() => updateCounter(start));
 
     useEffect(() => {
-        const start = new Date("2026-01-17T00:00:00");
-
-        setTime(updateCounter(start));
-
         const interval = setInterval(() => {
             setTime(updateCounter(start));
         }, 1000);

@@ -47,10 +47,9 @@ const events: Event[] = [
 export function Timeline() {
     return (
         <div className={styles.timeline}>
-            {events.map((event, index) => {
-                const even = index % 2 === 0;
-                return <EventCard key={event.id} event={event} even={even} />;
-            })}
+            {events.map((event, index) => (
+                <EventCard key={event.id} event={event} even={index % 2 === 0} />
+            ))}
         </div>
     );
 }
