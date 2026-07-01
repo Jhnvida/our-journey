@@ -1,30 +1,10 @@
 import styles from "./styles.module.css";
 import { ArrowDown } from "lucide-react";
 
-import { useEffect, useState } from "react";
-import { supabase } from "../../lib/supabase";
-import { intervalToDuration } from "date-fns";
+import { useCounter } from "../../hooks";
 
 export function Counter() {
-    const [time, setTime] = useState({ years: 0, months: 0, days: 0 });
-
-    useEffect(() => {
-        async function fetchSettings() {
-            const { data } = await supabase.from("settings").select("started_at").single();
-
-            if (data) {
-                const duration = intervalToDuration({ start: new Date(data.started_at), end: new Date() });
-
-                setTime({
-                    years: duration.years || 0,
-                    months: duration.months || 0,
-                    days: duration.days || 0,
-                });
-            }
-        }
-
-        fetchSettings();
-    }, []);
+    const time = useCounter();
 
     return (
         <section className={styles.section}>

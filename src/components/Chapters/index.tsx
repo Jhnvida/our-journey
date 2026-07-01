@@ -1,25 +1,10 @@
 import styles from "./styles.module.css";
 import { CheckIcon, Circle } from "lucide-react";
 
-import { useEffect, useState } from "react";
-import { supabase } from "../../lib/supabase";
-
-type Chapter = {
-    label: string;
-    completed: boolean;
-};
+import { useChapters } from "../../hooks";
 
 export function Chapters() {
-    const [chapters, setChapters] = useState<Chapter[]>([]);
-
-    useEffect(() => {
-        async function fetchChapters() {
-            const { data } = await supabase.from("chapters").select("label, completed");
-            if (data) setChapters(data as Chapter[]);
-        }
-
-        fetchChapters();
-    }, []);
+    const chapters = useChapters();
 
     return (
         <section className={styles.section}>
