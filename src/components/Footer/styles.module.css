@@ -1,0 +1,27 @@
+.footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 6rem 1.5rem;
+    border-top: 1px solid rgba(228, 228, 231, 0.4);
+}
+
+.text {
+    font-family: Inter, sans-serif;
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #a1a1aa;
+}
+
+@media (min-width: 768px) {
+    .text {
+        font-size: 0.75rem;
+    }
+
+    .footer {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+    }
+}
