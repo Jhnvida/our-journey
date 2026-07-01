@@ -1,14 +1,14 @@
-import { Content } from "./components/Content";
+import { Container } from "./components/Container";
 import { Counter } from "./components/Counter";
 import { Timeline } from "./components/Timeline";
 import { Chapters } from "./components/Chapters";
 
 export function App() {
     return (
-        <Content>
+        <Container>
             <Counter />
             <Timeline />
             <Chapters />
-        </Content>
+        </Container>
     );
 }

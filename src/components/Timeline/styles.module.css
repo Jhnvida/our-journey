@@ -1,14 +1,156 @@
-.timeline {
+.section {
+    width: 100%;
+    padding: 6rem 1.5rem 8rem;
+}
+
+.shell {
     display: flex;
     flex-direction: column;
-    gap: 8rem;
-    padding: 2rem 0 8rem 0;
+    gap: 5rem;
+
+    width: 100%;
+    max-width: 72rem;
+
+    margin-inline: auto;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.imageColumn {
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     width: 100%;
 }
 
+.eyebrow {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 400;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    color: var(--text-main);
+    font-size: clamp(1.75rem, 3vw, 3rem);
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+
+    margin: 0 0 1.5rem;
+}
+
+.copy {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 300;
+    font-family: "Inter", sans-serif;
+    line-height: 1.8;
+
+    max-width: 36rem;
+}
+
+.media {
+    width: 100%;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+
+    background: var(--surface-soft);
+    border: 1px solid var(--border-color);
+}
+
+.media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.15);
+    transition:
+        filter 220ms ease,
+        transform 220ms ease;
+}
+
+.media:hover img {
+    filter: grayscale(0);
+    transform: scale(1.03);
+}
+
+.events {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    margin-top: 1.5rem;
+}
+
+.event {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 1.5rem;
+}
+
+.event span:first-child {
+    color: #71717a;
+    font-size: 0.625rem;
+    font-weight: 400;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    width: 3rem;
+    flex-shrink: 0;
+}
+
+.event span:last-child {
+    color: #0f0f0f;
+    font-size: 0.875rem;
+    font-weight: 300;
+    font-family: "Inter", sans-serif;
+}
+
 @media (min-width: 768px) {
-    .timeline {
-        gap: 12rem;
+    .event {
+        gap: 2rem;
+    }
+
+    .event span:first-child {
+        font-size: 0.75rem;
+        width: 3.5rem;
+    }
+
+    .event span:last-child {
+        font-size: 1rem;
+    }
+
+    .card {
+        flex-direction: row;
+        gap: 4rem;
+    }
+
+    .cardReverse {
+        flex-direction: row-reverse;
+    }
+
+    .imageColumn,
+    .content {
+        width: 50%;
+    }
+
+    .media {
+        aspect-ratio: 4 / 5;
     }
 }

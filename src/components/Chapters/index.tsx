@@ -1,46 +1,52 @@
+import { CheckIcon, Circle } from "lucide-react";
 import styles from "./styles.module.css";
-import { Check } from "lucide-react";
-
-import { useEffect, useState } from "react";
-import { supabase } from "../../utils/supabase";
-
-type Chapter = {
-    id: string;
-    text: string;
-    done: boolean;
-};
 
 export function Chapters() {
-    const [chapters, setChapters] = useState<Chapter[]>([]);
-
-    useEffect(() => {
-        async function getChapters() {
-            const { data: chapters } = await supabase
-                .from("chapters")
-                .select(`text, done`)
-                .order("order_index", { ascending: true });
-
-            if (chapters) setChapters(chapters as unknown as Chapter[]);
-        }
-
-        getChapters();
-    }, []);
-
     return (
-        <div className={styles.chapters}>
-            <h2 className={styles.sectionTitle}>Próximos Capítulos</h2>
-            <p className={styles.sectionSubtitle}>O que o futuro nos reserva</p>
+        <section className={styles.section}>
+            <div className={styles.shell}>
+                <div className={styles.header}>
+                    <span className={styles.eyebrow}>Continuidade</span>
+                    <h2 className={styles.title}>Próximos Capítulos</h2>
+                </div>
 
-            <ul className={styles.chapterList}>
-                {chapters.map((chapter) => (
-                    <li key={chapter.id} className={styles.chapterItem}>
-                        <div className={`${styles.checkbox} ${chapter.done ? styles.checked : ""}`}>
-                            {chapter.done && <Check size={14} strokeWidth={3} />}
+                <div className={styles.list}>
+                    <div className={styles.item}>
+                        <div className={styles.icon}>
+                            <CheckIcon size={18} />
                         </div>
-                        <span className={styles.chapterText}>{chapter.text}</span>
-                    </li>
-                ))}
-            </ul>
-        </div>
+                        <span className={styles.label}>Morar juntos</span>
+                    </div>
+
+                    <div className={styles.item}>
+                        <div className={styles.icon}>
+                            <CheckIcon size={18} />
+                        </div>
+                        <span className={styles.label}>Fazer uma viagem internacional</span>
+                    </div>
+
+                    <div className={`${styles.item} ${styles.pending}`}>
+                        <div className={`${styles.icon} ${styles.pendingIcon}`}>
+                            <Circle size={18} />
+                        </div>
+                        <span className={styles.label}>Conhecer um novo país</span>
+                    </div>
+
+                    <div className={`${styles.item} ${styles.pending}`}>
+                        <div className={`${styles.icon} ${styles.pendingIcon}`}>
+                            <Circle size={18} />
+                        </div>
+                        <span className={styles.label}>Adotar um cachorro</span>
+                    </div>
+
+                    <div className={`${styles.item} ${styles.pending}`}>
+                        <div className={`${styles.icon} ${styles.pendingIcon}`}>
+                            <Circle size={18} />
+                        </div>
+                        <span className={styles.label}>Construir nosso próprio refúgio</span>
+                    </div>
+                </div>
+            </div>
+        </section>
     );
 }

@@ -1,40 +1,101 @@
-.counter {
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+    padding: 6rem 1.5rem 6rem;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+
+    position: absolute;
+    top: 3rem;
+
+    inset-inline: 0;
+}
+
+.shell {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 3rem;
 
     width: 100%;
-    min-height: 80vh;
-    margin-bottom: 4rem;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+}
 
-    text-align: center;
+.statBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.eyebrow {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 400;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
 }
 
 .title {
-    margin-bottom: 4rem;
-
-    color: var(--text-muted);
-    font-size: var(--overline-size);
-    font-weight: var(--overline-weight);
-    line-height: 1rem;
-    text-transform: uppercase;
-    letter-spacing: var(--overline-spacing);
+    color: var(--text-main);
+    font-size: clamp(4.5rem, 8vw, 9rem);
+    font-weight: 300;
+    font-family: "Inter", sans-serif;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
 }
 
-.timeGrid {
+.label {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 400;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+
+    margin-top: 1.5rem;
+}
+
+.arrowWrapper {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
+
+    position: absolute;
+    bottom: 3rem;
+}
+
+.icon {
+    color: var(--text-muted);
+}
+
+@media (min-width: 640px) {
+    .section {
+        padding-inline: 2rem;
+    }
 }
 
 @media (min-width: 768px) {
-    .timeGrid {
-        gap: 4rem;
+    .header {
+        top: 5rem;
     }
 
-    .title {
-        margin-bottom: 6rem;
+    .shell {
+        flex-direction: row;
+        gap: 6rem;
+    }
+
+    .arrowWrapper {
+        bottom: 4rem;
     }
 }
