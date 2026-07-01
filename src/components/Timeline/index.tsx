@@ -1,66 +1,63 @@
 import styles from "./styles.module.css";
 
+import { useEffect, useState } from "react";
+import { supabase } from "../../lib/supabase";
+
+type Event = {
+    image_url: string;
+    month_label: string;
+    title: string;
+    description: string;
+    timeline_sub_events: { event_date: string; description: string }[];
+};
+
 export function Timeline() {
+    const [events, setEvents] = useState<Event[]>([]);
+
+    useEffect(() => {
+        async function fetchEvents() {
+            const { data } = await supabase
+                .from("timeline_events")
+                .select(`image_url, month_label, title, description, timeline_sub_events (event_date, description)`)
+                .order("sort_order")
+                .order("sort_order", { referencedTable: "timeline_sub_events" });
+
+            if (data) setEvents(data as Event[]);
+        }
+
+        fetchEvents();
+    }, []);
+
     return (
         <section className={styles.section}>
             <div className={styles.shell}>
-                <div className={styles.card}>
-                    <div className={styles.imageColumn}>
-                        <div className={styles.media}>
-                            <img src="https://picsum.photos/1000/1500" loading="lazy" />
-                        </div>
-                    </div>
-
-                    <div className={styles.content}>
-                        <span className={styles.eyebrow}>Janeiro 2025</span>
-                        <h2 className={styles.title}>Lorem ipsum</h2>
-                        <p className={styles.copy}>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta distinctio sit nesciunt
-                            facilis, voluptate illum assumenda harum corrupti nam numquam quisquam laborum aperiam
-                            asperiores maxime, nisi aut voluptatibus repellat minus.
-                        </p>
-
-                        <div className={styles.events}>
-                            <div className={styles.event}>
-                                <span>05/01</span>
-                                <span>Saímos pela primeira vez</span>
-                            </div>
-                            <div className={styles.event}>
-                                <span>17/01</span>
-                                <span>Pedido oficial de namoro</span>
+                {events.map((event, index) => (
+                    <div
+                        key={`${event.month_label}-${index}`}
+                        className={index % 2 === 1 ? `${styles.card} ${styles.cardReverse}` : styles.card}
+                    >
+                        <div className={styles.imageColumn}>
+                            <div className={styles.media}>
+                                <img src={event.image_url} loading="lazy" alt={event.title} />
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div className={`${styles.card} ${styles.cardReverse}`}>
-                    <div className={styles.imageColumn}>
-                        <div className={styles.media}>
-                            <img src="https://picsum.photos/1000/1500" loading="lazy" />
-                        </div>
-                    </div>
+                        <div className={styles.content}>
+                            <span className={styles.eyebrow}>{event.month_label}</span>
+                            <h2 className={styles.title}>{event.title}</h2>
+                            <p className={styles.copy}>{event.description}</p>
 
-                    <div className={styles.content}>
-                        <span className={styles.eyebrow}>Março 2025</span>
-                        <h2 className={styles.title}>Lorem ipsum</h2>
-                        <p className={styles.copy}>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi tempora iste voluptates
-                            adipisci unde blanditiis, debitis quia atque eos rerum, minus consequatur aliquam maiores
-                            excepturi. Facere ratione architecto accusantium quia?
-                        </p>
-
-                        <div className={styles.events}>
-                            <div className={styles.event}>
-                                <span>05/01</span>
-                                <span>Saímos pela primeira vez</span>
-                            </div>
-                            <div className={styles.event}>
-                                <span>17/01</span>
-                                <span>Pedido oficial de namoro</span>
+                            <div className={styles.events}>
+                                {event.timeline_sub_events?.map((subEvent, subIndex) => (
+                                    <div className={styles.event} key={`${event.month_label}-${subIndex}`}>
+                                        <span>{subEvent.event_date}</span>
+                                        <span>{subEvent.description}</span>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
-                </div>
+                ))}
             </div>
         </section>
     );
