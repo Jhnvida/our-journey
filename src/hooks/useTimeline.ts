@@ -13,8 +13,6 @@ export function useTimeline() {
     const [events, setEvents] = useState<Event[]>([]);
 
     useEffect(() => {
-        let isMounted = true;
-
         async function fetchEvents() {
             const { data } = await supabase
                 .from("timeline_events")
@@ -22,16 +20,12 @@ export function useTimeline() {
                 .order("sort_order")
                 .order("sort_order", { referencedTable: "timeline_sub_events" });
 
-            if (isMounted && data) {
+            if (data) {
                 setEvents(data as Event[]);
             }
         }
 
         fetchEvents();
-
-        return () => {
-            isMounted = false;
-        };
     }, []);
 
     return events;

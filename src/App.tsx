@@ -1,16 +1,14 @@
-import { Container } from "./components/Container";
-import { Counter } from "./components/Counter";
-import { Timeline } from "./components/Timeline";
-import { Chapters } from "./components/Chapters";
-import { Footer } from "./components/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
 
 export function App() {
     return (
-        <Container>
-            <Counter />
-            <Timeline />
-            <Chapters />
-            <Footer />
-        </Container>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
