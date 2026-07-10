@@ -1,75 +1,89 @@
-# React + TypeScript + Vite
+# Our Journey (Nossa Jornada)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação web desenvolvida para casais acompanharem e registrarem os marcos do seu relacionamento. O projeto permite visualizar o tempo juntos, uma linha do tempo com momentos especiais e os próximos capítulos planejados para o futuro.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Contador de tempo**: Exibe o tempo de relacionamento em anos, meses e dias.
+- **Linha do tempo (Timeline)**: Exibe os principais momentos e eventos marcantes com fotos, títulos, descrições e subeventos.
+- **Próximos Capítulos**: Lista de planos e metas futuras do casal, indicando se já foram concluídos ou não.
+- **Autenticação e Painel (Dashboard)**: Sistema de login para acesso a um painel de controle utilizando Supabase.
 
-## React Compiler
+## Tecnologias Utilizadas
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **Frontend:**
+    - [React 19](https://react.dev/) (com React Compiler)
+    - [TypeScript](https://www.typescriptlang.org/)
+    - [Vite](https://vitejs.dev/)
+    - [React Router DOM](https://reactrouter.com/) para rotas
+    - [CSS Modules](https://github.com/css-modules/css-modules) para estilização
+    - [Lucide React](https://lucide.dev/) para ícones
+    - [Date-fns](https://date-fns.org/) para manipulação de datas
+- **Backend & Serviços:**
+    - [Supabase](https://supabase.com/) (Autenticação e Banco de Dados)
 
-Note: This will impact Vite dev & build performances.
+## Estrutura do Projeto
 
-## Expanding the ESLint configuration
+A estrutura de pastas principal dentro de `src/` está organizada da seguinte forma:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- `/assets`: Imagens e recursos estáticos.
+- `/components`: Componentes reutilizáveis de interface (`Counter`, `Timeline`, `Chapters`, `Container`, `Footer`).
+- `/hooks`: Custom hooks contendo a lógica de negócios e integração com o Supabase (`useAuth`, `useCounter`, `useTimeline`, `useChapters`).
+- `/lib`: Configuração de bibliotecas externas (ex: cliente do Supabase).
+- `/pages`: Páginas da aplicação (`Home`, `Login`, `Dashboard`).
+- `/styles`: Estilos globais e variáveis CSS.
 
-```js
-export default defineConfig([
-    globalIgnores(["dist"]),
-    {
-        files: ["**/*.{ts,tsx}"],
-        extends: [
-            // Other configs...
+## Pré-requisitos
 
-            // Remove tseslint.configs.recommended and replace with this
-            tseslint.configs.recommendedTypeChecked,
-            // Alternatively, use this for stricter rules
-            tseslint.configs.strictTypeChecked,
-            // Optionally, add this for stylistic rules
-            tseslint.configs.stylisticTypeChecked,
+Antes de iniciar, você precisará ter instalado em sua máquina:
 
-            // Other configs...
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-]);
+- [Node.js](https://nodejs.org/en/) (recomendado versão 18 ou superior)
+- Um gerenciador de pacotes como `npm`, `yarn` ou `pnpm`
+- Uma conta no [Supabase](https://supabase.com/) com um projeto configurado (banco de dados e autenticação).
+
+## Instalação e Configuração
+
+1. Clone o repositório:
+
+    ```bash
+    git clone <url-do-repositorio>
+    ```
+
+2. Acesse a pasta do projeto:
+
+    ```bash
+    cd our-journey
+    ```
+
+3. Instale as dependências:
+
+    ```bash
+    npm install
+    ```
+
+4. Configure as variáveis de ambiente:
+    - Crie um arquivo `.env` na raiz do projeto com base no arquivo `.env.example`:
+        ```bash
+        cp .env.example .env
+        ```
+    - Preencha o arquivo `.env` com as suas credenciais do Supabase:
+        ```env
+        VITE_SUPABASE_URL=https://seu-projeto.supabase.co
+        VITE_SUPABASE_PUBLISHABLE_KEY=sua_chave_publica_do_supabase
+        ```
+
+## Como Executar
+
+Para iniciar o servidor de desenvolvimento, execute o comando:
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Acesso a aplicação no seu navegador padrão (geralmente em `http://localhost:5173`).
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+## Como Usar
 
-export default defineConfig([
-    globalIgnores(["dist"]),
-    {
-        files: ["**/*.{ts,tsx}"],
-        extends: [
-            // Other configs...
-            // Enable lint rules for React
-            reactX.configs["recommended-typescript"],
-            // Enable lint rules for React DOM
-            reactDom.configs.recommended,
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-]);
-```
+- **Página Inicial (`/`)**: Exibe o contador de tempo, a linha do tempo e a lista de próximos capítulos (dados provenientes do Supabase).
+- **Login (`/login`)**: Página para autenticação de usuários.
+- **Painel de Controle (`/dashboard`)**: Área restrita (protegida por autenticação) onde é possível verificar o usuário logado e efetuar logout.
