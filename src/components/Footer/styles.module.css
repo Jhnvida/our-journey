@@ -2,26 +2,45 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 6rem 1.5rem;
-    border-top: 1px solid rgba(228, 228, 231, 0.4);
+    padding: 4rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.content {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
 }
 
 .text {
     font-family: Inter, sans-serif;
-    font-size: 0.625rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: var(--text-muted);
     text-align: center;
-    color: #a1a1aa;
+}
+
+.loginLink {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.loginLink:hover {
+    color: var(--text-main);
+    text-decoration: underline;
 }
 
 @media (min-width: 768px) {
-    .text {
-        font-size: 0.75rem;
+    .content {
+        flex-direction: row;
     }
 
-    .footer {
-        padding-top: 8rem;
-        padding-bottom: 8rem;
+    .text {
+        text-align: left;
     }
 }

@@ -47,5 +47,15 @@ export function useAuth() {
         return { data };
     }
 
-    return { user, loading, login };
+    async function logout() {
+        const { error } = await supabase.auth.signOut();
+
+        if (!error) {
+            setUser(null);
+        }
+
+        return { error };
+    }
+
+    return { user, loading, login, logout };
 }

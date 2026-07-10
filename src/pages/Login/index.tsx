@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../hooks";
 import styles from "./styles.module.css";
 
@@ -76,6 +76,10 @@ export function Login() {
                     <button type="submit" className={styles.button}>
                         Entrar
                     </button>
+
+                    <Link to="/" className={styles.backLink}>
+                        Voltar para a página inicial
+                    </Link>
                 </form>
             </div>
         </div>

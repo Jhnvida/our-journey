@@ -1,0 +1,59 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface-soft);
+    padding: 1rem;
+}
+
+.card {
+    background-color: var(--background);
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem;
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.05),
+        0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin: 0 0 0.5rem 0;
+}
+
+.email {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0 0 2rem 0;
+}
+
+.button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--text-main);
+    color: var(--background);
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover {
+    background-color: #27272a;
+}
+
+.button:active {
+    transform: scale(0.98);
+}

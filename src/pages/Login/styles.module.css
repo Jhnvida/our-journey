@@ -112,3 +112,18 @@
     font-size: 0.875rem;
     text-align: center;
 }
+
+.backLink {
+    text-align: center;
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.backLink:hover {
+    color: var(--text-main);
+    text-decoration: underline;
+}
