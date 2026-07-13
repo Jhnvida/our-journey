@@ -8,7 +8,7 @@ export function Footer() {
                 <p className={styles.text}>Para sempre escrevendo novos capítulos ao seu lado.</p>
 
                 <Link to="/login" className={styles.loginLink}>
-                    Painel do Administrador
+                    Painel Administrativo
                 </Link>
             </div>
         </footer>

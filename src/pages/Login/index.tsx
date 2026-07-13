@@ -17,7 +17,7 @@ export function Login() {
         }
     }, [user, loading, navigate]);
 
-    const handleSubmit = async (e: React.SubmitEvent) => {
+    async function handleSubmit(e: React.SubmitEvent) {
         e.preventDefault();
         setError("");
 
@@ -28,7 +28,7 @@ export function Login() {
         } else {
             navigate("/dashboard");
         }
-    };
+    }
 
     return (
         <div className={styles.container}>
