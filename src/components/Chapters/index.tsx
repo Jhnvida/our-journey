@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import { CheckIcon, Circle } from "lucide-react";
 
@@ -5,6 +6,26 @@ import { useChapters } from "../../hooks";
 
 export function Chapters() {
     const chapters = useChapters();
+    const observerRef = useRef<IntersectionObserver | null>(null);
+
+    useEffect(() => {
+        observerRef.current = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(styles.itemVisible);
+                        observerRef.current?.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.1, rootMargin: "0px 0px -20px 0px" },
+        );
+
+        const items = document.querySelectorAll(`.${styles.item}`);
+        items.forEach((item) => observerRef.current?.observe(item));
+
+        return () => observerRef.current?.disconnect();
+    }, [chapters]);
 
     return (
         <section className={styles.section}>
@@ -15,8 +36,8 @@ export function Chapters() {
                 </div>
 
                 <div className={styles.list}>
-                    {chapters.map((chapter) => (
-                        <div className={styles.item}>
+                    {chapters.map((chapter, index) => (
+                        <div key={chapter.label} className={styles.item} style={{ animationDelay: `${index * 0.1}s` }}>
                             <div className={styles.icon}>
                                 {chapter.completed ? (
                                     <CheckIcon className={styles.check} />

@@ -13,17 +13,17 @@ export function Counter() {
             </div>
 
             <div className={styles.shell}>
-                <div className={styles.statBox}>
+                <div className={`${styles.statBox} ${styles.fadeInUp} ${styles.delay1}`}>
                     <span className={styles.title}>{time.years}</span>
                     <span className={styles.label}>Ano</span>
                 </div>
 
-                <div className={styles.statBox}>
+                <div className={`${styles.statBox} ${styles.fadeInUp} ${styles.delay2}`}>
                     <span className={styles.title}>{time.months}</span>
                     <span className={styles.label}>Meses</span>
                 </div>
 
-                <div className={styles.statBox}>
+                <div className={`${styles.statBox} ${styles.fadeInUp} ${styles.delay3}`}>
                     <span className={styles.title}>{time.days}</span>
                     <span className={styles.label}>Dias</span>
                 </div>

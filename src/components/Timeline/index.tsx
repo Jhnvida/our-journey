@@ -1,8 +1,29 @@
+import { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import { useTimeline } from "../../hooks";
 
 export function Timeline() {
     const events = useTimeline();
+    const observerRef = useRef<IntersectionObserver | null>(null);
+
+    useEffect(() => {
+        observerRef.current = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(styles.cardVisible);
+                        observerRef.current?.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+        );
+
+        const cards = document.querySelectorAll(`.${styles.card}`);
+        cards.forEach((card) => observerRef.current?.observe(card));
+
+        return () => observerRef.current?.disconnect();
+    }, [events]);
 
     return (
         <section className={styles.section}>
