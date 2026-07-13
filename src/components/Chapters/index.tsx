@@ -1,8 +1,7 @@
-import { useEffect, useRef } from "react";
-import styles from "./styles.module.css";
 import { CheckIcon, Circle } from "lucide-react";
-
+import { useEffect, useRef } from "react";
 import { useChapters } from "../../hooks";
+import styles from "./styles.module.css";
 
 export function Chapters() {
     const chapters = useChapters();

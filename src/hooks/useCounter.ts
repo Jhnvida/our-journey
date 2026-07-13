@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { intervalToDuration } from "date-fns";
+import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 
 export type Time = {

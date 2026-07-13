@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import styles from "./styles.module.css";
 import { useTimeline } from "../../hooks";
+import styles from "./styles.module.css";
 
 export function Timeline() {
     const events = useTimeline();
