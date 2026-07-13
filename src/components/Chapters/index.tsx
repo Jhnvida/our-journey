@@ -24,6 +24,7 @@ export function Chapters() {
                                     <Circle className={styles.circle} />
                                 )}
                             </div>
+
                             <span className={styles.label}>{chapter.label}</span>
                         </div>
                     ))}
