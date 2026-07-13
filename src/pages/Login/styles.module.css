@@ -12,9 +12,9 @@
     width: 100%;
     max-width: 420px;
     padding: 2.5rem;
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
-    border: 1px solid rgba(228, 228, 231, 0.5);
+    border: 1px solid var(--border-color);
     backdrop-filter: blur(8px);
 }
 
@@ -57,14 +57,14 @@
 .input {
     width: 100%;
     padding: 0.75rem 1rem;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     border: 1px solid var(--border-color);
     background-color: var(--background);
     color: var(--text-main);
     font-size: 0.875rem;
     transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+        border-color var(--transition-normal),
+        box-shadow var(--transition-normal);
     outline: none;
 }
 
@@ -85,14 +85,14 @@
     background-color: var(--text-main);
     color: var(--background);
     border: none;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
     transition:
-        background-color 0.3s ease,
-        transform 0.1s ease,
-        box-shadow 0.3s ease;
+        background-color var(--transition-slow),
+        transform var(--transition-fast),
+        box-shadow var(--transition-slow);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,6 +112,7 @@
     color: #991b1b;
     padding: 0.75rem;
     border: 1px solid #f87171;
+    border-radius: var(--radius-sm);
     margin-bottom: 1.25rem;
     font-size: 0.875rem;
     text-align: center;
@@ -124,7 +125,7 @@
     font-size: 0.875rem;
     color: var(--text-muted);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color var(--transition-normal);
 }
 
 .backLink:hover {
