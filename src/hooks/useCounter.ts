@@ -29,5 +29,5 @@ export function useCounter() {
         fetchSettings();
     }, []);
 
-    return time;
+    return { time, refetch: fetchSettings };
 }

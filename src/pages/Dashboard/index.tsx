@@ -2,8 +2,7 @@ import { Home, Library, LogOut, Menu, TableOfContents, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks";
-import { supabase } from "../../lib/supabase";
-import { HomeTab } from "./components/HomeTab";
+import { ChaptersTab, HomeTab, TimelineTab } from "./components";
 import styles from "./styles.module.css";
 
 const Tabs = {
@@ -11,13 +10,13 @@ const Tabs = {
         title: "Visão Geral",
         subtitle: "Gerencie as configurações.",
     },
-    timeline: {
-        title: "Linha do Tempo",
-        subtitle: "Gerencie os eventos.",
-    },
     chapters: {
         title: "Capítulos",
         subtitle: "Gerencie os capítulos.",
+    },
+    timeline: {
+        title: "Linha do Tempo",
+        subtitle: "Gerencie os eventos.",
     },
 };
 
@@ -25,11 +24,8 @@ export function Dashboard() {
     const { user, loading, logout } = useAuth();
     const navigate = useNavigate();
 
-    const [date, setDate] = useState("");
-    const [settings, setSettings] = useState("");
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [activeTab, setActiveTab] = useState<keyof typeof Tabs>("home");
-    const [isSaving, setIsSaving] = useState(false);
 
     const currentTab = Tabs[activeTab];
 
@@ -39,34 +35,9 @@ export function Dashboard() {
         }
     }, [user, loading, navigate]);
 
-    useEffect(() => {
-        async function loadDate() {
-            const { data } = await supabase.from("settings").select("id, started_at").single();
-
-            if (data) {
-                setDate(data.started_at);
-                setSettings(data.id);
-            }
-        }
-
-        if (user) {
-            loadDate();
-        }
-    }, [user]);
-
     async function handleLogout() {
         await logout();
         navigate("/login");
-    }
-
-    async function handleSave() {
-        setIsSaving(true);
-        const { error } = await supabase.from("settings").update({ started_at: date }).eq("id", settings);
-        setIsSaving(false);
-
-        if (error) {
-            console.error(error);
-        }
     }
 
     function toggleSidebar() {
@@ -111,17 +82,6 @@ export function Dashboard() {
                     </button>
 
                     <button
-                        className={`${styles.navItem} ${activeTab === "timeline" ? styles.navItemActive : ""}`}
-                        onClick={() => {
-                            setActiveTab("timeline");
-                            setIsSidebarOpen(false);
-                        }}
-                    >
-                        <TableOfContents size={18} />
-                        <span>Linha do Tempo</span>
-                    </button>
-
-                    <button
                         className={`${styles.navItem} ${activeTab === "chapters" ? styles.navItemActive : ""}`}
                         onClick={() => {
                             setActiveTab("chapters");
@@ -130,6 +90,17 @@ export function Dashboard() {
                     >
                         <Library size={18} />
                         <span>Capítulos</span>
+                    </button>
+
+                    <button
+                        className={`${styles.navItem} ${activeTab === "timeline" ? styles.navItemActive : ""}`}
+                        onClick={() => {
+                            setActiveTab("timeline");
+                            setIsSidebarOpen(false);
+                        }}
+                    >
+                        <TableOfContents size={18} />
+                        <span>Linha do Tempo</span>
                     </button>
                 </nav>
 
@@ -150,9 +121,9 @@ export function Dashboard() {
                 </div>
 
                 <div className={styles.contentArea}>
-                    {activeTab === "home" && (
-                        <HomeTab date={date} setDate={setDate} handleSave={handleSave} isSaving={isSaving} />
-                    )}
+                    {activeTab === "home" && <HomeTab />}
+                    {activeTab === "chapters" && <ChaptersTab />}
+                    {activeTab === "timeline" && <TimelineTab />}
                 </div>
             </main>
         </div>

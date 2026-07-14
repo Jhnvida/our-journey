@@ -17,7 +17,6 @@
     font-size: 1.25rem;
     font-weight: 600;
     margin: 0 0 0.25rem 0;
-    color: var(--text-main);
 }
 
 .cardDescription {
@@ -28,20 +27,8 @@
 
 .formGroup {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-main);
-}
-
-.inputRow {
-    display: flex;
     gap: 1rem;
+    margin-bottom: 2rem;
     align-items: center;
 }
 
@@ -87,23 +74,86 @@
     transform: scale(0.98);
 }
 
-.button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none;
+.chapterList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
-.spinner {
-    animation: spin 1s linear infinite;
+.chapterItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background-color: var(--background);
+    transition: all var(--transition-normal);
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.chapterItem:hover {
+    border-color: var(--text-muted);
+    box-shadow: var(--shadow-sm);
+}
+
+.chapterInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.chapterLabel {
+    font-size: 1rem;
+    color: var(--text-main);
+    transition: all var(--transition-normal);
+}
+
+.chapterLabelCompleted {
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.chapterItem:hover .actions {
+    opacity: 1;
+}
+
+.iconButton {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+}
+
+.iconButton:hover {
+    background-color: var(--border-color);
+    color: var(--text-main);
+}
+
+.iconButtonDelete:hover {
+    background-color: #fee2e2;
+    color: #ef4444;
+}
+
+.checkbox {
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+    accent-color: var(--text-main);
 }
 
 @media (max-width: 768px) {
@@ -111,7 +161,11 @@
         padding: 1.5rem;
     }
 
-    .inputRow {
+    .actions {
+        opacity: 1;
+    }
+
+    .formGroup {
         flex-direction: column;
         align-items: stretch;
     }

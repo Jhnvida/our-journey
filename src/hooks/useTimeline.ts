@@ -28,5 +28,5 @@ export function useTimeline() {
         fetchEvents();
     }, []);
 
-    return events;
+    return { events };
 }

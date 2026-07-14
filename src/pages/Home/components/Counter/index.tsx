@@ -3,7 +3,7 @@ import { useCounter } from "../../../../hooks";
 import styles from "./styles.module.css";
 
 export function Counter() {
-    const time = useCounter();
+    const { time } = useCounter();
 
     return (
         <section className={styles.section}>

@@ -4,7 +4,7 @@ import { useChapters } from "../../../../hooks";
 import styles from "./styles.module.css";
 
 export function Chapters() {
-    const chapters = useChapters();
+    const { chapters } = useChapters();
     const observerRef = useRef<IntersectionObserver | null>(null);
 
     useEffect(() => {

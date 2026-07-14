@@ -3,7 +3,7 @@ import { useTimeline } from "../../../../hooks";
 import styles from "./styles.module.css";
 
 export function Timeline() {
-    const events = useTimeline();
+    const { events } = useTimeline();
     const observerRef = useRef<IntersectionObserver | null>(null);
 
     useEffect(() => {
