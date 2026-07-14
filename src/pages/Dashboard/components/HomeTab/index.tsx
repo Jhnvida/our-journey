@@ -1,33 +1,9 @@
 import { Save } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useAuth, useCounter } from "../../../../hooks";
-import { supabase } from "../../../../lib/supabase";
+import { useCounter } from "../../../../hooks";
 import styles from "./styles.module.css";
 
 export function HomeTab() {
-    const { user } = useAuth();
-    const { refetch } = useCounter();
-
-    const [date, setDate] = useState("");
-    const [settings, setSettings] = useState("");
-
-    async function loadDate() {
-        const { data } = await supabase.from("settings").select("id, started_at").single();
-
-        if (data) {
-            setDate(data.started_at);
-            setSettings(data.id);
-        }
-    }
-
-    useEffect(() => {
-        if (user) loadDate();
-    }, [user]);
-
-    async function handleSave() {
-        await supabase.from("settings").update({ started_at: date }).eq("id", settings);
-        await refetch();
-    }
+    const { date, setDate, handleSave } = useCounter();
 
     return (
         <div className={styles.card}>

@@ -21,9 +21,31 @@ export function useChapters() {
         }
     }
 
+    async function addChapter(label: string) {
+        const { data } = await supabase
+            .from("chapters")
+            .insert({ label, completed: false })
+            .select("id, label, completed")
+            .single();
+
+        if (data) {
+            setChapters((prev) => [...prev, data as Chapter]);
+        }
+    }
+
+    async function checkChapter(id: string, completed: boolean) {
+        await supabase.from("chapters").update({ completed }).eq("id", id);
+        setChapters((prev) => prev.map((chapter) => (chapter.id === id ? { ...chapter, completed } : chapter)));
+    }
+
+    async function deleteChapter(id: string) {
+        await supabase.from("chapters").delete().eq("id", id);
+        setChapters((prev) => prev.filter((chapter) => chapter.id !== id));
+    }
+
     useEffect(() => {
         fetchChapters();
     }, []);
 
-    return { chapters };
+    return { chapters, addChapter, checkChapter, deleteChapter };
 }

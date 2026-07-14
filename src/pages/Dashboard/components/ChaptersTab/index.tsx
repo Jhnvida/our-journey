@@ -1,9 +1,11 @@
 import { Edit2, Plus, Trash2 } from "lucide-react";
+import { useState } from "react";
 import { useChapters } from "../../../../hooks";
 import styles from "./styles.module.css";
 
 export function ChaptersTab() {
-    const { chapters } = useChapters();
+    const { chapters, addChapter, checkChapter, deleteChapter } = useChapters();
+    const [chapter, setChapter] = useState("");
 
     return (
         <div className={styles.card}>
@@ -13,9 +15,15 @@ export function ChaptersTab() {
             </div>
 
             <div className={styles.formGroup}>
-                <input type="text" className={styles.input} placeholder="Nome do novo capítulo..." />
+                <input
+                    type="text"
+                    className={styles.input}
+                    placeholder="Nome do novo capítulo"
+                    value={chapter}
+                    onChange={(e) => setChapter(e.target.value)}
+                />
 
-                <button className={styles.button}>
+                <button className={styles.button} onClick={() => addChapter(chapter)}>
                     <Plus size={18} />
                     Adicionar
                 </button>
@@ -25,7 +33,13 @@ export function ChaptersTab() {
                 {chapters.map((chapter, index) => (
                     <div key={index} className={styles.chapterItem}>
                         <div className={styles.chapterInfo}>
-                            <input type="checkbox" className={styles.checkbox} checked={chapter.completed} readOnly />
+                            <input
+                                type="checkbox"
+                                className={styles.checkbox}
+                                checked={chapter.completed}
+                                readOnly
+                                onClick={() => checkChapter(chapter.id, !chapter.completed)}
+                            />
 
                             <span
                                 className={`${styles.chapterLabel} ${chapter.completed ? styles.chapterLabelCompleted : ""}`}
@@ -39,7 +53,11 @@ export function ChaptersTab() {
                                 <Edit2 size={16} />
                             </button>
 
-                            <button className={`${styles.iconButton} ${styles.iconButtonDelete}`} title="Excluir">
+                            <button
+                                className={`${styles.iconButton} ${styles.iconButtonDelete}`}
+                                title="Excluir"
+                                onClick={() => deleteChapter(chapter.id)}
+                            >
                                 <Trash2 size={16} />
                             </button>
                         </div>

@@ -10,11 +10,16 @@ export type Time = {
 
 export function useCounter() {
     const [time, setTime] = useState<Time>({ years: 0, months: 0, days: 0 });
+    const [date, setDate] = useState("");
+    const [settingsId, setSettingsId] = useState("");
 
     async function fetchSettings() {
-        const { data } = await supabase.from("settings").select("started_at").single();
+        const { data } = await supabase.from("settings").select("id, started_at").single();
 
         if (data) {
+            setDate(data.started_at);
+            setSettingsId(data.id);
+
             const duration = intervalToDuration({ start: new Date(data.started_at), end: new Date() });
 
             setTime({
@@ -25,9 +30,14 @@ export function useCounter() {
         }
     }
 
+    async function handleSave() {
+        await supabase.from("settings").update({ started_at: date }).eq("id", settingsId);
+        await fetchSettings();
+    }
+
     useEffect(() => {
         fetchSettings();
     }, []);
 
-    return { time, refetch: fetchSettings };
+    return { time, date, setDate, handleSave };
 }
