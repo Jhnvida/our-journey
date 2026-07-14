@@ -32,7 +32,14 @@ export function useCounter() {
 
     async function handleSave() {
         await supabase.from("settings").update({ started_at: date }).eq("id", settingsId);
-        await fetchSettings();
+
+        const duration = intervalToDuration({ start: new Date(date), end: new Date() });
+
+        setTime({
+            years: duration.years || 0,
+            months: duration.months || 0,
+            days: duration.days || 0,
+        });
     }
 
     useEffect(() => {

@@ -30,8 +30,8 @@ export function Chapters() {
         <section className={styles.section}>
             <div className={styles.shell}>
                 <div className={styles.header}>
-                    <span className={styles.eyebrow}>Continuidade</span>
-                    <h2 className={styles.title}>Próximos Capítulos</h2>
+                    <span className={styles.eyebrow}>Planos & Sonhos</span>
+                    <h2 className={styles.title}>Nossa Lista de Desejos</h2>
                 </div>
 
                 <div className={styles.list}>
