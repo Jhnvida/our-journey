@@ -9,15 +9,15 @@ export type Chapter = {
 export function useChapters() {
     const [chapters, setChapters] = useState<Chapter[]>([]);
 
-    useEffect(() => {
-        async function fetchChapters() {
-            const { data } = await supabase.from("chapters").select("label, completed");
+    async function fetchChapters() {
+        const { data } = await supabase.from("chapters").select("label, completed");
 
-            if (data) {
-                setChapters(data as Chapter[]);
-            }
+        if (data) {
+            setChapters(data as Chapter[]);
         }
+    }
 
+    useEffect(() => {
         fetchChapters();
     }, []);
 

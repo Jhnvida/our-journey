@@ -6,29 +6,14 @@ export function useAuth() {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        async function getSession() {
-            const {
-                data: { session },
-            } = await supabase.auth.getSession();
-
-            setUser(session?.user ?? null);
-            setLoading(false);
-        }
-
-        getSession();
-
+    async function getSession() {
         const {
-            data: { subscription },
-        } = supabase.auth.onAuthStateChange((_event, session) => {
-            setUser(session?.user ?? null);
-            setLoading(false);
-        });
+            data: { session },
+        } = await supabase.auth.getSession();
 
-        return () => {
-            subscription.unsubscribe();
-        };
-    }, []);
+        setUser(session?.user ?? null);
+        setLoading(false);
+    }
 
     async function login(email?: string, password?: string) {
         if (!email || !password) return { error: new Error("Email e senha são obrigatórios") };
@@ -56,6 +41,21 @@ export function useAuth() {
 
         return { error };
     }
+
+    useEffect(() => {
+        getSession();
+
+        const {
+            data: { subscription },
+        } = supabase.auth.onAuthStateChange((_event, session) => {
+            setUser(session?.user ?? null);
+            setLoading(false);
+        });
+
+        return () => {
+            subscription.unsubscribe();
+        };
+    }, []);
 
     return { user, loading, login, logout };
 }
