@@ -1,5 +1,5 @@
 import { ArrowDown } from "lucide-react";
-import { useCounter } from "../../hooks";
+import { useCounter } from "../../../../hooks";
 import styles from "./styles.module.css";
 
 export function Counter() {

@@ -29,6 +29,7 @@ export function Dashboard() {
     const [settings, setSettings] = useState("");
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [activeTab, setActiveTab] = useState<keyof typeof Tabs>("home");
+    const [isSaving, setIsSaving] = useState(false);
 
     const currentTab = Tabs[activeTab];
 
@@ -59,7 +60,9 @@ export function Dashboard() {
     }
 
     async function handleSave() {
+        setIsSaving(true);
         const { error } = await supabase.from("settings").update({ started_at: date }).eq("id", settings);
+        setIsSaving(false);
 
         if (error) {
             console.error(error);
@@ -147,7 +150,9 @@ export function Dashboard() {
                 </div>
 
                 <div className={styles.contentArea}>
-                    {activeTab === "home" && <HomeTab date={date} setDate={setDate} handleSave={handleSave} />}
+                    {activeTab === "home" && (
+                        <HomeTab date={date} setDate={setDate} handleSave={handleSave} isSaving={isSaving} />
+                    )}
                 </div>
             </main>
         </div>

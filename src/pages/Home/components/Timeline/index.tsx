@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useTimeline } from "../../hooks";
+import { useTimeline } from "../../../../hooks";
 import styles from "./styles.module.css";
 
 export function Timeline() {
@@ -28,7 +28,7 @@ export function Timeline() {
     return (
         <section className={styles.section}>
             <div className={styles.shell}>
-                {events.map((event, index) => (
+                {events.map((event: any, index: number) => (
                     <div
                         key={`${event.month_label}-${index}`}
                         className={index % 2 === 1 ? `${styles.card} ${styles.cardReverse}` : styles.card}
@@ -45,7 +45,7 @@ export function Timeline() {
                             <p className={styles.copy}>{event.description}</p>
 
                             <div className={styles.events}>
-                                {event.timeline_sub_events?.map((subEvent, subIndex) => (
+                                {event.timeline_sub_events?.map((subEvent: any, subIndex: number) => (
                                     <div className={styles.event} key={`${event.month_label}-${subIndex}`}>
                                         <span>{subEvent.event_date}</span>
                                         <span>{subEvent.description}</span>

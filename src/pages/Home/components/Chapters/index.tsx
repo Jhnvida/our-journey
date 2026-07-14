@@ -1,6 +1,6 @@
 import { CheckIcon, Circle } from "lucide-react";
 import { useEffect, useRef } from "react";
-import { useChapters } from "../../hooks";
+import { useChapters } from "../../../../hooks";
 import styles from "./styles.module.css";
 
 export function Chapters() {
@@ -35,7 +35,7 @@ export function Chapters() {
                 </div>
 
                 <div className={styles.list}>
-                    {chapters.map((chapter, index) => (
+                    {chapters.map((chapter: any, index: number) => (
                         <div key={chapter.label} className={styles.item} style={{ animationDelay: `${index * 0.1}s` }}>
                             <div className={styles.icon}>
                                 {chapter.completed ? (
