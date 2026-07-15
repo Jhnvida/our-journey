@@ -16,8 +16,8 @@ export function useTimeline() {
         const { data } = await supabase
             .from("timeline_events")
             .select(`image_url, month_label, title, description, timeline_sub_events (event_date, description)`)
-            .order("sort_order")
-            .order("sort_order", { referencedTable: "timeline_sub_events" });
+            .order("created_at", { ascending: true })
+            .order("created_at", { referencedTable: "timeline_sub_events", ascending: true });
 
         if (data) {
             setEvents(data as Event[]);

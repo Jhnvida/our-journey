@@ -14,7 +14,7 @@ export function useChapters() {
         const { data } = await supabase
             .from("chapters")
             .select("id, label, completed")
-            .order("sort_order", { ascending: true });
+            .order("created_at", { ascending: true });
 
         if (data) {
             setChapters(data as Chapter[]);
@@ -43,9 +43,14 @@ export function useChapters() {
         setChapters((prev) => prev.filter((chapter) => chapter.id !== id));
     }
 
+    async function updateChapter(id: string, label: string) {
+        await supabase.from("chapters").update({ label }).eq("id", id);
+        setChapters((prev) => prev.map((chapter) => (chapter.id === id ? { ...chapter, label } : chapter)));
+    }
+
     useEffect(() => {
         fetchChapters();
     }, []);
 
-    return { chapters, addChapter, checkChapter, deleteChapter };
+    return { chapters, addChapter, checkChapter, deleteChapter, updateChapter };
 }
