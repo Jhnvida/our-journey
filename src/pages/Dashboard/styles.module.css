@@ -1,7 +1,8 @@
 .layout {
     min-height: 100vh;
-    background-color: var(--background);
+    background-color: var(--surface-soft);
     display: flex;
+    flex-direction: column;
 }
 
 .loadingContainer {
@@ -13,44 +14,30 @@
     color: var(--text-muted);
 }
 
-.sidebar {
-    width: 260px;
+.topNav {
     background-color: var(--background);
-    border-right: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
-    height: 100vh;
     z-index: 40;
-    transition: transform var(--transition-normal) ease;
 }
 
-.sidebarHeader {
-    padding: 1.5rem;
+.navContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid var(--border-color);
 }
 
 .brand {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
 }
 
-.brandIcon {
-    width: 32px;
-    height: 32px;
-    background-color: var(--text-main);
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sidebarTitle {
+.brandTitle {
     font-family: "Playfair Display", serif;
     font-size: 1.25rem;
     font-weight: 600;
@@ -58,182 +45,147 @@
     margin: 0;
 }
 
-.closeButton {
-    display: none;
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    padding: 0.25rem;
-}
-
-.sidebarNav {
-    padding: 1.5rem 1rem;
-    flex: 1;
+.desktopNav {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
 }
 
 .navItem {
+    height: 100%;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border-radius: var(--radius-sm);
+    padding: 0 1rem;
     font-size: 0.95rem;
     font-weight: 500;
     color: var(--text-muted);
     background: transparent;
     border: none;
+    border-bottom: 2px solid transparent;
     cursor: pointer;
     transition: all var(--transition-fast);
 }
 
 .navItem:hover {
-    background-color: var(--surface-soft);
     color: var(--text-main);
 }
 
 .navItemActive {
-    background-color: var(--text-main);
-    color: var(--background);
+    color: var(--text-main);
+    border-bottom-color: var(--text-main);
 }
 
-.navItemActive:hover {
-    background-color: #27272a;
-    color: var(--background);
-}
-
-.sidebarFooter {
-    padding: 1.5rem 1rem;
-    border-top: 1px solid var(--border-color);
+.navActions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .logoutBtn {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    width: 100%;
-    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
     border-radius: var(--radius-sm);
     font-size: 0.95rem;
     font-weight: 500;
-    color: #ef4444;
-    background: transparent;
-    border: none;
+    color: var(--text-main);
+    background: var(--surface-soft);
+    border: 1px solid var(--border-color);
     cursor: pointer;
     transition: all var(--transition-fast);
 }
 
 .logoutBtn:hover {
-    background-color: #fef2f2;
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-color: #f87171;
 }
 
-.mobileHeader {
+.mobileMenuBtn {
     display: none;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.5rem;
-    background-color: var(--background);
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 30;
-}
-
-.mobileTitle {
-    font-family: "Playfair Display", serif;
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 0;
-}
-
-.menuButton {
     background: transparent;
     border: none;
     color: var(--text-main);
     cursor: pointer;
     padding: 0.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.sidebarOverlay {
+.mobileNav {
     display: none;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(2px);
-    z-index: 35;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: var(--background);
+    border-top: 1px solid var(--border-color);
+}
+
+.mobileNavItem {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.mobileNavItem:hover {
+    background-color: var(--surface-soft);
+    color: var(--text-main);
+}
+
+.mobileNavItemActive {
+    background-color: var(--text-main);
+    color: var(--background);
 }
 
 .main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-width: 0;
-    background-color: var(--surface-soft);
+    width: 100%;
 }
 
-.mainHeader {
-    padding: 2rem 2.5rem;
-    background-color: var(--background);
-    border-bottom: 1px solid var(--border-color);
-}
-
-.pageTitle {
-    font-family: "Playfair Display", serif;
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin: 0 0 0.25rem 0;
-}
-
-.pageSubtitle {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    margin: 0;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1.5rem;
 }
 
 .contentArea {
-    padding: 2.5rem;
+    padding: 2.5rem 0;
     width: 100%;
 }
 
 @media (max-width: 768px) {
-    .layout {
-        flex-direction: column;
+    .desktopNav {
+        display: none;
     }
 
-    .sidebar {
-        position: fixed;
-        left: 0;
-        transform: translateX(-100%);
+    .logoutText {
+        display: none;
     }
 
-    .sidebarOpen {
-        transform: translateX(0);
+    .logoutBtn {
+        padding: 0.5rem;
     }
 
-    .closeButton {
-        display: block;
+    .mobileMenuBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .mobileHeader {
+    .mobileNav {
         display: flex;
     }
 
-    .sidebarOverlay {
-        display: block;
-    }
-
-    .mainHeader {
-        padding: 1.5rem;
-    }
-
     .contentArea {
-        padding: 1.5rem;
+        padding: 1.5rem 0;
     }
 }

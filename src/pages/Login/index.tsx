@@ -32,55 +32,59 @@ export function Login() {
 
     return (
         <div className={styles.container}>
-            <div className={styles.card}>
-                <div className={styles.header}>
-                    <h1 className={styles.title}>Painel Administrativo</h1>
-                    <p className={styles.subtitle}>Por favor, insira seus dados de login</p>
+            <div className={styles.leftPanel}>
+                <div className={styles.phraseContainer}>
+                    <h1 className={styles.mainPhrase}>Nossa História.</h1>
+                    <p className={styles.subPhrase}>Memórias, histórias e momentos que construímos juntos.</p>
                 </div>
+            </div>
 
-                {error && <div className={styles.error}>{error}</div>}
+            <div className={styles.rightPanel}>
+                <div className={styles.formContainer}>
+                    {error && <div className={styles.error}>{error}</div>}
 
-                <form className={styles.form} onSubmit={handleSubmit}>
-                    <div className={styles.inputGroup}>
-                        <label htmlFor="email" className={styles.label}>
-                            E-mail
-                        </label>
+                    <form className={styles.form} onSubmit={handleSubmit}>
+                        <div className={styles.inputGroup}>
+                            <label htmlFor="email" className={styles.label}>
+                                E-mail
+                            </label>
 
-                        <input
-                            id="email"
-                            type="email"
-                            required
-                            className={styles.input}
-                            placeholder="seu@email.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
+                            <input
+                                id="email"
+                                type="email"
+                                required
+                                className={styles.input}
+                                placeholder="seu@email.com"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </div>
 
-                    <div className={styles.inputGroup}>
-                        <label htmlFor="password" className={styles.label}>
-                            Senha
-                        </label>
+                        <div className={styles.inputGroup}>
+                            <label htmlFor="password" className={styles.label}>
+                                Senha
+                            </label>
 
-                        <input
-                            id="password"
-                            type="password"
-                            required
-                            className={styles.input}
-                            placeholder="••••••••"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
+                            <input
+                                id="password"
+                                type="password"
+                                required
+                                className={styles.input}
+                                placeholder="••••••••"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </div>
 
-                    <button type="submit" className={styles.button}>
-                        Entrar
-                    </button>
+                        <button type="submit" className={styles.button}>
+                            Entrar
+                        </button>
 
-                    <Link to="/" className={styles.backLink}>
-                        Voltar para a página inicial
-                    </Link>
-                </form>
+                        <Link to="/" className={styles.backLink}>
+                            Voltar para a página inicial
+                        </Link>
+                    </form>
+                </div>
             </div>
         </div>
     );
