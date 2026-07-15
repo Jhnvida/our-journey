@@ -1,0 +1,36 @@
+.desktopNav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+}
+
+.navItem {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.navItem:hover {
+    color: var(--text-main);
+}
+
+.navItemActive {
+    color: var(--text-main);
+    border-bottom-color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+    .desktopNav {
+        display: none;
+    }
+}

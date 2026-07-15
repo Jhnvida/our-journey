@@ -1,0 +1,82 @@
+.topNav {
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 40;
+}
+
+.navContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+}
+
+.brandTitle {
+    font-family: "Playfair Display", serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.navActions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logoutBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-main);
+    background: var(--surface-soft);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.logoutBtn:hover {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-color: #f87171;
+}
+
+.mobileMenuBtn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .logoutText {
+        display: none;
+    }
+
+    .logoutBtn {
+        padding: 0.5rem;
+    }
+
+    .mobileMenuBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

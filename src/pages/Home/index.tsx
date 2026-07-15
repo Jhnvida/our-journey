@@ -1,4 +1,5 @@
-import { Chapters, Container, Counter, Footer, Timeline } from "./components";
+import { Container } from "../../components/Container";
+import { Chapters, Counter, Footer, Timeline } from "./components";
 
 export function Home() {
     return (

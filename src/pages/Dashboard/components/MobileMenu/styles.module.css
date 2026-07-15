@@ -1,0 +1,36 @@
+.mobileNav {
+    display: none;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: var(--background);
+    border-top: 1px solid var(--border-color);
+}
+
+.mobileNavItem {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.mobileNavItem:hover {
+    background-color: var(--surface-soft);
+    color: var(--text-main);
+}
+
+.mobileNavItemActive {
+    background-color: var(--text-main);
+    color: var(--background);
+}
+
+@media (max-width: 768px) {
+    .mobileNav {
+        display: flex;
+    }
+}
