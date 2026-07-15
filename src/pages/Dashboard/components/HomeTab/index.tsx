@@ -8,7 +8,7 @@ export function HomeTab() {
     return (
         <div className={styles.card}>
             <div className={styles.cardHeader}>
-                <h2 className={styles.cardTitle}>Visão Geral</h2>
+                <h2 className={styles.cardTitle}>Gerenciar Configurações</h2>
                 <p className={styles.cardDescription}>Configure a data inicial para o contador de dias.</p>
             </div>
 

@@ -16,7 +16,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 className={({ isActive }) => `${styles.mobileNavItem} ${isActive ? styles.mobileNavItemActive : ""}`}
                 onClick={onClose}
             >
-                Início
+                Configurações
             </NavLink>
 
             <NavLink

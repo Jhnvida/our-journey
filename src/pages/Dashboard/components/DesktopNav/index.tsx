@@ -8,7 +8,7 @@ export function DesktopNav() {
                 to="/dashboard/home"
                 className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ""}`}
             >
-                Início
+                Configurações
             </NavLink>
 
             <NavLink
