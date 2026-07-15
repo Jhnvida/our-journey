@@ -35,7 +35,7 @@ export function Chapters() {
                 </div>
 
                 <div className={styles.list}>
-                    {chapters.map((chapter: any, index: number) => (
+                    {chapters.map((chapter, index) => (
                         <div key={chapter.label} className={styles.item} style={{ animationDelay: `${index * 0.1}s` }}>
                             <div className={styles.icon}>
                                 {chapter.completed ? (

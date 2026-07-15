@@ -28,7 +28,7 @@ export function Timeline() {
     return (
         <section className={styles.section}>
             <div className={styles.shell}>
-                {events.map((event: any, index: number) => (
+                {events.map((event, index) => (
                     <div
                         key={`${event.month_label}-${index}`}
                         className={index % 2 === 1 ? `${styles.card} ${styles.cardReverse}` : styles.card}
@@ -45,7 +45,7 @@ export function Timeline() {
                             <p className={styles.copy}>{event.description}</p>
 
                             <div className={styles.events}>
-                                {event.timeline_sub_events?.map((subEvent: any, subIndex: number) => (
+                                {event.timeline_sub_events?.map((subEvent, subIndex) => (
                                     <div className={styles.event} key={`${event.month_label}-${subIndex}`}>
                                         <span>{subEvent.event_date}</span>
                                         <span>{subEvent.description}</span>

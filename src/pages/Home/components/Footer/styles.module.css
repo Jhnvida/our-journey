@@ -1,19 +1,21 @@
 .footer {
-    width: 100%;
     display: flex;
     justify-content: center;
+
+    width: 100%;
     padding: 4rem 1.5rem;
     border-top: 1px solid var(--border-color);
 }
 
 .content {
-    width: 100%;
-    max-width: 1024px;
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
+
+    width: 100%;
+    max-width: 1024px;
 }
 
 .text {
@@ -24,8 +26,8 @@
 }
 
 .loginLink {
-    color: var(--text-muted);
     font-size: 0.75rem;
+    color: var(--text-muted);
     text-decoration: none;
     transition: color var(--transition-normal);
 }
@@ -35,7 +37,7 @@
     text-decoration: underline;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .content {
         flex-direction: row;
     }

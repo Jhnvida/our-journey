@@ -20,23 +20,24 @@
 
 .eyebrow {
     display: block;
+
     margin-bottom: 1.5rem;
 
-    color: var(--text-muted);
+    font-family: Inter, sans-serif;
     font-size: 0.75rem;
     font-weight: 400;
-    font-family: "Inter", sans-serif;
-    letter-spacing: 0.3em;
+    color: var(--text-muted);
     text-transform: uppercase;
+    letter-spacing: 0.3em;
 }
 
 .title {
-    color: var(--text-main);
+    font-family: "Playfair Display", serif;
     font-size: clamp(1.75rem, 3vw, 3rem);
     font-weight: 400;
-    font-family: "Playfair Display", serif;
     font-style: italic;
     line-height: 1.1;
+    color: var(--text-main);
     letter-spacing: -0.01em;
 }
 
@@ -51,32 +52,24 @@
 }
 
 .item {
+    transform: translateY(20px);
+
     display: flex;
-    align-items: center;
     gap: 1.25rem;
+    align-items: center;
+
     padding: 1rem 1.25rem;
     border-radius: var(--radius-sm);
+
+    opacity: 0;
+
     transition:
         background-color var(--transition-normal),
         transform var(--transition-normal);
-
-    opacity: 0;
-    transform: translateY(20px);
 }
 
 .itemVisible {
     animation: fadeInUpAnim 0.6s ease-out forwards;
-}
-
-@keyframes fadeInUpAnim {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .item:hover {
@@ -104,10 +97,10 @@
 }
 
 .label {
-    color: var(--text-main);
+    font-family: Inter, sans-serif;
     font-size: clamp(1rem, 2vw, 1.25rem);
     font-weight: 300;
-    font-family: "Inter", sans-serif;
+    color: var(--text-main);
     letter-spacing: -0.02em;
 
     transition: color var(--transition-normal);
@@ -121,7 +114,19 @@
     color: var(--text-main);
 }
 
-@media (min-width: 768px) {
+@keyframes fadeInUpAnim {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (width >= 768px) {
     .list {
         padding-left: 2rem;
     }
