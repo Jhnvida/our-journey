@@ -7,7 +7,7 @@ export function Footer() {
             <div className={styles.content}>
                 <p className={styles.text}>Para sempre escrevendo novos capítulos ao seu lado.</p>
 
-                <Link to="/login" className={styles.loginLink}>
+                <Link to="/entrar" className={styles.loginLink}>
                     Painel Administrativo
                 </Link>
             </div>

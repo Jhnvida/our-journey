@@ -13,7 +13,7 @@ export function Login() {
 
     useEffect(() => {
         if (!loading && user) {
-            navigate("/dashboard");
+            navigate("/painel");
         }
     }, [user, loading, navigate]);
 
@@ -26,7 +26,7 @@ export function Login() {
         if (response?.error) {
             setError("E-mail ou senha incorretos.");
         } else {
-            navigate("/dashboard");
+            navigate("/painel");
         }
     }
 

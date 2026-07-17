@@ -10,7 +10,7 @@ export function Dashboard() {
 
     useEffect(() => {
         if (!loading && !user) {
-            navigate("/login");
+            navigate("/entrar");
         }
     }, [user, loading, navigate]);
 

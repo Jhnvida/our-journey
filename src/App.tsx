@@ -7,12 +7,12 @@ export function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/dashboard" element={<Dashboard />}>
-                    <Route index element={<Navigate to="home" />} />
-                    <Route path="home" element={<HomeTab />} />
-                    <Route path="chapters" element={<ChaptersTab />} />
-                    <Route path="timeline" element={<TimelineTab />} />
+                <Route path="/entrar" element={<Login />} />
+                <Route path="/painel" element={<Dashboard />}>
+                    <Route index element={<Navigate to="inicio" />} />
+                    <Route path="inicio" element={<HomeTab />} />
+                    <Route path="capitulos" element={<ChaptersTab />} />
+                    <Route path="linha-do-tempo" element={<TimelineTab />} />
                 </Route>
             </Routes>
         </BrowserRouter>

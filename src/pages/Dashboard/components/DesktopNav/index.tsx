@@ -5,21 +5,21 @@ export function DesktopNav() {
     return (
         <nav className={styles.desktopNav}>
             <NavLink
-                to="/dashboard/home"
+                to="/painel/inicio"
                 className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ""}`}
             >
                 Configurações
             </NavLink>
 
             <NavLink
-                to="/dashboard/chapters"
+                to="/painel/capitulos"
                 className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ""}`}
             >
                 Capítulos
             </NavLink>
 
             <NavLink
-                to="/dashboard/timeline"
+                to="/painel/linha-do-tempo"
                 className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ""}`}
             >
                 Linha do Tempo

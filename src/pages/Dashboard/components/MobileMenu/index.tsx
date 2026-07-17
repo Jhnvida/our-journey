@@ -12,7 +12,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     return (
         <nav className={styles.mobileNav}>
             <NavLink
-                to="/dashboard/home"
+                to="/painel/inicio"
                 className={({ isActive }) => `${styles.mobileNavItem} ${isActive ? styles.mobileNavItemActive : ""}`}
                 onClick={onClose}
             >
@@ -20,7 +20,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </NavLink>
 
             <NavLink
-                to="/dashboard/chapters"
+                to="/painel/capitulos"
                 className={({ isActive }) => `${styles.mobileNavItem} ${isActive ? styles.mobileNavItemActive : ""}`}
                 onClick={onClose}
             >
@@ -28,7 +28,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </NavLink>
 
             <NavLink
-                to="/dashboard/timeline"
+                to="/painel/linha-do-tempo"
                 className={({ isActive }) => `${styles.mobileNavItem} ${isActive ? styles.mobileNavItemActive : ""}`}
                 onClick={onClose}
             >
