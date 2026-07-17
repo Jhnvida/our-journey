@@ -73,11 +73,15 @@
 
     background-color: var(--text-main);
 
-    transition: all var(--transition-normal);
+    transition:
+        background-color var(--transition-slow),
+        transform var(--transition-fast),
+        box-shadow var(--transition-slow);
 }
 
 .button:hover {
     background-color: #27272a;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
 }
 
 .button:active {
@@ -96,9 +100,9 @@
     align-items: center;
     justify-content: space-between;
 
-    padding: 1rem 1.25rem;
+    padding: 1.25rem;
     border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
 
     background-color: var(--background);
 
@@ -106,6 +110,7 @@
 }
 
 .chapterItem:hover {
+    transform: translateY(-2px);
     border-color: var(--text-muted);
     box-shadow: var(--shadow-sm);
 }

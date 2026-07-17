@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 export function Timeline() {
     const { events } = useTimeline();
     const observerRef = useRef<IntersectionObserver | null>(null);
+    const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
         observerRef.current = new IntersectionObserver(
@@ -19,8 +20,9 @@ export function Timeline() {
             { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
         );
 
-        const cards = document.querySelectorAll(`.${styles.card}`);
-        cards.forEach((card) => observerRef.current?.observe(card));
+        cardsRef.current.forEach((card) => {
+            if (card) observerRef.current?.observe(card);
+        });
 
         return () => observerRef.current?.disconnect();
     }, [events]);
@@ -32,6 +34,9 @@ export function Timeline() {
                     <div
                         key={`${event.month_label}-${index}`}
                         className={index % 2 === 1 ? `${styles.card} ${styles.cardReverse}` : styles.card}
+                        ref={(el) => {
+                            cardsRef.current[index] = el;
+                        }}
                     >
                         <div className={styles.imageColumn}>
                             <div className={styles.media}>

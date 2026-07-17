@@ -1,0 +1,82 @@
+.modalOverlay {
+    position: fixed;
+    z-index: 50;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem;
+
+    background-color: rgb(0 0 0 / 50%);
+    backdrop-filter: blur(4px);
+
+    animation: fadeIn var(--transition-fast) ease-out;
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+
+    background-color: var(--background);
+    box-shadow: var(--shadow-lg);
+
+    animation: slideUp var(--transition-normal) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px) scale(0.98);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@media (width <= 768px) {
+    .modalOverlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .modalContent {
+        max-width: 100% !important;
+        max-height: 95vh;
+        border-right: none;
+        border-bottom: none;
+        border-left: none;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+
+        animation: slideUpMobile var(--transition-normal) cubic-bezier(0.16, 1, 0.3, 1);
+    }
+}
+
+@keyframes slideUpMobile {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}

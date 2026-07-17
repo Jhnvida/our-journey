@@ -1,9 +1,12 @@
 import { Edit2, Image as ImageIcon, ListPlus, Plus, Trash2 } from "lucide-react";
+import { useState } from "react";
 import { useTimeline } from "../../../../hooks";
+import { EventModal } from "./components/EventModal";
 import styles from "./styles.module.css";
 
 export function TimelineTab() {
     const { events } = useTimeline();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <div className={styles.card}>
@@ -13,7 +16,7 @@ export function TimelineTab() {
                     <p className={styles.cardDescription}>Adicione, edite ou remova os momentos marcantes.</p>
                 </div>
 
-                <button className={styles.button}>
+                <button className={styles.button} onClick={() => setIsModalOpen(true)}>
                     <Plus size={18} />
                     Adicionar Evento
                 </button>
@@ -32,11 +35,8 @@ export function TimelineTab() {
                             )}
 
                             <div className={styles.details}>
-                                <div className={styles.eventHeader}>
-                                    <h3 className={styles.eventTitle}>{event.title}</h3>
-                                    <span className={styles.eventMonth}>{event.month_label}</span>
-                                </div>
-
+                                <span className={styles.eventMonth}>{event.month_label}</span>
+                                <h3 className={styles.eventTitle}>{event.title}</h3>
                                 <p className={styles.eventDescription}>{event.description}</p>
 
                                 <div className={styles.metaInfo}>
@@ -47,7 +47,7 @@ export function TimelineTab() {
                         </div>
 
                         <div className={styles.actions}>
-                            <button className={styles.iconButton} title="Editar">
+                            <button className={styles.iconButton} title="Editar" onClick={() => setIsModalOpen(true)}>
                                 <Edit2 size={16} />
                             </button>
 
@@ -58,6 +58,8 @@ export function TimelineTab() {
                     </div>
                 ))}
             </div>
+
+            <EventModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
     );
 }

@@ -6,6 +6,7 @@ import styles from "./styles.module.css";
 export function Chapters() {
     const { chapters } = useChapters();
     const observerRef = useRef<IntersectionObserver | null>(null);
+    const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
         observerRef.current = new IntersectionObserver(
@@ -20,8 +21,9 @@ export function Chapters() {
             { threshold: 0.1, rootMargin: "0px 0px -20px 0px" },
         );
 
-        const items = document.querySelectorAll(`.${styles.item}`);
-        items.forEach((item) => observerRef.current?.observe(item));
+        itemsRef.current.forEach((item) => {
+            if (item) observerRef.current?.observe(item);
+        });
 
         return () => observerRef.current?.disconnect();
     }, [chapters]);
@@ -36,7 +38,14 @@ export function Chapters() {
 
                 <div className={styles.list}>
                     {chapters.map((chapter, index) => (
-                        <div key={chapter.label} className={styles.item} style={{ animationDelay: `${index * 0.1}s` }}>
+                        <div
+                            key={chapter.label}
+                            className={styles.item}
+                            style={{ animationDelay: `${index * 0.1}s` }}
+                            ref={(el) => {
+                                itemsRef.current[index] = el;
+                            }}
+                        >
                             <div className={styles.icon}>
                                 {chapter.completed ? (
                                     <CheckIcon className={styles.check} />
