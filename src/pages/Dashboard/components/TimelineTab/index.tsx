@@ -1,12 +1,24 @@
 import { Edit2, Image as ImageIcon, ListPlus, Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { useTimeline } from "../../../../hooks";
-import { EventModal } from "./components/EventModal";
+import type { Event } from "../../../../hooks/useTimeline";
+import { EventDrawer } from "./components/EventDrawer";
 import styles from "./styles.module.css";
 
 export function TimelineTab() {
     const { events } = useTimeline();
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+
+    const handleOpenDrawer = (event?: Event) => {
+        setSelectedEvent(event || null);
+        setIsDrawerOpen(true);
+    };
+
+    const handleCloseDrawer = () => {
+        setIsDrawerOpen(false);
+        setSelectedEvent(null);
+    };
 
     return (
         <div className={styles.card}>
@@ -16,7 +28,7 @@ export function TimelineTab() {
                     <p className={styles.cardDescription}>Adicione, edite ou remova os momentos marcantes.</p>
                 </div>
 
-                <button className={styles.button} onClick={() => setIsModalOpen(true)}>
+                <button className={styles.button} onClick={() => handleOpenDrawer()}>
                     <Plus size={18} />
                     Adicionar Evento
                 </button>
@@ -47,7 +59,11 @@ export function TimelineTab() {
                         </div>
 
                         <div className={styles.actions}>
-                            <button className={styles.iconButton} title="Editar" onClick={() => setIsModalOpen(true)}>
+                            <button
+                                className={styles.iconButton}
+                                title="Editar"
+                                onClick={() => handleOpenDrawer(event)}
+                            >
                                 <Edit2 size={16} />
                             </button>
 
@@ -59,7 +75,7 @@ export function TimelineTab() {
                 ))}
             </div>
 
-            <EventModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <EventDrawer isOpen={isDrawerOpen} onClose={handleCloseDrawer} event={selectedEvent} />
         </div>
     );
 }
