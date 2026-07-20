@@ -1,0 +1,66 @@
+.chapter_card {
+    cursor: default;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    aspect-ratio: 1/1;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 1.5rem;
+
+    background-color: white;
+
+    transition: all 0.3s ease;
+}
+
+.chapter_card:hover {
+    border-color: #d1d5db;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+}
+
+.chapter_card_header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.chapter_icon {
+    transition: transform 0.3s ease;
+}
+
+.chapter_card:hover .chapter_icon {
+    transform: scale(1.1);
+}
+
+.icon_done {
+    color: #d1d5db;
+}
+
+.icon_pending {
+    color: var(--brand-dark);
+}
+
+.chapter_index {
+    margin-bottom: 0.75rem;
+    font-family: monospace;
+    font-size: 0.875rem;
+    color: var(--brand-gray);
+}
+
+.chapter_title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.chapter_title_done {
+    color: #9ca3af;
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+}
+
+.chapter_title_pending {
+    color: var(--brand-dark);
+}

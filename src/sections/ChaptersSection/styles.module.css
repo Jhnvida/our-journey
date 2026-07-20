@@ -1,0 +1,29 @@
+.chapters_section {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 8rem 1rem;
+}
+
+.chapters_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (width >= 768px) {
+    .chapters_section {
+        padding-right: 2rem;
+        padding-left: 2rem;
+    }
+
+    .chapters_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (width >= 1024px) {
+    .chapters_grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

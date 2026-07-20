@@ -1,0 +1,39 @@
+.hero_counters {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 3rem;
+}
+
+.hero_counter_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero_counter_number {
+    font-family: monospace;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--brand-dark);
+    letter-spacing: -0.05em;
+}
+
+.hero_counter_label {
+    margin-top: 0.5rem;
+
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--brand-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+@media (width >= 768px) {
+    .hero_counter_number {
+        font-size: 4.5rem;
+    }
+}

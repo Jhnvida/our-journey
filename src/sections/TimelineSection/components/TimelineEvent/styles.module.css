@@ -1,0 +1,114 @@
+.timeline_event {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+}
+
+.timeline_event_text {
+    width: 100%;
+}
+
+.timeline_event_meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.timeline_event_index {
+    font-family: monospace;
+    font-size: 0.875rem;
+    color: var(--brand-gray);
+}
+
+.timeline_event_line {
+    width: 3rem;
+    height: 1px;
+    background-color: rgb(140 140 140 / 30%);
+}
+
+.timeline_event_date {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--brand-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.timeline_event_title {
+    margin-bottom: 1.5rem;
+
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--brand-dark);
+    letter-spacing: -0.04em;
+}
+
+.timeline_event_desc {
+    font-size: 1.125rem;
+    font-weight: 300;
+    line-height: 1.625;
+    color: var(--brand-gray);
+}
+
+.timeline_event_image_container {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 1.5rem;
+}
+
+.timeline_event_image {
+    aspect-ratio: 4/3;
+    width: 100%;
+    border-radius: 1.5rem;
+
+    object-fit: cover;
+
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.timeline_event_image_container:hover .timeline_event_image {
+    transform: scale(1.05);
+}
+
+.timeline_event_image_placeholder {
+    aspect-ratio: 4/3;
+    width: 100%;
+    border-radius: 1.5rem;
+    background-color: #f3f4f6;
+}
+
+@media (width >= 768px) {
+    .timeline_event_title {
+        font-size: 3rem;
+    }
+
+    .timeline_event_image {
+        aspect-ratio: 16/10;
+    }
+
+    .timeline_event_image_placeholder {
+        aspect-ratio: 16/10;
+    }
+}
+
+@media (width >= 1024px) {
+    .timeline_event {
+        flex-direction: row;
+        gap: 6rem;
+    }
+
+    .timeline_event.reverse {
+        flex-direction: row-reverse;
+    }
+
+    .timeline_event_text {
+        width: calc(5 / 12 * 100%);
+    }
+
+    .timeline_event_image_container {
+        width: calc(7 / 12 * 100%);
+    }
+}

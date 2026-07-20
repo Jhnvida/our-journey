@@ -1,0 +1,19 @@
+.badge {
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.badge_done {
+    color: #6b7280;
+    background-color: #f3f4f6;
+}
+
+.badge_pending {
+    color: white;
+    background-color: var(--brand-dark);
+}

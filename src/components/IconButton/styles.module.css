@@ -1,0 +1,24 @@
+.icon_btn {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 1px solid rgb(140 140 140 / 40%);
+    border-radius: 9999px;
+
+    color: var(--brand-dark);
+
+    background: transparent;
+
+    transition: all 0.2s ease;
+}
+
+.icon_btn:hover {
+    border-color: var(--brand-dark);
+    color: white;
+    background-color: var(--brand-dark);
+}

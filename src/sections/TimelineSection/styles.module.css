@@ -1,0 +1,23 @@
+.timeline_section {
+    width: 100%;
+    padding: 6rem 1rem;
+    background-color: var(--brand-surface);
+}
+
+.timeline_container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.timeline_events {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+}
+
+@media (width >= 768px) {
+    .timeline_section {
+        padding-right: 2rem;
+        padding-left: 2rem;
+    }
+}

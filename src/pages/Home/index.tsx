@@ -1,13 +1,16 @@
-import { Container } from "../../components/Container";
-import { Chapters, Counter, Footer, Timeline } from "./components";
+import { ChaptersSection } from "../../sections/ChaptersSection";
+import { HeroSection } from "../../sections/HeroSection";
+import { RecipeBookSection } from "../../sections/RecipeBookSection";
+import { TimelineSection } from "../../sections/TimelineSection";
+import styles from "./styles.module.css";
 
-export function Home() {
+export function HomePage() {
     return (
-        <Container>
-            <Counter />
-            <Timeline />
-            <Chapters />
-            <Footer />
-        </Container>
+        <main className={styles.home_main}>
+            <HeroSection />
+            <TimelineSection />
+            <RecipeBookSection />
+            <ChaptersSection />
+        </main>
     );
 }
