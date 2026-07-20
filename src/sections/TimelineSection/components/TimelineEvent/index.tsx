@@ -1,3 +1,5 @@
+import { format, parseISO } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import styles from "./styles.module.css";
 
 interface TimelineEventProps {
@@ -11,9 +13,8 @@ interface TimelineEventProps {
 
 const formatDate = (dateString: string) => {
     if (!dateString) return "";
-    const options: Intl.DateTimeFormatOptions = { year: "numeric", month: "long", day: "numeric" };
-    const date = new Date(dateString + "T00:00:00");
-    return date.toLocaleDateString("pt-BR", options);
+    const date = parseISO(dateString);
+    return format(date, "d 'de' MMMM 'de' yyyy", { locale: ptBR });
 };
 
 export const TimelineEvent = ({ index, title, description, date, imageUrl, isEven }: TimelineEventProps) => {

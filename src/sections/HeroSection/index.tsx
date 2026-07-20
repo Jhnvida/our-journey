@@ -1,26 +1,19 @@
+import { intervalToDuration, parseISO } from "date-fns";
 import { useEffect, useState } from "react";
 import { useSettings } from "../../hooks/useSettings";
 import { HeroCounter } from "./components/HeroCounter";
 import styles from "./styles.module.css";
 
 const calculateTimeDifference = (startDate: string) => {
-    const start = new Date(startDate);
+    const start = parseISO(startDate);
     const now = new Date();
-    let years = now.getFullYear() - start.getFullYear();
-    let months = now.getMonth() - start.getMonth();
-    let days = now.getDate() - start.getDate();
+    const duration = intervalToDuration({ start, end: now });
 
-    if (days < 0) {
-        months -= 1;
-        const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-        days += previousMonth.getDate();
-    }
-    if (months < 0) {
-        years -= 1;
-        months += 12;
-    }
-
-    return { years, months, days };
+    return {
+        years: duration.years || 0,
+        months: duration.months || 0,
+        days: duration.days || 0,
+    };
 };
 
 export const HeroSection = () => {
@@ -29,9 +22,11 @@ export const HeroSection = () => {
 
     useEffect(() => {
         if (!settings?.relationship_start_date) return;
+
         const updateTime = () => setTime(calculateTimeDifference(settings.relationship_start_date));
         updateTime();
         const interval = setInterval(updateTime, 1000 * 60 * 60);
+
         return () => clearInterval(interval);
     }, [settings]);
 
@@ -39,9 +34,7 @@ export const HeroSection = () => {
         <section className={`${styles.hero_section} reveal_up`}>
             <div className={styles.hero_content}>
                 <p className={styles.hero_subtitle}>A Nossa Jornada</p>
-
                 <HeroCounter time={time} />
-
                 <p className={styles.hero_quote}>Cada segundo da nossa história, medido em momentos.</p>
             </div>
 
