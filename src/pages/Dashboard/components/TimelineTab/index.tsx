@@ -6,7 +6,7 @@ import { EventDrawer } from "./components/EventDrawer";
 import styles from "./styles.module.css";
 
 export function TimelineTab() {
-    const { events } = useTimeline();
+    const { events, removeEvent, addEvent, updateEvent } = useTimeline();
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
@@ -18,6 +18,10 @@ export function TimelineTab() {
     const handleCloseDrawer = () => {
         setIsDrawerOpen(false);
         setSelectedEvent(null);
+    };
+
+    const handleDeleteEvent = async (id: string) => {
+        await removeEvent(id);
     };
 
     return (
@@ -67,7 +71,11 @@ export function TimelineTab() {
                                 <Edit2 size={16} />
                             </button>
 
-                            <button className={`${styles.iconButton} ${styles.iconButtonDelete}`} title="Excluir">
+                            <button
+                                className={`${styles.iconButton} ${styles.iconButtonDelete}`}
+                                title="Excluir"
+                                onClick={() => handleDeleteEvent(event.id)}
+                            >
                                 <Trash2 size={16} />
                             </button>
                         </div>
@@ -75,7 +83,13 @@ export function TimelineTab() {
                 ))}
             </div>
 
-            <EventDrawer isOpen={isDrawerOpen} onClose={handleCloseDrawer} event={selectedEvent} />
+            <EventDrawer
+                isOpen={isDrawerOpen}
+                onClose={handleCloseDrawer}
+                event={selectedEvent}
+                addEvent={addEvent}
+                updateEvent={updateEvent}
+            />
         </div>
     );
 }
