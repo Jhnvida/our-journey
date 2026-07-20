@@ -6,18 +6,20 @@
     justify-content: space-between;
 
     aspect-ratio: 1/1;
-    padding: 2rem;
-    border: 1px solid #e5e7eb;
-    border-radius: 1.5rem;
+    padding: var(--space-8);
+    border: 1px solid var(--brand-border);
+    border-radius: var(--radius-lg);
 
-    background-color: white;
+    background-color: var(--brand-surface);
 
-    transition: all 0.3s ease;
+    transition:
+        border-color var(--duration-normal) ease,
+        box-shadow var(--duration-normal) ease;
 }
 
 .chapter_card:hover {
-    border-color: #d1d5db;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+    border-color: var(--brand-border-hover);
+    box-shadow: var(--shadow-lg);
 }
 
 .chapter_card_header {
@@ -27,7 +29,7 @@
 }
 
 .chapter_icon {
-    transition: transform 0.3s ease;
+    transition: transform var(--duration-normal) ease;
 }
 
 .chapter_card:hover .chapter_icon {
@@ -35,7 +37,7 @@
 }
 
 .icon_done {
-    color: #d1d5db;
+    color: var(--brand-border-hover);
 }
 
 .icon_pending {
@@ -43,20 +45,20 @@
 }
 
 .chapter_index {
-    margin-bottom: 0.75rem;
-    font-family: monospace;
-    font-size: 0.875rem;
+    margin-bottom: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
     color: var(--brand-gray);
 }
 
 .chapter_title {
-    font-size: 1.5rem;
+    font-size: var(--text-2xl);
     font-weight: 600;
-    letter-spacing: -0.02em;
+    letter-spacing: var(--tracking-snug);
 }
 
 .chapter_title_done {
-    color: #9ca3af;
+    color: var(--brand-muted);
     text-decoration: line-through;
     text-decoration-thickness: 1px;
 }

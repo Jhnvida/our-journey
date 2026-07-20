@@ -2,9 +2,69 @@
 
 :root {
     --brand-bg: #f7f7f5;
+    --brand-bg-alt: #eaeae8;
     --brand-dark: #0f0f0f;
     --brand-gray: #8c8c8c;
     --brand-surface: #fff;
+    --brand-border: #e5e7eb;
+    --brand-border-hover: #d1d5db;
+    --brand-muted: #9ca3af;
+    --brand-subtle: #f3f4f6;
+
+    --font-sans: "Plus Jakarta Sans", sans-serif;
+    --font-serif: "Playfair Display", serif;
+    --font-mono: "SF Mono", "Fira Code", monospace;
+    --text-xs: 0.6875rem;
+    --text-sm: 0.75rem;
+    --text-base: 0.875rem;
+    --text-md: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 2rem;
+    --text-4xl: 3rem;
+    --text-5xl: 4.5rem;
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+    --space-32: 8rem;
+
+    --radius-sm: 0.25rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1.5rem;
+    --radius-xl: 2rem;
+    --radius-full: 9999px;
+
+    --shadow-sm: 0 1px 3px rgb(0 0 0 / 8%);
+    --shadow-md: 0 4px 12px rgb(0 0 0 / 8%);
+    --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+
+    --container-max: 1400px;
+    --container-padding-mobile: 1rem;
+    --container-padding-desktop: 2rem;
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+    --duration-fast: 0.2s;
+    --duration-normal: 0.3s;
+    --duration-slow: 0.7s;
+
+    --tracking-tight: -0.04em;
+    --tracking-snug: -0.025em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.1em;
+    --tracking-wider: 0.2em;
+    --tracking-widest: 0.3em;
 }
 
 * {
@@ -14,7 +74,7 @@
 }
 
 body {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     line-height: 1.5;
     color: var(--brand-dark);
 
@@ -27,7 +87,7 @@ body {
 .reveal_up {
     transform: translateY(30px);
     opacity: 0;
-    animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: revealUp 0.8s var(--ease-out) forwards;
 }
 
 .delay_100 {
@@ -45,27 +105,27 @@ body {
     justify-content: center;
 
     width: 100%;
-    margin-top: 6rem;
-    padding: 3rem 2rem;
-    border-top: 1px solid #e5e7eb;
+    margin-top: var(--space-24);
+    padding: var(--space-12) var(--space-8);
+    border-top: 1px solid var(--brand-border);
 
-    font-size: 0.875rem;
+    font-size: var(--text-base);
     font-weight: 500;
     color: var(--brand-gray);
 }
 
 .footer_title {
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-2);
 
-    font-size: 0.75rem;
+    font-size: var(--text-sm);
     color: var(--brand-dark);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: var(--tracking-wide);
 }
 
 .footer_text {
     font-weight: 300;
-    color: #9ca3af;
+    color: var(--brand-muted);
 }
 
 ::selection {

@@ -3,16 +3,16 @@
     z-index: 10;
 
     display: flex;
-    gap: 2rem;
+    gap: var(--space-8);
     align-items: center;
     justify-content: center;
 
-    margin-top: 4rem;
+    margin-top: var(--space-16);
 }
 
 .recipe_nav_label {
-    font-family: monospace;
-    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
     color: rgb(140 140 140 / 60%);
-    letter-spacing: 0.1em;
+    letter-spacing: var(--tracking-wide);
 }

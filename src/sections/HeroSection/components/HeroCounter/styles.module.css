@@ -1,10 +1,10 @@
 .hero_counters {
     display: flex;
-    gap: 3rem;
+    gap: var(--space-12);
     align-items: center;
     justify-content: center;
 
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-12);
 }
 
 .hero_counter_item {
@@ -14,8 +14,8 @@
 }
 
 .hero_counter_number {
-    font-family: monospace;
-    font-size: 3rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-4xl);
     font-weight: 700;
     line-height: 1;
     color: var(--brand-dark);
@@ -23,17 +23,17 @@
 }
 
 .hero_counter_label {
-    margin-top: 0.5rem;
+    margin-top: var(--space-2);
 
-    font-size: 0.875rem;
+    font-size: var(--text-base);
     font-weight: 700;
     color: var(--brand-gray);
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: var(--tracking-wider);
 }
 
 @media (width >= 768px) {
     .hero_counter_number {
-        font-size: 4.5rem;
+        font-size: var(--text-5xl);
     }
 }
