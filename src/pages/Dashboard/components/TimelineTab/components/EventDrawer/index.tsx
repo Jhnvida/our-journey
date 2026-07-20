@@ -8,8 +8,15 @@ interface EventDrawerProps {
     isOpen: boolean;
     onClose: () => void;
     event?: Event | null;
-    addEvent: (eventData: any, subEvents: any[]) => Promise<any>;
-    updateEvent: (id: string, eventData: any, subEvents: any[]) => Promise<any>;
+    addEvent: (
+        eventData: Omit<Event, "id" | "timeline_sub_events">,
+        subEvents: { event_date: string; description: string }[],
+    ) => Promise<unknown>;
+    updateEvent: (
+        id: string,
+        eventData: Omit<Event, "id" | "timeline_sub_events">,
+        subEvents: { event_date: string; description: string }[],
+    ) => Promise<unknown>;
 }
 
 export function EventDrawer({ isOpen, onClose, event, addEvent, updateEvent }: EventDrawerProps) {
