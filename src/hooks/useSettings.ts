@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 
-export interface Setting {
+export type Setting = {
     id: number;
     relationship_start_date: string;
     hero_image_url: string | null;
     updated_at: string;
-}
+};
 
 export function useSettings() {
     const [settings, setSettings] = useState<Setting | null>(null);

@@ -1,8 +1,8 @@
 import styles from "./styles.module.css";
 
-interface HeroCounterProps {
+type HeroCounterProps = {
     time: { years: number; months: number; days: number };
-}
+};
 
 export const HeroCounter = ({ time }: HeroCounterProps) => {
     return (

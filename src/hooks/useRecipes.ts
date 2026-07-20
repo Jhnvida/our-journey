@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 
-export interface Recipe {
+export type Recipe = {
     id: number;
     title: string;
     description: string | null;
     ingredients: string[];
     image_url: string | null;
     created_at: string;
-}
+};
 
 export function useRecipes() {
     const [recipes, setRecipes] = useState<Recipe[]>([]);

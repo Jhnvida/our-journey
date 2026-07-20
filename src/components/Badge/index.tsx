@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 import styles from "./styles.module.css";
 
-interface BadgeProps {
+type BadgeProps = {
     variant: "done" | "pending";
     children: ReactNode;
-}
+};
 
 export const Badge = ({ variant, children }: BadgeProps) => {
     return (

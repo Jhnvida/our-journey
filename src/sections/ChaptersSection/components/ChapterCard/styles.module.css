@@ -47,7 +47,7 @@
 .chapter_index {
     margin-bottom: var(--space-3);
     font-family: var(--font-mono);
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
     color: var(--brand-gray);
 }
 

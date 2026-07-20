@@ -1,10 +1,10 @@
 import styles from "./styles.module.css";
 
-interface SectionHeaderProps {
+type SectionHeaderProps = {
     title: string;
     subtitle: string;
     align?: "left" | "center";
-}
+};
 
 export const SectionHeader = ({ title, subtitle, align = "left" }: SectionHeaderProps) => {
     return (

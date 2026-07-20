@@ -1,9 +1,9 @@
-import type { ReactNode, ButtonHTMLAttributes } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 import styles from "./styles.module.css";
 
-interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type IconButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     children: ReactNode;
-}
+};
 
 export const IconButton = ({ children, className, ...props }: IconButtonProps) => {
     return (
