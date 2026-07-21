@@ -19,8 +19,9 @@
 }
 
 .timeline_event_image {
-    aspect-ratio: 4/5;
+    aspect-ratio: 1/1;
     width: 100%;
+    max-height: 400px;
     object-fit: cover;
 }
 
@@ -29,8 +30,9 @@
     align-items: center;
     justify-content: center;
 
-    aspect-ratio: 4/5;
+    aspect-ratio: 1/1;
     width: 100%;
+    max-height: 400px;
 
     color: var(--brand-muted);
 }

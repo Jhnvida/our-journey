@@ -114,16 +114,12 @@
 }
 
 .recipe_image {
-    aspect-ratio: 4/3;
+    aspect-ratio: 1/1;
     width: 100%;
+    max-height: 400px;
     border-radius: var(--radius-lg);
-    object-fit: cover;
-}
 
-@media (width >= 768px) {
-    .recipe_image {
-        aspect-ratio: 16/10;
-    }
+    object-fit: cover;
 }
 
 .recipe_image_fallback {
@@ -131,17 +127,12 @@
     align-items: center;
     justify-content: center;
 
-    aspect-ratio: 4/3;
+    aspect-ratio: 1/1;
     width: 100%;
+    max-height: 400px;
     border-radius: var(--radius-lg);
 
     color: var(--brand-dark);
 
     background-color: var(--brand-border);
-}
-
-@media (width >= 768px) {
-    .recipe_image_fallback {
-        aspect-ratio: 16/10;
-    }
 }
