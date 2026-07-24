@@ -2,28 +2,18 @@
     width: 100%;
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: var(--space-32) var(--container-padding-mobile);
+    padding: var(--space-20) var(--container-padding-mobile);
 }
 
 .chapters_grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-6);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 @media (width >= 768px) {
     .chapters_section {
-        padding-right: var(--container-padding-desktop);
-        padding-left: var(--container-padding-desktop);
-    }
-
-    .chapters_grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (width >= 1024px) {
-    .chapters_grid {
-        grid-template-columns: repeat(4, 1fr);
+        padding: var(--space-24) var(--container-padding-desktop) var(--space-24) var(--container-padding-desktop);
     }
 }

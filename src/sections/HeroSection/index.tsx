@@ -37,14 +37,6 @@ export const HeroSection = () => {
                 <HeroCounter time={time} />
                 <p className={styles.hero_quote}>Cada segundo da nossa história, medido em momentos.</p>
             </div>
-
-            <div className={`${styles.hero_image_container} reveal_up delay_100`}>
-                {settings?.hero_image_url ? (
-                    <img src={settings.hero_image_url} alt="Background do casal" />
-                ) : (
-                    <div className={styles.hero_image_fallback} />
-                )}
-            </div>
         </section>
     );
 };

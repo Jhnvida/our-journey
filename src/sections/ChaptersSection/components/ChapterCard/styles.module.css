@@ -1,38 +1,67 @@
-.chapter_card {
+.chapter_list_item {
     cursor: default;
 
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
 
-    aspect-ratio: 1/1;
-    padding: var(--space-8);
-    border: 1px solid var(--brand-border);
-    border-radius: var(--radius-lg);
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--brand-border);
 
-    background-color: var(--brand-surface);
-
-    transition:
-        border-color var(--duration-normal) ease,
-        box-shadow var(--duration-normal) ease;
+    transition: border-color var(--duration-normal) ease;
 }
 
-.chapter_card:hover {
-    border-color: var(--brand-border-hover);
-    box-shadow: var(--shadow-lg);
+.chapter_list_item:hover {
+    border-color: var(--brand-dark);
 }
 
-.chapter_card_header {
+.chapter_left {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    gap: var(--space-4);
+    align-items: center;
 }
 
-.chapter_icon {
+.chapter_index {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--brand-gray);
+}
+
+.chapter_title {
+    font-size: var(--text-xl);
+    font-weight: 500;
+    letter-spacing: var(--tracking-snug);
     transition: transform var(--duration-normal) ease;
 }
 
-.chapter_card:hover .chapter_icon {
+.chapter_list_item:hover .chapter_title {
+    transform: translateX(4px);
+}
+
+.chapter_title_done {
+    color: var(--brand-muted);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+}
+
+.chapter_title_pending {
+    color: var(--brand-dark);
+}
+
+.chapter_right {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+}
+
+.chapter_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--duration-normal) ease;
+}
+
+.chapter_list_item:hover .chapter_icon {
     transform: scale(1.1);
 }
 
@@ -44,25 +73,8 @@
     color: var(--brand-dark);
 }
 
-.chapter_index {
-    margin-bottom: var(--space-3);
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    color: var(--brand-gray);
-}
-
-.chapter_title {
-    font-size: var(--text-2xl);
-    font-weight: 600;
-    letter-spacing: var(--tracking-snug);
-}
-
-.chapter_title_done {
-    color: var(--brand-muted);
-    text-decoration: line-through;
-    text-decoration-thickness: 1px;
-}
-
-.chapter_title_pending {
-    color: var(--brand-dark);
+@media (width >= 768px) {
+    .chapter_title {
+        font-size: var(--text-2xl);
+    }
 }

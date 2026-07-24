@@ -39,7 +39,7 @@
 }
 
 .recipe_title {
-    font-size: var(--text-4xl);
+    font-size: var(--text-2xl);
     font-weight: 700;
     line-height: 1.25;
     color: var(--brand-dark);
@@ -48,7 +48,7 @@
 
 @media (width >= 768px) {
     .recipe_title {
-        font-size: var(--text-5xl);
+        font-size: var(--text-3xl);
     }
 }
 
