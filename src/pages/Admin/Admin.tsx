@@ -1,5 +1,6 @@
 import { LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { ProtectedRoute } from "../../components/ProtectedRoute/ProtectedRoute";
 import { useAuth } from "../../hooks/useAuth";
 import styles from "./Admin.module.css";
 
@@ -13,18 +14,20 @@ export function AdminDashboard() {
     };
 
     return (
-        <section className={`${styles.admin_section} reveal_up`}>
-            <div className={styles.admin_content}>
-                <p className={styles.admin_subtitle}>A Nossa Jornada</p>
-                <p className={styles.admin_title}>Logado com: {user?.email}</p>
+        <ProtectedRoute>
+            <section className={`${styles.admin_section} reveal_up`}>
+                <div className={styles.admin_content}>
+                    <p className={styles.admin_subtitle}>A Nossa Jornada</p>
+                    <p className={styles.admin_title}>Logado com: {user?.email}</p>
 
-                <div className={styles.sign_out_container}>
-                    <button onClick={handleSignOut} className={styles.sign_out_button}>
-                        <LogOut size={16} />
-                        Sair
-                    </button>
+                    <div className={styles.sign_out_container}>
+                        <button onClick={handleSignOut} className={styles.sign_out_button}>
+                            <LogOut size={16} />
+                            Sair
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </ProtectedRoute>
     );
 }

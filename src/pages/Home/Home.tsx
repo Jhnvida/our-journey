@@ -1,4 +1,5 @@
 import { Chapters } from "../../sections/Chapters/Chapters";
+import { Footer } from "../../sections/Footer/Footer";
 import { Hero } from "../../sections/Hero/Hero";
 import { RecipeBook } from "../../sections/RecipeBook/RecipeBook";
 import { Timeline } from "../../sections/Timeline/Timeline";
@@ -11,6 +12,7 @@ export function HomePage() {
             <Timeline />
             <RecipeBook />
             <Chapters />
+            <Footer />
         </main>
     );
 }

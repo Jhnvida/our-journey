@@ -7,7 +7,8 @@ Uma aplicação web desenvolvida para casais acompanharem e registrarem os marco
 - **Contador de tempo**: Exibe o tempo de relacionamento em anos, meses e dias.
 - **Linha do tempo (Timeline)**: Exibe os principais momentos e eventos marcantes com fotos, títulos, descrições e subeventos.
 - **Próximos Capítulos**: Lista de planos e metas futuras do casal, indicando se já foram concluídos ou não.
-- **Autenticação e Painel (Dashboard)**: Sistema de login para acesso a um painel de controle utilizando Supabase.
+- **Livro de Receitas (RecipeBook)**: Lista de receitas favoritas do casal, permitindo consultar pratos especiais.
+- **Autenticação e Painel de Administração**: Sistema de login para acesso a uma área restrita gerenciada pelo Supabase.
 
 ## Tecnologias Utilizadas
 
@@ -27,11 +28,13 @@ Uma aplicação web desenvolvida para casais acompanharem e registrarem os marco
 A estrutura de pastas principal dentro de `src/` está organizada da seguinte forma:
 
 - `/assets`: Imagens e recursos estáticos.
-- `/components`: Componentes reutilizáveis de interface (`Counter`, `Timeline`, `Chapters`, `Container`, `Footer`).
-- `/hooks`: Custom hooks contendo a lógica de negócios e integração com o Supabase (`useAuth`, `useCounter`, `useTimeline`, `useChapters`).
+- `/components`: Componentes menores e reutilizáveis (ex: `Badge`, `SectionHeader`, `ProtectedRoute`).
+- `/hooks`: Custom hooks contendo a lógica de negócios e integração com o Supabase (`useAuth`, `useChapters`, `useRecipes`, `useSettings`, `useTimelineEvents`).
 - `/lib`: Configuração de bibliotecas externas (ex: cliente do Supabase).
-- `/pages`: Páginas da aplicação (`Home`, `Login`, `Dashboard`).
+- `/pages`: Páginas da aplicação (`Home`, `Login`, `Admin`).
+- `/sections`: Seções principais da interface (`Hero`, `Timeline`, `Chapters`, `RecipeBook`, `Footer`).
 - `/styles`: Estilos globais e variáveis CSS.
+- `/types`: Definições de tipos do TypeScript.
 
 ## Pré-requisitos
 
@@ -80,10 +83,10 @@ Para iniciar o servidor de desenvolvimento, execute o comando:
 npm run dev
 ```
 
-Acesso a aplicação no seu navegador padrão (geralmente em `http://localhost:5173`).
+Acesse a aplicação no seu navegador padrão (geralmente em `http://localhost:5173`).
 
 ## Como Usar
 
-- **Página Inicial (`/`)**: Exibe o contador de tempo, a linha do tempo e a lista de próximos capítulos (dados provenientes do Supabase).
+- **Página Inicial (`/`)**: Exibe o contador de tempo, a linha do tempo, a lista de próximos capítulos e o livro de receitas (dados provenientes do Supabase).
 - **Login (`/login`)**: Página para autenticação de usuários.
-- **Painel de Controle (`/dashboard`)**: Área restrita (protegida por autenticação) onde é possível verificar o usuário logado e efetuar logout.
+- **Painel de Administração (`/admin`)**: Área restrita (protegida por autenticação) onde é possível verificar o usuário logado e efetuar logout.

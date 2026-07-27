@@ -1,6 +1,5 @@
-import { LogIn } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { supabase } from "../../lib/supabase";
 import styles from "./Login.module.css";
@@ -9,7 +8,6 @@ export function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
-    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
     const { user } = useAuth();
@@ -22,7 +20,6 @@ export function LoginPage() {
 
     const handleLogin = async (e: React.SubmitEvent) => {
         e.preventDefault();
-        setLoading(true);
         setError(null);
 
         try {
@@ -34,14 +31,8 @@ export function LoginPage() {
             if (error) throw error;
 
             navigate("/admin", { replace: true });
-        } catch (err) {
-            if (err instanceof Error) {
-                setError(err.message);
-            } else {
-                setError("Falha ao fazer login");
-            }
-        } finally {
-            setLoading(false);
+        } catch {
+            setError("Email ou senha inválidos!");
         }
     };
 
@@ -84,15 +75,14 @@ export function LoginPage() {
                         />
                     </div>
 
-                    <button type="submit" className={styles.login_button} disabled={loading}>
-                        {loading ? (
-                            "Entrando..."
-                        ) : (
-                            <>
-                                Entrar <LogIn size={18} className={styles.login_icon} />
-                            </>
-                        )}
-                    </button>
+                    <div className={styles.button_group}>
+                        <button type="submit" className={styles.login_button}>
+                            Entrar
+                        </button>
+                        <Link to="/" className={styles.back_button}>
+                            Voltar
+                        </Link>
+                    </div>
                 </form>
             </div>
         </section>
