@@ -3,12 +3,6 @@
     flex-direction: column;
 }
 
-@media (width >= 768px) {
-    .timeline_event_odd {
-        margin-top: var(--space-24);
-    }
-}
-
 .timeline_event_image_container {
     width: 100%;
     margin-bottom: var(--space-8);
@@ -23,18 +17,6 @@
     width: 100%;
     max-height: 400px;
     object-fit: cover;
-}
-
-.timeline_event_image_placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    aspect-ratio: 1/1;
-    width: 100%;
-    max-height: 400px;
-
-    color: var(--brand-muted);
 }
 
 .timeline_event_text {
@@ -89,6 +71,10 @@
 }
 
 @media (width >= 768px) {
+    .timeline_event_odd {
+        margin-top: var(--space-24);
+    }
+
     .timeline_event_title {
         font-size: var(--text-4xl);
     }
