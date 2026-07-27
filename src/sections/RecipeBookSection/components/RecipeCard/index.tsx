@@ -21,20 +21,14 @@ export const RecipeCard = ({ index, title, description, ingredients, imageUrl }:
 
                 <p className={styles.recipe_desc}>{description}</p>
 
-                {ingredients && ingredients.length > 0 && (
-                    <div className={styles.recipe_ingredients_block}>
-                        <h5 className={styles.recipe_ingredients_title}>Ingredientes Principais</h5>
-                        <p className={styles.recipe_ingredients_list}>{ingredients.join(" / ")}</p>
-                    </div>
-                )}
+                <div className={styles.recipe_ingredients_block}>
+                    <h5 className={styles.recipe_ingredients_title}>Ingredientes Principais</h5>
+                    <p className={styles.recipe_ingredients_list}>{ingredients.join(" / ")}</p>
+                </div>
             </div>
 
             <div className={`img_zoom_container ${styles.recipe_image_container}`}>
-                {imageUrl ? (
-                    <img src={imageUrl} alt={title} className={`img_zoom ${styles.recipe_image}`} />
-                ) : (
-                    <div className={styles.recipe_image_fallback} />
-                )}
+                <img src={imageUrl as string} alt={title} className={`img_zoom ${styles.recipe_image}`} />
             </div>
         </div>
     );
