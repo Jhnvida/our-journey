@@ -1,9 +1,9 @@
 import { LogIn } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 import { supabase } from "../../lib/supabase";
-import styles from "./styles.module.css";
+import styles from "./Login.module.css";
 
 export function LoginPage() {
     const [email, setEmail] = useState("");

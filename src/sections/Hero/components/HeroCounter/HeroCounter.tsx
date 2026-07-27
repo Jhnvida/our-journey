@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import styles from "./HeroCounter.module.css";
 
 type HeroCounterProps = {
     time: { years: number; months: number; days: number };

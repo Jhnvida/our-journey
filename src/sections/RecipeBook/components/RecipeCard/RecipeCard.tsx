@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import styles from "./RecipeCard.module.css";
 
 type RecipeCardProps = {
     index: number;

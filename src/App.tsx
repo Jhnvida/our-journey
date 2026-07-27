@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ProtectedRoute } from "./components/ProtectedRoute";
-import { AdminDashboard } from "./pages/Admin";
-import { HomePage } from "./pages/Home";
-import { LoginPage } from "./pages/Login";
 import styles from "./App.module.css";
+import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
+import { AdminDashboard } from "./pages/Admin/Admin";
+import { HomePage } from "./pages/Home/Home";
+import { LoginPage } from "./pages/Login/Login";
 
 export default function App() {
     return (

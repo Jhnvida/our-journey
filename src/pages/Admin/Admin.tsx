@@ -1,7 +1,7 @@
 import { LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
-import styles from "./styles.module.css";
+import { useAuth } from "../../hooks/useAuth";
+import styles from "./Admin.module.css";
 
 export function AdminDashboard() {
     const { user, signOut } = useAuth();

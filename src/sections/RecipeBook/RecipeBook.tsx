@@ -1,9 +1,9 @@
-import { SectionHeader } from "../../components/SectionHeader";
+import { SectionHeader } from "../../components/SectionHeader/SectionHeader";
 import { useRecipes } from "../../hooks/useRecipes";
-import { RecipeCard } from "./components/RecipeCard";
-import styles from "./styles.module.css";
+import { RecipeCard } from "./components/RecipeCard/RecipeCard";
+import styles from "./RecipeBook.module.css";
 
-export const RecipeBookSection = () => {
+export const RecipeBook = () => {
     const { recipes } = useRecipes();
 
     return (

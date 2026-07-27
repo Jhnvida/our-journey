@@ -1,14 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
-
-export type TimelineEvent = {
-    id: number;
-    title: string;
-    date: string;
-    description: string | null;
-    image_url: string | null;
-    created_at: string;
-};
+import type { TimelineEvent } from "../types";
 
 export function useTimelineEvents() {
     const [events, setEvents] = useState<TimelineEvent[]>([]);

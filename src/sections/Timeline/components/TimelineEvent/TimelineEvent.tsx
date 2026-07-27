@@ -1,6 +1,5 @@
-import { format, parseISO } from "date-fns";
-import { ptBR } from "date-fns/locale";
-import styles from "./styles.module.css";
+import { formatDate } from "../../../../lib/formatDate";
+import styles from "./TimelineEvent.module.css";
 
 type TimelineEventProps = {
     index: number;
@@ -9,12 +8,6 @@ type TimelineEventProps = {
     date: string;
     imageUrl?: string | null;
     isEven: boolean;
-};
-
-const formatDate = (dateString: string) => {
-    if (!dateString) return "";
-    const date = parseISO(dateString);
-    return format(date, "d 'de' MMMM 'de' yyyy", { locale: ptBR });
 };
 
 export const TimelineEvent = ({ index, title, description, date, imageUrl, isEven }: TimelineEventProps) => {

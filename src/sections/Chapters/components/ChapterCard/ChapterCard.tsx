@@ -1,6 +1,6 @@
 import { CheckCircle, Circle } from "lucide-react";
-import { Badge } from "../../../../components/Badge";
-import styles from "./styles.module.css";
+import { Badge } from "../../../../components/Badge/Badge";
+import styles from "./ChapterCard.module.css";
 
 type ChapterCardProps = {
     index: number;

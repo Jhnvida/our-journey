@@ -1,22 +1,10 @@
-import { intervalToDuration, parseISO } from "date-fns";
 import { useEffect, useState } from "react";
 import { useSettings } from "../../hooks/useSettings";
-import { HeroCounter } from "./components/HeroCounter";
-import styles from "./styles.module.css";
+import { calculateTimeDifference } from "../../lib/calculateTimeDifference";
+import { HeroCounter } from "./components/HeroCounter/HeroCounter";
+import styles from "./Hero.module.css";
 
-const calculateTimeDifference = (startDate: string) => {
-    const start = parseISO(startDate);
-    const now = new Date();
-    const duration = intervalToDuration({ start, end: now });
-
-    return {
-        years: duration.years || 0,
-        months: duration.months || 0,
-        days: duration.days || 0,
-    };
-};
-
-export const HeroSection = () => {
+export const Hero = () => {
     const { settings } = useSettings();
     const [time, setTime] = useState({ years: 0, months: 0, days: 0 });
 

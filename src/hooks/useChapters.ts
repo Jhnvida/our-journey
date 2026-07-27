@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
-
-export type Chapter = {
-    id: number;
-    title: string;
-    status: string;
-    created_at: string;
-};
+import type { Chapter } from "../types";
 
 export function useChapters() {
     const [chapters, setChapters] = useState<Chapter[]>([]);

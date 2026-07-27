@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import styles from "./SectionHeader.module.css";
 
 type SectionHeaderProps = {
     title: string;
