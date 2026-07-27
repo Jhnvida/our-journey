@@ -1,7 +1,7 @@
 .timeline_section {
     width: 100%;
     padding: var(--space-20) var(--container-padding-mobile);
-    background-color: var(--brand-surface);
+    background-color: var(--brand-bg);
 }
 
 .timeline_container {
@@ -9,10 +9,10 @@
     margin: 0 auto;
 }
 
-.timeline_events {
+.timeline_grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-20) var(--space-12);
+    gap: var(--space-6);
 }
 
 @media (width >= 768px) {
@@ -20,13 +20,15 @@
         padding: var(--space-24) var(--container-padding-desktop);
     }
 
-    .timeline_events {
+    .timeline_grid {
+        grid-auto-rows: minmax(300px, auto);
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (width >= 1024px) {
-    .timeline_events {
-        gap: var(--space-32) var(--space-12);
+    .timeline_grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-8);
     }
 }

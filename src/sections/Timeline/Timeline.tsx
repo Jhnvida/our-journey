@@ -13,9 +13,9 @@ export const Timeline = () => {
             <div className={styles.timeline_container}>
                 <SectionHeader title="A Linha do Tempo" subtitle="Os marcos que definem a nossa história." />
 
-                <div className={styles.timeline_events}>
+                <div className={styles.timeline_grid}>
                     {sortedEvents.map((event, index) => {
-                        const isEven = index % 2 === 0;
+                        const isFeatured = index % 5 === 0;
 
                         return (
                             <TimelineEvent
@@ -25,7 +25,7 @@ export const Timeline = () => {
                                 description={event.description}
                                 date={event.date}
                                 imageUrl={event.image_url}
-                                isEven={isEven}
+                                isFeatured={isFeatured}
                             />
                         );
                     })}

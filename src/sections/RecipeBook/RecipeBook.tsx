@@ -7,18 +7,17 @@ export const RecipeBook = () => {
     const { recipes } = useRecipes();
 
     return (
-        <section className={`${styles.recipe_section} reveal_up`}>
+        <section className={styles.recipe_section}>
             <div className={styles.recipes_container}>
                 <SectionHeader
                     title="A Nossa Cozinha"
                     subtitle="Porque algumas das nossas melhores memórias foram construídas em volta da mesa, entre um tempero e outro."
                 />
 
-                <div className={styles.recipes_list}>
-                    {recipes?.map((recipe, i) => (
+                <div className={styles.recipes_grid}>
+                    {recipes?.map((recipe) => (
                         <RecipeCard
                             key={recipe.id}
-                            index={i}
                             title={recipe.title}
                             description={recipe.description}
                             ingredients={recipe.ingredients}

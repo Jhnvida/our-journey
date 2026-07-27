@@ -1,19 +1,25 @@
 .chapters_section {
     width: 100%;
-    max-width: var(--container-max);
-    margin: 0 auto;
     padding: var(--space-20) var(--container-padding-mobile);
+    background-color: var(--brand-bg);
 }
 
-.chapters_grid {
-    display: grid;
-    grid-template-columns: 1fr;
+.chapters_container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+.roadmap_list {
+    display: flex;
+    flex-direction: column;
+
     max-width: 800px;
     margin: 0 auto;
+    padding: var(--space-6) 0;
 }
 
 @media (width >= 768px) {
     .chapters_section {
-        padding: var(--space-24) var(--container-padding-desktop) var(--space-24) var(--container-padding-desktop);
+        padding: var(--space-24) var(--container-padding-desktop);
     }
 }

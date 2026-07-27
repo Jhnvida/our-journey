@@ -1,15 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 
 :root {
-    --brand-bg: #f7f7f5;
-    --brand-bg-alt: #eaeae8;
-    --brand-dark: #0f0f0f;
-    --brand-gray: #8c8c8c;
+    --brand-bg: #fafafa;
+    --brand-bg-alt: #f4f4f5;
+    --brand-dark: #09090b;
+    --brand-gray: #71717a;
     --brand-surface: #fff;
-    --brand-border: #e5e7eb;
-    --brand-border-hover: #d1d5db;
-    --brand-muted: #9ca3af;
-    --brand-subtle: #f3f4f6;
+    --brand-border: #e4e4e7;
+    --brand-border-hover: #d4d4d8;
+    --brand-muted: #a1a1aa;
+    --brand-subtle: #f4f4f5;
+    --brand-accent: #09090b;
+    --glass-bg: rgb(255 255 255 / 80%);
+    --glass-border: rgb(228 228 231 / 50%);
     --font-sans: "Plus Jakarta Sans", sans-serif;
     --font-serif: "Playfair Display", serif;
     --font-mono: "SF Mono", "Fira Code", monospace;
@@ -36,19 +39,22 @@
     --space-20: 5rem;
     --space-24: 6rem;
     --space-32: 8rem;
-    --radius-sm: 0.25rem;
-    --radius-md: 0.75rem;
-    --radius-lg: 1.5rem;
-    --radius-xl: 2rem;
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-2xl: 32px;
     --radius-full: 9999px;
-    --shadow-sm: 0 1px 3px rgb(0 0 0 / 8%);
-    --shadow-md: 0 4px 12px rgb(0 0 0 / 8%);
-    --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
-    --container-max: 1400px;
-    --container-padding-mobile: 1rem;
-    --container-padding-desktop: 2rem;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 5%);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 5%), 0 2px 4px -2px rgb(0 0 0 / 5%);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 5%), 0 4px 6px -4px rgb(0 0 0 / 5%);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 5%), 0 8px 10px -6px rgb(0 0 0 / 5%);
+    --container-max: 1200px;
+    --container-padding-mobile: 1.5rem;
+    --container-padding-desktop: 3rem;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+    --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     --duration-fast: 0.2s;
     --duration-normal: 0.3s;
     --duration-slow: 0.7s;
@@ -78,7 +84,7 @@ body {
 }
 
 .reveal_up {
-    transform: translateY(30px);
+    transform: translateY(20px);
     opacity: 0;
     animation: revealUp 0.8s var(--ease-out) forwards;
 }
@@ -98,7 +104,7 @@ body {
 
 @keyframes revealUp {
     from {
-        transform: translateY(30px);
+        transform: translateY(20px);
         opacity: 0;
     }
 
@@ -125,4 +131,10 @@ body {
 
 .img_zoom_container:hover .img_zoom {
     transform: scale(1.05);
+}
+
+.glass_panel {
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
 }

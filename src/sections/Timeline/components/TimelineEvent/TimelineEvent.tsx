@@ -1,3 +1,4 @@
+import { Calendar } from "lucide-react";
 import { formatDate } from "../../../../lib/formatDate";
 import styles from "./TimelineEvent.module.css";
 
@@ -7,25 +8,30 @@ type TimelineEventProps = {
     description: string | null;
     date: string;
     imageUrl?: string | null;
-    isEven: boolean;
+    isFeatured: boolean;
 };
 
-export const TimelineEvent = ({ index, title, description, date, imageUrl, isEven }: TimelineEventProps) => {
+export const TimelineEvent = ({ title, description, date, imageUrl, isFeatured }: TimelineEventProps) => {
     return (
-        <div className={`${styles.timeline_event} ${!isEven ? styles.timeline_event_odd : ""} reveal_up`}>
-            <div className={`img_zoom_container ${styles.timeline_event_image_container}`}>
-                <img src={imageUrl as string} alt={title} className={`img_zoom ${styles.timeline_event_image}`} />
-            </div>
-
-            <div className={styles.timeline_event_text}>
-                <div className={styles.timeline_event_meta}>
-                    <span className={styles.timeline_event_index}>{(index + 1).toString().padStart(2, "0")}</span>
-                    <div className={styles.timeline_event_line}></div>
-                    <span className={styles.timeline_event_date}>{formatDate(date)}</span>
+        <div className={`${styles.timeline_card} ${isFeatured ? styles.featured : ""} reveal_up`}>
+            {imageUrl && (
+                <div className={`img_zoom_container ${styles.image_wrapper}`}>
+                    <img src={imageUrl} alt={title} className={`img_zoom ${styles.image}`} />
+                </div>
+            )}
+            
+            <div className={styles.content}>
+                <div className={styles.badge_container}>
+                    <div className={`${styles.date_badge} glass_panel`}>
+                        <Calendar size={14} className={styles.badge_icon} />
+                        <span>{formatDate(date)}</span>
+                    </div>
                 </div>
 
-                <h3 className={styles.timeline_event_title}>{title}</h3>
-                <p className={styles.timeline_event_desc}>{description}</p>
+                <div className={styles.text_content}>
+                    <h3 className={styles.title}>{title}</h3>
+                    {description && <p className={styles.description}>{description}</p>}
+                </div>
             </div>
         </div>
     );

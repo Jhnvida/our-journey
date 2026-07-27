@@ -1,34 +1,42 @@
+import { ChefHat } from "lucide-react";
 import styles from "./RecipeCard.module.css";
 
 type RecipeCardProps = {
-    index: number;
     title: string;
     description: string | null;
     ingredients: string[];
     imageUrl?: string | null;
 };
 
-export const RecipeCard = ({ index, title, description, ingredients, imageUrl }: RecipeCardProps) => {
-    const isEven = index % 2 === 0;
-
+export const RecipeCard = ({ title, description, ingredients, imageUrl }: RecipeCardProps) => {
     return (
-        <div className={`${styles.recipe_card} ${!isEven ? styles.reverse : ""} reveal_up`}>
-            <div className={styles.recipe_text_block}>
-                <div className={styles.recipe_header}>
-                    <h3 className={styles.recipe_title}>{title}</h3>
-                    <span className={styles.recipe_index}>{(index + 1).toString().padStart(2, "0")}</span>
+        <div className={`${styles.recipe_card} reveal_up`}>
+            {imageUrl && (
+                <div className={`img_zoom_container ${styles.image_container}`}>
+                    <img src={imageUrl} alt={title} className={`img_zoom ${styles.image}`} />
+                </div>
+            )}
+
+            <div className={styles.content}>
+                <div className={styles.header}>
+                    <h3 className={styles.title}>{title}</h3>
+                    {description && <p className={styles.description}>{description}</p>}
                 </div>
 
-                <p className={styles.recipe_desc}>{description}</p>
-
-                <div className={styles.recipe_ingredients_block}>
-                    <h5 className={styles.recipe_ingredients_title}>Ingredientes Principais</h5>
-                    <p className={styles.recipe_ingredients_list}>{ingredients.join(" / ")}</p>
+                <div className={styles.ingredients_section}>
+                    <div className={styles.ingredients_header}>
+                        <ChefHat size={18} className={styles.icon} />
+                        <h4 className={styles.ingredients_title}>Ingredientes</h4>
+                    </div>
+                    
+                    <ul className={styles.ingredients_list}>
+                        {ingredients.map((ingredient, idx) => (
+                            <li key={idx} className={styles.ingredient_chip}>
+                                {ingredient}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-            </div>
-
-            <div className={`img_zoom_container ${styles.recipe_image_container}`}>
-                <img src={imageUrl as string} alt={title} className={`img_zoom ${styles.recipe_image}`} />
             </div>
         </div>
     );

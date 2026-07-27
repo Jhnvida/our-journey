@@ -1,8 +1,8 @@
-.site_footer {
+.footer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: var(--space-6);
     align-items: center;
-    justify-content: space-between;
 
     width: 100%;
     margin-top: var(--space-24);
@@ -12,6 +12,7 @@
     font-size: var(--text-base);
     font-weight: 500;
     color: var(--brand-gray);
+    text-align: center;
 }
 
 .footer_title {
@@ -23,8 +24,10 @@
 
 .footer_links {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--space-4);
     align-items: center;
+    justify-content: center;
 }
 
 .footer_link {
@@ -36,4 +39,16 @@
 
 .footer_link:hover {
     color: var(--brand-dark);
+}
+
+@media (width >= 768px) {
+    .footer {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .footer_links {
+        justify-content: flex-end;
+    }
 }

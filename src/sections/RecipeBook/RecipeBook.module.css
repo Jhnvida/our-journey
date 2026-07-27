@@ -9,14 +9,21 @@
     margin: 0 auto;
 }
 
-.recipes_list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-32);
+.recipes_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
 }
 
 @media (width >= 768px) {
     .recipe_section {
         padding: var(--space-24) var(--container-padding-desktop);
+    }
+}
+
+@media (width >= 1024px) {
+    .recipes_grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-8);
     }
 }
