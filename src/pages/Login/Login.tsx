@@ -4,7 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { supabase } from "../../lib/supabase";
 import styles from "./Login.module.css";
 
-export function LoginPage() {
+export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
@@ -37,12 +37,12 @@ export function LoginPage() {
     };
 
     return (
-        <section className={`${styles.login_section} reveal_up`}>
+        <section className={`${styles.login_section} `}>
             <div className={styles.login_content}>
                 <p className={styles.login_subtitle}>Acesso Restrito</p>
                 <h1 className={styles.login_title}>Gerenciar Jornada</h1>
 
-                {error && <div className={`${styles.error_message} reveal_up`}>{error}</div>}
+                {error && <div className={`${styles.error_message} `}>{error}</div>}
 
                 <form className={styles.login_form} onSubmit={handleLogin}>
                     <div className={styles.form_group}>

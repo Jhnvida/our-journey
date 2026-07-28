@@ -4,10 +4,18 @@
     flex-direction: column;
 
     border: 1px solid var(--brand-border);
-    border-radius: var(--radius-2xl);
-    
+
     background-color: var(--brand-surface);
     box-shadow: var(--shadow-md);
+
+    transition:
+        transform var(--duration-normal) var(--ease-out),
+        box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.recipe_card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }
 
 .image_container {
@@ -85,14 +93,13 @@
 
 .ingredient_chip {
     padding: var(--space-2) var(--space-4);
-    border-radius: var(--radius-full);
-    
+
     font-size: var(--text-sm);
     font-weight: 500;
     color: var(--brand-dark);
 
     background-color: var(--brand-bg-alt);
-    
+
     transition: background-color var(--duration-fast) var(--ease-out);
 }
 
@@ -108,7 +115,7 @@
     .title {
         font-size: var(--text-2xl);
     }
-    
+
     .description {
         font-size: var(--text-md);
     }

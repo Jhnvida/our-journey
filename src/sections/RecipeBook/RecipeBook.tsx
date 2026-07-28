@@ -1,9 +1,9 @@
-import { SectionHeader } from "../../components/SectionHeader/SectionHeader";
+import SectionHeader from "../../components/SectionHeader/SectionHeader";
 import { useRecipes } from "../../hooks/useRecipes";
-import { RecipeCard } from "./components/RecipeCard/RecipeCard";
+import RecipeCard from "./components/RecipeCard/RecipeCard";
 import styles from "./RecipeBook.module.css";
 
-export const RecipeBook = () => {
+export default function RecipeBook() {
     const { recipes } = useRecipes();
 
     return (
@@ -28,4 +28,4 @@ export const RecipeBook = () => {
             </div>
         </section>
     );
-};
+}

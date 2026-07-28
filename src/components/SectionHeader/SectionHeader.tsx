@@ -6,7 +6,7 @@ type SectionHeaderProps = {
     align?: "left" | "center";
 };
 
-export const SectionHeader = ({ title, subtitle, align = "left" }: SectionHeaderProps) => {
+export default function SectionHeader({ title, subtitle, align = "left" }: SectionHeaderProps) {
     return (
         <div className={`${styles.header} ${align === "center" ? styles.align_center : ""}`}>
             <div>
@@ -15,4 +15,4 @@ export const SectionHeader = ({ title, subtitle, align = "left" }: SectionHeader
             </div>
         </div>
     );
-};
+}

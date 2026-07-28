@@ -6,14 +6,13 @@
     flex-direction: column;
 
     border: 1px solid var(--brand-border);
-    border-radius: var(--radius-2xl);
 
     background-color: var(--brand-surface);
     box-shadow: var(--shadow-sm);
 
     transition:
-        box-shadow var(--duration-normal) var(--ease-out),
-        transform var(--duration-normal) var(--ease-out);
+        transform var(--duration-normal) var(--ease-out),
+        box-shadow var(--duration-normal) var(--ease-out);
 }
 
 .timeline_card:hover {
@@ -56,7 +55,6 @@
     align-items: center;
 
     padding: var(--space-2) var(--space-4);
-    border-radius: var(--radius-full);
 
     font-family: var(--font-mono);
     font-size: var(--text-xs);

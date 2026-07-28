@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
 
-export const Footer = () => {
+export default function Footer() {
     return (
         <footer className={styles.footer}>
             <p className={styles.footer_title}>A Nossa Jornada</p>
@@ -21,4 +21,4 @@ export const Footer = () => {
             </div>
         </footer>
     );
-};
+}

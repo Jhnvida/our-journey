@@ -1,10 +1,10 @@
 import { compareAsc, parseISO } from "date-fns";
-import { SectionHeader } from "../../components/SectionHeader/SectionHeader";
+import SectionHeader from "../../components/SectionHeader/SectionHeader";
 import { useTimelineEvents } from "../../hooks/useTimelineEvents";
-import { TimelineEvent } from "./components/TimelineEvent/TimelineEvent";
+import TimelineEvent from "./components/TimelineEvent/TimelineEvent";
 import styles from "./Timeline.module.css";
 
-export const Timeline = () => {
+export default function Timeline() {
     const { events } = useTimelineEvents();
     const sortedEvents = [...events].sort((a, b) => compareAsc(parseISO(a.date), parseISO(b.date)));
 
@@ -33,4 +33,4 @@ export const Timeline = () => {
             </div>
         </section>
     );
-};
+}

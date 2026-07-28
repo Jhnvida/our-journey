@@ -39,12 +39,6 @@
     --space-20: 5rem;
     --space-24: 6rem;
     --space-32: 8rem;
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
-    --radius-2xl: 32px;
-    --radius-full: 9999px;
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 5%);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 5%), 0 2px 4px -2px rgb(0 0 0 / 5%);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 5%), 0 4px 6px -4px rgb(0 0 0 / 5%);
@@ -83,35 +77,9 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.reveal_up {
-    transform: translateY(20px);
-    opacity: 0;
-    animation: revealUp 0.8s var(--ease-out) forwards;
-}
-
-.delay_100 {
-    animation-delay: 100ms;
-}
-
-.delay_200 {
-    animation-delay: 200ms;
-}
-
 ::selection {
     color: var(--brand-surface);
     background-color: var(--brand-dark);
-}
-
-@keyframes revealUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 .img_zoom_container {
@@ -120,21 +88,45 @@ body {
 
 .img_zoom {
     display: block;
-
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
-    transition: transform 0.7s var(--ease-in-out);
-}
-
-.img_zoom_container:hover .img_zoom {
-    transform: scale(1.05);
 }
 
 .glass_panel {
     border: 1px solid var(--glass-border);
     background: var(--glass-bg);
     backdrop-filter: blur(16px);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a,
+button {
+    transition:
+        color var(--duration-fast) var(--ease-out),
+        background-color var(--duration-fast) var(--ease-out),
+        border-color var(--duration-fast) var(--ease-out);
+}
+
+:focus-visible {
+    outline: 2px solid var(--brand-dark);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }

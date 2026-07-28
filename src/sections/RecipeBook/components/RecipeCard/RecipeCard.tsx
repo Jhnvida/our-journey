@@ -8,12 +8,12 @@ type RecipeCardProps = {
     imageUrl?: string | null;
 };
 
-export const RecipeCard = ({ title, description, ingredients, imageUrl }: RecipeCardProps) => {
+export default function RecipeCard({ title, description, ingredients, imageUrl }: RecipeCardProps) {
     return (
-        <div className={`${styles.recipe_card} reveal_up`}>
+        <div className={`${styles.recipe_card} `}>
             {imageUrl && (
-                <div className={`img_zoom_container ${styles.image_container}`}>
-                    <img src={imageUrl} alt={title} className={`img_zoom ${styles.image}`} />
+                <div className={`${styles.image_container}`}>
+                    <img src={imageUrl} alt={title} className={`${styles.image}`} />
                 </div>
             )}
 
@@ -28,7 +28,7 @@ export const RecipeCard = ({ title, description, ingredients, imageUrl }: Recipe
                         <ChefHat size={18} className={styles.icon} />
                         <h4 className={styles.ingredients_title}>Ingredientes</h4>
                     </div>
-                    
+
                     <ul className={styles.ingredients_list}>
                         {ingredients.map((ingredient, idx) => (
                             <li key={idx} className={styles.ingredient_chip}>
@@ -40,4 +40,4 @@ export const RecipeCard = ({ title, description, ingredients, imageUrl }: Recipe
             </div>
         </div>
     );
-};
+}

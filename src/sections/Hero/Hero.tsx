@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSettings } from "../../hooks/useSettings";
 import { calculateTimeDifference } from "../../lib/calculateTimeDifference";
-import { HeroCounter } from "./components/HeroCounter/HeroCounter";
+import HeroCounter from "./components/HeroCounter/HeroCounter";
 import styles from "./Hero.module.css";
 
-export const Hero = () => {
+export default function Hero() {
     const { settings } = useSettings();
     const [time, setTime] = useState({ years: 0, months: 0, days: 0 });
 
@@ -19,7 +19,7 @@ export const Hero = () => {
     }, [settings]);
 
     return (
-        <section className={`${styles.hero_section} reveal_up`}>
+        <section className={`${styles.hero_section} `}>
             <div className={styles.hero_content}>
                 <p className={styles.hero_subtitle}>A Nossa Jornada</p>
                 <HeroCounter time={time} />
@@ -27,4 +27,4 @@ export const Hero = () => {
             </div>
         </section>
     );
-};
+}

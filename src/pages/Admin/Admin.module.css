@@ -50,7 +50,6 @@
 
     padding: var(--space-3) var(--space-6);
     border: 1px solid var(--brand-border);
-    border-radius: var(--radius-sm);
 
     font-family: var(--font-sans);
     font-size: var(--text-sm);
@@ -61,7 +60,6 @@
 
     background: transparent;
 
-    transition: all var(--duration-fast) var(--ease-out);
 }
 
 .sign_out_button:hover {

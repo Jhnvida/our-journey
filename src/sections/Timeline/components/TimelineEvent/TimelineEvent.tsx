@@ -11,15 +11,15 @@ type TimelineEventProps = {
     isFeatured: boolean;
 };
 
-export const TimelineEvent = ({ title, description, date, imageUrl, isFeatured }: TimelineEventProps) => {
+export default function TimelineEvent({ title, description, date, imageUrl, isFeatured }: TimelineEventProps) {
     return (
-        <div className={`${styles.timeline_card} ${isFeatured ? styles.featured : ""} reveal_up`}>
+        <div className={`${styles.timeline_card} ${isFeatured ? styles.featured : ""} `}>
             {imageUrl && (
-                <div className={`img_zoom_container ${styles.image_wrapper}`}>
-                    <img src={imageUrl} alt={title} className={`img_zoom ${styles.image}`} />
+                <div className={`${styles.image_wrapper}`}>
+                    <img src={imageUrl} alt={title} className={`${styles.image}`} />
                 </div>
             )}
-            
+
             <div className={styles.content}>
                 <div className={styles.badge_container}>
                     <div className={`${styles.date_badge} glass_panel`}>
@@ -35,4 +35,4 @@ export const TimelineEvent = ({ title, description, date, imageUrl, isFeatured }
             </div>
         </div>
     );
-};
+}

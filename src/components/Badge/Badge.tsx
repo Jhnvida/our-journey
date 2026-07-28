@@ -6,10 +6,10 @@ type BadgeProps = {
     children: ReactNode;
 };
 
-export const Badge = ({ variant, children }: BadgeProps) => {
+export default function Badge({ variant, children }: BadgeProps) {
     return (
         <span className={`${styles.badge} ${variant === "done" ? styles.badge_done : styles.badge_pending}`}>
             {children}
         </span>
     );
-};
+}

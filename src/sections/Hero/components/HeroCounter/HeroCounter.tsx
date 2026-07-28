@@ -4,7 +4,7 @@ type HeroCounterProps = {
     time: { years: number; months: number; days: number };
 };
 
-export const HeroCounter = ({ time }: HeroCounterProps) => {
+export default function HeroCounter({ time }: HeroCounterProps) {
     return (
         <div className={styles.hero_counters}>
             <div className={styles.hero_counter_item}>
@@ -23,4 +23,4 @@ export const HeroCounter = ({ time }: HeroCounterProps) => {
             </div>
         </div>
     );
-};
+}
