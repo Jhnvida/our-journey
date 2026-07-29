@@ -1,10 +1,10 @@
-.chapters_section {
+.section {
     width: 100%;
     padding: var(--space-20) var(--container-padding-mobile);
     background-color: var(--brand-bg);
 }
 
-.chapters_container {
+.container {
     max-width: var(--container-max);
     margin: 0 auto;
 }
@@ -17,7 +17,7 @@
 }
 
 @media (width >= 768px) {
-    .chapters_section {
+    .section {
         padding: var(--space-24) var(--container-padding-desktop);
     }
 

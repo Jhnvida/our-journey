@@ -15,14 +15,14 @@
     text-align: center;
 }
 
-.footer_title {
+.title {
     font-size: var(--text-sm);
     color: var(--brand-dark);
     text-transform: uppercase;
     letter-spacing: var(--tracking-wide);
 }
 
-.footer_links {
+.links {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-4);
@@ -30,14 +30,14 @@
     justify-content: center;
 }
 
-.footer_link {
+.link {
     font-size: var(--text-xs);
     color: var(--brand-gray);
     text-decoration: none;
     transition: color var(--duration-fast) var(--ease-out);
 }
 
-.footer_link:hover {
+.link:hover {
     color: var(--brand-dark);
 }
 
@@ -48,7 +48,7 @@
         text-align: left;
     }
 
-    .footer_links {
+    .links {
         justify-content: flex-end;
     }
 }

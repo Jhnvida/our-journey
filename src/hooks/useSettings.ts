@@ -19,5 +19,15 @@ export function useSettings() {
         fetchSettings();
     }, []);
 
-    return { settings };
+    async function updateDate(date: string) {
+        const { data, error } = await supabase.from("settings").update({ relationship_start_date: date }).eq("id", 1);
+
+        if (error) {
+            console.error(error);
+        } else if (data) {
+            setSettings(data as Setting);
+        }
+    }
+
+    return { settings, updateDate };
 }

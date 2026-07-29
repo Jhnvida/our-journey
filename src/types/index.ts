@@ -17,7 +17,6 @@ export type Recipe = {
 export type Setting = {
     id: number;
     relationship_start_date: string;
-    hero_image_url: string | null;
     updated_at: string;
 };
 

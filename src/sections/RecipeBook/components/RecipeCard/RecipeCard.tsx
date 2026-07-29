@@ -10,10 +10,10 @@ type RecipeCardProps = {
 
 export default function RecipeCard({ title, description, ingredients, imageUrl }: RecipeCardProps) {
     return (
-        <div className={`${styles.recipe_card} `}>
+        <div className={styles.recipe_card}>
             {imageUrl && (
-                <div className={`${styles.image_container}`}>
-                    <img src={imageUrl} alt={title} className={`${styles.image}`} />
+                <div className={styles.image_container}>
+                    <img src={imageUrl} alt={title} className={styles.image} />
                 </div>
             )}
 

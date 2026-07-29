@@ -9,11 +9,11 @@ export default function Timeline() {
     const sortedEvents = [...events].sort((a, b) => compareAsc(parseISO(a.date), parseISO(b.date)));
 
     return (
-        <section className={styles.timeline_section}>
-            <div className={styles.timeline_container}>
+        <section className={styles.section}>
+            <div className={styles.container}>
                 <SectionHeader title="A Linha do Tempo" subtitle="Os marcos que definem a nossa história." />
 
-                <div className={styles.timeline_grid}>
+                <div className={styles.grid}>
                     {sortedEvents.map((event, index) => {
                         const isFeatured = index % 5 === 0;
 

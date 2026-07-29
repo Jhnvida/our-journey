@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    max-width: 400px;
+}
+
+.label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--brand-dark);
+}
+
+.input {
+    padding: var(--space-3);
+    border: 1px solid var(--brand-border);
+    border-radius: 0;
+
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--brand-dark);
+
+    background-color: transparent;
+
+    transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.input:focus {
+    border-color: var(--brand-dark);
+    outline: none;
+}
+
+.button {
+    cursor: pointer;
+
+    align-self: flex-start;
+
+    padding: var(--space-3) var(--space-6);
+    border: none;
+    border-radius: 0;
+
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--brand-surface);
+
+    background-color: var(--brand-dark);
+
+    transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.button:hover {
+    opacity: 0.9;
+}

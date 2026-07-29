@@ -7,14 +7,14 @@ export default function RecipeBook() {
     const { recipes } = useRecipes();
 
     return (
-        <section className={styles.recipe_section}>
-            <div className={styles.recipes_container}>
+        <section className={styles.section}>
+            <div className={styles.container}>
                 <SectionHeader
                     title="A Nossa Cozinha"
                     subtitle="Porque algumas das nossas melhores memórias foram construídas em volta da mesa, entre um tempero e outro."
                 />
 
-                <div className={styles.recipes_grid}>
+                <div className={styles.grid}>
                     {recipes?.map((recipe) => (
                         <RecipeCard
                             key={recipe.id}

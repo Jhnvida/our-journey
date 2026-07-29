@@ -9,9 +9,15 @@ export default function Hero() {
     const [time, setTime] = useState({ years: 0, months: 0, days: 0 });
 
     useEffect(() => {
-        if (!settings?.relationship_start_date) return;
+        const startDate = settings?.relationship_start_date;
+        if (!startDate) return;
 
-        const updateTime = () => setTime(calculateTimeDifference(settings.relationship_start_date));
+        function updateTime() {
+            if (startDate) {
+                setTime(calculateTimeDifference(startDate));
+            }
+        }
+
         updateTime();
         const interval = setInterval(updateTime, 1000 * 60 * 60);
 
@@ -19,11 +25,11 @@ export default function Hero() {
     }, [settings]);
 
     return (
-        <section className={`${styles.hero_section} `}>
-            <div className={styles.hero_content}>
-                <p className={styles.hero_subtitle}>A Nossa Jornada</p>
+        <section className={styles.section}>
+            <div className={styles.content}>
+                <p className={styles.subtitle}>A Nossa Jornada</p>
                 <HeroCounter time={time} />
-                <p className={styles.hero_quote}>Cada segundo da nossa história, medido em momentos.</p>
+                <p className={styles.quote}>Cada segundo da nossa história, medido em momentos.</p>
             </div>
         </section>
     );

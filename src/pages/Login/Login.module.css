@@ -1,4 +1,4 @@
-.login_section {
+.container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,7 +8,7 @@
     padding: var(--space-20) var(--container-padding-mobile) var(--space-10);
 }
 
-.login_content {
+.content {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
@@ -40,14 +40,13 @@
     text-decoration: none;
 
     background-color: var(--brand-bg);
-
 }
 
 .back_button:hover {
     background-color: var(--brand-border);
 }
 
-.login_subtitle {
+.subtitle {
     margin-bottom: var(--space-10);
 
     font-size: var(--text-xs);
@@ -57,14 +56,14 @@
     letter-spacing: 0.2em;
 }
 
-.login_title {
+.title {
     margin-bottom: var(--space-8);
     font-family: var(--font-serif);
     font-size: var(--text-2xl);
     color: var(--brand-dark);
 }
 
-.login_form {
+.form {
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
@@ -93,7 +92,6 @@
     color: var(--brand-dark);
 
     background-color: transparent;
-
 }
 
 .form_input:focus {
@@ -105,7 +103,7 @@
     color: var(--brand-muted);
 }
 
-.login_button {
+.button {
     cursor: pointer;
 
     display: flex;
@@ -122,10 +120,9 @@
     color: var(--brand-bg);
 
     background-color: var(--brand-dark);
-
 }
 
-.login_button:hover {
+.button:hover {
     opacity: 0.8;
 }
 
@@ -141,17 +138,17 @@
     background-color: transparent;
 }
 
-.login_icon {
+.icon {
     margin-left: 8px;
 }
 
 @media (width >= 768px) {
-    .login_section {
+    .container {
         padding-top: var(--space-24);
         padding-bottom: var(--space-16);
     }
 
-    .login_subtitle {
+    .subtitle {
         margin-bottom: var(--space-16);
     }
 }

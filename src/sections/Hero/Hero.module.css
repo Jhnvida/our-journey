@@ -1,4 +1,4 @@
-.hero_section {
+.section {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,14 +8,14 @@
     padding: var(--space-20) var(--container-padding-mobile) var(--space-10);
 }
 
-.hero_content {
+.content {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
 }
 
-.hero_subtitle {
+.subtitle {
     margin-bottom: var(--space-10);
 
     font-size: var(--text-xs);
@@ -25,7 +25,7 @@
     letter-spacing: 0.2em;
 }
 
-.hero_quote {
+.quote {
     margin-top: var(--space-12);
 
     font-family: var(--font-serif);
@@ -35,16 +35,16 @@
 }
 
 @media (width >= 768px) {
-    .hero_section {
+    .section {
         padding-top: var(--space-24);
         padding-bottom: var(--space-16);
     }
 
-    .hero_subtitle {
+    .subtitle {
         margin-bottom: var(--space-16);
     }
 
-    .hero_quote {
+    .quote {
         margin-top: var(--space-16);
         font-size: var(--text-xl);
     }

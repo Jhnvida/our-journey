@@ -7,8 +7,8 @@ export default function Chapters() {
     const { chapters } = useChapters();
 
     return (
-        <section className={styles.chapters_section}>
-            <div className={styles.chapters_container}>
+        <section className={styles.section}>
+            <div className={styles.container}>
                 <SectionHeader title="Próximos Capítulos" subtitle="Acompanhe a nossa jornada passo a passo." />
 
                 <div className={styles.roadmap_list}>

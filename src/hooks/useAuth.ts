@@ -22,9 +22,9 @@ export function useAuth() {
         return () => subscription.unsubscribe();
     }, []);
 
-    const signOut = async () => {
+    async function signOut() {
         await supabase.auth.signOut();
-    };
+    }
 
     return { user, loading, signOut };
 }

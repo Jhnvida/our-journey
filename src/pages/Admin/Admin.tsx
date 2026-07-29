@@ -1,33 +1,27 @@
-import { LogOut } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
-import { useAuth } from "../../hooks/useAuth";
 import styles from "./Admin.module.css";
+import Chapters from "./components/Chapters/Chapters";
+import Recipes from "./components/Recipes/Recipes";
+import Settings from "./components/Settings/Settings";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Timeline from "./components/Timeline/Timeline";
 
 export default function AdminDashboard() {
-    const { user, signOut } = useAuth();
-    const navigate = useNavigate();
-
-    const handleSignOut = async () => {
-        await signOut();
-        navigate("/login");
-    };
+    const [currentTab, setCurrentTab] = useState<string>("timeline");
 
     return (
         <ProtectedRoute>
-            <section className={`${styles.admin_section} `}>
-                <div className={styles.admin_content}>
-                    <p className={styles.admin_subtitle}>A Nossa Jornada</p>
-                    <p className={styles.admin_title}>Logado com: {user?.email}</p>
+            <main className={styles.container}>
+                <Sidebar currentTab={currentTab} setCurrentTab={setCurrentTab} />
 
-                    <div className={styles.sign_out_container}>
-                        <button onClick={handleSignOut} className={styles.sign_out_button}>
-                            <LogOut size={16} />
-                            Sair
-                        </button>
-                    </div>
+                <div className={styles.content}>
+                    {currentTab === "timeline" && <Timeline />}
+                    {currentTab === "chapters" && <Chapters />}
+                    {currentTab === "recipes" && <Recipes />}
+                    {currentTab === "settings" && <Settings />}
                 </div>
-            </section>
+            </main>
         </ProtectedRoute>
     );
 }

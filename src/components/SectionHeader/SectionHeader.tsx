@@ -3,12 +3,11 @@ import styles from "./SectionHeader.module.css";
 type SectionHeaderProps = {
     title: string;
     subtitle: string;
-    align?: "left" | "center";
 };
 
-export default function SectionHeader({ title, subtitle, align = "left" }: SectionHeaderProps) {
+export default function SectionHeader({ title, subtitle }: SectionHeaderProps) {
     return (
-        <div className={`${styles.header} ${align === "center" ? styles.align_center : ""}`}>
+        <div className={styles.header}>
             <div>
                 <h2 className={styles.title}>{title}</h2>
                 <p className={styles.subtitle}>{subtitle}</p>

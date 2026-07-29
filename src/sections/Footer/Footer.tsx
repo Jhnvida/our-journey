@@ -4,18 +4,18 @@ import styles from "./Footer.module.css";
 export default function Footer() {
     return (
         <footer className={styles.footer}>
-            <p className={styles.footer_title}>A Nossa Jornada</p>
+            <p className={styles.title}>A Nossa Jornada</p>
 
-            <div className={styles.footer_links}>
+            <div className={styles.links}>
                 <a
                     href="https://github.com/Jhnvida/our-journey"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={styles.footer_link}
+                    className={styles.link}
                 >
                     Código no GitHub
                 </a>
-                <Link to="/login" className={styles.footer_link}>
+                <Link to="/login" className={styles.link}>
                     Painel Administrativo
                 </Link>
             </div>

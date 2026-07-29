@@ -37,14 +37,14 @@ export default function LoginPage() {
     };
 
     return (
-        <section className={`${styles.login_section} `}>
-            <div className={styles.login_content}>
-                <p className={styles.login_subtitle}>Acesso Restrito</p>
-                <h1 className={styles.login_title}>Gerenciar Jornada</h1>
+        <main className={styles.container}>
+            <div className={styles.content}>
+                <p className={styles.subtitle}>Acesso Restrito</p>
+                <h1 className={styles.title}>Gerenciar Jornada</h1>
 
-                {error && <div className={`${styles.error_message} `}>{error}</div>}
+                {error && <div className={styles.error_message}>{error}</div>}
 
-                <form className={styles.login_form} onSubmit={handleLogin}>
+                <form className={styles.form} onSubmit={handleLogin}>
                     <div className={styles.form_group}>
                         <label htmlFor="email" className={styles.form_label}>
                             E-mail
@@ -76,7 +76,7 @@ export default function LoginPage() {
                     </div>
 
                     <div className={styles.button_group}>
-                        <button type="submit" className={styles.login_button}>
+                        <button type="submit" className={styles.button}>
                             Entrar
                         </button>
                         <Link to="/" className={styles.back_button}>
@@ -85,6 +85,6 @@ export default function LoginPage() {
                     </div>
                 </form>
             </div>
-        </section>
+        </main>
     );
 }
