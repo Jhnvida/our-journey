@@ -1,7 +1,7 @@
-import SectionHeader from "../../components/SectionHeader/SectionHeader";
+import SectionHeader from "../../components/SectionHeader";
 import { useChapters } from "../../hooks/useChapters";
-import styles from "./Chapters.module.css";
-import ChapterCard from "./components/ChapterCard/ChapterCard";
+import styles from "./styles.module.css";
+import ChapterCard from "./components/ChapterCard";
 
 export default function Chapters() {
     const { chapters } = useChapters();

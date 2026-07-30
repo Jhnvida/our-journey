@@ -1,7 +1,7 @@
 import { ChefHat, History, LogOut, Sparkles, TableConfig } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../hooks/useAuth";
-import styles from "./Sidebar.module.css";
+import styles from "./styles.module.css";
 
 type SidebarProps = {
     currentTab: string;

@@ -1,5 +1,5 @@
 import { ChefHat } from "lucide-react";
-import styles from "./RecipeCard.module.css";
+import styles from "./styles.module.css";
 
 type RecipeCardProps = {
     title: string;

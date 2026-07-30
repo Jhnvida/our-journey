@@ -1,8 +1,8 @@
 import { compareAsc, parseISO } from "date-fns";
-import SectionHeader from "../../components/SectionHeader/SectionHeader";
+import SectionHeader from "../../components/SectionHeader";
 import { useTimelineEvents } from "../../hooks/useTimelineEvents";
-import TimelineEvent from "./components/TimelineEvent/TimelineEvent";
-import styles from "./Timeline.module.css";
+import TimelineEvent from "./components/TimelineEvent";
+import styles from "./styles.module.css";
 
 export default function Timeline() {
     const { events } = useTimelineEvents();

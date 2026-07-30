@@ -1,7 +1,7 @@
 import { useState } from "react";
-import SectionHeader from "../../../../components/SectionHeader/SectionHeader";
+import SectionHeader from "../../../../components/SectionHeader";
 import { useSettings } from "../../../../hooks/useSettings";
-import styles from "./Settings.module.css";
+import styles from "./styles.module.css";
 
 export default function Settings() {
     const { settings, updateDate } = useSettings();

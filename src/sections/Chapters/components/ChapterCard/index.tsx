@@ -1,5 +1,5 @@
 import { CheckCircle2, CircleDashed } from "lucide-react";
-import styles from "./ChapterCard.module.css";
+import styles from "./styles.module.css";
 
 type ChapterCardProps = {
     index: number;

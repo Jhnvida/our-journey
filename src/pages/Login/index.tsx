@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { supabase } from "../../lib/supabase";
-import styles from "./Login.module.css";
+import styles from "./styles.module.css";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("");

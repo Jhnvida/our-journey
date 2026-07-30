@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import styles from "./Badge.module.css";
+import styles from "./styles.module.css";
 
 type BadgeProps = {
     variant: "done" | "pending";

@@ -1,6 +1,6 @@
 import { Calendar } from "lucide-react";
 import { formatDate } from "../../../../lib/formatDate";
-import styles from "./TimelineEvent.module.css";
+import styles from "./styles.module.css";
 
 type TimelineEventProps = {
     index: number;

@@ -1,5 +1,5 @@
-import SectionHeader from "../../../../components/SectionHeader/SectionHeader";
-import styles from "./Timeline.module.css";
+import SectionHeader from "../../../../components/SectionHeader";
+import styles from "./styles.module.css";
 
 export default function Timeline() {
     return (
