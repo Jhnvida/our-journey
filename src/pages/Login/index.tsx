@@ -79,6 +79,7 @@ export default function LoginPage() {
                         <button type="submit" className={styles.button}>
                             Entrar
                         </button>
+
                         <Link to="/" className={styles.back_button}>
                             Voltar
                         </Link>

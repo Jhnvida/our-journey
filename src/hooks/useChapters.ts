@@ -7,7 +7,7 @@ export function useChapters() {
 
     useEffect(() => {
         async function fetchChapters() {
-            const { data, error } = await supabase.from("chapters").select("*").order("id", { ascending: true });
+            const { data, error } = await supabase.from("chapters").select("*").order("status", { ascending: true });
 
             if (error) {
                 console.error(error);
@@ -19,5 +19,25 @@ export function useChapters() {
         fetchChapters();
     }, []);
 
-    return { chapters };
+    async function addChapter(title: string, status: string) {
+        const { data, error } = await supabase.from("chapters").insert({ title, status }).select();
+
+        if (error) {
+            console.error(error);
+        } else if (data) {
+            setChapters((prev) => [...prev, data[0]]);
+        }
+    }
+
+    async function deleteChapter(id: string) {
+        const { data, error } = await supabase.from("chapters").delete().eq("id", id).select();
+
+        if (error) {
+            console.error(error);
+        } else if (data) {
+            setChapters(chapters.filter((chapter) => chapter.id !== id));
+        }
+    }
+
+    return { chapters, addChapter, deleteChapter };
 }

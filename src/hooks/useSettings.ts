@@ -20,12 +20,15 @@ export function useSettings() {
     }, []);
 
     async function updateDate(date: string) {
-        const { data, error } = await supabase.from("settings").update({ relationship_start_date: date }).eq("id", 1);
+        if (!settings) return;
+
+        const { error } = await supabase
+            .from("settings")
+            .update({ relationship_start_date: date })
+            .eq("id", settings.id);
 
         if (error) {
             console.error(error);
-        } else if (data) {
-            setSettings(data as Setting);
         }
     }
 

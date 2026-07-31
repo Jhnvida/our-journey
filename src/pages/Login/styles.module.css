@@ -15,37 +15,6 @@
     text-align: center;
 }
 
-.button_group {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    align-items: center;
-
-    margin-top: var(--space-4);
-}
-
-.back_button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-    padding: var(--space-3) var(--space-4);
-    border: 1px solid var(--brand-border);
-
-    font-family: var(--font-sans);
-    font-size: var(--text-base);
-    font-weight: 500;
-    color: var(--brand-dark);
-    text-decoration: none;
-
-    background-color: var(--brand-bg);
-}
-
-.back_button:hover {
-    background-color: var(--brand-border);
-}
-
 .subtitle {
     margin-bottom: var(--space-10);
 
@@ -63,17 +32,26 @@
     color: var(--brand-dark);
 }
 
-.form {
+.form,
+.form_group,
+.button_group {
     display: flex;
     flex-direction: column;
+}
+
+.form {
     gap: var(--space-4);
     text-align: left;
 }
 
 .form_group {
-    display: flex;
-    flex-direction: column;
     gap: var(--space-2);
+}
+
+.button_group {
+    gap: var(--space-4);
+    align-items: center;
+    margin-top: var(--space-4);
 }
 
 .form_label {
@@ -82,15 +60,18 @@
     color: var(--brand-dark);
 }
 
-.form_input {
+.form_input,
+.button,
+.back_button {
     width: 100%;
     padding: var(--space-3) var(--space-4);
-    border: 1px solid var(--brand-border);
-
     font-family: var(--font-sans);
     font-size: var(--text-base);
-    color: var(--brand-dark);
+}
 
+.form_input {
+    border: 1px solid var(--brand-border);
+    color: var(--brand-dark);
     background-color: transparent;
 }
 
@@ -103,27 +84,31 @@
     color: var(--brand-muted);
 }
 
-.button {
+.button,
+.back_button {
     cursor: pointer;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 100%;
-    padding: var(--space-3) var(--space-4);
-    border: none;
-
-    font-family: var(--font-sans);
-    font-size: var(--text-base);
     font-weight: 500;
-    color: var(--brand-bg);
+}
 
+.button {
+    border: none;
+    color: var(--brand-bg);
     background-color: var(--brand-dark);
 }
 
 .button:hover {
     opacity: 0.8;
+}
+
+.back_button {
+    border: 1px solid var(--brand-dark);
+    color: var(--brand-dark);
+    background-color: transparent;
 }
 
 .error_message {

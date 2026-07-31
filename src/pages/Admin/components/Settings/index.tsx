@@ -11,7 +11,7 @@ export default function Settings() {
         <div className={styles.container}>
             <SectionHeader title="Configurações" subtitle="Gerencie as configurações gerais" />
 
-            <div className={styles.formGroup}>
+            <div className={styles.form_group}>
                 <label className={styles.label} htmlFor="date">
                     Data de início do relacionamento
                 </label>

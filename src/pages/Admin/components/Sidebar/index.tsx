@@ -35,7 +35,7 @@ export default function Sidebar({ currentTab, setCurrentTab }: SidebarProps) {
                 {navigations.map((nav) => (
                     <button
                         key={nav.label}
-                        className={`${styles.navItem} ${currentTab === nav.value ? styles.active : ""}`}
+                        className={`${styles.nav_item} ${currentTab === nav.value ? styles.active : ""}`}
                         onClick={() => setCurrentTab(nav.value)}
                     >
                         {nav.icon}

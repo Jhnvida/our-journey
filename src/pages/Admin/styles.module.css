@@ -1,7 +1,11 @@
 .container {
+    overflow: hidden;
     display: flex;
+    flex-direction: column;
+
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+
     background-color: var(--brand-bg);
 }
 
@@ -11,7 +15,17 @@
     flex: 1;
     flex-direction: column;
 
-    padding: var(--space-8);
+    padding: var(--space-4);
 
     background-color: var(--brand-bg);
+}
+
+@media (width >= 768px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .content {
+        padding: var(--space-8);
+    }
 }

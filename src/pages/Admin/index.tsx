@@ -1,11 +1,11 @@
 import { useState } from "react";
 import ProtectedRoute from "../../components/ProtectedRoute";
-import styles from "./styles.module.css";
 import Chapters from "./components/Chapters";
 import Recipes from "./components/Recipes";
 import Settings from "./components/Settings";
 import Sidebar from "./components/Sidebar";
 import Timeline from "./components/Timeline";
+import styles from "./styles.module.css";
 
 export default function AdminDashboard() {
     const [currentTab, setCurrentTab] = useState<string>("timeline");
