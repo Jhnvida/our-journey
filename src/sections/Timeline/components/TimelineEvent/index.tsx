@@ -22,7 +22,7 @@ export default function TimelineEvent({ title, description, date, imageUrl, isFe
 
             <div className={styles.content}>
                 <div className={styles.badge_container}>
-                    <div className={`${styles.date_badge} glass_panel`}>
+                    <div className={`${styles.date_badge} ${styles.glass_panel}`}>
                         <Calendar size={14} className={styles.badge_icon} />
                         <span>{formatDate(date)}</span>
                     </div>

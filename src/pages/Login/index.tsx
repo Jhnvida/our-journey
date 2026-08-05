@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type SubmitEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { supabase } from "../../lib/supabase";
@@ -18,7 +18,7 @@ export default function LoginPage() {
         }
     }, [user, navigate]);
 
-    const handleLogin = async (e: React.SubmitEvent) => {
+    const handleLogin = async (e: SubmitEvent) => {
         e.preventDefault();
         setError(null);
 

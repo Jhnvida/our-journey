@@ -1,3 +1,14 @@
 .container {
     flex: 1;
 }
+
+.img_zoom_container {
+    overflow: hidden;
+}
+
+.img_zoom {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
