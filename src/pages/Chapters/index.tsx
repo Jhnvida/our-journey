@@ -1,7 +1,7 @@
 import { useState } from "react";
-import SectionHeader from "../../../../components/SectionHeader";
-import { useChapters } from "../../../../hooks/useChapters";
-import ChapterCard from "../../../../sections/Chapters/components/ChapterCard";
+import SectionHeader from "../../components/SectionHeader";
+import { useChapters } from "../../hooks/useChapters";
+import ChapterCard from "../../sections/Chapters/components/ChapterCard";
 import styles from "./styles.module.css";
 
 export default function Chapters() {

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SectionHeader from "../../../../components/SectionHeader";
-import { useSettings } from "../../../../hooks/useSettings";
+import SectionHeader from "../../components/SectionHeader";
+import { useSettings } from "../../hooks/useSettings";
 import styles from "./styles.module.css";
 
 export default function Settings() {

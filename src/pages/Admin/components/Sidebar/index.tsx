@@ -1,12 +1,7 @@
 import { ChefHat, History, LogOut, Sparkles, TableConfig } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../hooks/useAuth";
 import styles from "./styles.module.css";
-
-type SidebarProps = {
-    currentTab: string;
-    setCurrentTab: (tab: string) => void;
-};
 
 const navigations = [
     { value: "timeline", label: "A Linha do Tempo", icon: <History /> },
@@ -15,7 +10,7 @@ const navigations = [
     { value: "settings", label: "Configurações", icon: <TableConfig /> },
 ];
 
-export default function Sidebar({ currentTab, setCurrentTab }: SidebarProps) {
+export default function Sidebar() {
     const { signOut } = useAuth();
     const navigate = useNavigate();
 
@@ -33,14 +28,14 @@ export default function Sidebar({ currentTab, setCurrentTab }: SidebarProps) {
 
             <div className={styles.nav}>
                 {navigations.map((nav) => (
-                    <button
+                    <NavLink
                         key={nav.label}
-                        className={`${styles.nav_item} ${currentTab === nav.value ? styles.active : ""}`}
-                        onClick={() => setCurrentTab(nav.value)}
+                        to={`/admin/${nav.value}`}
+                        className={({ isActive }) => `${styles.nav_item} ${isActive ? styles.active : ""}`}
                     >
                         {nav.icon}
                         <span>{nav.label}</span>
-                    </button>
+                    </NavLink>
                 ))}
             </div>
 
