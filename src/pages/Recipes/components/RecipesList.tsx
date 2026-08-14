@@ -1,12 +1,13 @@
 import type { Recipe } from "../../../types";
 import styles from "../styles.module.css";
 
-type RecipesListProps = {
+interface RecipesListProps {
     recipes: Recipe[];
     onEdit: (recipe: Recipe) => void;
-};
+    onDelete: (id: string) => void;
+}
 
-export default function RecipesList({ recipes, onEdit }: RecipesListProps) {
+export function RecipesList({ recipes, onEdit, onDelete }: RecipesListProps) {
     if (recipes.length === 0) {
         return <p>Nenhuma receita cadastrada.</p>;
     }
@@ -31,7 +32,9 @@ export default function RecipesList({ recipes, onEdit }: RecipesListProps) {
                                 <button className={styles.button_small} onClick={() => onEdit(recipe)}>
                                     Editar
                                 </button>
-                                <button className={styles.button_small}>Excluir</button>
+                                <button className={styles.button_small} onClick={() => onDelete(recipe.id)}>
+                                    Excluir
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -1,13 +1,13 @@
 import { useState } from "react";
-import SectionHeader from "../../components/SectionHeader";
+import { SectionHeader } from "../../components/SectionHeader";
 import { useTimelineEvents } from "../../hooks/useTimelineEvents";
 import type { TimelineEvent } from "../../types";
-import TimelineForm from "./components/TimelineForm";
-import TimelineList from "./components/TimelineList";
+import { TimelineForm } from "./components/TimelineForm";
+import { TimelineList } from "./components/TimelineList";
 import styles from "./styles.module.css";
 
-export default function Timeline() {
-    const { events } = useTimelineEvents();
+export function Timeline() {
+    const { events, addEvent, updateEvent, removeEvent, loading, error } = useTimelineEvents();
 
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState<TimelineEvent | null>(null);
@@ -27,6 +27,21 @@ export default function Timeline() {
         setSelectedEvent(null);
     }
 
+    async function handleSave(data: Omit<TimelineEvent, "id" | "created_at">) {
+        if (selectedEvent) {
+            await updateEvent(selectedEvent.id, data);
+        } else {
+            await addEvent(data);
+        }
+        handleCloseForm();
+    }
+
+    async function handleDelete(id: string) {
+        if (window.confirm("Tem certeza que deseja excluir este evento?")) {
+            await removeEvent(id);
+        }
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -38,10 +53,12 @@ export default function Timeline() {
                 )}
             </div>
 
+            {error && <div style={{ color: "red", marginBottom: "1rem" }}>{error}</div>}
+
             {isFormOpen ? (
-                <TimelineForm data={selectedEvent} onCancel={handleCloseForm} />
+                <TimelineForm data={selectedEvent} onSave={handleSave} onCancel={handleCloseForm} loading={loading} />
             ) : (
-                <TimelineList events={events} onEdit={handleEdit} />
+                <TimelineList events={events} onEdit={handleEdit} onDelete={handleDelete} />
             )}
         </div>
     );

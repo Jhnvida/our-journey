@@ -1,25 +1,26 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { Chapter } from "../../../types";
 import styles from "../styles.module.css";
 
-type ChaptersFormProps = {
+interface ChaptersFormProps {
     data?: Chapter | null;
+    onSave: (chapter: Omit<Chapter, "id" | "created_at">) => void;
     onCancel: () => void;
-};
+    loading?: boolean;
+}
 
-export default function ChaptersForm({ data, onCancel }: ChaptersFormProps) {
-    const [title, setTitle] = useState("");
-    const [status, setStatus] = useState("pendente");
+export function ChaptersForm({ data, onSave, onCancel, loading }: ChaptersFormProps) {
+    const [title, setTitle] = useState(data?.title || "");
+    const [status, setStatus] = useState(data?.status || "pendente");
 
-    useEffect(() => {
-        if (data) {
-            setTitle(data.title);
-            setStatus(data.status);
-        } else {
-            setTitle("");
-            setStatus("pendente");
+    function handleSave() {
+        if (!title) {
+            alert("Título é obrigatório!");
+            return;
         }
-    }, [data]);
+
+        onSave({ title, status });
+    }
 
     return (
         <div className={styles.form_container}>
@@ -37,6 +38,7 @@ export default function ChaptersForm({ data, onCancel }: ChaptersFormProps) {
                         placeholder="Ex: Viagem para Paris"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
+                        disabled={loading}
                     />
                 </div>
 
@@ -49,6 +51,7 @@ export default function ChaptersForm({ data, onCancel }: ChaptersFormProps) {
                         id="status"
                         value={status}
                         onChange={(e) => setStatus(e.target.value)}
+                        disabled={loading}
                     >
                         <option value="pendente">Pendente</option>
                         <option value="concluido">Concluído</option>
@@ -57,10 +60,10 @@ export default function ChaptersForm({ data, onCancel }: ChaptersFormProps) {
             </div>
 
             <div className={styles.form_actions}>
-                <button className={styles.button} onClick={onCancel}>
-                    Salvar
+                <button className={styles.button} onClick={handleSave} disabled={loading}>
+                    {loading ? "Salvando..." : "Salvar"}
                 </button>
-                <button className={styles.button_secondary} onClick={onCancel}>
+                <button className={styles.button_secondary} onClick={onCancel} disabled={loading}>
                     Cancelar
                 </button>
             </div>

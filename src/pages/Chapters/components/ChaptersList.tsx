@@ -1,12 +1,13 @@
 import type { Chapter } from "../../../types";
 import styles from "../styles.module.css";
 
-type ChaptersListProps = {
+interface ChaptersListProps {
     chapters: Chapter[];
     onEdit: (chapter: Chapter) => void;
-};
+    onDelete: (id: string) => void;
+}
 
-export default function ChaptersList({ chapters, onEdit }: ChaptersListProps) {
+export function ChaptersList({ chapters, onEdit, onDelete }: ChaptersListProps) {
     if (chapters.length === 0) {
         return <p>Nenhum capítulo cadastrado.</p>;
     }
@@ -28,7 +29,9 @@ export default function ChaptersList({ chapters, onEdit }: ChaptersListProps) {
                                 <button className={styles.button_small} onClick={() => onEdit(chapter)}>
                                     Editar
                                 </button>
-                                <button className={styles.button_small}>Excluir</button>
+                                <button className={styles.button_small} onClick={() => onDelete(chapter.id)}>
+                                    Excluir
+                                </button>
                             </div>
                         </div>
                     </div>

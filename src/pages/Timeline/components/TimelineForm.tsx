@@ -1,31 +1,34 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { ImageSelector } from "../../../components/ImageSelector";
 import type { TimelineEvent } from "../../../types";
 import styles from "../styles.module.css";
 
-type TimelineFormProps = {
+interface TimelineFormProps {
     data?: TimelineEvent | null;
+    onSave: (event: Omit<TimelineEvent, "id" | "created_at">) => void;
     onCancel: () => void;
-};
+    loading?: boolean;
+}
 
-export default function TimelineForm({ data, onCancel }: TimelineFormProps) {
-    const [title, setTitle] = useState("");
-    const [date, setDate] = useState("");
-    const [description, setDescription] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
+export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormProps) {
+    const [title, setTitle] = useState(data?.title || "");
+    const [date, setDate] = useState(data?.date || "");
+    const [description, setDescription] = useState(data?.description || "");
+    const [imageUrl, setImageUrl] = useState(data?.image_url || "");
 
-    useEffect(() => {
-        if (data) {
-            setTitle(data.title);
-            setDate(data.date);
-            setDescription(data.description || "");
-            setImageUrl(data.image_url || "");
-        } else {
-            setTitle("");
-            setDate("");
-            setDescription("");
-            setImageUrl("");
+    function handleSave() {
+        if (!title || !date) {
+            alert("Título e Data são obrigatórios!");
+            return;
         }
-    }, [data]);
+
+        onSave({
+            title,
+            date,
+            description: description || null,
+            image_url: imageUrl || null,
+        });
+    }
 
     return (
         <div className={styles.form_container}>
@@ -43,6 +46,7 @@ export default function TimelineForm({ data, onCancel }: TimelineFormProps) {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Ex: O primeiro encontro"
+                        disabled={loading}
                     />
                 </div>
 
@@ -56,22 +60,14 @@ export default function TimelineForm({ data, onCancel }: TimelineFormProps) {
                         type="date"
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
+                        disabled={loading}
                     />
                 </div>
             </div>
 
             <div className={styles.form_group_full}>
-                <label className={styles.label} htmlFor="imageUrl">
-                    URL da Imagem (opcional)
-                </label>
-                <input
-                    className={styles.input}
-                    id="imageUrl"
-                    type="text"
-                    value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
-                    placeholder="https://exemplo.com/imagem.jpg"
-                />
+                <label className={styles.label}>Imagem (opcional)</label>
+                <ImageSelector value={imageUrl} onChange={setImageUrl} />
             </div>
 
             <div className={styles.form_group_full}>
@@ -84,14 +80,15 @@ export default function TimelineForm({ data, onCancel }: TimelineFormProps) {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Conte um pouco sobre esse momento..."
+                    disabled={loading}
                 />
             </div>
 
             <div className={styles.form_actions}>
-                <button className={styles.button} onClick={onCancel}>
-                    Salvar
+                <button className={styles.button} onClick={handleSave} disabled={loading}>
+                    {loading ? "Salvando..." : "Salvar"}
                 </button>
-                <button className={styles.button_secondary} onClick={onCancel}>
+                <button className={styles.button_secondary} onClick={onCancel} disabled={loading}>
                     Cancelar
                 </button>
             </div>

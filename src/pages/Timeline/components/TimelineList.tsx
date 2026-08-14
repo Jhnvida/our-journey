@@ -2,12 +2,13 @@ import { formatDate } from "../../../lib/formatDate";
 import type { TimelineEvent } from "../../../types";
 import styles from "../styles.module.css";
 
-type TimelineListProps = {
+interface TimelineListProps {
     events: TimelineEvent[];
     onEdit: (event: TimelineEvent) => void;
-};
+    onDelete: (id: string) => void;
+}
 
-export default function TimelineList({ events, onEdit }: TimelineListProps) {
+export function TimelineList({ events, onEdit, onDelete }: TimelineListProps) {
     if (events.length === 0) {
         return <p>Nenhum evento cadastrado na linha do tempo.</p>;
     }
@@ -34,7 +35,9 @@ export default function TimelineList({ events, onEdit }: TimelineListProps) {
                                 <button className={styles.button_small} onClick={() => onEdit(event)}>
                                     Editar
                                 </button>
-                                <button className={styles.button_small}>Excluir</button>
+                                <button className={styles.button_small} onClick={() => onDelete(event.id)}>
+                                    Excluir
+                                </button>
                             </div>
                         </div>
                     </div>

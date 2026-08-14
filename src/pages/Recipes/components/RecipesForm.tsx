@@ -1,31 +1,34 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { ImageSelector } from "../../../components/ImageSelector";
 import type { Recipe } from "../../../types";
 import styles from "../styles.module.css";
 
-type RecipesFormProps = {
+interface RecipesFormProps {
     data?: Recipe | null;
+    onSave: (recipe: Omit<Recipe, "id" | "created_at">) => void;
     onCancel: () => void;
-};
+    loading?: boolean;
+}
 
-export default function RecipesForm({ data, onCancel }: RecipesFormProps) {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [ingredients, setIngredients] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
+export function RecipesForm({ data, onSave, onCancel, loading }: RecipesFormProps) {
+    const [title, setTitle] = useState(data?.title || "");
+    const [description, setDescription] = useState(data?.description || "");
+    const [ingredients, setIngredients] = useState(data?.ingredients ? data.ingredients.join("\n") : "");
+    const [imageUrl, setImageUrl] = useState(data?.image_url || "");
 
-    useEffect(() => {
-        if (data) {
-            setTitle(data.title);
-            setDescription(data.description || "");
-            setIngredients(data.ingredients.join("\n"));
-            setImageUrl(data.image_url || "");
-        } else {
-            setTitle("");
-            setDescription("");
-            setIngredients("");
-            setImageUrl("");
+    function handleSave() {
+        if (!title || !ingredients) {
+            alert("Título e ingredientes são obrigatórios!");
+            return;
         }
-    }, [data]);
+
+        onSave({
+            title,
+            description: description || null,
+            ingredients: ingredients.split("\n").filter((i) => i.trim() !== ""),
+            image_url: imageUrl || null,
+        });
+    }
 
     return (
         <div className={styles.form_container}>
@@ -43,21 +46,13 @@ export default function RecipesForm({ data, onCancel }: RecipesFormProps) {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Ex: Bolo de Cenoura"
+                        disabled={loading}
                     />
                 </div>
 
                 <div className={styles.form_group}>
-                    <label className={styles.label} htmlFor="imageUrl">
-                        URL da Imagem (opcional)
-                    </label>
-                    <input
-                        className={styles.input}
-                        id="imageUrl"
-                        type="text"
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)}
-                        placeholder="https://exemplo.com/imagem.jpg"
-                    />
+                    <label className={styles.label}>Imagem (opcional)</label>
+                    <ImageSelector value={imageUrl} onChange={setImageUrl} />
                 </div>
             </div>
 
@@ -71,6 +66,7 @@ export default function RecipesForm({ data, onCancel }: RecipesFormProps) {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Conte um pouco sobre essa receita..."
+                    disabled={loading}
                 />
             </div>
 
@@ -84,14 +80,15 @@ export default function RecipesForm({ data, onCancel }: RecipesFormProps) {
                     value={ingredients}
                     onChange={(e) => setIngredients(e.target.value)}
                     placeholder="1 xícara de açúcar&#10;2 cenouras..."
+                    disabled={loading}
                 />
             </div>
 
             <div className={styles.form_actions}>
-                <button className={styles.button} onClick={onCancel}>
-                    Salvar
+                <button className={styles.button} onClick={handleSave} disabled={loading}>
+                    {loading ? "Salvando..." : "Salvar"}
                 </button>
-                <button className={styles.button_secondary} onClick={onCancel}>
+                <button className={styles.button_secondary} onClick={onCancel} disabled={loading}>
                     Cancelar
                 </button>
             </div>

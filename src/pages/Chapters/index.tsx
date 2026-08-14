@@ -1,13 +1,13 @@
 import { useState } from "react";
-import SectionHeader from "../../components/SectionHeader";
+import { SectionHeader } from "../../components/SectionHeader";
 import { useChapters } from "../../hooks/useChapters";
 import type { Chapter } from "../../types";
-import ChaptersForm from "./components/ChaptersForm";
-import ChaptersList from "./components/ChaptersList";
+import { ChaptersForm } from "./components/ChaptersForm";
+import { ChaptersList } from "./components/ChaptersList";
 import styles from "./styles.module.css";
 
-export default function Chapters() {
-    const { chapters } = useChapters();
+export function Chapters() {
+    const { chapters, addChapter, updateChapter, removeChapter, loading, error } = useChapters();
 
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
@@ -27,6 +27,21 @@ export default function Chapters() {
         setSelectedChapter(null);
     }
 
+    async function handleSave(data: Omit<Chapter, "id" | "created_at">) {
+        if (selectedChapter) {
+            await updateChapter(selectedChapter.id, data);
+        } else {
+            await addChapter(data);
+        }
+        handleCloseForm();
+    }
+
+    async function handleDelete(id: string) {
+        if (window.confirm("Tem certeza que deseja excluir este capítulo?")) {
+            await removeChapter(id);
+        }
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -39,10 +54,12 @@ export default function Chapters() {
                 )}
             </div>
 
+            {error && <div style={{ color: "red", marginBottom: "1rem" }}>{error}</div>}
+
             {isFormOpen ? (
-                <ChaptersForm data={selectedChapter} onCancel={handleCloseForm} />
+                <ChaptersForm data={selectedChapter} onSave={handleSave} onCancel={handleCloseForm} loading={loading} />
             ) : (
-                <ChaptersList chapters={chapters} onEdit={handleEdit} />
+                <ChaptersList chapters={chapters} onEdit={handleEdit} onDelete={handleDelete} />
             )}
         </div>
     );
