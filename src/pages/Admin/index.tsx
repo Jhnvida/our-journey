@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
-import ProtectedRoute from "../../components/ProtectedRoute";
-import Sidebar from "./components/Sidebar";
+import { ProtectedRoute } from "../../components/ProtectedRoute";
+import { Sidebar } from "./components/Sidebar";
 import styles from "./styles.module.css";
 
-export default function AdminDashboard() {
+export function AdminDashboard() {
     return (
         <ProtectedRoute>
             <main className={styles.container}>

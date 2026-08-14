@@ -1,14 +1,14 @@
 import type { ReactNode } from "react";
 import styles from "./styles.module.css";
 
-type ChapterCardProps = {
+interface ChapterCardProps {
     index?: number;
     title: string;
     status: string;
     children?: ReactNode;
-};
+}
 
-export default function ChapterCard({ title, status, children }: ChapterCardProps) {
+export function ChapterCard({ title, status, children }: ChapterCardProps) {
     const isDone = status === "concluido";
 
     return (

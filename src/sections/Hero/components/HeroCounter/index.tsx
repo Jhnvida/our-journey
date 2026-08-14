@@ -1,10 +1,10 @@
 import styles from "./styles.module.css";
 
-type HeroCounterProps = {
+interface HeroCounterProps {
     time: { years: number; months: number; days: number };
-};
+}
 
-export default function HeroCounter({ time }: HeroCounterProps) {
+export function HeroCounter({ time }: HeroCounterProps) {
     return (
         <div className={styles.hero_counters}>
             <div className={styles.hero_counter_item}>

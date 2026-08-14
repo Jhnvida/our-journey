@@ -2,16 +2,16 @@ import { Calendar } from "lucide-react";
 import { formatDate } from "../../../../lib/formatDate";
 import styles from "./styles.module.css";
 
-type TimelineEventProps = {
+interface TimelineEventProps {
     index: number;
     title: string;
     description: string | null;
     date: string;
     imageUrl?: string | null;
     isFeatured: boolean;
-};
+}
 
-export default function TimelineEvent({ title, description, date, imageUrl, isFeatured }: TimelineEventProps) {
+export function TimelineEvent({ title, description, date, imageUrl, isFeatured }: TimelineEventProps) {
     return (
         <div className={`${styles.timeline_card} ${isFeatured ? styles.featured : ""}`}>
             {imageUrl && (

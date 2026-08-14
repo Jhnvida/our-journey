@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSettings } from "../../hooks/useSettings";
 import { calculateTimeDifference } from "../../lib/calculateTimeDifference";
-import HeroCounter from "./components/HeroCounter";
+import { HeroCounter } from "./components/HeroCounter";
 import styles from "./styles.module.css";
 
-export default function Hero() {
+export function Hero() {
     const { settings } = useSettings();
     const [time, setTime] = useState({ years: 0, months: 0, days: 0 });
 

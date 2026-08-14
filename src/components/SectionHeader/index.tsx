@@ -1,11 +1,11 @@
 import styles from "./styles.module.css";
 
-type SectionHeaderProps = {
+interface SectionHeaderProps {
     title: string;
     subtitle: string;
-};
+}
 
-export default function SectionHeader({ title, subtitle }: SectionHeaderProps) {
+export function SectionHeader({ title, subtitle }: SectionHeaderProps) {
     return (
         <div className={styles.header}>
             <div>

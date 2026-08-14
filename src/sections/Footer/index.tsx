@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
-export default function Footer() {
+export function Footer() {
     return (
         <footer className={styles.footer}>
             <p className={styles.title}>A Nossa Jornada</p>

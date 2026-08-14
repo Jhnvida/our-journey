@@ -1,14 +1,14 @@
 import { ChefHat } from "lucide-react";
 import styles from "./styles.module.css";
 
-type RecipeCardProps = {
+interface RecipeCardProps {
     title: string;
     description: string | null;
     ingredients: string[];
     imageUrl?: string | null;
-};
+}
 
-export default function RecipeCard({ title, description, ingredients, imageUrl }: RecipeCardProps) {
+export function RecipeCard({ title, description, ingredients, imageUrl }: RecipeCardProps) {
     return (
         <div className={styles.recipe_card}>
             {imageUrl && (
