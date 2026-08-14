@@ -9,6 +9,14 @@
     --brand-muted: #a1a1aa;
     --brand-subtle: #f4f4f5;
     --brand-accent: #09090b;
+    --color-danger-bg: #fee2e2;
+    --color-danger-border: #fca5a5;
+    --color-danger-text: #dc2626;
+    --color-danger-hover: #fca5a5;
+    --color-success-bg: #ecfdf5;
+    --color-success-border: #10b981;
+    --color-success-text: #059669;
+    --color-overlay: rgb(0 0 0 / 50%);
     --glass-bg: rgb(255 255 255 / 80%);
     --glass-border: rgb(228 228 231 / 50%);
     --font-sans: "Plus Jakarta Sans", sans-serif;
