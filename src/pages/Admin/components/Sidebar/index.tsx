@@ -1,16 +1,17 @@
-import { ChefHat, History, LogOut, Sparkles, TableConfig } from "lucide-react";
+import { ChefHat, History, Image, LogOut, Sparkles, TableConfig } from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../hooks/useAuth";
 import styles from "./styles.module.css";
 
 const navigations = [
     { value: "timeline", label: "A Linha do Tempo", icon: <History /> },
+    { value: "gallery", label: "Galeria", icon: <Image /> },
     { value: "chapters", label: "Próximos Capítulos", icon: <Sparkles /> },
     { value: "recipes", label: "A Nossa Cozinha", icon: <ChefHat /> },
     { value: "settings", label: "Configurações", icon: <TableConfig /> },
 ];
 
-export default function Sidebar() {
+export function Sidebar() {
     const { signOut } = useAuth();
     const navigate = useNavigate();
 
