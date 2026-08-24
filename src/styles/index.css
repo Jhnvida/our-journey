@@ -1,122 +1,59 @@
 :root {
-    --brand-bg: #fafafa;
-    --brand-bg-alt: #f4f4f5;
-    --brand-dark: #09090b;
-    --brand-gray: #71717a;
-    --brand-surface: #fff;
-    --brand-border: #e4e4e7;
-    --brand-border-hover: #d4d4d8;
-    --brand-muted: #a1a1aa;
-    --brand-subtle: #f4f4f5;
-    --brand-accent: #09090b;
-    --color-danger-bg: #fee2e2;
-    --color-danger-border: #fca5a5;
-    --color-danger-text: #dc2626;
-    --color-danger-hover: #fca5a5;
-    --color-success-bg: #ecfdf5;
-    --color-success-border: #10b981;
-    --color-success-text: #059669;
-    --color-overlay: rgb(0 0 0 / 50%);
-    --glass-bg: rgb(255 255 255 / 80%);
-    --glass-border: rgb(228 228 231 / 50%);
-    --font-sans: "Plus Jakarta Sans", sans-serif;
-    --font-serif: "Playfair Display", serif;
-    --font-mono: "SF Mono", "Fira Code", monospace;
-    --text-xs: 0.6875rem;
-    --text-sm: 0.75rem;
-    --text-base: 0.875rem;
-    --text-md: 1rem;
-    --text-lg: 1.125rem;
-    --text-xl: 1.25rem;
-    --text-2xl: 1.5rem;
-    --text-3xl: 2rem;
-    --text-4xl: 3rem;
-    --text-5xl: 4.5rem;
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-5: 1.25rem;
-    --space-6: 1.5rem;
-    --space-8: 2rem;
-    --space-10: 2.5rem;
-    --space-12: 3rem;
-    --space-16: 4rem;
-    --space-20: 5rem;
-    --space-24: 6rem;
-    --space-32: 8rem;
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 5%);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 5%), 0 2px 4px -2px rgb(0 0 0 / 5%);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 5%), 0 4px 6px -4px rgb(0 0 0 / 5%);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 5%), 0 8px 10px -6px rgb(0 0 0 / 5%);
-    --container-max: 1200px;
-    --container-padding-mobile: 1.5rem;
-    --container-padding-desktop: 3rem;
-    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
-    --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    --duration-fast: 0.2s;
-    --duration-normal: 0.3s;
-    --duration-slow: 0.7s;
-    --tracking-tight: -0.04em;
-    --tracking-snug: -0.025em;
-    --tracking-normal: 0;
-    --tracking-wide: 0.1em;
-    --tracking-wider: 0.2em;
-    --tracking-widest: 0.3em;
+    /* Design System Tokens */
+    --lp-surface: #faf9f4;
+    --lp-surface-dim: #dbdad5;
+    --lp-surface-bright: #faf9f4;
+    --lp-surface-container-lowest: #fff;
+    --lp-surface-container-low: #f5f4ef;
+    --lp-surface-container: #efeee9;
+    --lp-surface-container-high: #e9e8e3;
+    --lp-surface-container-highest: #e3e3de;
+    --lp-on-surface: #1b1c19;
+    --lp-on-surface-variant: #444748;
+    --lp-outline: #747878;
+    --lp-outline-variant: #c4c7c7;
+    --lp-primary: #000;
+    --lp-on-primary: #fff;
+    --lp-primary-container: #1c1b1b;
+    --lp-on-primary-container: #858383;
+    --lp-secondary: #615e57;
+    --lp-on-secondary: #fff;
+    --lp-secondary-container: #e8e2d9;
+    --lp-on-secondary-container: #67645d;
+    --lp-font-hero: "Libre Caslon Text", serif;
+    --lp-font-body: "Hanken Grotesk", sans-serif;
 }
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: var(--font-sans);
+    font-family: var(--lp-font-body);
     line-height: 1.5;
-    color: var(--brand-dark);
+    color: var(--lp-on-surface);
 
-    background-color: var(--brand-bg);
+    background-color: var(--lp-surface-container-low);
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-    color: var(--brand-surface);
-    background-color: var(--brand-dark);
-}
-
-html {
-    scroll-behavior: smooth;
+    color: var(--lp-on-primary);
+    background-color: var(--lp-primary);
 }
 
 a,
 button {
     text-decoration: none;
-    transition:
-        color var(--duration-fast) var(--ease-out),
-        background-color var(--duration-fast) var(--ease-out),
-        border-color var(--duration-fast) var(--ease-out);
 }
 
 :focus-visible {
-    outline: 2px solid var(--brand-dark);
+    outline: 2px solid var(--lp-primary);
     outline-offset: 2px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-    }
 }
