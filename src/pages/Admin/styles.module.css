@@ -6,7 +6,7 @@
     width: 100%;
     height: 100vh;
 
-    background-color: var(--brand-bg);
+    background-color: var(--lp-surface-container-low);
 }
 
 .content {
@@ -15,9 +15,9 @@
     flex: 1;
     flex-direction: column;
 
-    padding: var(--space-4);
+    padding: 24px;
 
-    background-color: var(--brand-bg);
+    background-color: var(--lp-surface-container-low);
 }
 
 @media (width >= 768px) {
@@ -26,6 +26,6 @@
     }
 
     .content {
-        padding: var(--space-8);
+        padding: 48px;
     }
 }

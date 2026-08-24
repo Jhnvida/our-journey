@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    gap: var(--space-8);
+    gap: 32px;
 }
 
 .header {
@@ -13,100 +13,86 @@
 .form_container {
     display: flex;
     flex-direction: column;
-    gap: var(--space-6);
-
-    padding: var(--space-6);
-    border: 1px solid var(--brand-border);
-
-    background-color: var(--brand-surface);
+    gap: 24px;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid var(--lp-outline-variant);
+    background-color: var(--lp-surface);
 }
 
 .form_row {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-4);
+    gap: 16px;
 }
 
 .form_group {
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: var(--space-2);
-
+    gap: 8px;
     min-width: 250px;
 }
 
 .form_group_full {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: 8px;
     width: 100%;
 }
 
 .label {
-    font-size: var(--text-sm);
+    font-size: 14px;
     font-weight: 600;
-    color: var(--brand-dark);
+    color: var(--lp-on-surface);
 }
 
 .input {
-    padding: var(--space-3);
-    border: 1px solid var(--brand-border);
-    border-radius: 0;
-
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    color: var(--brand-dark);
-
+    padding: 12px;
+    border: 1px solid var(--lp-outline-variant);
+    border-radius: 8px;
+    font-family: var(--lp-font-body);
+    font-size: 14px;
+    color: var(--lp-on-surface);
     background-color: transparent;
-
-    transition: border-color var(--duration-fast) var(--ease-out);
+    transition: border-color 0.3s;
 }
 
 .input:focus {
-    border-color: var(--brand-dark);
+    border-color: var(--lp-primary);
     outline: none;
 }
 
 .textarea {
     resize: vertical;
-
     min-height: 120px;
-    padding: var(--space-3);
-    border: 1px solid var(--brand-border);
-    border-radius: 0;
-
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    color: var(--brand-dark);
-
+    padding: 12px;
+    border: 1px solid var(--lp-outline-variant);
+    border-radius: 8px;
+    font-family: var(--lp-font-body);
+    font-size: 14px;
+    color: var(--lp-on-surface);
     background-color: transparent;
-
-    transition: border-color var(--duration-fast) var(--ease-out);
+    transition: border-color 0.3s;
 }
 
 .textarea:focus {
-    border-color: var(--brand-dark);
+    border-color: var(--lp-primary);
     outline: none;
 }
 
 .button {
     cursor: pointer;
-
     align-self: flex-start;
-
-    padding: var(--space-3) var(--space-6);
+    padding: 12px 24px;
     border: none;
-    border-radius: 0;
-
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
+    border-radius: 8px;
+    font-family: var(--lp-font-body);
+    font-size: 14px;
     font-weight: 600;
-    color: var(--brand-surface);
-
-    background-color: var(--brand-dark);
-
-    transition: opacity var(--duration-fast) var(--ease-out);
+    color: var(--lp-on-primary);
+    background-color: var(--lp-primary);
+    transition: opacity 0.3s;
 }
 
 .button:hover {
@@ -115,65 +101,61 @@
 
 .button_secondary {
     cursor: pointer;
-
     align-self: flex-start;
-
-    padding: var(--space-3) var(--space-6);
-    border: 1px solid var(--brand-dark);
-    border-radius: 0;
-
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
+    padding: 12px 24px;
+    border: 1px solid var(--lp-primary);
+    border-radius: 8px;
+    font-family: var(--lp-font-body);
+    font-size: 14px;
     font-weight: 600;
-    color: var(--brand-dark);
-
+    color: var(--lp-primary);
     background-color: transparent;
-
-    transition: all var(--duration-fast) var(--ease-out);
+    transition: background-color 0.3s;
 }
 
 .button_secondary:hover {
-    background-color: var(--brand-subtle);
+    background-color: var(--lp-surface-container);
 }
 
 .form_actions {
     display: flex;
-    gap: var(--space-4);
+    gap: 16px;
 }
 
 .list_section {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: 16px;
 }
 
 .list_title {
     margin: 0;
-    font-size: var(--text-lg);
+    font-family: var(--lp-font-hero);
+    font-size: 24px;
     font-weight: 600;
-    color: var(--brand-dark);
+    color: var(--lp-primary);
 }
 
 .event_list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--space-4);
+    gap: 24px;
 }
 
 .event_card {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-
-    border: 1px solid var(--brand-border);
-
-    background-color: var(--brand-surface);
+    border-radius: 16px;
+    border: 1px solid var(--lp-outline-variant);
+    background-color: var(--lp-surface);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .event_image {
     width: 100%;
     height: 200px;
-    border-bottom: 1px solid var(--brand-border);
+    border-bottom: 1px solid var(--lp-outline-variant);
     object-fit: cover;
 }
 
@@ -181,61 +163,56 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: var(--space-4);
-
-    padding: var(--space-6);
+    gap: 16px;
+    padding: 24px;
 }
 
 .event_content {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: 8px;
 }
 
 .event_title {
     margin: 0;
-    font-size: var(--text-lg);
+    font-family: var(--lp-font-hero);
+    font-size: 20px;
     font-weight: 700;
-    color: var(--brand-dark);
+    color: var(--lp-primary);
 }
 
 .event_date {
-    font-size: var(--text-sm);
-    color: var(--brand-dark);
-    opacity: 0.7;
+    font-size: 14px;
+    color: var(--lp-secondary);
 }
 
 .event_description {
     margin: 0;
-    font-size: var(--text-sm);
+    font-size: 14px;
     line-height: 1.6;
-    color: var(--brand-dark);
+    color: var(--lp-on-surface-variant);
 }
 
 .event_actions {
     display: flex;
-    gap: var(--space-2);
+    gap: 8px;
     margin-top: auto;
 }
 
 .button_small {
     cursor: pointer;
-
-    padding: var(--space-2) var(--space-4);
-    border: 1px solid var(--brand-border);
-    border-radius: 0;
-
-    font-family: var(--font-sans);
-    font-size: var(--text-xs);
+    padding: 8px 16px;
+    border: 1px solid var(--lp-outline-variant);
+    border-radius: 8px;
+    font-family: var(--lp-font-body);
+    font-size: 12px;
     font-weight: 600;
-    color: var(--brand-dark);
-
+    color: var(--lp-on-surface);
     background-color: transparent;
-
-    transition: all var(--duration-fast) var(--ease-out);
+    transition: all 0.3s;
 }
 
 .button_small:hover {
-    border-color: var(--brand-dark);
-    background-color: var(--brand-subtle);
+    border-color: var(--lp-primary);
+    background-color: var(--lp-surface-container);
 }
