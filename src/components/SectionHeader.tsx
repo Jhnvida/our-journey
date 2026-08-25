@@ -1,6 +1,4 @@
-import { motion } from "framer-motion";
-import { slideRight } from "../../lib/animations";
-import styles from "./styles.module.css";
+import styles from "./SectionHeader.module.css";
 
 interface SectionHeaderProps {
     title: string;
@@ -10,10 +8,10 @@ interface SectionHeaderProps {
 export function SectionHeader({ title, subtitle }: SectionHeaderProps) {
     return (
         <div className={styles.header}>
-            <motion.div variants={slideRight} initial="hidden" animate="visible">
+            <div>
                 <h2 className={styles.title}>{title}</h2>
                 <p className={styles.subtitle}>{subtitle}</p>
-            </motion.div>
+            </div>
         </div>
     );
 }

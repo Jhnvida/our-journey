@@ -1,9 +1,7 @@
-import { motion } from "framer-motion";
 import { ChefHat, History, Image, LogOut, Sparkles, TableConfig } from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../../../../hooks/useAuth";
-import { slideRight, staggerContainer } from "../../../../lib/animations";
-import styles from "./styles.module.css";
+import { useAuth } from "../../../hooks/useAuth";
+import styles from "./Sidebar.module.css";
 
 const navigations = [
     { value: "timeline", label: "A Linha do Tempo", icon: <History /> },
@@ -12,8 +10,6 @@ const navigations = [
     { value: "settings", label: "Configurações", icon: <TableConfig /> },
     { value: "gallery", label: "Galeria", icon: <Image /> },
 ];
-
-const MotionNavLink = motion(NavLink);
 
 export function Sidebar() {
     const { signOut } = useAuth();
@@ -31,19 +27,20 @@ export function Sidebar() {
                 <p>Painel de Controle</p>
             </div>
 
-            <motion.div className={styles.nav} variants={staggerContainer} initial="hidden" animate="visible">
+            <div className={styles.nav}>
                 {navigations.map((nav) => (
-                    <MotionNavLink
+                    <NavLink
                         key={nav.label}
                         to={`/dashboard/${nav.value}`}
-                        variants={slideRight}
-                        className={({ isActive }) => `${styles.nav_item} ${isActive ? styles.active : ""}`}
+                        className={({ isActive }: { isActive: boolean }) =>
+                            `${styles.nav_item} ${isActive ? styles.active : ""}`
+                        }
                     >
                         {nav.icon}
                         <span>{nav.label}</span>
-                    </MotionNavLink>
+                    </NavLink>
                 ))}
-            </motion.div>
+            </div>
 
             <div className={styles.footer}>
                 <button onClick={handleSignOut} className={styles.button}>

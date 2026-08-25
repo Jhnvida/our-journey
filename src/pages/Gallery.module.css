@@ -24,8 +24,6 @@
     color: var(--lp-on-primary);
 
     background-color: var(--lp-primary);
-
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:hover {
@@ -51,8 +49,6 @@
     color: var(--lp-on-surface);
 
     background-color: transparent;
-
-    transition: all 0.3s;
 }
 
 .button_small:hover {

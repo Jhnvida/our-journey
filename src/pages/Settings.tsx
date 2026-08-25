@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { SectionHeader } from "../../components/SectionHeader";
-import { useSettings } from "../../hooks/useSettings";
-import styles from "./styles.module.css";
+import { SectionHeader } from "../components/SectionHeader";
+import { useSettings } from "../hooks/useSettings";
+import styles from "./Settings.module.css";
 
 export function Settings() {
     const { settings, loading, error, updateDate } = useSettings();
@@ -22,8 +22,8 @@ export function Settings() {
         try {
             await updateDate(date);
             alert("Configurações salvas com sucesso!");
-        } catch (e) {
-            console.error(e);
+        } catch (err) {
+            console.error(err);
         }
     }
 

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import type { Setting } from "../types";
 
@@ -7,55 +7,42 @@ export function useSettings() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const fetchSettings = useCallback(async () => {
+    async function fetchSettings() {
         setLoading(true);
-        setError(null);
         const { data, error: err } = await supabase.from("settings").select("*").limit(1).single();
 
         if (err) {
-            console.error(err);
-            if (err.code !== "PGRST116") {
-                setError("Erro ao carregar configurações.");
-            }
-        } else if (data) {
-            setSettings(data as Setting);
+            if (err.code !== "PGRST116") setError("Erro ao carregar configurações.");
+        } else {
+            setSettings(data);
         }
+
         setLoading(false);
-    }, []);
+    }
 
     useEffect(() => {
         fetchSettings();
-    }, [fetchSettings]);
+    }, []);
 
     async function updateDate(date: string) {
+        setLoading(true);
+
         if (!settings) {
-            setLoading(true);
-            setError(null);
             const { error: err } = await supabase.from("settings").insert({ relationship_start_date: date });
-            if (err) {
-                console.error(err);
-                setError("Erro ao salvar configurações.");
-                setLoading(false);
-                throw err;
-            }
-            await fetchSettings();
+
+            if (err) setError("Erro ao salvar configurações.");
+            else await fetchSettings();
+
             return;
         }
 
-        setLoading(true);
-        setError(null);
         const { error: err } = await supabase
             .from("settings")
             .update({ relationship_start_date: date })
             .eq("id", settings.id);
 
-        if (err) {
-            console.error(err);
-            setError("Erro ao atualizar configurações.");
-            setLoading(false);
-            throw err;
-        }
-        await fetchSettings();
+        if (err) setError("Erro ao atualizar configurações.");
+        else await fetchSettings();
     }
 
     return { settings, loading, error, updateDate, fetchSettings };

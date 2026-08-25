@@ -83,8 +83,6 @@
     color: var(--lp-secondary);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-
-    transition: color 0.3s ease;
 }
 
 .nav_link:hover {
@@ -103,8 +101,6 @@
     color: var(--lp-primary);
 
     background: none;
-
-    transition: opacity 0.3s ease;
 }
 
 .menu_button:hover {
@@ -212,51 +208,46 @@
     text-align: center;
 }
 
-.timeline_carousel {
-    overflow: hidden;
+.timeline_masonry {
+    column-count: 1;
+    column-gap: 24px;
+
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.timeline_masonry_item {
     display: flex;
-    width: 100%;
-    height: 55vh;
-}
+    flex-direction: column;
+    break-inside: avoid;
 
-.timeline_carousel_inner {
-    display: flex;
-    width: fit-content;
-}
+    margin-bottom: 24px;
+    padding: 24px;
+    border: 1px solid rgb(0 0 0 / 5%);
 
-.timeline_item {
-    position: relative;
-
-    overflow: hidden;
-    flex-shrink: 0;
-
-    width: 85vw;
-    max-width: 800px;
-    height: 100%;
-    margin-right: 24px;
-
-    box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
-}
-
-.timeline_image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.timeline_overlay {
-    position: absolute;
-    bottom: 32px;
-    left: 32px;
-
-    max-width: 512px;
-    padding: 32px;
-
-    background-color: rgb(245 244 239 / 95%);
+    background-color: var(--lp-surface);
     box-shadow: 0 10px 40px rgb(0 0 0 / 8%);
 }
 
-.timeline_overlay_date {
+.timeline_masonry_item:hover {
+    box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 10%),
+        0 2px 4px -1px rgb(0 0 0 / 6%);
+}
+
+.timeline_masonry_image {
+    width: 100%;
+    margin-bottom: 24px;
+    object-fit: cover;
+}
+
+.timeline_masonry_content {
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline_masonry_date {
     margin-bottom: 12px;
 
     font-size: 10px;
@@ -266,20 +257,19 @@
     letter-spacing: 0.3em;
 }
 
-.timeline_overlay_title {
+.timeline_masonry_title {
     margin-bottom: 16px;
 
     font-family: var(--lp-font-hero);
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 400;
-    line-height: 1.2;
     color: var(--lp-primary);
 }
 
-.timeline_overlay_text {
-    font-size: 16px;
+.timeline_masonry_text {
+    font-size: 14px;
     line-height: 1.6;
-    color: var(--lp-on-surface-variant);
+    color: var(--lp-secondary);
 }
 
 .split_section {
@@ -406,8 +396,6 @@
     border: 1px solid rgb(0 0 0 / 5%);
 
     background-color: var(--lp-surface);
-
-    transition: box-shadow 0.3s ease;
 }
 
 .chapter_item:hover {
@@ -560,21 +548,13 @@
         text-align: left;
     }
 
-    .timeline_carousel {
-        height: 70vh;
+    .timeline_masonry {
+        column-count: 2;
+        padding: 0 64px;
     }
 
-    .timeline_item {
-        min-width: 60vw;
-    }
-
-    .timeline_overlay {
-        bottom: 48px;
-        left: 48px;
-    }
-
-    .timeline_overlay_title {
-        font-size: 36px;
+    .timeline_masonry_title {
+        font-size: 30px;
     }
 
     .split_section {
@@ -603,6 +583,10 @@
 @media (width >= 1024px) {
     .split_grid {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .timeline_masonry {
+        column-count: 3;
     }
 
     .kitchen_cards_container {

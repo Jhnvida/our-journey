@@ -1,6 +1,6 @@
-import { useState } from "react";
-import styles from "../../../styles/admin.module.css";
+﻿import { useState, type SubmitEvent } from "react";
 import type { Chapter } from "../../../types";
+import styles from "../../Dashboard/admin.module.css";
 
 interface ChaptersFormProps {
     data?: Chapter | null;
@@ -11,29 +11,23 @@ interface ChaptersFormProps {
 
 export function ChaptersForm({ data, onSave, onCancel, loading }: ChaptersFormProps) {
     const [title, setTitle] = useState(data?.title || "");
-    const [status, setStatus] = useState<"concluido" | "pendente">(data?.status || "pendente");
-    const [formError, setFormError] = useState<string | null>(null);
+    const [status, setStatus] = useState<"concluido" | "pendente">(
+        (data?.status as "concluido" | "pendente") || "pendente",
+    );
 
-    function handleSave() {
-        if (!title) {
-            setFormError("Título é obrigatório!");
-            return;
-        }
-        setFormError(null);
-
+    function handleSubmit(e: SubmitEvent) {
+        e.preventDefault();
         onSave({ title, status });
     }
 
     return (
-        <div className={styles.form_container}>
-            <h3 className={styles.list_title}>{data ? "Editar Capítulo" : "Novo Capítulo"}</h3>
-
-            {formError && <div className={styles.error_message}>{formError}</div>}
+        <form className={styles.form_container} onSubmit={handleSubmit}>
+            <h3 className={styles.list_title}>{data ? "Editar CapÃ­tulo" : "Novo CapÃ­tulo"}</h3>
 
             <div className={styles.form_row}>
                 <div className={styles.form_group}>
                     <label className={styles.label} htmlFor="title">
-                        Título do Capítulo
+                        TÃ­tulo do CapÃ­tulo
                     </label>
                     <input
                         className={styles.input}
@@ -43,6 +37,7 @@ export function ChaptersForm({ data, onSave, onCancel, loading }: ChaptersFormPr
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         disabled={loading}
+                        required
                     />
                 </div>
 
@@ -58,19 +53,19 @@ export function ChaptersForm({ data, onSave, onCancel, loading }: ChaptersFormPr
                         disabled={loading}
                     >
                         <option value="pendente">Pendente</option>
-                        <option value="concluido">Concluído</option>
+                        <option value="concluido">ConcluÃ­do</option>
                     </select>
                 </div>
             </div>
 
             <div className={styles.form_actions}>
-                <button className={styles.button} onClick={handleSave} disabled={loading}>
+                <button type="submit" className={styles.button} disabled={loading}>
                     {loading ? "Salvando..." : "Salvar"}
                 </button>
-                <button className={styles.button_secondary} onClick={onCancel} disabled={loading}>
+                <button type="button" className={styles.button_secondary} onClick={onCancel} disabled={loading}>
                     Cancelar
                 </button>
             </div>
-        </div>
+        </form>
     );
 }

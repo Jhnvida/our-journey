@@ -1,8 +1,6 @@
-import { motion } from "framer-motion";
-import { slideUp, staggerContainer } from "../../../lib/animations";
-import { formatDate } from "../../../lib/formatDate";
-import styles from "../../../styles/admin.module.css";
+﻿import { formatDate } from "../../../lib/formatDate";
 import type { TimelineEvent } from "../../../types";
+import styles from "../../Dashboard/admin.module.css";
 
 interface TimelineListProps {
     events: TimelineEvent[];
@@ -17,9 +15,9 @@ export function TimelineList({ events, onEdit, onDelete }: TimelineListProps) {
 
     return (
         <div className={styles.list_section}>
-            <motion.div className={styles.event_list} variants={staggerContainer} initial="hidden" animate="visible">
+            <div className={styles.event_list}>
                 {events.map((event) => (
-                    <motion.div key={event.id} className={styles.event_card} variants={slideUp}>
+                    <div key={event.id} className={styles.event_card}>
                         {event.image_url && (
                             <img src={event.image_url} alt={event.title} className={styles.event_image} />
                         )}
@@ -42,9 +40,9 @@ export function TimelineList({ events, onEdit, onDelete }: TimelineListProps) {
                                 </button>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
-            </motion.div>
+            </div>
         </div>
     );
 }

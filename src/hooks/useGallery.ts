@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 
 export interface GalleryImage {
@@ -14,9 +14,8 @@ export function useGallery() {
 
     const bucketName = "journey_images";
 
-    const fetchImages = useCallback(async () => {
+    async function fetchImages() {
         setLoading(true);
-        setError(null);
 
         const { data, error: err } = await supabase.storage.from(bucketName).list("", {
             limit: 100,
@@ -25,7 +24,6 @@ export function useGallery() {
         });
 
         if (err) {
-            console.error(err);
             setError("Erro ao carregar imagens da galeria.");
             setLoading(false);
             return;
@@ -42,48 +40,32 @@ export function useGallery() {
                     created_at: file.created_at,
                 };
             });
+
             setImages(imageObjects);
         }
         setLoading(false);
-    }, []);
+    }
 
     useEffect(() => {
         fetchImages();
-    }, [fetchImages]);
+    }, []);
 
     async function uploadImage(file: File) {
         setLoading(true);
-        setError(null);
-
         const fileExt = file.name.split(".").pop();
         const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`;
-
         const { error: err } = await supabase.storage.from(bucketName).upload(fileName, file);
 
-        if (err) {
-            console.error(err);
-            setError("Erro ao fazer upload da imagem.");
-            setLoading(false);
-            throw err;
-        }
-
-        await fetchImages();
+        if (err) setError("Erro ao fazer upload da imagem.");
+        else await fetchImages();
     }
 
     async function deleteImage(name: string) {
         setLoading(true);
-        setError(null);
-
         const { error: err } = await supabase.storage.from(bucketName).remove([name]);
 
-        if (err) {
-            console.error(err);
-            setError("Erro ao excluir a imagem.");
-            setLoading(false);
-            throw err;
-        }
-
-        await fetchImages();
+        if (err) setError("Erro ao excluir a imagem.");
+        else await fetchImages();
     }
 
     return { images, loading, error, uploadImage, deleteImage, fetchImages };

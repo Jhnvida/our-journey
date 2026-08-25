@@ -1,7 +1,7 @@
-import { useState } from "react";
+﻿import { useState, type SubmitEvent } from "react";
 import { ImageSelector } from "../../../components/ImageSelector";
-import styles from "../../../styles/admin.module.css";
 import type { TimelineEvent } from "../../../types";
+import styles from "../../Dashboard/admin.module.css";
 
 interface TimelineFormProps {
     data?: TimelineEvent | null;
@@ -15,15 +15,9 @@ export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormPr
     const [date, setDate] = useState(data?.date || "");
     const [description, setDescription] = useState(data?.description || "");
     const [imageUrl, setImageUrl] = useState(data?.image_url || "");
-    const [formError, setFormError] = useState<string | null>(null);
 
-    function handleSave() {
-        if (!title || !date) {
-            setFormError("Título e Data são obrigatórios!");
-            return;
-        }
-        setFormError(null);
-
+    function handleSubmit(e: SubmitEvent) {
+        e.preventDefault();
         onSave({
             title,
             date,
@@ -33,15 +27,13 @@ export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormPr
     }
 
     return (
-        <div className={styles.form_container}>
+        <form className={styles.form_container} onSubmit={handleSubmit}>
             <h3 className={styles.list_title}>{data ? "Editar Evento" : "Novo Evento"}</h3>
-
-            {formError && <div className={styles.error_message}>{formError}</div>}
 
             <div className={styles.form_row}>
                 <div className={styles.form_group}>
                     <label className={styles.label} htmlFor="title">
-                        Título
+                        TÃ­tulo
                     </label>
                     <input
                         className={styles.input}
@@ -51,6 +43,7 @@ export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormPr
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Ex: O primeiro encontro"
                         disabled={loading}
+                        required
                     />
                 </div>
 
@@ -65,6 +58,7 @@ export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormPr
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
                         disabled={loading}
+                        required
                     />
                 </div>
             </div>
@@ -76,7 +70,7 @@ export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormPr
 
             <div className={styles.form_group_full}>
                 <label className={styles.label} htmlFor="description">
-                    Descrição (opcional)
+                    DescriÃ§Ã£o (opcional)
                 </label>
                 <textarea
                     className={styles.textarea}
@@ -89,13 +83,13 @@ export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormPr
             </div>
 
             <div className={styles.form_actions}>
-                <button className={styles.button} onClick={handleSave} disabled={loading}>
+                <button type="submit" className={styles.button} disabled={loading}>
                     {loading ? "Salvando..." : "Salvar"}
                 </button>
-                <button className={styles.button_secondary} onClick={onCancel} disabled={loading}>
+                <button type="button" className={styles.button_secondary} onClick={onCancel} disabled={loading}>
                     Cancelar
                 </button>
             </div>
-        </div>
+        </form>
     );
 }

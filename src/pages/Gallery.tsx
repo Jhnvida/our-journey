@@ -1,16 +1,14 @@
-import { motion } from "framer-motion";
-import { Trash2 } from "lucide-react";
-import { useRef } from "react";
-import { SectionHeader } from "../../components/SectionHeader";
-import { useGallery } from "../../hooks/useGallery";
-import { slideUp, staggerContainer } from "../../lib/animations";
-import styles from "./styles.module.css";
+﻿import { Trash2 } from "lucide-react";
+import { useRef, type ChangeEvent } from "react";
+import { SectionHeader } from "../components/SectionHeader";
+import { useGallery } from "../hooks/useGallery";
+import styles from "./Gallery.module.css";
 
 export function Gallery() {
     const { images, loading, error, uploadImage, deleteImage } = useGallery();
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+    async function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
         const file = event.target.files?.[0];
         if (file) {
             try {
@@ -57,9 +55,9 @@ export function Gallery() {
                     <p>Nenhuma imagem encontrada na galeria.</p>
                 </div>
             ) : (
-                <motion.div className={styles.grid} variants={staggerContainer} initial="hidden" animate="visible">
+                <div className={styles.grid}>
                     {images.map((img) => (
-                        <motion.div key={img.name} className={styles.image_card} variants={slideUp}>
+                        <div key={img.name} className={styles.image_card}>
                             <div className={styles.image_wrapper}>
                                 <img src={img.url} alt={img.name} className={styles.image} />
                             </div>
@@ -73,9 +71,9 @@ export function Gallery() {
                                     <Trash2 size={14} />
                                 </button>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
             )}
         </div>
     );

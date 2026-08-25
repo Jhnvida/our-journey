@@ -71,8 +71,6 @@
     color: var(--lp-on-surface-variant);
 
     background: transparent;
-
-    transition: all 0.2s ease;
 }
 
 .nav_item:hover {
@@ -125,8 +123,6 @@
     color: var(--lp-on-surface);
 
     background-color: transparent;
-
-    transition: all 0.2s ease;
 }
 
 .button:hover {

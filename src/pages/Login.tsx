@@ -1,10 +1,8 @@
-import { motion } from "framer-motion";
 import { useEffect, useState, type SubmitEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
-import { slideUp } from "../../lib/animations";
-import { supabase } from "../../lib/supabase";
-import styles from "./styles.module.css";
+import { useAuth } from "../hooks/useAuth";
+import { supabase } from "../lib/supabase";
+import styles from "./Login.module.css";
 
 export function LoginPage() {
     const [email, setEmail] = useState("");
@@ -20,7 +18,7 @@ export function LoginPage() {
         }
     }, [user, navigate]);
 
-    const handleLogin = async (e: SubmitEvent) => {
+    async function handleLogin(e: SubmitEvent) {
         e.preventDefault();
         setError(null);
 
@@ -36,11 +34,11 @@ export function LoginPage() {
         } catch {
             setError("Email ou senha inválidos!");
         }
-    };
+    }
 
     return (
         <main className={styles.container}>
-            <motion.div className={styles.content} variants={slideUp} initial="hidden" animate="visible">
+            <div className={styles.content}>
                 <p className={styles.subtitle}>Acesso Restrito</p>
                 <h1 className={styles.title}>Gerenciar Jornada</h1>
 
@@ -72,7 +70,7 @@ export function LoginPage() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             className={styles.form_input}
-                            placeholder="••••••••"
+                            placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                             required
                         />
                     </div>
@@ -87,7 +85,7 @@ export function LoginPage() {
                         </Link>
                     </div>
                 </form>
-            </motion.div>
+            </div>
         </main>
     );
 }

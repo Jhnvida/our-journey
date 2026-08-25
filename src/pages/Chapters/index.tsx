@@ -1,8 +1,8 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { SectionHeader } from "../../components/SectionHeader";
 import { useChapters } from "../../hooks/useChapters";
-import styles from "../../styles/admin.module.css";
 import type { Chapter } from "../../types";
+import styles from "../Dashboard/admin.module.css";
 import { ChaptersForm } from "./components/ChaptersForm";
 import { ChaptersList } from "./components/ChaptersList";
 
@@ -37,7 +37,7 @@ export function Chapters() {
     }
 
     async function handleDelete(id: string) {
-        if (window.confirm("Tem certeza que deseja excluir este capítulo?")) {
+        if (window.confirm("Tem certeza que deseja excluir este capÃ­tulo?")) {
             await removeChapter(id);
         }
     }
@@ -45,11 +45,11 @@ export function Chapters() {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <SectionHeader title="Próximos Capítulos" subtitle="Gerencie os planos futuros" />
+                <SectionHeader title="PrÃ³ximos CapÃ­tulos" subtitle="Gerencie os planos futuros" />
 
                 {!isFormOpen && (
                     <button className={styles.button} onClick={handleOpenForm}>
-                        Novo Capítulo
+                        Novo CapÃ­tulo
                     </button>
                 )}
             </div>

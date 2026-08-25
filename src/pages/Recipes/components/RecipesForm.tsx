@@ -1,7 +1,7 @@
-import { useState } from "react";
+﻿import { useState, type SubmitEvent } from "react";
 import { ImageSelector } from "../../../components/ImageSelector";
-import styles from "../../../styles/admin.module.css";
 import type { Recipe } from "../../../types";
+import styles from "../../Dashboard/admin.module.css";
 
 interface RecipesFormProps {
     data?: Recipe | null;
@@ -15,15 +15,9 @@ export function RecipesForm({ data, onSave, onCancel, loading }: RecipesFormProp
     const [description, setDescription] = useState(data?.description || "");
     const [ingredients, setIngredients] = useState(data?.ingredients ? data.ingredients.join("\n") : "");
     const [imageUrl, setImageUrl] = useState(data?.image_url || "");
-    const [formError, setFormError] = useState<string | null>(null);
 
-    function handleSave() {
-        if (!title || !ingredients) {
-            setFormError("Título e ingredientes são obrigatórios!");
-            return;
-        }
-        setFormError(null);
-
+    function handleSubmit(e: SubmitEvent) {
+        e.preventDefault();
         onSave({
             title,
             description: description || null,
@@ -33,15 +27,13 @@ export function RecipesForm({ data, onSave, onCancel, loading }: RecipesFormProp
     }
 
     return (
-        <div className={styles.form_container}>
+        <form className={styles.form_container} onSubmit={handleSubmit}>
             <h3 className={styles.list_title}>{data ? "Editar Receita" : "Nova Receita"}</h3>
-
-            {formError && <div className={styles.error_message}>{formError}</div>}
 
             <div className={styles.form_row}>
                 <div className={styles.form_group}>
                     <label className={styles.label} htmlFor="title">
-                        Título
+                        TÃ­tulo
                     </label>
                     <input
                         className={styles.input}
@@ -51,6 +43,7 @@ export function RecipesForm({ data, onSave, onCancel, loading }: RecipesFormProp
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Ex: Bolo de Cenoura"
                         disabled={loading}
+                        required
                     />
                 </div>
 
@@ -62,7 +55,7 @@ export function RecipesForm({ data, onSave, onCancel, loading }: RecipesFormProp
 
             <div className={styles.form_group_full}>
                 <label className={styles.label} htmlFor="description">
-                    Descrição (opcional)
+                    DescriÃ§Ã£o (opcional)
                 </label>
                 <textarea
                     className={styles.textarea}
@@ -83,19 +76,20 @@ export function RecipesForm({ data, onSave, onCancel, loading }: RecipesFormProp
                     id="ingredients"
                     value={ingredients}
                     onChange={(e) => setIngredients(e.target.value)}
-                    placeholder="1 xícara de açúcar&#10;2 cenouras..."
+                    placeholder="1 xÃ­cara de aÃ§Ãºcar&#10;2 cenouras..."
                     disabled={loading}
+                    required
                 />
             </div>
 
             <div className={styles.form_actions}>
-                <button className={styles.button} onClick={handleSave} disabled={loading}>
+                <button type="submit" className={styles.button} disabled={loading}>
                     {loading ? "Salvando..." : "Salvar"}
                 </button>
-                <button className={styles.button_secondary} onClick={onCancel} disabled={loading}>
+                <button type="button" className={styles.button_secondary} onClick={onCancel} disabled={loading}>
                     Cancelar
                 </button>
             </div>
-        </div>
+        </form>
     );
 }
