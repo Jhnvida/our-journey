@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ImageSelector } from "../../../components/ImageSelector";
-import type { Recipe } from "../../../types";
 import styles from "../styles.module.css";
+import type { Recipe } from "../../../types";
 
 interface RecipesFormProps {
     data?: Recipe | null;

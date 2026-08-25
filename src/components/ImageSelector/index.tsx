@@ -1,6 +1,8 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { Image as ImageIcon, X } from "lucide-react";
 import { useState } from "react";
 import { useGallery } from "../../hooks/useGallery";
+import { fadeIn, scaleIn } from "../../lib/animations";
 import styles from "./styles.module.css";
 
 interface ImageSelectorProps {
@@ -28,7 +30,12 @@ export function ImageSelector({ value, onChange }: ImageSelectorProps) {
             {value ? (
                 <div className={styles.selected_preview}>
                     <img src={value} alt="Selecionada" />
-                    <button type="button" className={styles.remove_preview_btn} onClick={handleRemove} title="Remover Imagem">
+                    <button
+                        type="button"
+                        className={styles.remove_preview_btn}
+                        onClick={handleRemove}
+                        title="Remover Imagem"
+                    >
                         <X size={14} />
                     </button>
                 </div>
@@ -46,45 +53,65 @@ export function ImageSelector({ value, onChange }: ImageSelectorProps) {
                 </button>
             )}
 
-            {isModalOpen && (
-                <div className={styles.modal_overlay} onClick={() => setIsModalOpen(false)}>
-                    <div className={styles.modal_content} onClick={e => e.stopPropagation()}>
-                        <div className={styles.modal_header}>
-                            <span className={styles.modal_title}>Selecionar Imagem</span>
-                            <button className={styles.close_button} onClick={() => setIsModalOpen(false)}>
-                                <X size={20} />
-                            </button>
-                        </div>
-                        <div className={styles.modal_body}>
-                            {loading ? (
-                                <p>Carregando galeria...</p>
-                            ) : images.length === 0 ? (
-                                <div className={styles.empty_state}>
-                                    <p>Nenhuma imagem disponível. Faça upload na página da Galeria primeiro.</p>
-                                </div>
-                            ) : (
-                                <div className={styles.grid}>
-                                    {images.map(img => (
-                                        <div 
-                                            key={img.name} 
-                                            className={`${styles.image_item} ${tempSelected === img.url ? styles.image_item_selected : ''}`}
-                                            onClick={() => setTempSelected(img.url)}
-                                        >
-                                            <div className={styles.image_wrapper}>
-                                                <img src={img.url} alt={img.name} className={styles.image} />
+            <AnimatePresence>
+                {isModalOpen && (
+                    <motion.div
+                        className={styles.modal_overlay}
+                        onClick={() => setIsModalOpen(false)}
+                        variants={fadeIn}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                    >
+                        <motion.div
+                            className={styles.modal_content}
+                            onClick={(e) => e.stopPropagation()}
+                            variants={scaleIn}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                        >
+                            <div className={styles.modal_header}>
+                                <span className={styles.modal_title}>Selecionar Imagem</span>
+                                <button className={styles.close_button} onClick={() => setIsModalOpen(false)}>
+                                    <X size={20} />
+                                </button>
+                            </div>
+                            <div className={styles.modal_body}>
+                                {loading ? (
+                                    <p>Carregando galeria...</p>
+                                ) : images.length === 0 ? (
+                                    <div className={styles.empty_state}>
+                                        <p>Nenhuma imagem disponível. Faça upload na página da Galeria primeiro.</p>
+                                    </div>
+                                ) : (
+                                    <div className={styles.grid}>
+                                        {images.map((img) => (
+                                            <div
+                                                key={img.name}
+                                                className={`${styles.image_item} ${tempSelected === img.url ? styles.image_item_selected : ""}`}
+                                                onClick={() => setTempSelected(img.url)}
+                                            >
+                                                <div className={styles.image_wrapper}>
+                                                    <img src={img.url} alt={img.name} className={styles.image} />
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                        <div className={styles.modal_footer}>
-                            <button className={styles.button_secondary} onClick={() => setIsModalOpen(false)}>Cancelar</button>
-                            <button className={styles.button} onClick={handleConfirm} disabled={!tempSelected}>Confirmar</button>
-                        </div>
-                    </div>
-                </div>
-            )}
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                            <div className={styles.modal_footer}>
+                                <button className={styles.button_secondary} onClick={() => setIsModalOpen(false)}>
+                                    Cancelar
+                                </button>
+                                <button className={styles.button} onClick={handleConfirm} disabled={!tempSelected}>
+                                    Confirmar
+                                </button>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { SectionHeader } from "../../components/SectionHeader";
 import { useChapters } from "../../hooks/useChapters";
+import styles from "./styles.module.css";
 import type { Chapter } from "../../types";
 import { ChaptersForm } from "./components/ChaptersForm";
 import { ChaptersList } from "./components/ChaptersList";
-import styles from "./styles.module.css";
 
 export function Chapters() {
     const { chapters, addChapter, updateChapter, removeChapter, loading, error } = useChapters();
@@ -54,7 +54,7 @@ export function Chapters() {
                 )}
             </div>
 
-            {error && <div style={{ color: "red", marginBottom: "1rem" }}>{error}</div>}
+            {error && <div className={styles.error_message}>{error}</div>}
 
             {isFormOpen ? (
                 <ChaptersForm data={selectedChapter} onSave={handleSave} onCancel={handleCloseForm} loading={loading} />

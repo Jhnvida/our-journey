@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { SectionHeader } from "../../components/SectionHeader";
 import { useRecipes } from "../../hooks/useRecipes";
+import styles from "./styles.module.css";
 import type { Recipe } from "../../types";
 import { RecipesForm } from "./components/RecipesForm";
 import { RecipesList } from "./components/RecipesList";
-import styles from "./styles.module.css";
 
 export function Recipes() {
     const { recipes, addRecipe, updateRecipe, removeRecipe, loading, error } = useRecipes();
@@ -54,7 +54,7 @@ export function Recipes() {
                 )}
             </div>
 
-            {error && <div style={{ color: "red", marginBottom: "1rem" }}>{error}</div>}
+            {error && <div className={styles.error_message}>{error}</div>}
 
             {isFormOpen ? (
                 <RecipesForm data={selectedRecipe} onSave={handleSave} onCancel={handleCloseForm} loading={loading} />

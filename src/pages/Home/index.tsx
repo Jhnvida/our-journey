@@ -1,5 +1,5 @@
 import { intervalToDuration } from "date-fns";
-import { AnimatePresence, motion, type Variants } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Check, CircleDashed, Clock, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import { useChapters } from "../../hooks/useChapters";
 import { useRecipes } from "../../hooks/useRecipes";
 import { useSettings } from "../../hooks/useSettings";
 import { useTimelineEvents } from "../../hooks/useTimelineEvents";
+import { fadeIn, staggerContainer } from "../../lib/animations";
 
 import styles from "./styles.module.css";
 
@@ -45,31 +46,14 @@ export function HomePage() {
         };
 
         calculateTime();
-        const interval = setInterval(calculateTime, 1000 * 60 * 60); // update every hour
+        const interval = setInterval(calculateTime, 1000 * 60 * 60);
         return () => clearInterval(interval);
     }, [settings?.relationship_start_date]);
 
-    // Format numbers with leading zero
     const formatNumber = (num: number) => num.toString().padStart(2, "0");
-
-    const fadeIn: Variants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-    };
-
-    const staggerContainer: Variants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-            },
-        },
-    };
 
     return (
         <main className={styles.container}>
-            {/* HERO SECTION */}
             <section className={styles.hero_section}>
                 <div className={styles.hero_bg}></div>
 
@@ -92,7 +76,7 @@ export function HomePage() {
                                     >
                                         Código no GitHub
                                     </a>
-                                    <Link to="/admin" className={styles.nav_link}>
+                                    <Link to="/dashboard" className={styles.nav_link}>
                                         Painel Administrativo
                                     </Link>
                                 </motion.div>
@@ -140,7 +124,6 @@ export function HomePage() {
                 </div>
             </section>
 
-            {/* TIMELINE SECTION */}
             {events && events.length > 0 && (
                 <section className={styles.timeline_section}>
                     <div className={styles.section_header}>
@@ -192,10 +175,8 @@ export function HomePage() {
                 </section>
             )}
 
-            {/* KITCHEN & CHAPTERS SPLIT SECTION */}
             <section className={styles.split_section}>
                 <div className={styles.split_grid}>
-                    {/* KITCHEN SECTION */}
                     {recipes && recipes.length > 0 && (
                         <motion.div
                             className={styles.kitchen_section}
@@ -205,9 +186,8 @@ export function HomePage() {
                             variants={staggerContainer}
                         >
                             <motion.h2
-                                className={styles.section_title}
+                                className={`${styles.section_title} ${styles.section_title_small}`}
                                 variants={fadeIn}
-                                style={{ marginBottom: "16px", textAlign: "center" }}
                             >
                                 A NOSSA COZINHA
                             </motion.h2>
@@ -260,7 +240,6 @@ export function HomePage() {
                                                             animate={{ opacity: 1, height: "auto" }}
                                                             exit={{ opacity: 0, height: 0 }}
                                                             className={styles.ingredients_header}
-                                                            style={{ overflow: "hidden" }}
                                                         >
                                                             <p className={styles.ingredients_label}>
                                                                 <Clock size={14} /> INGREDIENTES
@@ -283,7 +262,6 @@ export function HomePage() {
                         </motion.div>
                     )}
 
-                    {/* CHAPTERS SECTION */}
                     {chapters && chapters.length > 0 && (
                         <motion.div
                             className={styles.chapters_section}
@@ -293,9 +271,8 @@ export function HomePage() {
                             variants={staggerContainer}
                         >
                             <motion.h2
-                                className={styles.section_title}
+                                className={`${styles.section_title} ${styles.section_title_small}`}
                                 variants={fadeIn}
-                                style={{ marginBottom: "16px", textAlign: "center" }}
                             >
                                 PRÓXIMOS CAPÍTULOS
                             </motion.h2>
@@ -313,7 +290,9 @@ export function HomePage() {
                                             <div className={styles.chapter_info}>
                                                 <div
                                                     className={
-                                                        isCompleted ? styles.chapter_icon_done : styles.chapter_icon_pending
+                                                        isCompleted
+                                                            ? styles.chapter_icon_done
+                                                            : styles.chapter_icon_pending
                                                     }
                                                 >
                                                     {isCompleted ? <Check size={24} /> : <CircleDashed size={24} />}
@@ -323,16 +302,15 @@ export function HomePage() {
                                             <div className={styles.chapter_status}>
                                                 <span
                                                     className={
-                                                        isCompleted ? styles.status_label_done : styles.status_label_pending
+                                                        isCompleted
+                                                            ? styles.status_label_done
+                                                            : styles.status_label_pending
                                                     }
                                                 >
                                                     {isCompleted ? "CONCLUÍDO" : "PENDENTE"}
                                                 </span>
                                                 <div
-                                                    className={
-                                                        isCompleted ? styles.progress_bar_done : styles.progress_bar_pending
-                                                    }
-                                                    style={{ width: "100%", height: "2px" }}
+                                                    className={`${styles.progress_bar} ${isCompleted ? styles.progress_bar_done : styles.progress_bar_pending}`}
                                                 >
                                                     <div
                                                         className={
@@ -352,7 +330,6 @@ export function HomePage() {
                 </div>
             </section>
 
-            {/* FOOTER */}
             <footer className={styles.footer}>
                 <div className={styles.footer_brand}>A NOSSA JORNADA</div>
             </footer>

@@ -1,7 +1,9 @@
+import { motion } from "framer-motion";
 import { Trash2 } from "lucide-react";
 import { useRef } from "react";
 import { SectionHeader } from "../../components/SectionHeader";
 import { useGallery } from "../../hooks/useGallery";
+import { slideUp, staggerContainer } from "../../lib/animations";
 import styles from "./styles.module.css";
 
 export function Gallery() {
@@ -48,32 +50,21 @@ export function Gallery() {
                 />
             </div>
 
-            {error && <div style={{ color: "red", marginBottom: "1rem" }}>{error}</div>}
+            {error && <div className={styles.error_message}>{error}</div>}
 
             {images.length === 0 && !loading ? (
                 <div className={styles.empty_state}>
                     <p>Nenhuma imagem encontrada na galeria.</p>
                 </div>
             ) : (
-                <div className={styles.grid}>
+                <motion.div className={styles.grid} variants={staggerContainer} initial="hidden" animate="visible">
                     {images.map((img) => (
-                        <div key={img.name} className={styles.image_card}>
+                        <motion.div key={img.name} className={styles.image_card} variants={slideUp}>
                             <div className={styles.image_wrapper}>
                                 <img src={img.url} alt={img.name} className={styles.image} />
                             </div>
                             <div className={styles.image_actions}>
-                                <span
-                                    style={{
-                                        fontSize: "0.75rem",
-                                        color: "var(--text-secondary)",
-                                        overflow: "hidden",
-                                        textOverflow: "ellipsis",
-                                        whiteSpace: "nowrap",
-                                        maxWidth: "120px",
-                                    }}
-                                >
-                                    {img.name.split("_")[0]}...
-                                </span>
+                                <span className={styles.image_name}>{img.name.split("_")[0]}...</span>
                                 <button
                                     className={`${styles.button_small} ${styles.button_small_danger}`}
                                     onClick={() => handleDelete(img.name)}
@@ -82,9 +73,9 @@ export function Gallery() {
                                     <Trash2 size={14} />
                                 </button>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             )}
         </div>
     );

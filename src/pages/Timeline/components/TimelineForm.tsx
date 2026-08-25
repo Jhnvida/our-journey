@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ImageSelector } from "../../../components/ImageSelector";
-import type { TimelineEvent } from "../../../types";
 import styles from "../styles.module.css";
+import type { TimelineEvent } from "../../../types";
 
 interface TimelineFormProps {
     data?: TimelineEvent | null;

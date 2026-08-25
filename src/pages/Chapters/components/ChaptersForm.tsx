@@ -1,6 +1,6 @@
 import { useState } from "react";
-import type { Chapter } from "../../../types";
 import styles from "../styles.module.css";
+import type { Chapter } from "../../../types";
 
 interface ChaptersFormProps {
     data?: Chapter | null;

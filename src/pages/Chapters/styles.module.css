@@ -10,13 +10,26 @@
     justify-content: space-between;
 }
 
+.error_message {
+    margin-bottom: 16px;
+    padding: 12px;
+    border: 1px solid var(--lp-error-outline);
+
+    font-size: 14px;
+    color: var(--lp-error);
+    text-align: center;
+
+    background-color: var(--lp-error-container);
+}
+
 .form_container {
     display: flex;
     flex-direction: column;
     gap: 24px;
+
     padding: 24px;
-    border-radius: 16px;
     border: 1px solid var(--lp-outline-variant);
+
     background-color: var(--lp-surface);
 }
 
@@ -31,7 +44,8 @@
     flex: 1;
     flex-direction: column;
     gap: 8px;
-    min-width: 250px;
+
+    min-width: min(100%, 250px);
 }
 
 .form_group_full {
@@ -42,19 +56,23 @@
 }
 
 .label {
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 600;
-    color: var(--lp-on-surface);
+    color: var(--lp-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
 .input {
     padding: 12px;
     border: 1px solid var(--lp-outline-variant);
-    border-radius: 8px;
+
     font-family: var(--lp-font-body);
     font-size: 14px;
     color: var(--lp-on-surface);
+
     background-color: transparent;
+
     transition: border-color 0.3s;
 }
 
@@ -65,14 +83,17 @@
 
 .textarea {
     resize: vertical;
+
     min-height: 120px;
     padding: 12px;
     border: 1px solid var(--lp-outline-variant);
-    border-radius: 8px;
+
     font-family: var(--lp-font-body);
     font-size: 14px;
     color: var(--lp-on-surface);
+
     background-color: transparent;
+
     transition: border-color 0.3s;
 }
 
@@ -83,37 +104,48 @@
 
 .button {
     cursor: pointer;
+
     align-self: flex-start;
+
     padding: 12px 24px;
     border: none;
-    border-radius: 8px;
+
     font-family: var(--lp-font-body);
     font-size: 14px;
     font-weight: 600;
     color: var(--lp-on-primary);
+
     background-color: var(--lp-primary);
-    transition: opacity 0.3s;
+
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:hover {
+    transform: translateY(-2px);
     opacity: 0.9;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
 }
 
 .button_secondary {
     cursor: pointer;
+
     align-self: flex-start;
+
     padding: 12px 24px;
     border: 1px solid var(--lp-primary);
-    border-radius: 8px;
+
     font-family: var(--lp-font-body);
     font-size: 14px;
     font-weight: 600;
     color: var(--lp-primary);
+
     background-color: transparent;
-    transition: background-color 0.3s;
+
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button_secondary:hover {
+    transform: translateY(-2px);
     background-color: var(--lp-surface-container);
 }
 
@@ -130,15 +162,16 @@
 
 .list_title {
     margin: 0;
+
     font-family: var(--lp-font-hero);
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--lp-primary);
 }
 
 .event_list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 24px;
 }
 
@@ -146,10 +179,11 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border-radius: 16px;
+
     border: 1px solid var(--lp-outline-variant);
+
     background-color: var(--lp-surface);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgb(0 0 0 / 5%);
 }
 
 .event_image {
@@ -164,6 +198,7 @@
     flex: 1;
     flex-direction: column;
     gap: 16px;
+
     padding: 24px;
 }
 
@@ -175,15 +210,19 @@
 
 .event_title {
     margin: 0;
+
     font-family: var(--lp-font-hero);
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--lp-primary);
 }
 
 .event_date {
-    font-size: 14px;
+    font-size: 10px;
+    font-weight: 600;
     color: var(--lp-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
 }
 
 .event_description {
@@ -201,14 +240,17 @@
 
 .button_small {
     cursor: pointer;
+
     padding: 8px 16px;
     border: 1px solid var(--lp-outline-variant);
-    border-radius: 8px;
+
     font-family: var(--lp-font-body);
     font-size: 12px;
     font-weight: 600;
     color: var(--lp-on-surface);
+
     background-color: transparent;
+
     transition: all 0.3s;
 }
 

@@ -14,9 +14,6 @@
     -webkit-font-smoothing: antialiased;
 }
 
-/* =========================================
-   HERO SECTION
-   ========================================= */
 .hero_section {
     position: relative;
     display: flex;
@@ -55,16 +52,28 @@
 }
 
 .header_actions {
+    position: relative;
     display: flex;
     gap: 16px;
     align-items: center;
 }
 
 .nav_links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+
     display: flex;
-    gap: 24px;
-    align-items: center;
-    margin-right: 8px;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-end;
+
+    margin-top: 16px;
+    padding: 24px;
+    border-radius: 8px;
+
+    background-color: var(--lp-surface-container-high);
+    box-shadow: 0 10px 40px rgb(0 0 0 / 15%);
 }
 
 .nav_link {
@@ -122,7 +131,7 @@
     align-items: center;
 
     width: 100%;
-    max-width: 896px; /* max-w-4xl */
+    max-width: 896px;
 }
 
 .counter_container {
@@ -145,7 +154,7 @@
     margin-bottom: -10px;
 
     font-family: var(--lp-font-hero);
-    font-size: 72px; /* text-7xl */
+    font-size: clamp(48px, 15vw, 72px);
     font-weight: 300;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -175,18 +184,15 @@
     margin: 0 auto;
 
     font-family: var(--lp-font-hero);
-    font-size: 18px; /* text-lg */
+    font-size: 18px;
     font-weight: 400;
     font-style: italic;
-    line-height: 2; /* leading-loose */
+    line-height: 2;
     color: var(--lp-secondary);
 }
 
-/* =========================================
-   TIMELINE SECTION
-   ========================================= */
 .timeline_section {
-    padding: 128px 0; /* py-32 */
+    padding: 128px 0;
     background-color: var(--lp-surface-container-low);
 }
 
@@ -246,8 +252,8 @@
     max-width: 512px;
     padding: 32px;
 
-    background-color: rgb(245 244 239 / 95%); /* bg-surface-container-low/95 */
-    box-shadow: 0 10px 40px rgb(0 0 0 / 8%); /* scrapbook-shadow */
+    background-color: rgb(245 244 239 / 95%);
+    box-shadow: 0 10px 40px rgb(0 0 0 / 8%);
 }
 
 .timeline_overlay_date {
@@ -264,7 +270,7 @@
     margin-bottom: 16px;
 
     font-family: var(--lp-font-hero);
-    font-size: 30px; /* text-3xl */
+    font-size: 30px;
     font-weight: 400;
     line-height: 1.2;
     color: var(--lp-primary);
@@ -276,9 +282,6 @@
     color: var(--lp-on-surface-variant);
 }
 
-/* =========================================
-   KITCHEN & CHAPTERS SPLIT SECTION
-   ========================================= */
 .split_section {
     max-width: 1280px;
     margin: 0 auto;
@@ -289,7 +292,7 @@
 .split_grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 80px; /* gap-stack-xl */
+    gap: 80px;
 }
 
 .kitchen_section {
@@ -314,7 +317,7 @@
 
     width: 100%;
     max-width: 640px;
-    min-height: 700px;
+    min-height: 900px;
     margin: 0 auto;
 }
 
@@ -353,8 +356,9 @@
 }
 
 .ingredients_header {
+    overflow: hidden;
     padding-top: 24px;
-    border-top: 1px solid rgb(196 199 199 / 30%); /* border-outline-variant/30 */
+    border-top: 1px solid rgb(196 199 199 / 30%);
 }
 
 .ingredients_label {
@@ -379,7 +383,6 @@
 
 .ingredient_item {
     padding: 8px 12px;
-    border-radius: 2px; /* rounded-sm */
 
     font-size: 10px;
     font-weight: 600;
@@ -388,9 +391,6 @@
     background-color: var(--lp-surface-container);
 }
 
-/* =========================================
-   CHAPTERS SECTION
-   ========================================= */
 .chapters_list {
     display: flex;
     flex-direction: column;
@@ -403,7 +403,7 @@
     justify-content: space-between;
 
     padding: 20px;
-    border: 1px solid rgb(0 0 0 / 5%); /* hairline-border */
+    border: 1px solid rgb(0 0 0 / 5%);
 
     background-color: var(--lp-surface);
 
@@ -430,11 +430,10 @@
 
     width: 48px;
     height: 48px;
-    border-radius: 2px;
 
-    color: #2e7d32;
+    color: var(--lp-success);
 
-    background-color: #e8f5e9;
+    background-color: var(--lp-success-container);
 }
 
 .chapter_icon_pending {
@@ -444,7 +443,6 @@
 
     width: 48px;
     height: 48px;
-    border-radius: 2px;
 
     color: var(--lp-outline);
 
@@ -469,7 +467,7 @@
 .status_label_done {
     font-size: 10px;
     font-weight: 600;
-    color: #2e7d32;
+    color: var(--lp-success);
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
@@ -489,13 +487,13 @@
 }
 
 .progress_bar_done {
-    background-color: #e8f5e9;
+    background-color: var(--lp-success-container);
 }
 
 .progress_bar_done_fill {
     width: 100%;
     height: 100%;
-    background-color: #2e7d32;
+    background-color: var(--lp-success);
 }
 
 .progress_bar_pending {
@@ -508,9 +506,6 @@
     background-color: var(--lp-outline);
 }
 
-/* =========================================
-   FOOTER
-   ========================================= */
 .footer {
     display: flex;
     flex-direction: column;
@@ -536,9 +531,6 @@
     letter-spacing: 0.3em;
 }
 
-/* =========================================
-   MEDIA QUERIES (DESKTOP)
-   ========================================= */
 @media (width >= 768px) {
     .header {
         padding: 32px 64px;
@@ -557,7 +549,7 @@
 
     .counter_value {
         margin-bottom: -15px;
-        font-size: 96px; /* text-8xl */
+        font-size: 96px;
     }
 
     .section_header {
@@ -582,7 +574,7 @@
     }
 
     .timeline_overlay_title {
-        font-size: 36px; /* text-4xl */
+        font-size: 36px;
     }
 
     .split_section {
@@ -593,12 +585,32 @@
         grid-template-columns: 1fr;
     }
 
+    .nav_links {
+        position: static;
+
+        flex-direction: row;
+        gap: 24px;
+        align-items: center;
+
+        margin-top: 0;
+        padding: 0;
+
+        background-color: transparent;
+        box-shadow: none;
+    }
+}
+
+@media (width >= 1024px) {
+    .split_grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
     .kitchen_cards_container {
         min-height: 850px;
     }
 
     .kitchen_card {
-        width: 91.6667%; /* w-11/12 */
+        width: 91.6667%;
         padding: 32px;
     }
 
@@ -612,7 +624,7 @@
     }
 
     .chapter_status {
-        width: 128px; /* w-32 */
+        width: 128px;
     }
 
     .footer {
@@ -623,4 +635,9 @@
     .footer_brand {
         margin-bottom: 0;
     }
+}
+
+.section_title_small {
+    margin-bottom: 16px;
+    text-align: center;
 }

@@ -33,7 +33,7 @@ export function Settings() {
                 <SectionHeader title="Configurações" subtitle="Gerencie as configurações gerais" />
             </div>
 
-            {error && <div style={{ color: "red", marginBottom: "1rem" }}>{error}</div>}
+            {error && <div className={styles.error_message}>{error}</div>}
 
             <div className={styles.form_container}>
                 <h3 className={styles.list_title}>Editar Configurações</h3>

@@ -1,6 +1,8 @@
+import { motion } from "framer-motion";
 import { useEffect, useState, type SubmitEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import { slideUp } from "../../lib/animations";
 import { supabase } from "../../lib/supabase";
 import styles from "./styles.module.css";
 
@@ -14,7 +16,7 @@ export function LoginPage() {
 
     useEffect(() => {
         if (user) {
-            navigate("/admin", { replace: true });
+            navigate("/dashboard", { replace: true });
         }
     }, [user, navigate]);
 
@@ -30,7 +32,7 @@ export function LoginPage() {
 
             if (error) throw error;
 
-            navigate("/admin", { replace: true });
+            navigate("/dashboard", { replace: true });
         } catch {
             setError("Email ou senha inválidos!");
         }
@@ -38,7 +40,7 @@ export function LoginPage() {
 
     return (
         <main className={styles.container}>
-            <div className={styles.content}>
+            <motion.div className={styles.content} variants={slideUp} initial="hidden" animate="visible">
                 <p className={styles.subtitle}>Acesso Restrito</p>
                 <h1 className={styles.title}>Gerenciar Jornada</h1>
 
@@ -85,7 +87,7 @@ export function LoginPage() {
                         </Link>
                     </div>
                 </form>
-            </div>
+            </motion.div>
         </main>
     );
 }

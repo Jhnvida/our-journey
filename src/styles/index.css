@@ -1,5 +1,4 @@
 :root {
-    /* Design System Tokens */
     --lp-surface: #faf9f4;
     --lp-surface-dim: #dbdad5;
     --lp-surface-bright: #faf9f4;
@@ -20,6 +19,13 @@
     --lp-on-secondary: #fff;
     --lp-secondary-container: #e8e2d9;
     --lp-on-secondary-container: #67645d;
+    --lp-error: #dc2626;
+    --lp-on-error: #fff;
+    --lp-error-container: #fee2e2;
+    --lp-error-outline: #fca5a5;
+    --lp-success: #2e7d32;
+    --lp-on-success: #fff;
+    --lp-success-container: #e8f5e9;
     --lp-font-hero: "Libre Caslon Text", serif;
     --lp-font-body: "Hanken Grotesk", sans-serif;
 }
