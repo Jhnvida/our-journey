@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { slideUp, staggerContainer } from "../../../lib/animations";
-import styles from "../styles.module.css";
 import type { Recipe } from "../../../types";
+import styles from "../styles.module.css";
 
 interface RecipesListProps {
     recipes: Recipe[];

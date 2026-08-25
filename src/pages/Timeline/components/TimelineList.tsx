@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { slideUp, staggerContainer } from "../../../lib/animations";
 import { formatDate } from "../../../lib/formatDate";
-import styles from "../styles.module.css";
 import type { TimelineEvent } from "../../../types";
+import styles from "../styles.module.css";
 
 interface TimelineListProps {
     events: TimelineEvent[];

@@ -10,7 +10,10 @@ export function useRecipes() {
     const fetchRecipes = useCallback(async () => {
         setLoading(true);
         setError(null);
-        const { data, error: err } = await supabase.from("recipes").select("*").order("created_at", { ascending: true });
+        const { data, error: err } = await supabase
+            .from("recipes")
+            .select("*")
+            .order("created_at", { ascending: true });
 
         if (err) {
             console.error(err);

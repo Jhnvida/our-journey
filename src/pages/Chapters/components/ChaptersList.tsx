@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { slideUp, staggerContainer } from "../../../lib/animations";
-import styles from "../styles.module.css";
 import type { Chapter } from "../../../types";
+import styles from "../styles.module.css";
 
 interface ChaptersListProps {
     chapters: Chapter[];

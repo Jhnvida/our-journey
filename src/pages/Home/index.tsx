@@ -1,4 +1,3 @@
-import { intervalToDuration } from "date-fns";
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, CircleDashed, Clock, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -9,6 +8,8 @@ import { useRecipes } from "../../hooks/useRecipes";
 import { useSettings } from "../../hooks/useSettings";
 import { useTimelineEvents } from "../../hooks/useTimelineEvents";
 import { fadeIn, staggerContainer } from "../../lib/animations";
+import { calculateTimeDifference } from "../../lib/calculateTimeDifference";
+import { formatDate } from "../../lib/formatDate";
 
 import styles from "./styles.module.css";
 
@@ -34,15 +35,7 @@ export function HomePage() {
         if (!settings?.relationship_start_date) return;
 
         const calculateTime = () => {
-            const start = new Date(settings.relationship_start_date);
-            const now = new Date();
-            const duration = intervalToDuration({ start, end: now });
-
-            setTimePassed({
-                years: duration.years || 0,
-                months: duration.months || 0,
-                days: duration.days || 0,
-            });
+            setTimePassed(calculateTimeDifference(settings.relationship_start_date));
         };
 
         calculateTime();
@@ -158,13 +151,7 @@ export function HomePage() {
                                         className={styles.timeline_image}
                                     />
                                     <div className={styles.timeline_overlay}>
-                                        <p className={styles.timeline_overlay_date}>
-                                            {new Date(event.date).toLocaleDateString("pt-BR", {
-                                                day: "2-digit",
-                                                month: "long",
-                                                year: "numeric",
-                                            })}
-                                        </p>
+                                        <p className={styles.timeline_overlay_date}>{formatDate(event.date)}</p>
                                         <h3 className={styles.timeline_overlay_title}>{event.title}</h3>
                                         <p className={styles.timeline_overlay_text}>{event.description}</p>
                                     </div>
