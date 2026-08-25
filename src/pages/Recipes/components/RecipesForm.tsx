@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ImageSelector } from "../../../components/ImageSelector";
+import styles from "../../../styles/admin.module.css";
 import type { Recipe } from "../../../types";
-import styles from "../styles.module.css";
 
 interface RecipesFormProps {
     data?: Recipe | null;
@@ -15,12 +15,14 @@ export function RecipesForm({ data, onSave, onCancel, loading }: RecipesFormProp
     const [description, setDescription] = useState(data?.description || "");
     const [ingredients, setIngredients] = useState(data?.ingredients ? data.ingredients.join("\n") : "");
     const [imageUrl, setImageUrl] = useState(data?.image_url || "");
+    const [formError, setFormError] = useState<string | null>(null);
 
     function handleSave() {
         if (!title || !ingredients) {
-            alert("Título e ingredientes são obrigatórios!");
+            setFormError("Título e ingredientes são obrigatórios!");
             return;
         }
+        setFormError(null);
 
         onSave({
             title,
@@ -33,6 +35,8 @@ export function RecipesForm({ data, onSave, onCancel, loading }: RecipesFormProp
     return (
         <div className={styles.form_container}>
             <h3 className={styles.list_title}>{data ? "Editar Receita" : "Nova Receita"}</h3>
+
+            {formError && <div className={styles.error_message}>{formError}</div>}
 
             <div className={styles.form_row}>
                 <div className={styles.form_group}>

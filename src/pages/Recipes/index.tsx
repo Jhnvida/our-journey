@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { SectionHeader } from "../../components/SectionHeader";
 import { useRecipes } from "../../hooks/useRecipes";
+import styles from "../../styles/admin.module.css";
 import type { Recipe } from "../../types";
 import { RecipesForm } from "./components/RecipesForm";
 import { RecipesList } from "./components/RecipesList";
-import styles from "./styles.module.css";
 
 export function Recipes() {
     const { recipes, addRecipe, updateRecipe, removeRecipe, loading, error } = useRecipes();

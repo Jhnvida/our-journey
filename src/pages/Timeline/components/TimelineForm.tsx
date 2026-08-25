@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ImageSelector } from "../../../components/ImageSelector";
+import styles from "../../../styles/admin.module.css";
 import type { TimelineEvent } from "../../../types";
-import styles from "../styles.module.css";
 
 interface TimelineFormProps {
     data?: TimelineEvent | null;
@@ -15,12 +15,14 @@ export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormPr
     const [date, setDate] = useState(data?.date || "");
     const [description, setDescription] = useState(data?.description || "");
     const [imageUrl, setImageUrl] = useState(data?.image_url || "");
+    const [formError, setFormError] = useState<string | null>(null);
 
     function handleSave() {
         if (!title || !date) {
-            alert("Título e Data são obrigatórios!");
+            setFormError("Título e Data são obrigatórios!");
             return;
         }
+        setFormError(null);
 
         onSave({
             title,
@@ -33,6 +35,8 @@ export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormPr
     return (
         <div className={styles.form_container}>
             <h3 className={styles.list_title}>{data ? "Editar Evento" : "Novo Evento"}</h3>
+
+            {formError && <div className={styles.error_message}>{formError}</div>}
 
             <div className={styles.form_row}>
                 <div className={styles.form_group}>

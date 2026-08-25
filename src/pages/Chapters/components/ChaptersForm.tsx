@@ -1,6 +1,6 @@
 import { useState } from "react";
+import styles from "../../../styles/admin.module.css";
 import type { Chapter } from "../../../types";
-import styles from "../styles.module.css";
 
 interface ChaptersFormProps {
     data?: Chapter | null;
@@ -11,13 +11,15 @@ interface ChaptersFormProps {
 
 export function ChaptersForm({ data, onSave, onCancel, loading }: ChaptersFormProps) {
     const [title, setTitle] = useState(data?.title || "");
-    const [status, setStatus] = useState(data?.status || "pendente");
+    const [status, setStatus] = useState<"concluido" | "pendente">(data?.status || "pendente");
+    const [formError, setFormError] = useState<string | null>(null);
 
     function handleSave() {
         if (!title) {
-            alert("Título é obrigatório!");
+            setFormError("Título é obrigatório!");
             return;
         }
+        setFormError(null);
 
         onSave({ title, status });
     }
@@ -25,6 +27,8 @@ export function ChaptersForm({ data, onSave, onCancel, loading }: ChaptersFormPr
     return (
         <div className={styles.form_container}>
             <h3 className={styles.list_title}>{data ? "Editar Capítulo" : "Novo Capítulo"}</h3>
+
+            {formError && <div className={styles.error_message}>{formError}</div>}
 
             <div className={styles.form_row}>
                 <div className={styles.form_group}>
@@ -50,7 +54,7 @@ export function ChaptersForm({ data, onSave, onCancel, loading }: ChaptersFormPr
                         className={styles.input}
                         id="status"
                         value={status}
-                        onChange={(e) => setStatus(e.target.value)}
+                        onChange={(e) => setStatus(e.target.value as "concluido" | "pendente")}
                         disabled={loading}
                     >
                         <option value="pendente">Pendente</option>

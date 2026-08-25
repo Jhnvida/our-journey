@@ -1,7 +1,7 @@
 export interface Chapter {
     id: string;
     title: string;
-    status: string;
+    status: "concluido" | "pendente";
     created_at: string;
 }
 

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { SectionHeader } from "../../components/SectionHeader";
 import { useTimelineEvents } from "../../hooks/useTimelineEvents";
+import styles from "../../styles/admin.module.css";
 import type { TimelineEvent } from "../../types";
 import { TimelineForm } from "./components/TimelineForm";
 import { TimelineList } from "./components/TimelineList";
-import styles from "./styles.module.css";
 
 export function Timeline() {
     const { events, addEvent, updateEvent, removeEvent, loading, error } = useTimelineEvents();

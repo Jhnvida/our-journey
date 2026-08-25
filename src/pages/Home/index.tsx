@@ -268,10 +268,8 @@ export function HomePage() {
                             </motion.p>
                             <div className={styles.chapters_list}>
                                 {chapters.map((chapter) => {
-                                    const isCompleted =
-                                        chapter.status === "completed" ||
-                                        chapter.status === "concluido" ||
-                                        chapter.status === "concluído";
+                                    const isCompleted = chapter.status === "concluido";
+
                                     return (
                                         <motion.div key={chapter.id} className={styles.chapter_item} variants={fadeIn}>
                                             <div className={styles.chapter_info}>
