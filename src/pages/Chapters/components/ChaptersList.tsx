@@ -1,4 +1,5 @@
-﻿import type { Chapter } from "../../../types";
+import { motion } from "motion/react";
+import type { Chapter } from "../../../types";
 import styles from "../../Dashboard/admin.module.css";
 
 interface ChaptersListProps {
@@ -8,20 +9,16 @@ interface ChaptersListProps {
 }
 
 export function ChaptersList({ chapters, onEdit, onDelete }: ChaptersListProps) {
-    if (chapters.length === 0) {
-        return <p>Nenhum capÃ­tulo cadastrado.</p>;
-    }
-
     return (
         <div className={styles.list_section}>
             <div className={styles.event_list}>
                 {chapters.map((chapter) => (
-                    <div key={chapter.id} className={styles.event_card}>
+                    <motion.div key={chapter.id} className={styles.event_card} whileHover={{ y: -5 }}>
                         <div className={styles.event_card_body}>
                             <div className={styles.event_content}>
                                 <h4 className={styles.event_title}>{chapter.title}</h4>
                                 <span className={styles.event_date}>
-                                    Status: {chapter.status === "concluido" ? "ConcluÃ­do" : "Pendente"}
+                                    Status: {chapter.status === "concluido" ? "Concluído" : "Pendente"}
                                 </span>
                             </div>
 
@@ -34,7 +31,7 @@ export function ChaptersList({ chapters, onEdit, onDelete }: ChaptersListProps) 
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>

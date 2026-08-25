@@ -1,4 +1,5 @@
-﻿import { formatDate } from "../../../lib/formatDate";
+import { motion } from "motion/react";
+import { formatDate } from "../../../lib/formatDate";
 import type { TimelineEvent } from "../../../types";
 import styles from "../../Dashboard/admin.module.css";
 
@@ -9,15 +10,11 @@ interface TimelineListProps {
 }
 
 export function TimelineList({ events, onEdit, onDelete }: TimelineListProps) {
-    if (events.length === 0) {
-        return <p>Nenhum evento cadastrado na linha do tempo.</p>;
-    }
-
     return (
         <div className={styles.list_section}>
             <div className={styles.event_list}>
                 {events.map((event) => (
-                    <div key={event.id} className={styles.event_card}>
+                    <motion.div key={event.id} className={styles.event_card} whileHover={{ y: -5 }}>
                         {event.image_url && (
                             <img src={event.image_url} alt={event.title} className={styles.event_image} />
                         )}
@@ -40,7 +37,7 @@ export function TimelineList({ events, onEdit, onDelete }: TimelineListProps) {
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>

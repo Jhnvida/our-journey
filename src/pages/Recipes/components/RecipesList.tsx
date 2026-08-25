@@ -1,4 +1,5 @@
-﻿import type { Recipe } from "../../../types";
+import { motion } from "motion/react";
+import type { Recipe } from "../../../types";
 import styles from "../../Dashboard/admin.module.css";
 
 interface RecipesListProps {
@@ -8,15 +9,11 @@ interface RecipesListProps {
 }
 
 export function RecipesList({ recipes, onEdit, onDelete }: RecipesListProps) {
-    if (recipes.length === 0) {
-        return <p>Nenhuma receita cadastrada.</p>;
-    }
-
     return (
         <div className={styles.list_section}>
             <div className={styles.event_list}>
                 {recipes.map((recipe) => (
-                    <div key={recipe.id} className={styles.event_card}>
+                    <motion.div key={recipe.id} className={styles.event_card} whileHover={{ y: -5 }}>
                         {recipe.image_url && (
                             <img src={recipe.image_url} alt={recipe.title} className={styles.event_image} />
                         )}
@@ -37,7 +34,7 @@ export function RecipesList({ recipes, onEdit, onDelete }: RecipesListProps) {
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>

@@ -1,4 +1,5 @@
-﻿import { Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
+import { motion } from "motion/react";
 import { useRef, type ChangeEvent } from "react";
 import { SectionHeader } from "../components/SectionHeader";
 import { useGallery } from "../hooks/useGallery";
@@ -33,12 +34,23 @@ export function Gallery() {
     }
 
     return (
-        <div className={styles.container}>
+        <motion.div
+            className={styles.container}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+        >
             <div className={styles.header}>
                 <SectionHeader title="Galeria de Imagens" subtitle="Gerencie as fotos da jornada" />
-                <button className={styles.button} onClick={handleUploadClick} disabled={loading}>
+                <motion.button
+                    className={styles.button}
+                    onClick={handleUploadClick}
+                    disabled={loading}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.95 }}
+                >
                     {loading ? "Processando..." : "Nova Imagem"}
-                </button>
+                </motion.button>
                 <input
                     type="file"
                     ref={fileInputRef}
@@ -50,31 +62,25 @@ export function Gallery() {
 
             {error && <div className={styles.error_message}>{error}</div>}
 
-            {images.length === 0 && !loading ? (
-                <div className={styles.empty_state}>
-                    <p>Nenhuma imagem encontrada na galeria.</p>
-                </div>
-            ) : (
-                <div className={styles.grid}>
-                    {images.map((img) => (
-                        <div key={img.name} className={styles.image_card}>
-                            <div className={styles.image_wrapper}>
-                                <img src={img.url} alt={img.name} className={styles.image} />
-                            </div>
-                            <div className={styles.image_actions}>
-                                <span className={styles.image_name}>{img.name.split("_")[0]}...</span>
-                                <button
-                                    className={`${styles.button_small} ${styles.button_small_danger}`}
-                                    onClick={() => handleDelete(img.name)}
-                                    disabled={loading}
-                                >
-                                    <Trash2 size={14} />
-                                </button>
-                            </div>
+            <div className={styles.grid}>
+                {images.map((img) => (
+                    <motion.div key={img.name} className={styles.image_card} whileHover={{ y: -5 }}>
+                        <div className={styles.image_wrapper}>
+                            <img src={img.url} alt={img.name} className={styles.image} />
                         </div>
-                    ))}
-                </div>
-            )}
-        </div>
+                        <div className={styles.image_actions}>
+                            <span className={styles.image_name}>{img.name.split("_")[0]}...</span>
+                            <button
+                                className={`${styles.button_small} ${styles.button_small_danger}`}
+                                onClick={() => handleDelete(img.name)}
+                                disabled={loading}
+                            >
+                                <Trash2 size={14} />
+                            </button>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
     );
 }

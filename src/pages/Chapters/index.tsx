@@ -1,4 +1,5 @@
-﻿import { useState } from "react";
+import { motion } from "motion/react";
+import { useState } from "react";
 import { SectionHeader } from "../../components/SectionHeader";
 import { useChapters } from "../../hooks/useChapters";
 import type { Chapter } from "../../types";
@@ -37,20 +38,30 @@ export function Chapters() {
     }
 
     async function handleDelete(id: string) {
-        if (window.confirm("Tem certeza que deseja excluir este capÃ­tulo?")) {
+        if (window.confirm("Tem certeza que deseja excluir este capítulo?")) {
             await removeChapter(id);
         }
     }
 
     return (
-        <div className={styles.container}>
+        <motion.div
+            className={styles.container}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+        >
             <div className={styles.header}>
-                <SectionHeader title="PrÃ³ximos CapÃ­tulos" subtitle="Gerencie os planos futuros" />
+                <SectionHeader title="Próximos Capítulos" subtitle="Gerencie os planos futuros" />
 
                 {!isFormOpen && (
-                    <button className={styles.button} onClick={handleOpenForm}>
-                        Novo CapÃ­tulo
-                    </button>
+                    <motion.button
+                        className={styles.button}
+                        onClick={handleOpenForm}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        Novo Capítulo
+                    </motion.button>
                 )}
             </div>
 
@@ -61,6 +72,6 @@ export function Chapters() {
             ) : (
                 <ChaptersList chapters={chapters} onEdit={handleEdit} onDelete={handleDelete} />
             )}
-        </div>
+        </motion.div>
     );
 }

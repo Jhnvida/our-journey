@@ -1,4 +1,5 @@
 import { ChefHat, History, Image, LogOut, Sparkles, TableConfig } from "lucide-react";
+import { motion } from "motion/react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import styles from "./Sidebar.module.css";
@@ -21,7 +22,12 @@ export function Sidebar() {
     }
 
     return (
-        <div className={styles.sidebar}>
+        <motion.div
+            className={styles.sidebar}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+        >
             <div className={styles.header}>
                 <h1>Nossa Jornada</h1>
                 <p>Painel de Controle</p>
@@ -43,11 +49,16 @@ export function Sidebar() {
             </div>
 
             <div className={styles.footer}>
-                <button onClick={handleSignOut} className={styles.button}>
+                <motion.button
+                    onClick={handleSignOut}
+                    className={styles.button}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.95 }}
+                >
                     <LogOut className={styles.icon} />
                     Sair
-                </button>
+                </motion.button>
             </div>
-        </div>
+        </motion.div>
     );
 }

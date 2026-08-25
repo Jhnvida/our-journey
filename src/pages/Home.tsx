@@ -1,4 +1,5 @@
 import { Check, CircleDashed, Clock, Menu, X } from "lucide-react";
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -52,7 +53,12 @@ export function HomePage() {
             <section className={styles.hero_section}>
                 <div className={styles.hero_bg}></div>
 
-                <header className={styles.header}>
+                <motion.header
+                    className={styles.header}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                >
                     <div className={styles.brand_label}>A NOSSA JORNADA</div>
                     <div className={styles.header_actions}>
                         {isMenuOpen && (
@@ -71,13 +77,23 @@ export function HomePage() {
                             </div>
                         )}
 
-                        <button className={styles.menu_button} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                        <motion.button
+                            className={styles.menu_button}
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
                             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                        </button>
+                        </motion.button>
                     </div>
-                </header>
+                </motion.header>
 
-                <div className={styles.hero_content}>
+                <motion.div
+                    className={styles.hero_content}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                >
                     <div className={styles.hero_content_inner}>
                         <div className={styles.counter_container}>
                             <div className={styles.counter_item}>
@@ -100,7 +116,7 @@ export function HomePage() {
                             </p>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </section>
 
             {events && events.length > 0 && (
@@ -110,8 +126,16 @@ export function HomePage() {
                         <p className={styles.kitchen_subtitle}>Relembre os melhores momentos da nossa história.</p>
                     </div>
                     <div className={styles.timeline_masonry}>
-                        {events.map((event) => (
-                            <div key={event.id} className={styles.timeline_masonry_item}>
+                        {events.map((event, index) => (
+                            <motion.div
+                                key={event.id}
+                                className={styles.timeline_masonry_item}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                whileHover={{ scale: 1.02 }}
+                            >
                                 <img
                                     src={
                                         event.image_url ||
@@ -125,7 +149,7 @@ export function HomePage() {
                                     <h3 className={styles.timeline_masonry_title}>{event.title}</h3>
                                     <p className={styles.timeline_masonry_text}>{event.description}</p>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </section>
@@ -134,7 +158,13 @@ export function HomePage() {
             <section className={styles.split_section}>
                 <div className={styles.split_grid}>
                     {recipes && recipes.length > 0 && (
-                        <div className={styles.timeline_carousel_inner}>
+                        <motion.div
+                            className={styles.timeline_carousel_inner}
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.6 }}
+                        >
                             <h2 className={`${styles.section_title} ${styles.section_title_small}`}>A NOSSA COZINHA</h2>
                             <p className={styles.kitchen_subtitle}>
                                 Porque algumas das nossas melhores memórias foram construídas em volta da mesa, entre um
@@ -192,11 +222,17 @@ export function HomePage() {
                                     );
                                 })}
                             </div>
-                        </div>
+                        </motion.div>
                     )}
 
                     {chapters && chapters.length > 0 && (
-                        <div className={styles.chapters_section}>
+                        <motion.div
+                            className={styles.chapters_section}
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.6 }}
+                        >
                             <h2 className={`${styles.section_title} ${styles.section_title_small}`}>
                                 PRÓXIMOS CAPÍTULOS
                             </h2>
@@ -245,7 +281,7 @@ export function HomePage() {
                                     );
                                 })}
                             </div>
-                        </div>
+                        </motion.div>
                     )}
                 </div>
             </section>

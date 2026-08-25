@@ -1,4 +1,4 @@
-﻿import { useState, type SubmitEvent } from "react";
+import { useState, type SubmitEvent } from "react";
 import { ImageSelector } from "../../../components/ImageSelector";
 import type { TimelineEvent } from "../../../types";
 import styles from "../../Dashboard/admin.module.css";
@@ -33,7 +33,7 @@ export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormPr
             <div className={styles.form_row}>
                 <div className={styles.form_group}>
                     <label className={styles.label} htmlFor="title">
-                        TÃ­tulo
+                        Título
                     </label>
                     <input
                         className={styles.input}
@@ -70,7 +70,7 @@ export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormPr
 
             <div className={styles.form_group_full}>
                 <label className={styles.label} htmlFor="description">
-                    DescriÃ§Ã£o (opcional)
+                    Descrição (opcional)
                 </label>
                 <textarea
                     className={styles.textarea}

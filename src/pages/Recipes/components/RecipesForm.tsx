@@ -1,4 +1,4 @@
-﻿import { useState, type SubmitEvent } from "react";
+import { useState, type SubmitEvent } from "react";
 import { ImageSelector } from "../../../components/ImageSelector";
 import type { Recipe } from "../../../types";
 import styles from "../../Dashboard/admin.module.css";
@@ -33,7 +33,7 @@ export function RecipesForm({ data, onSave, onCancel, loading }: RecipesFormProp
             <div className={styles.form_row}>
                 <div className={styles.form_group}>
                     <label className={styles.label} htmlFor="title">
-                        TÃ­tulo
+                        Título
                     </label>
                     <input
                         className={styles.input}
@@ -55,7 +55,7 @@ export function RecipesForm({ data, onSave, onCancel, loading }: RecipesFormProp
 
             <div className={styles.form_group_full}>
                 <label className={styles.label} htmlFor="description">
-                    DescriÃ§Ã£o (opcional)
+                    Descrição (opcional)
                 </label>
                 <textarea
                     className={styles.textarea}
@@ -76,7 +76,7 @@ export function RecipesForm({ data, onSave, onCancel, loading }: RecipesFormProp
                     id="ingredients"
                     value={ingredients}
                     onChange={(e) => setIngredients(e.target.value)}
-                    placeholder="1 xÃ­cara de aÃ§Ãºcar&#10;2 cenouras..."
+                    placeholder="1 xícara de açúcar&#10;2 cenouras..."
                     disabled={loading}
                     required
                 />

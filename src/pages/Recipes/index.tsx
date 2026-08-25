@@ -1,4 +1,5 @@
-﻿import { useState } from "react";
+import { motion } from "motion/react";
+import { useState } from "react";
 import { SectionHeader } from "../../components/SectionHeader";
 import { useRecipes } from "../../hooks/useRecipes";
 import type { Recipe } from "../../types";
@@ -43,14 +44,24 @@ export function Recipes() {
     }
 
     return (
-        <div className={styles.container}>
+        <motion.div
+            className={styles.container}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+        >
             <div className={styles.header}>
                 <SectionHeader title="A Nossa Cozinha" subtitle="Gerencie as receitas" />
 
                 {!isFormOpen && (
-                    <button className={styles.button} onClick={handleOpenForm}>
+                    <motion.button
+                        className={styles.button}
+                        onClick={handleOpenForm}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
                         Nova Receita
-                    </button>
+                    </motion.button>
                 )}
             </div>
 
@@ -61,6 +72,6 @@ export function Recipes() {
             ) : (
                 <RecipesList recipes={recipes} onEdit={handleEdit} onDelete={handleDelete} />
             )}
-        </div>
+        </motion.div>
     );
 }

@@ -248,3 +248,25 @@
     border-color: var(--lp-primary);
     background-color: var(--lp-surface-container);
 }
+
+.empty_state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    padding: 64px 32px;
+    border: 1px dashed var(--lp-outline-variant);
+    border-radius: 8px;
+
+    color: var(--lp-outline);
+    text-align: center;
+
+    background: var(--lp-surface);
+}
+
+.empty_icon {
+    color: var(--lp-outline);
+    opacity: 0.5;
+}

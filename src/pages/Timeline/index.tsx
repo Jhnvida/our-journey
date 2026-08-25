@@ -1,4 +1,5 @@
-﻿import { useState } from "react";
+import { motion } from "motion/react";
+import { useState } from "react";
 import { SectionHeader } from "../../components/SectionHeader";
 import { useTimelineEvents } from "../../hooks/useTimelineEvents";
 import type { TimelineEvent } from "../../types";
@@ -43,13 +44,23 @@ export function Timeline() {
     }
 
     return (
-        <div className={styles.container}>
+        <motion.div
+            className={styles.container}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+        >
             <div className={styles.header}>
-                <SectionHeader title="A Linha do Tempo" subtitle="Gerencie os eventos da histÃ³ria" />
+                <SectionHeader title="A Linha do Tempo" subtitle="Gerencie os eventos da história" />
                 {!isFormOpen && (
-                    <button className={styles.button} onClick={handleOpenForm}>
+                    <motion.button
+                        className={styles.button}
+                        onClick={handleOpenForm}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
                         Novo Evento
-                    </button>
+                    </motion.button>
                 )}
             </div>
 
@@ -60,6 +71,6 @@ export function Timeline() {
             ) : (
                 <TimelineList events={events} onEdit={handleEdit} onDelete={handleDelete} />
             )}
-        </div>
+        </motion.div>
     );
 }

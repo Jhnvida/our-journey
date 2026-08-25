@@ -1,4 +1,4 @@
-﻿import { useState, type SubmitEvent } from "react";
+import { useState, type SubmitEvent } from "react";
 import type { Chapter } from "../../../types";
 import styles from "../../Dashboard/admin.module.css";
 
@@ -22,12 +22,12 @@ export function ChaptersForm({ data, onSave, onCancel, loading }: ChaptersFormPr
 
     return (
         <form className={styles.form_container} onSubmit={handleSubmit}>
-            <h3 className={styles.list_title}>{data ? "Editar CapÃ­tulo" : "Novo CapÃ­tulo"}</h3>
+            <h3 className={styles.list_title}>{data ? "Editar Capítulo" : "Novo Capítulo"}</h3>
 
             <div className={styles.form_row}>
                 <div className={styles.form_group}>
                     <label className={styles.label} htmlFor="title">
-                        TÃ­tulo do CapÃ­tulo
+                        Título do Capítulo
                     </label>
                     <input
                         className={styles.input}
@@ -53,7 +53,7 @@ export function ChaptersForm({ data, onSave, onCancel, loading }: ChaptersFormPr
                         disabled={loading}
                     >
                         <option value="pendente">Pendente</option>
-                        <option value="concluido">ConcluÃ­do</option>
+                        <option value="concluido">Concluído</option>
                     </select>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { SectionHeader } from "../components/SectionHeader";
 import { useSettings } from "../hooks/useSettings";
@@ -28,7 +29,12 @@ export function Settings() {
     }
 
     return (
-        <div className={styles.container}>
+        <motion.div
+            className={styles.container}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+        >
             <div className={styles.header}>
                 <SectionHeader title="Configurações" subtitle="Gerencie as configurações gerais" />
             </div>
@@ -55,11 +61,17 @@ export function Settings() {
                 </div>
 
                 <div className={styles.form_actions}>
-                    <button className={styles.button} onClick={handleSave} disabled={loading}>
+                    <motion.button
+                        className={styles.button}
+                        onClick={handleSave}
+                        disabled={loading}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
                         {loading ? "Salvando..." : "Salvar Alterações"}
-                    </button>
+                    </motion.button>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
