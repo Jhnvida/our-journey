@@ -1,15 +1,19 @@
+import { motion } from "framer-motion";
 import { ChefHat, History, Image, LogOut, Sparkles, TableConfig } from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../hooks/useAuth";
+import { slideRight, staggerContainer } from "../../../../lib/animations";
 import styles from "./styles.module.css";
 
 const navigations = [
     { value: "timeline", label: "A Linha do Tempo", icon: <History /> },
-    { value: "gallery", label: "Galeria", icon: <Image /> },
-    { value: "chapters", label: "Próximos Capítulos", icon: <Sparkles /> },
     { value: "recipes", label: "A Nossa Cozinha", icon: <ChefHat /> },
+    { value: "chapters", label: "Próximos Capítulos", icon: <Sparkles /> },
     { value: "settings", label: "Configurações", icon: <TableConfig /> },
+    { value: "gallery", label: "Galeria", icon: <Image /> },
 ];
+
+const MotionNavLink = motion(NavLink);
 
 export function Sidebar() {
     const { signOut } = useAuth();
@@ -27,18 +31,19 @@ export function Sidebar() {
                 <p>Painel de Controle</p>
             </div>
 
-            <div className={styles.nav}>
+            <motion.div className={styles.nav} variants={staggerContainer} initial="hidden" animate="visible">
                 {navigations.map((nav) => (
-                    <NavLink
+                    <MotionNavLink
                         key={nav.label}
-                        to={`/admin/${nav.value}`}
+                        to={`/dashboard/${nav.value}`}
+                        variants={slideRight}
                         className={({ isActive }) => `${styles.nav_item} ${isActive ? styles.active : ""}`}
                     >
                         {nav.icon}
                         <span>{nav.label}</span>
-                    </NavLink>
+                    </MotionNavLink>
                 ))}
-            </div>
+            </motion.div>
 
             <div className={styles.footer}>
                 <button onClick={handleSignOut} className={styles.button}>
