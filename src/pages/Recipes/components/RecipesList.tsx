@@ -1,5 +1,7 @@
-import type { Recipe } from "../../../types";
+import { motion } from "framer-motion";
+import { slideUp, staggerContainer } from "../../../lib/animations";
 import styles from "../styles.module.css";
+import type { Recipe } from "../../../types";
 
 interface RecipesListProps {
     recipes: Recipe[];
@@ -14,9 +16,9 @@ export function RecipesList({ recipes, onEdit, onDelete }: RecipesListProps) {
 
     return (
         <div className={styles.list_section}>
-            <div className={styles.event_list}>
+            <motion.div className={styles.event_list} variants={staggerContainer} initial="hidden" animate="visible">
                 {recipes.map((recipe) => (
-                    <div key={recipe.id} className={styles.event_card}>
+                    <motion.div key={recipe.id} className={styles.event_card} variants={slideUp}>
                         {recipe.image_url && (
                             <img src={recipe.image_url} alt={recipe.title} className={styles.event_image} />
                         )}
@@ -37,9 +39,9 @@ export function RecipesList({ recipes, onEdit, onDelete }: RecipesListProps) {
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </div>
     );
 }
