@@ -29,10 +29,10 @@ export function TimelineList({ events, onEdit, onDelete }: TimelineListProps) {
                             </div>
 
                             <div className={styles.event_actions}>
-                                <button className={styles.button_small} onClick={() => onEdit(event)}>
+                                <button className="btn btn-small" onClick={() => onEdit(event)}>
                                     Editar
                                 </button>
-                                <button className={styles.button_small} onClick={() => onDelete(event.id)}>
+                                <button className="btn btn-small" onClick={() => onDelete(event.id)}>
                                     Excluir
                                 </button>
                             </div>

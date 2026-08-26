@@ -26,10 +26,10 @@ export function RecipesList({ recipes, onEdit, onDelete }: RecipesListProps) {
                             </div>
 
                             <div className={styles.event_actions}>
-                                <button className={styles.button_small} onClick={() => onEdit(recipe)}>
+                                <button className="btn btn-small" onClick={() => onEdit(recipe)}>
                                     Editar
                                 </button>
-                                <button className={styles.button_small} onClick={() => onDelete(recipe.id)}>
+                                <button className="btn btn-small" onClick={() => onDelete(recipe.id)}>
                                     Excluir
                                 </button>
                             </div>

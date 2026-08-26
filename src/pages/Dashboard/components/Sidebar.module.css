@@ -105,31 +105,6 @@
     padding: 16px;
 }
 
-.button {
-    cursor: pointer;
-
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid var(--lp-outline-variant);
-
-    font-family: var(--lp-font-body);
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--lp-on-surface);
-
-    background-color: transparent;
-}
-
-.button:hover {
-    border-color: var(--lp-outline);
-    background-color: var(--lp-surface-container);
-}
-
 .icon {
     width: 16px;
     height: 16px;
@@ -173,9 +148,5 @@
     .footer {
         margin-top: auto;
         padding: 24px 16px;
-    }
-
-    .button {
-        padding: 12px;
     }
 }

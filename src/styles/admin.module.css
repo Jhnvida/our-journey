@@ -6,20 +6,17 @@
 
 .header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
 }
 
-.error_message {
-    margin-bottom: 16px;
-    padding: 12px;
-    border: 1px solid var(--lp-error-outline);
-
-    font-size: 14px;
-    color: var(--lp-error);
-    text-align: center;
-
-    background-color: var(--lp-error-container);
+@media (width >= 768px) {
+    .header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 
 .form_container {
@@ -53,92 +50,6 @@
     flex-direction: column;
     gap: 8px;
     width: 100%;
-}
-
-.label {
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--lp-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-
-.input {
-    padding: 12px;
-    border: 1px solid var(--lp-outline-variant);
-
-    font-family: var(--lp-font-body);
-    font-size: 14px;
-    color: var(--lp-on-surface);
-
-    background-color: transparent;
-}
-
-.input:focus {
-    border-color: var(--lp-primary);
-    outline: none;
-}
-
-.textarea {
-    resize: vertical;
-
-    min-height: 120px;
-    padding: 12px;
-    border: 1px solid var(--lp-outline-variant);
-
-    font-family: var(--lp-font-body);
-    font-size: 14px;
-    color: var(--lp-on-surface);
-
-    background-color: transparent;
-}
-
-.textarea:focus {
-    border-color: var(--lp-primary);
-    outline: none;
-}
-
-.button {
-    cursor: pointer;
-
-    align-self: flex-start;
-
-    padding: 12px 24px;
-    border: none;
-
-    font-family: var(--lp-font-body);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--lp-on-primary);
-
-    background-color: var(--lp-primary);
-}
-
-.button:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
-    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
-}
-
-.button_secondary {
-    cursor: pointer;
-
-    align-self: flex-start;
-
-    padding: 12px 24px;
-    border: 1px solid var(--lp-primary);
-
-    font-family: var(--lp-font-body);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--lp-primary);
-
-    background-color: transparent;
-}
-
-.button_secondary:hover {
-    transform: translateY(-2px);
-    background-color: var(--lp-surface-container);
 }
 
 .form_actions {
@@ -228,23 +139,4 @@
     display: flex;
     gap: 8px;
     margin-top: auto;
-}
-
-.button_small {
-    cursor: pointer;
-
-    padding: 8px 16px;
-    border: 1px solid var(--lp-outline-variant);
-
-    font-family: var(--lp-font-body);
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--lp-on-surface);
-
-    background-color: transparent;
-}
-
-.button_small:hover {
-    border-color: var(--lp-primary);
-    background-color: var(--lp-surface-container);
 }

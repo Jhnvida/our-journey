@@ -85,10 +85,10 @@ export function ImageSelector({ value, onChange }: ImageSelectorProps) {
                             )}
                         </div>
                         <div className={styles.modal_footer}>
-                            <button className={styles.button_secondary} onClick={() => setIsModalOpen(false)}>
+                            <button className="btn btn-secondary" onClick={() => setIsModalOpen(false)}>
                                 Cancelar
                             </button>
-                            <button className={styles.button} onClick={handleConfirm} disabled={!tempSelected}>
+                            <button className="btn btn-primary" onClick={handleConfirm} disabled={!tempSelected}>
                                 Confirmar
                             </button>
                         </div>

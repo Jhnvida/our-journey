@@ -6,65 +6,17 @@
 
 .header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
 }
 
-.button {
-    cursor: pointer;
-
-    align-self: flex-start;
-
-    padding: 12px 24px;
-    border: none;
-
-    font-family: var(--lp-font-body);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--lp-on-primary);
-
-    background-color: var(--lp-primary);
-}
-
-.button:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
-    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
-}
-
-.button:disabled {
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-
-.button_small {
-    cursor: pointer;
-
-    padding: 8px 16px;
-    border: 1px solid var(--lp-outline-variant);
-
-    font-family: var(--lp-font-body);
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--lp-on-surface);
-
-    background-color: transparent;
-}
-
-.button_small:hover {
-    border-color: var(--lp-primary);
-    background-color: var(--lp-surface-container);
-}
-
-.button_small_danger {
-    border-color: var(--lp-error-outline);
-    color: var(--lp-error);
-    background-color: var(--lp-error-container);
-}
-
-.button_small_danger:hover {
-    border-color: var(--lp-error);
-    background-color: var(--lp-error-outline);
+@media (width >= 768px) {
+    .header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 
 .grid {
@@ -124,18 +76,6 @@
     color: var(--lp-secondary);
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-.error_message {
-    margin-bottom: 16px;
-    padding: 12px;
-    border: 1px solid var(--lp-error-outline);
-
-    font-size: 14px;
-    color: var(--lp-error);
-    text-align: center;
-
-    background-color: var(--lp-error-container);
 }
 
 @media (width >= 768px) {

@@ -32,11 +32,11 @@ export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormPr
 
             <div className={styles.form_row}>
                 <div className={styles.form_group}>
-                    <label className={styles.label} htmlFor="title">
+                    <label className="form-label" htmlFor="title">
                         Título
                     </label>
                     <input
-                        className={styles.input}
+                        className="form-input"
                         id="title"
                         type="text"
                         value={title}
@@ -48,11 +48,11 @@ export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormPr
                 </div>
 
                 <div className={styles.form_group}>
-                    <label className={styles.label} htmlFor="date">
+                    <label className="form-label" htmlFor="date">
                         Data
                     </label>
                     <input
-                        className={styles.input}
+                        className="form-input"
                         id="date"
                         type="date"
                         value={date}
@@ -64,16 +64,16 @@ export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormPr
             </div>
 
             <div className={styles.form_group_full}>
-                <label className={styles.label}>Imagem (opcional)</label>
+                <label className="form-label">Imagem (opcional)</label>
                 <ImageSelector value={imageUrl} onChange={setImageUrl} />
             </div>
 
             <div className={styles.form_group_full}>
-                <label className={styles.label} htmlFor="description">
+                <label className="form-label" htmlFor="description">
                     Descrição (opcional)
                 </label>
                 <textarea
-                    className={styles.textarea}
+                    className="form-input"
                     id="description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
@@ -83,10 +83,10 @@ export function TimelineForm({ data, onSave, onCancel, loading }: TimelineFormPr
             </div>
 
             <div className={styles.form_actions}>
-                <button type="submit" className={styles.button} disabled={loading}>
+                <button type="submit" className="btn btn-primary" disabled={loading}>
                     {loading ? "Salvando..." : "Salvar"}
                 </button>
-                <button type="button" className={styles.button_secondary} onClick={onCancel} disabled={loading}>
+                <button type="button" className="btn btn-secondary" onClick={onCancel} disabled={loading}>
                     Cancelar
                 </button>
             </div>

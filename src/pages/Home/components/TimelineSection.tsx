@@ -11,7 +11,7 @@ export function TimelineSection() {
 
     return (
         <section className={styles.timeline_section}>
-            <SectionHeader title="A LINHA DO TEMPO" subtitle="Relembre os melhores momentos da nossa história." />
+            <SectionHeader title="A Linha do Tempo" subtitle="Relembre os melhores momentos da nossa história." />
             <div className={styles.timeline_masonry}>
                 {events.map((event, index) => (
                     <motion.div

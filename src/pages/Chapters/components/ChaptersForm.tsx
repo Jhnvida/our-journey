@@ -26,11 +26,11 @@ export function ChaptersForm({ data, onSave, onCancel, loading }: ChaptersFormPr
 
             <div className={styles.form_row}>
                 <div className={styles.form_group}>
-                    <label className={styles.label} htmlFor="title">
+                    <label className="form-label" htmlFor="title">
                         Título do Capítulo
                     </label>
                     <input
-                        className={styles.input}
+                        className="form-input"
                         type="text"
                         id="title"
                         placeholder="Ex: Viagem para Paris"
@@ -42,11 +42,11 @@ export function ChaptersForm({ data, onSave, onCancel, loading }: ChaptersFormPr
                 </div>
 
                 <div className={styles.form_group}>
-                    <label className={styles.label} htmlFor="status">
+                    <label className="form-label" htmlFor="status">
                         Status
                     </label>
                     <select
-                        className={styles.input}
+                        className="form-input"
                         id="status"
                         value={status}
                         onChange={(e) => setStatus(e.target.value as "concluido" | "pendente")}
@@ -59,10 +59,10 @@ export function ChaptersForm({ data, onSave, onCancel, loading }: ChaptersFormPr
             </div>
 
             <div className={styles.form_actions}>
-                <button type="submit" className={styles.button} disabled={loading}>
+                <button type="submit" className="btn btn-primary" disabled={loading}>
                     {loading ? "Salvando..." : "Salvar"}
                 </button>
-                <button type="button" className={styles.button_secondary} onClick={onCancel} disabled={loading}>
+                <button type="button" className="btn btn-secondary" onClick={onCancel} disabled={loading}>
                     Cancelar
                 </button>
             </div>

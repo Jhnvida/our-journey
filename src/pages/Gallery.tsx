@@ -1,7 +1,7 @@
 import { Trash2 } from "lucide-react";
 import { motion } from "motion/react";
 import { useRef, type ChangeEvent } from "react";
-import { SectionHeader } from "../components/SectionHeader";
+import { DashboardHeader } from "../components/DashboardHeader";
 import { useGallery } from "../hooks/useGallery";
 import styles from "./Gallery.module.css";
 
@@ -41,9 +41,9 @@ export function Gallery() {
             transition={{ duration: 0.4 }}
         >
             <div className={styles.header}>
-                <SectionHeader title="Galeria de Imagens" subtitle="Gerencie as fotos da jornada" />
+                <DashboardHeader title="Galeria de Imagens" subtitle="Gerencie as fotos da jornada" />
                 <motion.button
-                    className={styles.button}
+                    className="btn btn-primary"
                     onClick={handleUploadClick}
                     disabled={loading}
                     whileHover={{ scale: 1.02 }}
@@ -60,7 +60,7 @@ export function Gallery() {
                 />
             </div>
 
-            {error && <div className={styles.error_message}>{error}</div>}
+            {error && <div className="alert-error">{error}</div>}
 
             <div className={styles.grid}>
                 {images.map((img) => (
@@ -71,7 +71,7 @@ export function Gallery() {
                         <div className={styles.image_actions}>
                             <span className={styles.image_name}>{img.name.split("_")[0]}...</span>
                             <button
-                                className={`${styles.button_small} ${styles.button_small_danger}`}
+                                className="btn btn-small btn-danger"
                                 onClick={() => handleDelete(img.name)}
                                 disabled={loading}
                             >

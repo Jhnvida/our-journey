@@ -52,7 +52,8 @@ export function Sidebar() {
             <div className={styles.footer}>
                 <motion.button
                     onClick={handleSignOut}
-                    className={styles.button}
+                    className="btn btn-secondary"
+                    style={{ width: "100%" }}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.95 }}
                 >

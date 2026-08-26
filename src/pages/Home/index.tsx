@@ -10,15 +10,11 @@ export function Home() {
             <HeroSection />
             <TimelineSection />
 
-            <section className={styles.split_section}>
-                <div className={styles.split_grid}>
-                    <KitchenSection />
-                    <ChaptersSection />
-                </div>
-            </section>
+            <KitchenSection />
+            <ChaptersSection />
 
             <footer className={styles.footer}>
-                <div className={styles.footer_brand}>A NOSSA JORNADA</div>
+                <div className={styles.footer_brand}>A Nossa Jornada</div>
             </footer>
         </main>
     );

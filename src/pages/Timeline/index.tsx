@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useState } from "react";
-import { SectionHeader } from "../../components/SectionHeader";
+import { DashboardHeader } from "../../components/DashboardHeader";
 import { useTimelineEvents } from "../../hooks/useTimelineEvents";
 import styles from "../../styles/admin.module.css";
 import type { TimelineEvent } from "../../types";
@@ -51,10 +51,10 @@ export function Timeline() {
             transition={{ duration: 0.4 }}
         >
             <div className={styles.header}>
-                <SectionHeader title="A Linha do Tempo" subtitle="Gerencie os eventos da história" />
+                <DashboardHeader title="A Linha do Tempo" subtitle="Gerencie os eventos da história" />
                 {!isFormOpen && (
                     <motion.button
-                        className={styles.button}
+                        className="btn btn-primary"
                         onClick={handleOpenForm}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.95 }}
@@ -64,7 +64,7 @@ export function Timeline() {
                 )}
             </div>
 
-            {error && <div className={styles.error_message}>{error}</div>}
+            {error && <div className="alert-error">{error}</div>}
 
             {isFormOpen ? (
                 <TimelineForm data={selectedEvent} onSave={handleSave} onCancel={handleCloseForm} loading={loading} />

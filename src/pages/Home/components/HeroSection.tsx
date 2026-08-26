@@ -39,7 +39,7 @@ export function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
             >
-                <div className={styles.brand_label}>A NOSSA JORNADA</div>
+                <div className={styles.brand_label}>A Nossa Jornada</div>
                 <div className={styles.header_actions}>
                     {isMenuOpen && (
                         <div className={styles.nav_links}>
@@ -78,15 +78,15 @@ export function HeroSection() {
                     <div className={styles.counter_container}>
                         <div className={styles.counter_item}>
                             <span className={styles.counter_value}>{formatNumber(timePassed.years)}</span>
-                            <span className={styles.counter_label}>ANOS</span>
+                            <span className={styles.counter_label}>Anos</span>
                         </div>
                         <div className={styles.counter_item}>
                             <span className={styles.counter_value}>{formatNumber(timePassed.months)}</span>
-                            <span className={styles.counter_label}>MESES</span>
+                            <span className={styles.counter_label}>Meses</span>
                         </div>
                         <div className={styles.counter_item}>
                             <span className={styles.counter_value}>{formatNumber(timePassed.days)}</span>
-                            <span className={styles.counter_label}>DIAS</span>
+                            <span className={styles.counter_label}>Dias</span>
                         </div>
                     </div>
 

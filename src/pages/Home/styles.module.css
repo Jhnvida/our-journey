@@ -188,7 +188,7 @@
 }
 
 .timeline_section {
-    padding: 128px 0;
+    padding: 64px 0;
     background-color: var(--lp-surface-container-low);
 }
 
@@ -267,37 +267,39 @@
     color: var(--lp-secondary);
 }
 
-.split_section {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 128px 20px;
+.kitchen_section {
+    padding: 64px 0;
     background-color: var(--lp-surface-container-low);
 }
 
-.split_grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 80px;
+.kitchen_container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.kitchen_cards_container {
-    position: relative;
-
-    width: 100%;
-    max-width: 640px;
-    min-height: 900px;
-    margin: 0 auto;
+.kitchen_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
 }
 
 .kitchen_card {
-    position: absolute;
-    transform-origin: center;
+    display: flex;
+    flex-direction: column;
 
     width: 100%;
     padding: 24px;
+    border: 1px solid rgb(0 0 0 / 5%);
 
     background-color: var(--lp-surface);
     box-shadow: 0 10px 40px rgb(0 0 0 / 8%);
+}
+
+.kitchen_card_content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .kitchen_card_img {
@@ -357,6 +359,17 @@
     color: var(--lp-on-surface-variant);
 
     background-color: var(--lp-surface-container);
+}
+
+.chapters_section {
+    padding: 64px 0;
+    background-color: var(--lp-surface-container-low);
+}
+
+.chapters_container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .chapters_list {
@@ -526,21 +539,28 @@
         text-align: left;
     }
 
+    .timeline_section,
+    .kitchen_section,
+    .chapters_section {
+        padding: 128px 0;
+    }
+
+    .timeline_masonry,
+    .kitchen_container,
+    .chapters_container {
+        padding: 0 64px;
+    }
+
     .timeline_masonry {
         column-count: 2;
-        padding: 0 64px;
     }
 
     .timeline_masonry_title {
         font-size: 30px;
     }
 
-    .split_section {
-        padding: 128px 64px;
-    }
-
-    .split_grid {
-        grid-template-columns: 1fr;
+    .kitchen_grid {
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     }
 
     .nav_links {
@@ -559,21 +579,12 @@
 }
 
 @media (width >= 1024px) {
-    .split_grid {
-        grid-template-columns: 1fr 1fr;
+    .kitchen_grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .timeline_masonry {
         column-count: 3;
-    }
-
-    .kitchen_cards_container {
-        min-height: 850px;
-    }
-
-    .kitchen_card {
-        width: 91.6667%;
-        padding: 32px;
     }
 
     .chapter_item {

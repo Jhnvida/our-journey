@@ -23,10 +23,10 @@ export function ChaptersList({ chapters, onEdit, onDelete }: ChaptersListProps) 
                             </div>
 
                             <div className={styles.event_actions}>
-                                <button className={styles.button_small} onClick={() => onEdit(chapter)}>
+                                <button className="btn btn-small" onClick={() => onEdit(chapter)}>
                                     Editar
                                 </button>
-                                <button className={styles.button_small} onClick={() => onDelete(chapter.id)}>
+                                <button className="btn btn-small" onClick={() => onDelete(chapter.id)}>
                                     Excluir
                                 </button>
                             </div>

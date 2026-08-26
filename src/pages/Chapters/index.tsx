@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useState } from "react";
-import { SectionHeader } from "../../components/SectionHeader";
+import { DashboardHeader } from "../../components/DashboardHeader";
 import { useChapters } from "../../hooks/useChapters";
 import styles from "../../styles/admin.module.css";
 import type { Chapter } from "../../types";
@@ -51,11 +51,11 @@ export function Chapters() {
             transition={{ duration: 0.4 }}
         >
             <div className={styles.header}>
-                <SectionHeader title="Próximos Capítulos" subtitle="Gerencie os planos futuros" />
+                <DashboardHeader title="Próximos Capítulos" subtitle="Gerencie os planos futuros" />
 
                 {!isFormOpen && (
                     <motion.button
-                        className={styles.button}
+                        className="btn btn-primary"
                         onClick={handleOpenForm}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.95 }}
@@ -65,7 +65,7 @@ export function Chapters() {
                 )}
             </div>
 
-            {error && <div className={styles.error_message}>{error}</div>}
+            {error && <div className="alert-error">{error}</div>}
 
             {isFormOpen ? (
                 <ChaptersForm data={selectedChapter} onSave={handleSave} onCancel={handleCloseForm} loading={loading} />

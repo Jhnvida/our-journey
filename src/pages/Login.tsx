@@ -48,11 +48,11 @@ export function Login() {
                 <p className={styles.subtitle}>Acesso Restrito</p>
                 <h1 className={styles.title}>Gerenciar Jornada</h1>
 
-                {error && <div className={styles.error_message}>{error}</div>}
+                {error && <div className="alert-error">{error}</div>}
 
                 <form className={styles.form} onSubmit={handleLogin}>
                     <div className={styles.form_group}>
-                        <label htmlFor="email" className={styles.form_label}>
+                        <label htmlFor="email" className="form-label">
                             E-mail
                         </label>
                         <input
@@ -60,14 +60,14 @@ export function Login() {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className={styles.form_input}
+                            className="form-input"
                             placeholder="seu@email.com"
                             required
                         />
                     </div>
 
                     <div className={styles.form_group}>
-                        <label htmlFor="password" className={styles.form_label}>
+                        <label htmlFor="password" className="form-label">
                             Senha
                         </label>
                         <input
@@ -75,7 +75,7 @@ export function Login() {
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className={styles.form_input}
+                            className="form-input"
                             placeholder="••••••••"
                             required
                         />
@@ -84,14 +84,14 @@ export function Login() {
                     <div className={styles.button_group}>
                         <motion.button
                             type="submit"
-                            className={styles.button}
+                            className="btn btn-primary"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.95 }}
                         >
                             Entrar
                         </motion.button>
 
-                        <Link to="/" className={styles.back_button}>
+                        <Link to="/" className="btn btn-secondary">
                             Voltar
                         </Link>
                     </div>

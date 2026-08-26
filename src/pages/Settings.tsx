@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { SectionHeader } from "../components/SectionHeader";
+import { DashboardHeader } from "../components/DashboardHeader";
 import { useSettings } from "../hooks/useSettings";
 import styles from "../styles/admin.module.css";
 
@@ -36,21 +36,21 @@ export function Settings() {
             transition={{ duration: 0.4 }}
         >
             <div className={styles.header}>
-                <SectionHeader title="Configurações" subtitle="Gerencie as configurações gerais" />
+                <DashboardHeader title="Configurações" subtitle="Gerencie as configurações gerais" />
             </div>
 
-            {error && <div className={styles.error_message}>{error}</div>}
+            {error && <div className="alert-error">{error}</div>}
 
             <div className={styles.form_container}>
                 <h3 className={styles.list_title}>Editar Configurações</h3>
 
                 <div className={styles.form_row}>
                     <div className={styles.form_group}>
-                        <label className={styles.label} htmlFor="date">
+                        <label className="form-label" htmlFor="date">
                             Data de início do relacionamento
                         </label>
                         <input
-                            className={styles.input}
+                            className="form-input"
                             type="date"
                             id="date"
                             value={date}
@@ -62,7 +62,7 @@ export function Settings() {
 
                 <div className={styles.form_actions}>
                     <motion.button
-                        className={styles.button}
+                        className="btn btn-primary"
                         onClick={handleSave}
                         disabled={loading}
                         whileHover={{ scale: 1.02 }}

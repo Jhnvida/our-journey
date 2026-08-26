@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useState } from "react";
-import { SectionHeader } from "../../components/SectionHeader";
+import { DashboardHeader } from "../../components/DashboardHeader";
 import { useRecipes } from "../../hooks/useRecipes";
 import styles from "../../styles/admin.module.css";
 import type { Recipe } from "../../types";
@@ -51,11 +51,11 @@ export function Recipes() {
             transition={{ duration: 0.4 }}
         >
             <div className={styles.header}>
-                <SectionHeader title="A Nossa Cozinha" subtitle="Gerencie as receitas" />
+                <DashboardHeader title="A Nossa Cozinha" subtitle="Gerencie as receitas" />
 
                 {!isFormOpen && (
                     <motion.button
-                        className={styles.button}
+                        className="btn btn-primary"
                         onClick={handleOpenForm}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.95 }}
@@ -65,7 +65,7 @@ export function Recipes() {
                 )}
             </div>
 
-            {error && <div className={styles.error_message}>{error}</div>}
+            {error && <div className="alert-error">{error}</div>}
 
             {isFormOpen ? (
                 <RecipesForm data={selectedRecipe} onSave={handleSave} onCancel={handleCloseForm} loading={loading} />
