@@ -3,7 +3,7 @@ import { ProtectedRoute } from "../../components/ProtectedRoute";
 import { Sidebar } from "./components/Sidebar";
 import styles from "./styles.module.css";
 
-export function DashboardLayout() {
+export function Dashboard() {
     return (
         <ProtectedRoute>
             <main className={styles.container}>

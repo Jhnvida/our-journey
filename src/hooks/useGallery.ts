@@ -68,5 +68,5 @@ export function useGallery() {
         else await fetchImages();
     }
 
-    return { images, loading, error, uploadImage, deleteImage, fetchImages };
+    return { images, loading, error, uploadImage, deleteImage };
 }

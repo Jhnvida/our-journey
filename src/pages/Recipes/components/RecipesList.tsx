@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
+import styles from "../../../styles/admin.module.css";
 import type { Recipe } from "../../../types";
-import styles from "../../Dashboard/admin.module.css";
 
 interface RecipesListProps {
     recipes: Recipe[];

@@ -45,5 +45,5 @@ export function useSettings() {
         else await fetchSettings();
     }
 
-    return { settings, loading, error, updateDate, fetchSettings };
+    return { settings, loading, error, updateDate };
 }

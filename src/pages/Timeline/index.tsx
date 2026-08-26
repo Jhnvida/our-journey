@@ -2,8 +2,8 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { SectionHeader } from "../../components/SectionHeader";
 import { useTimelineEvents } from "../../hooks/useTimelineEvents";
+import styles from "../../styles/admin.module.css";
 import type { TimelineEvent } from "../../types";
-import styles from "../Dashboard/admin.module.css";
 import { TimelineForm } from "./components/TimelineForm";
 import { TimelineList } from "./components/TimelineList";
 

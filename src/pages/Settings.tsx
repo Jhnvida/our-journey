@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { SectionHeader } from "../components/SectionHeader";
 import { useSettings } from "../hooks/useSettings";
-import styles from "./Settings.module.css";
+import styles from "../styles/admin.module.css";
 
 export function Settings() {
     const { settings, loading, error, updateDate } = useSettings();

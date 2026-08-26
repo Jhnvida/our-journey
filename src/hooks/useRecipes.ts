@@ -48,5 +48,5 @@ export function useRecipes() {
         else await fetchRecipes();
     }
 
-    return { recipes, loading, error, addRecipe, updateRecipe, removeRecipe, fetchRecipes };
+    return { recipes, loading, error, addRecipe, updateRecipe, removeRecipe };
 }

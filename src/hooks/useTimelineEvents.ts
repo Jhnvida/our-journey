@@ -48,5 +48,5 @@ export function useTimelineEvents() {
         else await fetchEvents();
     }
 
-    return { events, loading, error, addEvent, updateEvent, removeEvent, fetchEvents };
+    return { events, loading, error, addEvent, updateEvent, removeEvent };
 }

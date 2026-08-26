@@ -1,7 +1,7 @@
 import { useState, type SubmitEvent } from "react";
 import { ImageSelector } from "../../../components/ImageSelector";
+import styles from "../../../styles/admin.module.css";
 import type { Recipe } from "../../../types";
-import styles from "../../Dashboard/admin.module.css";
 
 interface RecipesFormProps {
     data?: Recipe | null;

@@ -192,11 +192,6 @@
     background-color: var(--lp-surface-container-low);
 }
 
-.section_header {
-    margin-bottom: 48px;
-    padding: 0 20px;
-}
-
 .section_title {
     margin: 0 auto 64px;
 
@@ -283,23 +278,6 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 80px;
-}
-
-.kitchen_section {
-    display: flex;
-    flex-direction: column;
-}
-
-.kitchen_subtitle {
-    max-width: 448px;
-    margin-right: auto;
-    margin-bottom: 64px;
-    margin-left: auto;
-
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--lp-secondary);
-    text-align: center;
 }
 
 .kitchen_cards_container {
@@ -619,9 +597,4 @@
     .footer_brand {
         margin-bottom: 0;
     }
-}
-
-.section_title_small {
-    margin-bottom: 16px;
-    text-align: center;
 }

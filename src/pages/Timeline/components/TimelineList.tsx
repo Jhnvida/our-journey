@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { formatDate } from "../../../lib/formatDate";
+import styles from "../../../styles/admin.module.css";
 import type { TimelineEvent } from "../../../types";
-import styles from "../../Dashboard/admin.module.css";
 
 interface TimelineListProps {
     events: TimelineEvent[];

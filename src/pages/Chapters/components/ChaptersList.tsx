@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
+import styles from "../../../styles/admin.module.css";
 import type { Chapter } from "../../../types";
-import styles from "../../Dashboard/admin.module.css";
 
 interface ChaptersListProps {
     chapters: Chapter[];

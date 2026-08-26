@@ -8,10 +8,8 @@ interface SectionHeaderProps {
 export function SectionHeader({ title, subtitle }: SectionHeaderProps) {
     return (
         <div className={styles.header}>
-            <div>
-                <h2 className={styles.title}>{title}</h2>
-                <p className={styles.subtitle}>{subtitle}</p>
-            </div>
+            <h2 className={styles.title}>{title}</h2>
+            <p className={styles.subtitle}>{subtitle}</p>
         </div>
     );
 }

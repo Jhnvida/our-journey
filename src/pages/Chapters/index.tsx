@@ -2,8 +2,8 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { SectionHeader } from "../../components/SectionHeader";
 import { useChapters } from "../../hooks/useChapters";
+import styles from "../../styles/admin.module.css";
 import type { Chapter } from "../../types";
-import styles from "../Dashboard/admin.module.css";
 import { ChaptersForm } from "./components/ChaptersForm";
 import { ChaptersList } from "./components/ChaptersList";
 

@@ -2,8 +2,8 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { SectionHeader } from "../../components/SectionHeader";
 import { useRecipes } from "../../hooks/useRecipes";
+import styles from "../../styles/admin.module.css";
 import type { Recipe } from "../../types";
-import styles from "../Dashboard/admin.module.css";
 import { RecipesForm } from "./components/RecipesForm";
 import { RecipesList } from "./components/RecipesList";
 

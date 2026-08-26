@@ -1,6 +1,6 @@
 import { useState, type SubmitEvent } from "react";
+import styles from "../../../styles/admin.module.css";
 import type { Chapter } from "../../../types";
-import styles from "../../Dashboard/admin.module.css";
 
 interface ChaptersFormProps {
     data?: Chapter | null;

@@ -1,12 +1,11 @@
 .header {
     display: flex;
     flex-direction: column;
-    margin-bottom: 64px;
-}
-
-.align_center {
     align-items: center;
     justify-content: center;
+
+    margin-bottom: 64px;
+
     text-align: center;
 }
 
@@ -22,6 +21,7 @@
 
 .subtitle {
     max-width: 42rem;
+    margin: 0 auto;
 
     font-family: var(--lp-font-body);
     font-size: 20px;
@@ -29,19 +29,8 @@
     color: var(--lp-secondary);
 }
 
-.align_center .subtitle {
-    margin: 0 auto;
-}
-
 @media (width >= 768px) {
     .header {
-        flex-direction: row;
-        align-items: flex-end;
-        justify-content: space-between;
-        margin-bottom: 80px;
-    }
-
-    .align_center {
         margin-bottom: 96px;
     }
 

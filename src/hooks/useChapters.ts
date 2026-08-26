@@ -45,5 +45,5 @@ export function useChapters() {
         else await fetchChapters();
     }
 
-    return { chapters, loading, error, addChapter, updateChapter, removeChapter, fetchChapters };
+    return { chapters, loading, error, addChapter, updateChapter, removeChapter };
 }

@@ -5,7 +5,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import styles from "./Sidebar.module.css";
 
 const navigations = [
-    { value: "timeline", label: "A Linha do Tempo", icon: <History /> },
+    { value: "", label: "A Linha do Tempo", icon: <History /> },
     { value: "recipes", label: "A Nossa Cozinha", icon: <ChefHat /> },
     { value: "chapters", label: "Próximos Capítulos", icon: <Sparkles /> },
     { value: "settings", label: "Configurações", icon: <TableConfig /> },
@@ -37,7 +37,8 @@ export function Sidebar() {
                 {navigations.map((nav) => (
                     <NavLink
                         key={nav.label}
-                        to={`/dashboard/${nav.value}`}
+                        to={nav.value ? `/dashboard/${nav.value}` : "/dashboard"}
+                        end={nav.value === ""}
                         className={({ isActive }: { isActive: boolean }) =>
                             `${styles.nav_item} ${isActive ? styles.active : ""}`
                         }
