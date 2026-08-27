@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import styles from "../../../styles/admin.module.css";
 import type { Recipe } from "../../../types";
 
@@ -13,7 +12,7 @@ export function RecipesList({ recipes, onEdit, onDelete }: RecipesListProps) {
         <div className={styles.list_section}>
             <div className={styles.event_list}>
                 {recipes.map((recipe) => (
-                    <motion.div key={recipe.id} className={styles.event_card} whileHover={{ y: -5 }}>
+                    <div key={recipe.id} className={styles.event_card}>
                         {recipe.image_url && (
                             <img src={recipe.image_url} alt={recipe.title} className={styles.event_image} />
                         )}
@@ -34,7 +33,7 @@ export function RecipesList({ recipes, onEdit, onDelete }: RecipesListProps) {
                                 </button>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
             </div>
         </div>

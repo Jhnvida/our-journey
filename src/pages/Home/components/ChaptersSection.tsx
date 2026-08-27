@@ -11,6 +11,7 @@ export function ChaptersSection() {
     return (
         <section className={styles.chapters_section}>
             <SectionHeader title="Próximos Capítulos" subtitle="Acompanhe a nossa jornada passo a passo." />
+
             <div className={styles.chapters_container}>
                 <div className={styles.chapters_list}>
                     {chapters.map((chapter) => {
@@ -26,12 +27,14 @@ export function ChaptersSection() {
                                     </div>
                                     <h4 className={styles.chapter_title}>{chapter.title}</h4>
                                 </div>
+
                                 <div className={styles.chapter_status}>
                                     <span
                                         className={isCompleted ? styles.status_label_done : styles.status_label_pending}
                                     >
                                         {isCompleted ? "Concluído" : "Pendente"}
                                     </span>
+
                                     <div
                                         className={`${styles.progress_bar} ${isCompleted ? styles.progress_bar_done : styles.progress_bar_pending}`}
                                     >

@@ -1,5 +1,4 @@
 import { Trash2 } from "lucide-react";
-import { motion } from "motion/react";
 import { useRef, type ChangeEvent } from "react";
 import { DashboardHeader } from "../components/DashboardHeader";
 import { useGallery } from "../hooks/useGallery";
@@ -34,23 +33,14 @@ export function Gallery() {
     }
 
     return (
-        <motion.div
-            className={styles.container}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-        >
+        <div className={styles.container}>
             <div className={styles.header}>
                 <DashboardHeader title="Galeria de Imagens" subtitle="Gerencie as fotos da jornada" />
-                <motion.button
-                    className="btn btn-primary"
-                    onClick={handleUploadClick}
-                    disabled={loading}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.95 }}
-                >
+
+                <button className="btn btn-primary" onClick={handleUploadClick} disabled={loading}>
                     {loading ? "Processando..." : "Nova Imagem"}
-                </motion.button>
+                </button>
+
                 <input
                     type="file"
                     ref={fileInputRef}
@@ -64,10 +54,11 @@ export function Gallery() {
 
             <div className={styles.grid}>
                 {images.map((img) => (
-                    <motion.div key={img.name} className={styles.image_card} whileHover={{ y: -5 }}>
+                    <div key={img.name} className={styles.image_card}>
                         <div className={styles.image_wrapper}>
                             <img src={img.url} alt={img.name} className={styles.image} />
                         </div>
+
                         <div className={styles.image_actions}>
                             <span className={styles.image_name}>{img.name.split("_")[0]}...</span>
                             <button
@@ -78,9 +69,9 @@ export function Gallery() {
                                 <Trash2 size={14} />
                             </button>
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
             </div>
-        </motion.div>
+        </div>
     );
 }

@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { useEffect, useState, type SubmitEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
@@ -39,12 +38,7 @@ export function Login() {
 
     return (
         <main className={styles.container}>
-            <motion.div
-                className={styles.content}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-            >
+            <div className={styles.content}>
                 <p className={styles.subtitle}>Acesso Restrito</p>
                 <h1 className={styles.title}>Gerenciar Jornada</h1>
 
@@ -82,21 +76,16 @@ export function Login() {
                     </div>
 
                     <div className={styles.button_group}>
-                        <motion.button
-                            type="submit"
-                            className="btn btn-primary"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
+                        <button type="submit" className="btn btn-primary">
                             Entrar
-                        </motion.button>
+                        </button>
 
                         <Link to="/" className="btn btn-secondary">
                             Voltar
                         </Link>
                     </div>
                 </form>
-            </motion.div>
+            </div>
         </main>
     );
 }

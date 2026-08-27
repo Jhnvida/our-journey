@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import styles from "../../../styles/admin.module.css";
 import type { Chapter } from "../../../types";
 
@@ -13,7 +12,7 @@ export function ChaptersList({ chapters, onEdit, onDelete }: ChaptersListProps) 
         <div className={styles.list_section}>
             <div className={styles.event_list}>
                 {chapters.map((chapter) => (
-                    <motion.div key={chapter.id} className={styles.event_card} whileHover={{ y: -5 }}>
+                    <div key={chapter.id} className={styles.event_card}>
                         <div className={styles.event_card_body}>
                             <div className={styles.event_content}>
                                 <h4 className={styles.event_title}>{chapter.title}</h4>
@@ -31,7 +30,7 @@ export function ChaptersList({ chapters, onEdit, onDelete }: ChaptersListProps) 
                                 </button>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
             </div>
         </div>

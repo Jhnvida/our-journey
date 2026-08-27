@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { DashboardHeader } from "../components/DashboardHeader";
 import { useSettings } from "../hooks/useSettings";
@@ -29,12 +28,7 @@ export function Settings() {
     }
 
     return (
-        <motion.div
-            className={styles.container}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-        >
+        <div className={styles.container}>
             <div className={styles.header}>
                 <DashboardHeader title="Configurações" subtitle="Gerencie as configurações gerais" />
             </div>
@@ -61,17 +55,11 @@ export function Settings() {
                 </div>
 
                 <div className={styles.form_actions}>
-                    <motion.button
-                        className="btn btn-primary"
-                        onClick={handleSave}
-                        disabled={loading}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
+                    <button className="btn btn-primary" onClick={handleSave} disabled={loading}>
                         {loading ? "Salvando..." : "Salvar Alterações"}
-                    </motion.button>
+                    </button>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 }

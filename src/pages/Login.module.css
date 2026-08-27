@@ -61,6 +61,10 @@
     margin-top: 16px;
 }
 
+.button_group > * {
+    width: 100%;
+}
+
 @media (width >= 768px) {
     .container {
         padding-top: 96px;

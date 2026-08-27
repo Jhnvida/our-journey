@@ -28,6 +28,7 @@ export function ImageSelector({ value, onChange }: ImageSelectorProps) {
             {value ? (
                 <div className={styles.selected_preview}>
                     <img src={value} alt="Selecionada" />
+
                     <button
                         type="button"
                         className={styles.remove_preview_btn}

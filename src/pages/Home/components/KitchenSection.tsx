@@ -1,5 +1,5 @@
 import { Clock } from "lucide-react";
-import { motion } from "motion/react";
+
 import { SectionHeader } from "../../../components/SectionHeader";
 import { useRecipes } from "../../../hooks/useRecipes";
 import styles from "../styles.module.css";
@@ -18,21 +18,14 @@ export function KitchenSection() {
 
             <div className={styles.kitchen_container}>
                 <div className={styles.kitchen_grid}>
-                    {recipes.map((recipe, index) => (
-                        <motion.div
-                            key={recipe.id}
-                            className={styles.kitchen_card}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            whileHover={{ scale: 1.02 }}
-                        >
+                    {recipes.map((recipe) => (
+                        <div key={recipe.id} className={styles.kitchen_card}>
                             <img
                                 src={recipe.image_url || undefined}
                                 alt={recipe.title}
                                 className={styles.kitchen_card_img}
                             />
+
                             <div className={styles.kitchen_card_content}>
                                 <h3 className={styles.kitchen_card_title}>{recipe.title}</h3>
                                 <p className={styles.kitchen_card_desc}>{recipe.description}</p>
@@ -42,6 +35,7 @@ export function KitchenSection() {
                                         <p className={styles.ingredients_label}>
                                             <Clock size={14} /> Ingredientes
                                         </p>
+
                                         <div className={styles.ingredients_list}>
                                             {recipe.ingredients.map((ing: string, i: number) => (
                                                 <span key={i} className={styles.ingredient_item}>
@@ -52,7 +46,7 @@ export function KitchenSection() {
                                     </div>
                                 )}
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

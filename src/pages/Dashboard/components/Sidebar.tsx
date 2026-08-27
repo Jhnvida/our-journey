@@ -1,5 +1,6 @@
-import { ChefHat, History, Image, LogOut, Sparkles, TableConfig } from "lucide-react";
-import { motion } from "motion/react";
+import { ChefHat, History, Image, LogOut, Menu, Sparkles, TableConfig, X } from "lucide-react";
+
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import styles from "./Sidebar.module.css";
@@ -15,6 +16,7 @@ const navigations = [
 export function Sidebar() {
     const { signOut } = useAuth();
     const navigate = useNavigate();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     async function handleSignOut() {
         signOut();
@@ -22,18 +24,19 @@ export function Sidebar() {
     }
 
     return (
-        <motion.div
-            className={styles.sidebar}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-        >
+        <div className={styles.sidebar}>
             <div className={styles.header}>
-                <h1>Nossa Jornada</h1>
-                <p>Painel de Controle</p>
+                <div className={styles.header_content}>
+                    <h1>A Nossa Jornada</h1>
+                    <p>Painel Administrativo</p>
+                </div>
+
+                <button className={styles.mobile_menu_btn} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                    {isMobileMenuOpen ? <X /> : <Menu />}
+                </button>
             </div>
 
-            <div className={styles.nav}>
+            <div className={`${styles.nav} ${isMobileMenuOpen ? styles.nav_open : ""}`}>
                 {navigations.map((nav) => (
                     <NavLink
                         key={nav.label}
@@ -47,20 +50,14 @@ export function Sidebar() {
                         <span>{nav.label}</span>
                     </NavLink>
                 ))}
-            </div>
 
-            <div className={styles.footer}>
-                <motion.button
-                    onClick={handleSignOut}
-                    className="btn btn-secondary"
-                    style={{ width: "100%" }}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.95 }}
-                >
-                    <LogOut className={styles.icon} />
-                    Sair
-                </motion.button>
+                <div className={styles.footer}>
+                    <button onClick={handleSignOut} className="btn btn-secondary" style={{ width: "100%" }}>
+                        <LogOut className={styles.icon} />
+                        Sair
+                    </button>
+                </div>
             </div>
-        </motion.div>
+        </div>
     );
 }

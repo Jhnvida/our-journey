@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { useState } from "react";
 import { DashboardHeader } from "../../components/DashboardHeader";
 import { useChapters } from "../../hooks/useChapters";
@@ -44,24 +43,14 @@ export function Chapters() {
     }
 
     return (
-        <motion.div
-            className={styles.container}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-        >
+        <div className={styles.container}>
             <div className={styles.header}>
                 <DashboardHeader title="Próximos Capítulos" subtitle="Gerencie os planos futuros" />
 
                 {!isFormOpen && (
-                    <motion.button
-                        className="btn btn-primary"
-                        onClick={handleOpenForm}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
+                    <button className="btn btn-primary" onClick={handleOpenForm}>
                         Novo Capítulo
-                    </motion.button>
+                    </button>
                 )}
             </div>
 
@@ -72,6 +61,6 @@ export function Chapters() {
             ) : (
                 <ChaptersList chapters={chapters} onEdit={handleEdit} onDelete={handleDelete} />
             )}
-        </motion.div>
+        </div>
     );
 }

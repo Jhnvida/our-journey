@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { useState } from "react";
 import { DashboardHeader } from "../../components/DashboardHeader";
 import { useTimelineEvents } from "../../hooks/useTimelineEvents";
@@ -44,23 +43,13 @@ export function Timeline() {
     }
 
     return (
-        <motion.div
-            className={styles.container}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-        >
+        <div className={styles.container}>
             <div className={styles.header}>
                 <DashboardHeader title="A Linha do Tempo" subtitle="Gerencie os eventos da história" />
                 {!isFormOpen && (
-                    <motion.button
-                        className="btn btn-primary"
-                        onClick={handleOpenForm}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
+                    <button className="btn btn-primary" onClick={handleOpenForm}>
                         Novo Evento
-                    </motion.button>
+                    </button>
                 )}
             </div>
 
@@ -71,6 +60,6 @@ export function Timeline() {
             ) : (
                 <TimelineList events={events} onEdit={handleEdit} onDelete={handleDelete} />
             )}
-        </motion.div>
+        </div>
     );
 }

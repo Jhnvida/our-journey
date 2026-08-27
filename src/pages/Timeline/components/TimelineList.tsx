@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { formatDate } from "../../../lib/formatDate";
 import styles from "../../../styles/admin.module.css";
 import type { TimelineEvent } from "../../../types";
@@ -14,7 +13,7 @@ export function TimelineList({ events, onEdit, onDelete }: TimelineListProps) {
         <div className={styles.list_section}>
             <div className={styles.event_list}>
                 {events.map((event) => (
-                    <motion.div key={event.id} className={styles.event_card} whileHover={{ y: -5 }}>
+                    <div key={event.id} className={styles.event_card}>
                         {event.image_url && (
                             <img src={event.image_url} alt={event.title} className={styles.event_image} />
                         )}
@@ -22,7 +21,6 @@ export function TimelineList({ events, onEdit, onDelete }: TimelineListProps) {
                         <div className={styles.event_card_body}>
                             <div className={styles.event_content}>
                                 <h4 className={styles.event_title}>{event.title}</h4>
-
                                 <span className={styles.event_date}>{formatDate(event.date)}</span>
 
                                 {event.description && <p className={styles.event_description}>{event.description}</p>}
@@ -37,7 +35,7 @@ export function TimelineList({ events, onEdit, onDelete }: TimelineListProps) {
                                 </button>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
             </div>
         </div>

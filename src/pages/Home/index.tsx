@@ -9,7 +9,6 @@ export function Home() {
         <main className={styles.container}>
             <HeroSection />
             <TimelineSection />
-
             <KitchenSection />
             <ChaptersSection />
 
