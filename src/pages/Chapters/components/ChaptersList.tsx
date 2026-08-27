@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+import { fadeInUp, staggerContainer } from "../../../lib/motion";
 import styles from "../../../styles/admin.module.css";
 import type { Chapter } from "../../../types";
 
@@ -7,12 +9,15 @@ interface ChaptersListProps {
     onDelete: (id: string) => void;
 }
 
+const containerVariants = staggerContainer(0.05);
+const cardVariants = fadeInUp(12, 0.3);
+
 export function ChaptersList({ chapters, onEdit, onDelete }: ChaptersListProps) {
     return (
         <div className={styles.list_section}>
-            <div className={styles.event_list}>
+            <motion.div className={styles.event_list} initial="hidden" animate="visible" variants={containerVariants}>
                 {chapters.map((chapter) => (
-                    <div key={chapter.id} className={styles.event_card}>
+                    <motion.div key={chapter.id} className={styles.event_card} variants={cardVariants}>
                         <div className={styles.event_card_body}>
                             <div className={styles.event_content}>
                                 <h4 className={styles.event_title}>{chapter.title}</h4>
@@ -30,9 +35,9 @@ export function ChaptersList({ chapters, onEdit, onDelete }: ChaptersListProps) 
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </div>
     );
 }

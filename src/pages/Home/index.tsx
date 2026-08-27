@@ -1,20 +1,30 @@
-import { ChaptersSection } from "./components/ChaptersSection";
-import { HeroSection } from "./components/HeroSection";
-import { KitchenSection } from "./components/KitchenSection";
-import { TimelineSection } from "./components/TimelineSection";
+import { motion } from "motion/react";
+import { fadeIn, viewportOnce } from "../../lib/motion";
+import { Chapters } from "./sections/Chapters";
+import { Hero } from "./sections/Hero";
+import { Kitchen } from "./sections/Kitchen";
+import { Timeline } from "./sections/Timeline";
 import styles from "./styles.module.css";
+
+const footerVariants = fadeIn();
 
 export function Home() {
     return (
         <main className={styles.container}>
-            <HeroSection />
-            <TimelineSection />
-            <KitchenSection />
-            <ChaptersSection />
+            <Hero />
+            <Timeline />
+            <Kitchen />
+            <Chapters />
 
-            <footer className={styles.footer}>
+            <motion.footer
+                className={styles.footer}
+                variants={footerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOnce}
+            >
                 <div className={styles.footer_brand}>A Nossa Jornada</div>
-            </footer>
+            </motion.footer>
         </main>
     );
 }

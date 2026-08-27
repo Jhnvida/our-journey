@@ -59,10 +59,6 @@
     background: none;
 }
 
-.close_button:hover {
-    color: var(--lp-primary);
-}
-
 .modal_body {
     overflow-y: auto;
     flex: 1;
@@ -79,10 +75,6 @@
     cursor: pointer;
     overflow: hidden;
     border: 2px solid transparent;
-}
-
-.image_item:hover {
-    border-color: var(--lp-primary);
 }
 
 .image_item_selected {
@@ -166,10 +158,6 @@
     background: rgb(0 0 0 / 60%);
 }
 
-.remove_preview_btn:hover {
-    background: rgb(220 38 38 / 90%);
-}
-
 .open_modal_btn {
     cursor: pointer;
 
@@ -187,11 +175,6 @@
     color: var(--lp-on-surface);
 
     background: transparent;
-}
-
-.open_modal_btn:hover {
-    border-color: var(--lp-primary);
-    background: var(--lp-surface-container);
 }
 
 @media (width >= 768px) {

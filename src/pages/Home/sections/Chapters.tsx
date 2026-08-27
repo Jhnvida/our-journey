@@ -1,11 +1,20 @@
 import { Check, CircleDashed } from "lucide-react";
+import { motion } from "motion/react";
 import { SectionHeader } from "../../../components/SectionHeader";
 import { useChapters } from "../../../hooks/useChapters";
-import styles from "../styles.module.css";
+import { duration, easing, fadeInLeft, staggerContainer, viewportOnce } from "../../../lib/motion";
+import styles from "./Chapters.module.css";
 
-export function ChaptersSection() {
+const containerVariants = staggerContainer(0.06);
+const itemVariants = fadeInLeft(-16);
+
+const progressFillVariants = {
+    hidden: { width: "0%" },
+    visible: { width: "100%", transition: { duration: duration.slow, ease: easing.gentle, delay: 0.3 } },
+};
+
+export function Chapters() {
     const { chapters } = useChapters();
-
     if (!chapters || chapters.length === 0) return null;
 
     return (
@@ -13,12 +22,18 @@ export function ChaptersSection() {
             <SectionHeader title="Próximos Capítulos" subtitle="Acompanhe a nossa jornada passo a passo." />
 
             <div className={styles.chapters_container}>
-                <div className={styles.chapters_list}>
+                <motion.div
+                    className={styles.chapters_list}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={viewportOnce}
+                    variants={containerVariants}
+                >
                     {chapters.map((chapter) => {
                         const isCompleted = chapter.status === "concluido";
 
                         return (
-                            <div key={chapter.id} className={styles.chapter_item}>
+                            <motion.div key={chapter.id} className={styles.chapter_item} variants={itemVariants}>
                                 <div className={styles.chapter_info}>
                                     <div
                                         className={isCompleted ? styles.chapter_icon_done : styles.chapter_icon_pending}
@@ -38,19 +53,23 @@ export function ChaptersSection() {
                                     <div
                                         className={`${styles.progress_bar} ${isCompleted ? styles.progress_bar_done : styles.progress_bar_pending}`}
                                     >
-                                        <div
-                                            className={
-                                                isCompleted
-                                                    ? styles.progress_bar_done_fill
-                                                    : styles.progress_bar_pending_fill
-                                            }
-                                        ></div>
+                                        {isCompleted ? (
+                                            <motion.div
+                                                className={styles.progress_bar_done_fill}
+                                                variants={progressFillVariants}
+                                                initial="hidden"
+                                                whileInView="visible"
+                                                viewport={viewportOnce}
+                                            />
+                                        ) : (
+                                            <div className={styles.progress_bar_pending_fill}></div>
+                                        )}
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         );
                     })}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

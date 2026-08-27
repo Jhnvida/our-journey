@@ -34,15 +34,12 @@ export function useGallery() {
 
             const imageObjects = validFiles.map((file) => {
                 const { data: publicUrlData } = supabase.storage.from(bucketName).getPublicUrl(file.name);
-                return {
-                    name: file.name,
-                    url: publicUrlData.publicUrl,
-                    created_at: file.created_at,
-                };
+                return { name: file.name, url: publicUrlData.publicUrl, created_at: file.created_at };
             });
 
             setImages(imageObjects);
         }
+
         setLoading(false);
     }
 

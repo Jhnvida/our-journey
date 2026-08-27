@@ -1,10 +1,16 @@
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSettings } from "../../../hooks/useSettings";
 import { calculateTime } from "../../../lib/calculateTime";
-import styles from "../styles.module.css";
+import { duration, fadeIn, fadeInUp, staggerContainer } from "../../../lib/motion";
+import styles from "./Hero.module.css";
 
-export function HeroSection() {
+const heroContainerVariants = staggerContainer(0.1, 0.1);
+const counterContainerVariants = staggerContainer(0.12, 0);
+const counterItemVariants = fadeInUp(20, duration.slow);
+
+export function Hero() {
     const { settings } = useSettings();
     const [timePassed, setTimePassed] = useState({ years: 0, months: 0, days: 0 });
 
@@ -19,6 +25,7 @@ export function HeroSection() {
 
         updateTime();
         const interval = setInterval(updateTime, 1000 * 60 * 60);
+
         return () => clearInterval(interval);
     }, [settings?.relationship_start_date]);
 
@@ -30,10 +37,17 @@ export function HeroSection() {
         <section className={styles.hero_section}>
             <div className={styles.hero_bg}></div>
 
-            <header className={styles.header}>
-                <div className={styles.brand_label}>A Nossa Jornada</div>
+            <motion.header
+                className={styles.header}
+                initial="hidden"
+                animate="visible"
+                variants={staggerContainer(0.08)}
+            >
+                <motion.div className={styles.brand_label} variants={fadeInUp(8, duration.normal)}>
+                    A Nossa Jornada
+                </motion.div>
 
-                <div className={styles.header_actions}>
+                <motion.div className={styles.header_actions} variants={fadeIn(duration.normal)}>
                     <div className={styles.nav_links}>
                         <a
                             href="https://github.com/Jhnvida/our-journey"
@@ -47,34 +61,39 @@ export function HeroSection() {
                             Painel Administrativo
                         </Link>
                     </div>
-                </div>
-            </header>
+                </motion.div>
+            </motion.header>
 
             <div className={styles.hero_content}>
-                <div className={styles.hero_content_inner}>
-                    <div className={styles.counter_container}>
-                        <div className={styles.counter_item}>
+                <motion.div
+                    className={styles.hero_content_inner}
+                    initial="hidden"
+                    animate="visible"
+                    variants={heroContainerVariants}
+                >
+                    <motion.div className={styles.counter_container} variants={counterContainerVariants}>
+                        <motion.div className={styles.counter_item} variants={counterItemVariants}>
                             <span className={styles.counter_value}>{formatNumber(timePassed.years)}</span>
                             <span className={styles.counter_label}>Anos</span>
-                        </div>
+                        </motion.div>
 
-                        <div className={styles.counter_item}>
+                        <motion.div className={styles.counter_item} variants={counterItemVariants}>
                             <span className={styles.counter_value}>{formatNumber(timePassed.months)}</span>
                             <span className={styles.counter_label}>Meses</span>
-                        </div>
+                        </motion.div>
 
-                        <div className={styles.counter_item}>
+                        <motion.div className={styles.counter_item} variants={counterItemVariants}>
                             <span className={styles.counter_value}>{formatNumber(timePassed.days)}</span>
                             <span className={styles.counter_label}>Dias</span>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
 
-                    <div className={styles.hero_subtitle_container}>
+                    <motion.div className={styles.hero_subtitle_container} variants={fadeInUp(12, duration.normal)}>
                         <p className={styles.hero_subtitle}>
                             Cada segundo da nossa história, medido em momentos preciosos.
                         </p>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </div>
         </section>
     );

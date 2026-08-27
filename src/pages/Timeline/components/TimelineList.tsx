@@ -1,4 +1,6 @@
+import { motion } from "motion/react";
 import { formatDate } from "../../../lib/formatDate";
+import { fadeInUp, staggerContainer } from "../../../lib/motion";
 import styles from "../../../styles/admin.module.css";
 import type { TimelineEvent } from "../../../types";
 
@@ -8,12 +10,15 @@ interface TimelineListProps {
     onDelete: (id: string) => void;
 }
 
+const containerVariants = staggerContainer(0.05);
+const cardVariants = fadeInUp(12, 0.3);
+
 export function TimelineList({ events, onEdit, onDelete }: TimelineListProps) {
     return (
         <div className={styles.list_section}>
-            <div className={styles.event_list}>
+            <motion.div className={styles.event_list} initial="hidden" animate="visible" variants={containerVariants}>
                 {events.map((event) => (
-                    <div key={event.id} className={styles.event_card}>
+                    <motion.div key={event.id} className={styles.event_card} variants={cardVariants}>
                         {event.image_url && (
                             <img src={event.image_url} alt={event.title} className={styles.event_image} />
                         )}
@@ -22,7 +27,6 @@ export function TimelineList({ events, onEdit, onDelete }: TimelineListProps) {
                             <div className={styles.event_content}>
                                 <h4 className={styles.event_title}>{event.title}</h4>
                                 <span className={styles.event_date}>{formatDate(event.date)}</span>
-
                                 {event.description && <p className={styles.event_description}>{event.description}</p>}
                             </div>
 
@@ -35,9 +39,9 @@ export function TimelineList({ events, onEdit, onDelete }: TimelineListProps) {
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </div>
     );
 }

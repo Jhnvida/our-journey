@@ -1,8 +1,21 @@
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState, type SubmitEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { duration, easing } from "../lib/motion";
 import { supabase } from "../lib/supabase";
 import styles from "./Login.module.css";
+
+const contentVariants = {
+    hidden: { opacity: 0, y: 12, scale: 0.98 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: duration.normal, ease: easing.decelerate } },
+};
+
+const errorVariants = {
+    hidden: { opacity: 0, y: -4 },
+    visible: { opacity: 1, y: 0, transition: { duration: duration.fast } },
+    exit: { opacity: 0, y: -4, transition: { duration: duration.fast } },
+};
 
 export function Login() {
     const [email, setEmail] = useState("");
@@ -29,7 +42,6 @@ export function Login() {
             });
 
             if (error) throw error;
-
             navigate("/dashboard", { replace: true });
         } catch {
             setError("Email ou senha inválidos!");
@@ -38,11 +50,23 @@ export function Login() {
 
     return (
         <main className={styles.container}>
-            <div className={styles.content}>
+            <motion.div className={styles.content} initial="hidden" animate="visible" variants={contentVariants}>
                 <p className={styles.subtitle}>Acesso Restrito</p>
                 <h1 className={styles.title}>Gerenciar Jornada</h1>
 
-                {error && <div className="alert-error">{error}</div>}
+                <AnimatePresence>
+                    {error && (
+                        <motion.div
+                            className="alert-error"
+                            variants={errorVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                        >
+                            {error}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 <form className={styles.form} onSubmit={handleLogin}>
                     <div className={styles.form_group}>
@@ -85,7 +109,7 @@ export function Login() {
                         </Link>
                     </div>
                 </form>
-            </div>
+            </motion.div>
         </main>
     );
 }

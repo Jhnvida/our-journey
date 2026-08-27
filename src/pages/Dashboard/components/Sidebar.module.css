@@ -11,8 +11,8 @@
 .header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
     padding: 16px;
 }
@@ -41,26 +41,38 @@
 }
 
 .mobile_menu_btn {
+    cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    background: none;
-    border: none;
-    color: var(--lp-primary);
-    cursor: pointer;
+
     padding: 8px;
+    border: none;
+
+    color: var(--lp-primary);
+
+    background: none;
 }
 
-.nav {
-    display: none;
-    flex-direction: column;
-    gap: 8px;
-
+.nav_mobile {
+    overflow: hidden;
     padding: 0 16px 16px;
 }
 
-.nav.nav_open {
+.nav_mobile_inner {
     display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav_desktop {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+
+    padding: 0 16px;
 }
 
 .nav_item {
@@ -81,10 +93,13 @@
     color: var(--lp-on-surface-variant);
 
     background: transparent;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
 }
 
 .nav_item:hover {
-    color: var(--lp-primary);
     background-color: var(--lp-surface-container);
 }
 
@@ -98,10 +113,11 @@
     width: 18px;
     height: 18px;
     color: var(--lp-outline);
+    transition: color 0.15s ease;
 }
 
 .nav_item:hover svg {
-    color: var(--lp-on-surface-variant);
+    color: var(--lp-on-surface);
 }
 
 .nav_item.active svg {
@@ -111,8 +127,8 @@
 .footer {
     display: flex;
     align-items: center;
-    padding: 8px 0 0;
     margin-top: auto;
+    padding: 8px 0 0;
 }
 
 .icon {
@@ -140,18 +156,17 @@
         display: none;
     }
 
-    .header h1 {
-        font-size: 24px;
+    .nav_mobile {
+        display: none;
     }
 
-    .nav {
-        display: flex;
+    .nav_desktop {
         overflow-x: visible;
-        flex: 1;
-        flex-direction: column;
-        gap: 4px;
+        display: flex;
+    }
 
-        padding: 0 16px;
+    .header h1 {
+        font-size: 24px;
     }
 
     .nav_item {

@@ -1,8 +1,13 @@
 import { Trash2 } from "lucide-react";
+import { motion } from "motion/react";
 import { useRef, type ChangeEvent } from "react";
 import { DashboardHeader } from "../components/DashboardHeader";
 import { useGallery } from "../hooks/useGallery";
+import { fadeInUp, staggerContainer } from "../lib/motion";
 import styles from "./Gallery.module.css";
+
+const gridVariants = staggerContainer(0.04);
+const cardVariants = fadeInUp(12, 0.3);
 
 export function Gallery() {
     const { images, loading, error, uploadImage, deleteImage } = useGallery();
@@ -17,6 +22,7 @@ export function Gallery() {
                 console.error(err);
             }
         }
+
         if (fileInputRef.current) {
             fileInputRef.current.value = "";
         }
@@ -52,26 +58,26 @@ export function Gallery() {
 
             {error && <div className="alert-error">{error}</div>}
 
-            <div className={styles.grid}>
-                {images.map((img) => (
-                    <div key={img.name} className={styles.image_card}>
+            <motion.div className={styles.grid} initial="hidden" animate="visible" variants={gridVariants}>
+                {images.map((image) => (
+                    <motion.div key={image.name} className={styles.image_card} variants={cardVariants}>
                         <div className={styles.image_wrapper}>
-                            <img src={img.url} alt={img.name} className={styles.image} />
+                            <img src={image.url} alt={image.name} className={styles.image} />
                         </div>
 
                         <div className={styles.image_actions}>
-                            <span className={styles.image_name}>{img.name.split("_")[0]}...</span>
+                            <span className={styles.image_name}>{image.name.split("_")[0]}...</span>
                             <button
                                 className="btn btn-small btn-danger"
-                                onClick={() => handleDelete(img.name)}
+                                onClick={() => handleDelete(image.name)}
                                 disabled={loading}
                             >
                                 <Trash2 size={14} />
                             </button>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </div>
     );
 }

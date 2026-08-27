@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import { type User } from "@supabase/supabase-js";
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { supabase } from "../lib/supabase";
