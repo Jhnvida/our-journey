@@ -1,14 +1,10 @@
-import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { DashboardHeader } from "../../components/DashboardHeader";
 import { useTimelineEvents } from "../../hooks/useTimelineEvents";
-import { scaleIn } from "../../lib/motion";
 import styles from "../../styles/admin.module.css";
 import type { TimelineEvent } from "../../types";
 import { TimelineForm } from "./components/TimelineForm";
 import { TimelineList } from "./components/TimelineList";
-
-const formVariants = scaleIn(0.3);
 
 export function Timeline() {
     const { events, addEvent, updateEvent, removeEvent, loading, error } = useTimelineEvents();
@@ -60,28 +56,20 @@ export function Timeline() {
 
             {error && <div className="alert-error">{error}</div>}
 
-            <AnimatePresence mode="wait">
-                {isFormOpen ? (
-                    <motion.div key="form" variants={formVariants} initial="hidden" animate="visible" exit="exit">
-                        <TimelineForm
-                            data={selectedEvent}
-                            onSave={handleSave}
-                            onCancel={handleCloseForm}
-                            loading={loading}
-                        />
-                    </motion.div>
-                ) : (
-                    <motion.div
-                        key="list"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                    >
-                        <TimelineList events={events} onEdit={handleEdit} onDelete={handleDelete} />
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            {isFormOpen ? (
+                <div key="form">
+                    <TimelineForm
+                        data={selectedEvent}
+                        onSave={handleSave}
+                        onCancel={handleCloseForm}
+                        loading={loading}
+                    />
+                </div>
+            ) : (
+                <div key="list">
+                    <TimelineList events={events} onEdit={handleEdit} onDelete={handleDelete} />
+                </div>
+            )}
         </div>
     );
 }

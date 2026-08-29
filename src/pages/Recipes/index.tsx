@@ -1,14 +1,10 @@
-import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { DashboardHeader } from "../../components/DashboardHeader";
 import { useRecipes } from "../../hooks/useRecipes";
-import { scaleIn } from "../../lib/motion";
 import styles from "../../styles/admin.module.css";
 import type { Recipe } from "../../types";
 import { RecipesForm } from "./components/RecipesForm";
 import { RecipesList } from "./components/RecipesList";
-
-const formVariants = scaleIn(0.3);
 
 export function Recipes() {
     const { recipes, addRecipe, updateRecipe, removeRecipe, loading, error } = useRecipes();
@@ -61,28 +57,20 @@ export function Recipes() {
 
             {error && <div className="alert-error">{error}</div>}
 
-            <AnimatePresence mode="wait">
-                {isFormOpen ? (
-                    <motion.div key="form" variants={formVariants} initial="hidden" animate="visible" exit="exit">
-                        <RecipesForm
-                            data={selectedRecipe}
-                            onSave={handleSave}
-                            onCancel={handleCloseForm}
-                            loading={loading}
-                        />
-                    </motion.div>
-                ) : (
-                    <motion.div
-                        key="list"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                    >
-                        <RecipesList recipes={recipes} onEdit={handleEdit} onDelete={handleDelete} />
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            {isFormOpen ? (
+                <div key="form">
+                    <RecipesForm
+                        data={selectedRecipe}
+                        onSave={handleSave}
+                        onCancel={handleCloseForm}
+                        loading={loading}
+                    />
+                </div>
+            ) : (
+                <div key="list">
+                    <RecipesList recipes={recipes} onEdit={handleEdit} onDelete={handleDelete} />
+                </div>
+            )}
         </div>
     );
 }

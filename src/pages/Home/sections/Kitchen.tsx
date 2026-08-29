@@ -1,18 +1,12 @@
 import { Clock } from "lucide-react";
-import { motion } from "motion/react";
-
 import { SectionHeader } from "../../../components/SectionHeader";
 import { useRecipes } from "../../../hooks/useRecipes";
-import { fadeInUp, staggerContainer, viewportOnce } from "../../../lib/motion";
 import type { Recipe } from "../../../types";
 import styles from "./Kitchen.module.css";
 
-const containerVariants = staggerContainer(0.08);
-const cardVariants = fadeInUp(24);
-
 function KitchenCard({ recipe }: { recipe: Recipe }) {
     return (
-        <motion.div className={styles.kitchen_masonry_item} variants={cardVariants}>
+        <div className={styles.kitchen_masonry_item}>
             <img src={recipe.image_url || undefined} alt={recipe.title} className={styles.kitchen_masonry_image} />
 
             <div className={styles.kitchen_masonry_content}>
@@ -35,7 +29,7 @@ function KitchenCard({ recipe }: { recipe: Recipe }) {
                     </div>
                 )}
             </div>
-        </motion.div>
+        </div>
     );
 }
 
@@ -55,25 +49,13 @@ export function Kitchen() {
             />
 
             <div className={styles.kitchen_container}>
-                <motion.div
-                    className={styles.kitchen_mobile}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={viewportOnce}
-                    variants={containerVariants}
-                >
+                <div className={styles.kitchen_mobile}>
                     {recipes.map((recipe) => (
                         <KitchenCard key={`mobile-${recipe.id}`} recipe={recipe} />
                     ))}
-                </motion.div>
+                </div>
 
-                <motion.div
-                    className={styles.kitchen_desktop}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={viewportOnce}
-                    variants={containerVariants}
-                >
+                <div className={styles.kitchen_desktop}>
                     <div className={styles.kitchen_column}>
                         {leftRecipes.map((recipe) => (
                             <KitchenCard key={`desktop-left-${recipe.id}`} recipe={recipe} />
@@ -85,7 +67,7 @@ export function Kitchen() {
                             <KitchenCard key={`desktop-right-${recipe.id}`} recipe={recipe} />
                         ))}
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

@@ -1,5 +1,3 @@
-import { motion } from "motion/react";
-import { fadeInUp, staggerContainer } from "../../../lib/motion";
 import styles from "../../../styles/admin.module.css";
 import type { Recipe } from "../../../types";
 
@@ -9,15 +7,12 @@ interface RecipesListProps {
     onDelete: (id: string) => void;
 }
 
-const containerVariants = staggerContainer(0.05);
-const cardVariants = fadeInUp(12, 0.3);
-
 export function RecipesList({ recipes, onEdit, onDelete }: RecipesListProps) {
     return (
         <div className={styles.list_section}>
-            <motion.div className={styles.event_list} initial="hidden" animate="visible" variants={containerVariants}>
+            <div className={styles.event_list}>
                 {recipes.map((recipe) => (
-                    <motion.div key={recipe.id} className={styles.event_card} variants={cardVariants}>
+                    <div key={recipe.id} className={styles.event_card}>
                         {recipe.image_url && (
                             <img src={recipe.image_url} alt={recipe.title} className={styles.event_image} />
                         )}
@@ -37,9 +32,9 @@ export function RecipesList({ recipes, onEdit, onDelete }: RecipesListProps) {
                                 </button>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
-            </motion.div>
+            </div>
         </div>
     );
 }

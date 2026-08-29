@@ -1,14 +1,8 @@
-import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSettings } from "../../../hooks/useSettings";
 import { calculateTime } from "../../../lib/calculateTime";
-import { duration, fadeIn, fadeInUp, staggerContainer } from "../../../lib/motion";
 import styles from "./Hero.module.css";
-
-const heroContainerVariants = staggerContainer(0.1, 0.1);
-const counterContainerVariants = staggerContainer(0.12, 0);
-const counterItemVariants = fadeInUp(20, duration.slow);
 
 export function Hero() {
     const { settings } = useSettings();
@@ -37,17 +31,10 @@ export function Hero() {
         <section className={styles.hero_section}>
             <div className={styles.hero_bg}></div>
 
-            <motion.header
-                className={styles.header}
-                initial="hidden"
-                animate="visible"
-                variants={staggerContainer(0.08)}
-            >
-                <motion.div className={styles.brand_label} variants={fadeInUp(8, duration.normal)}>
-                    A Nossa Jornada
-                </motion.div>
+            <header className={styles.header}>
+                <div className={styles.brand_label}>A Nossa Jornada</div>
 
-                <motion.div className={styles.header_actions} variants={fadeIn(duration.normal)}>
+                <div className={styles.header_actions}>
                     <div className={styles.nav_links}>
                         <a
                             href="https://github.com/Jhnvida/our-journey"
@@ -61,39 +48,34 @@ export function Hero() {
                             Painel Administrativo
                         </Link>
                     </div>
-                </motion.div>
-            </motion.header>
+                </div>
+            </header>
 
             <div className={styles.hero_content}>
-                <motion.div
-                    className={styles.hero_content_inner}
-                    initial="hidden"
-                    animate="visible"
-                    variants={heroContainerVariants}
-                >
-                    <motion.div className={styles.counter_container} variants={counterContainerVariants}>
-                        <motion.div className={styles.counter_item} variants={counterItemVariants}>
+                <div className={styles.hero_content_inner}>
+                    <div className={styles.counter_container}>
+                        <div className={styles.counter_item}>
                             <span className={styles.counter_value}>{formatNumber(timePassed.years)}</span>
                             <span className={styles.counter_label}>Anos</span>
-                        </motion.div>
+                        </div>
 
-                        <motion.div className={styles.counter_item} variants={counterItemVariants}>
+                        <div className={styles.counter_item}>
                             <span className={styles.counter_value}>{formatNumber(timePassed.months)}</span>
                             <span className={styles.counter_label}>Meses</span>
-                        </motion.div>
+                        </div>
 
-                        <motion.div className={styles.counter_item} variants={counterItemVariants}>
+                        <div className={styles.counter_item}>
                             <span className={styles.counter_value}>{formatNumber(timePassed.days)}</span>
                             <span className={styles.counter_label}>Dias</span>
-                        </motion.div>
-                    </motion.div>
+                        </div>
+                    </div>
 
-                    <motion.div className={styles.hero_subtitle_container} variants={fadeInUp(12, duration.normal)}>
+                    <div className={styles.hero_subtitle_container}>
                         <p className={styles.hero_subtitle}>
                             Cada segundo da nossa história, medido em momentos preciosos.
                         </p>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
             </div>
         </section>
     );

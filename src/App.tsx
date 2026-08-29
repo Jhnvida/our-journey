@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styles from "./App.module.css";
-import { AuthProvider } from "./hooks/useAuth";
+import { AuthProvider } from "./contexts/AuthProvider";
 import { Chapters } from "./pages/Chapters";
 import { Dashboard } from "./pages/Dashboard";
 import { Gallery } from "./pages/Gallery";

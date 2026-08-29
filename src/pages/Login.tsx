@@ -1,21 +1,8 @@
-import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState, type SubmitEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-import { duration, easing } from "../lib/motion";
 import { supabase } from "../lib/supabase";
 import styles from "./Login.module.css";
-
-const contentVariants = {
-    hidden: { opacity: 0, y: 12, scale: 0.98 },
-    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: duration.normal, ease: easing.decelerate } },
-};
-
-const errorVariants = {
-    hidden: { opacity: 0, y: -4 },
-    visible: { opacity: 1, y: 0, transition: { duration: duration.fast } },
-    exit: { opacity: 0, y: -4, transition: { duration: duration.fast } },
-};
 
 export function Login() {
     const [email, setEmail] = useState("");
@@ -50,23 +37,11 @@ export function Login() {
 
     return (
         <main className={styles.container}>
-            <motion.div className={styles.content} initial="hidden" animate="visible" variants={contentVariants}>
+            <div className={styles.content}>
                 <p className={styles.subtitle}>Acesso Restrito</p>
                 <h1 className={styles.title}>Gerenciar Jornada</h1>
 
-                <AnimatePresence>
-                    {error && (
-                        <motion.div
-                            className="alert-error"
-                            variants={errorVariants}
-                            initial="hidden"
-                            animate="visible"
-                            exit="exit"
-                        >
-                            {error}
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                {error && <div className="alert-error">{error}</div>}
 
                 <form className={styles.form} onSubmit={handleLogin}>
                     <div className={styles.form_group}>
@@ -109,7 +84,7 @@ export function Login() {
                         </Link>
                     </div>
                 </form>
-            </motion.div>
+            </div>
         </main>
     );
 }

@@ -1,13 +1,8 @@
 import { Trash2 } from "lucide-react";
-import { motion } from "motion/react";
 import { useRef, type ChangeEvent } from "react";
 import { DashboardHeader } from "../components/DashboardHeader";
 import { useGallery } from "../hooks/useGallery";
-import { fadeInUp, staggerContainer } from "../lib/motion";
 import styles from "./Gallery.module.css";
-
-const gridVariants = staggerContainer(0.04);
-const cardVariants = fadeInUp(12, 0.3);
 
 export function Gallery() {
     const { images, loading, error, uploadImage, deleteImage } = useGallery();
@@ -58,9 +53,9 @@ export function Gallery() {
 
             {error && <div className="alert-error">{error}</div>}
 
-            <motion.div className={styles.grid} initial="hidden" animate="visible" variants={gridVariants}>
+            <div className={styles.grid}>
                 {images.map((image) => (
-                    <motion.div key={image.name} className={styles.image_card} variants={cardVariants}>
+                    <div key={image.name} className={styles.image_card}>
                         <div className={styles.image_wrapper}>
                             <img src={image.url} alt={image.name} className={styles.image} />
                         </div>
@@ -75,9 +70,9 @@ export function Gallery() {
                                 <Trash2 size={14} />
                             </button>
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
-            </motion.div>
+            </div>
         </div>
     );
 }
