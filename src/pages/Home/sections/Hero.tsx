@@ -1,8 +1,19 @@
+import { motion, type Variants } from "motion/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSettings } from "../../../hooks/useSettings";
 import { calculateTime } from "../../../lib/calculateTime";
 import styles from "./Hero.module.css";
+
+const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+};
+
+const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+};
 
 export function Hero() {
     const { settings } = useSettings();
@@ -29,9 +40,19 @@ export function Hero() {
 
     return (
         <section className={styles.hero_section}>
-            <div className={styles.hero_bg}></div>
+            <motion.div
+                className={styles.hero_bg}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+            />
 
-            <header className={styles.header}>
+            <motion.header
+                className={styles.header}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+            >
                 <div className={styles.brand_label}>A Nossa Jornada</div>
 
                 <div className={styles.header_actions}>
@@ -49,33 +70,38 @@ export function Hero() {
                         </Link>
                     </div>
                 </div>
-            </header>
+            </motion.header>
 
             <div className={styles.hero_content}>
-                <div className={styles.hero_content_inner}>
+                <motion.div
+                    className={styles.hero_content_inner}
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                >
                     <div className={styles.counter_container}>
-                        <div className={styles.counter_item}>
+                        <motion.div className={styles.counter_item} variants={itemVariants}>
                             <span className={styles.counter_value}>{formatNumber(timePassed.years)}</span>
                             <span className={styles.counter_label}>Anos</span>
-                        </div>
+                        </motion.div>
 
-                        <div className={styles.counter_item}>
+                        <motion.div className={styles.counter_item} variants={itemVariants}>
                             <span className={styles.counter_value}>{formatNumber(timePassed.months)}</span>
                             <span className={styles.counter_label}>Meses</span>
-                        </div>
+                        </motion.div>
 
-                        <div className={styles.counter_item}>
+                        <motion.div className={styles.counter_item} variants={itemVariants}>
                             <span className={styles.counter_value}>{formatNumber(timePassed.days)}</span>
                             <span className={styles.counter_label}>Dias</span>
-                        </div>
+                        </motion.div>
                     </div>
 
-                    <div className={styles.hero_subtitle_container}>
+                    <motion.div className={styles.hero_subtitle_container} variants={itemVariants}>
                         <p className={styles.hero_subtitle}>
                             Cada segundo da nossa história, medido em momentos preciosos.
                         </p>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </div>
         </section>
     );

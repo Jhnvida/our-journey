@@ -5,7 +5,8 @@
 
     width: 100%;
     min-height: 100vh;
-    padding: 80px 24px 40px;
+    padding: 40px 24px;
+    background-color: var(--lp-surface-container-low);
 }
 
 .content {
@@ -17,22 +18,25 @@
     text-align: center;
 
     background-color: var(--lp-surface);
+    border: 1px solid rgb(0 0 0 / 5%);
     box-shadow: 0 10px 40px rgb(0 0 0 / 8%);
 }
 
-.subtitle {
+.header {
     margin-bottom: 40px;
+}
+
+.subtitle {
+    margin-bottom: 12px;
 
     font-size: 10px;
     font-weight: 600;
     color: var(--lp-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.3em;
 }
 
 .title {
-    margin-bottom: 32px;
-
     font-family: var(--lp-font-hero);
     font-size: 32px;
     font-weight: 400;
@@ -47,7 +51,7 @@
 }
 
 .form {
-    gap: 16px;
+    gap: 20px;
     text-align: left;
 }
 
@@ -56,7 +60,7 @@
 }
 
 .button_group {
-    gap: 16px;
+    gap: 12px;
     align-items: center;
     margin-top: 16px;
 }
@@ -66,12 +70,11 @@
 }
 
 @media (width >= 768px) {
-    .container {
-        padding-top: 96px;
-        padding-bottom: 64px;
+    .content {
+        padding: 56px 48px;
     }
 
-    .subtitle {
-        margin-bottom: 64px;
+    .title {
+        font-size: 36px;
     }
 }

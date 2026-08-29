@@ -38,8 +38,10 @@ export function Login() {
     return (
         <main className={styles.container}>
             <div className={styles.content}>
-                <p className={styles.subtitle}>Acesso Restrito</p>
-                <h1 className={styles.title}>Gerenciar Jornada</h1>
+                <div className={styles.header}>
+                    <p className={styles.subtitle}>Acesso Restrito</p>
+                    <h1 className={styles.title}>Gerenciar Jornada</h1>
+                </div>
 
                 {error && <div className="alert-error">{error}</div>}
 

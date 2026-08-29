@@ -1,41 +1,10 @@
-import { Clock } from "lucide-react";
 import { SectionHeader } from "../../../components/SectionHeader";
 import { useRecipes } from "../../../hooks/useRecipes";
-import type { Recipe } from "../../../types";
+import { KitchenCard } from "../components/KitchenCard";
 import styles from "./Kitchen.module.css";
-
-function KitchenCard({ recipe }: { recipe: Recipe }) {
-    return (
-        <div className={styles.kitchen_masonry_item}>
-            <img src={recipe.image_url || undefined} alt={recipe.title} className={styles.kitchen_masonry_image} />
-
-            <div className={styles.kitchen_masonry_content}>
-                <h3 className={styles.kitchen_masonry_title}>{recipe.title}</h3>
-                <p className={styles.kitchen_masonry_desc}>{recipe.description}</p>
-
-                {recipe.ingredients && recipe.ingredients.length > 0 && (
-                    <div className={styles.ingredients_header}>
-                        <p className={styles.ingredients_label}>
-                            <Clock size={14} /> Ingredientes
-                        </p>
-
-                        <div className={styles.ingredients_list}>
-                            {recipe.ingredients.map((ingredient, index) => (
-                                <span key={index} className={styles.ingredient_item}>
-                                    {ingredient}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                )}
-            </div>
-        </div>
-    );
-}
 
 export function Kitchen() {
     const { recipes } = useRecipes();
-
     if (!recipes || recipes.length === 0) return null;
 
     const leftRecipes = recipes.filter((_, i) => i % 2 === 0);
@@ -50,21 +19,21 @@ export function Kitchen() {
 
             <div className={styles.kitchen_container}>
                 <div className={styles.kitchen_mobile}>
-                    {recipes.map((recipe) => (
-                        <KitchenCard key={`mobile-${recipe.id}`} recipe={recipe} />
+                    {recipes.map((recipe, index) => (
+                        <KitchenCard key={`mobile-${recipe.id}`} recipe={recipe} index={index} />
                     ))}
                 </div>
 
                 <div className={styles.kitchen_desktop}>
                     <div className={styles.kitchen_column}>
-                        {leftRecipes.map((recipe) => (
-                            <KitchenCard key={`desktop-left-${recipe.id}`} recipe={recipe} />
+                        {leftRecipes.map((recipe, index) => (
+                            <KitchenCard key={`desktop-left-${recipe.id}`} recipe={recipe} index={index} />
                         ))}
                     </div>
 
                     <div className={`${styles.kitchen_column} ${styles.kitchen_staggered}`}>
-                        {rightRecipes.map((recipe) => (
-                            <KitchenCard key={`desktop-right-${recipe.id}`} recipe={recipe} />
+                        {rightRecipes.map((recipe, index) => (
+                            <KitchenCard key={`desktop-right-${recipe.id}`} recipe={recipe} index={index} />
                         ))}
                     </div>
                 </div>

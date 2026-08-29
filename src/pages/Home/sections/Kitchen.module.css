@@ -41,15 +41,6 @@
 
     background-color: var(--lp-surface);
     box-shadow: 0 10px 30px rgb(0 0 0 / 8%);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.kitchen_masonry_item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 34px rgb(0 0 0 / 12%);
 }
 
 .kitchen_masonry_content {

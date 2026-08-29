@@ -1,4 +1,5 @@
 import { Check, CircleDashed } from "lucide-react";
+import { motion } from "motion/react";
 import { SectionHeader } from "../../../components/SectionHeader";
 import { useChapters } from "../../../hooks/useChapters";
 import styles from "./Chapters.module.css";
@@ -13,11 +14,18 @@ export function Chapters() {
 
             <div className={styles.chapters_container}>
                 <div className={styles.chapters_list}>
-                    {chapters.map((chapter) => {
+                    {chapters.map((chapter, index) => {
                         const isCompleted = chapter.status === "concluido";
 
                         return (
-                            <div key={chapter.id} className={styles.chapter_item}>
+                            <motion.div
+                                key={chapter.id}
+                                className={styles.chapter_item}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}
+                            >
                                 <div className={styles.chapter_info}>
                                     <div
                                         className={isCompleted ? styles.chapter_icon_done : styles.chapter_icon_pending}
@@ -38,13 +46,33 @@ export function Chapters() {
                                         className={`${styles.progress_bar} ${isCompleted ? styles.progress_bar_done : styles.progress_bar_pending}`}
                                     >
                                         {isCompleted ? (
-                                            <div className={styles.progress_bar_done_fill}></div>
+                                            <motion.div
+                                                className={styles.progress_bar_done_fill}
+                                                initial={{ width: "0%" }}
+                                                whileInView={{ width: "100%" }}
+                                                viewport={{ once: true }}
+                                                transition={{
+                                                    duration: 1.2,
+                                                    ease: [0.22, 1, 0.36, 1],
+                                                    delay: 0.3 + index * 0.1,
+                                                }}
+                                            />
                                         ) : (
-                                            <div className={styles.progress_bar_pending_fill}></div>
+                                            <motion.div
+                                                className={styles.progress_bar_pending_fill}
+                                                initial={{ width: "0%" }}
+                                                whileInView={{ width: "10%" }}
+                                                viewport={{ once: true }}
+                                                transition={{
+                                                    duration: 1.2,
+                                                    ease: [0.22, 1, 0.36, 1],
+                                                    delay: 0.3 + index * 0.1,
+                                                }}
+                                            />
                                         )}
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         );
                     })}
                 </div>

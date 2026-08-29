@@ -1,26 +1,10 @@
 import { SectionHeader } from "../../../components/SectionHeader";
 import { useTimelineEvents } from "../../../hooks/useTimelineEvents";
-import { formatDate } from "../../../lib/formatDate";
-import type { TimelineEvent } from "../../../types";
+import { TimelineCard } from "../components/TimelineCard";
 import styles from "./Timeline.module.css";
-
-function TimelineCard({ event }: { event: TimelineEvent }) {
-    return (
-        <div className={styles.timeline_masonry_item}>
-            <img src={event.image_url || undefined} alt={event.title} className={styles.timeline_masonry_image} />
-
-            <div className={styles.timeline_masonry_content}>
-                <p className={styles.timeline_masonry_date}>{formatDate(event.date)}</p>
-                <h3 className={styles.timeline_masonry_title}>{event.title}</h3>
-                <p className={styles.timeline_masonry_text}>{event.description}</p>
-            </div>
-        </div>
-    );
-}
 
 export function Timeline() {
     const { events } = useTimelineEvents();
-
     if (!events || events.length === 0) return null;
 
     const leftEvents = events.filter((_, i) => i % 2 === 0);
@@ -31,21 +15,21 @@ export function Timeline() {
             <SectionHeader title="A Linha do Tempo" subtitle="Relembre os melhores momentos da nossa história." />
 
             <div className={styles.timeline_mobile}>
-                {events.map((event) => (
-                    <TimelineCard key={`mobile-${event.id}`} event={event} />
+                {events.map((event, index) => (
+                    <TimelineCard key={`mobile-${event.id}`} event={event} index={index} />
                 ))}
             </div>
 
             <div className={styles.timeline_desktop}>
                 <div className={styles.timeline_column}>
-                    {leftEvents.map((event) => (
-                        <TimelineCard key={`desktop-left-${event.id}`} event={event} />
+                    {leftEvents.map((event, index) => (
+                        <TimelineCard key={`desktop-left-${event.id}`} event={event} index={index} />
                     ))}
                 </div>
 
                 <div className={`${styles.timeline_column} ${styles.timeline_staggered}`}>
-                    {rightEvents.map((event) => (
-                        <TimelineCard key={`desktop-right-${event.id}`} event={event} />
+                    {rightEvents.map((event, index) => (
+                        <TimelineCard key={`desktop-right-${event.id}`} event={event} index={index} />
                     ))}
                 </div>
             </div>
