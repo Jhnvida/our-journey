@@ -48,8 +48,9 @@ export function Chapters() {
                                         {isCompleted ? (
                                             <motion.div
                                                 className={styles.progress_bar_done_fill}
-                                                initial={{ width: "0%" }}
-                                                whileInView={{ width: "100%" }}
+                                                initial={{ scaleX: 0 }}
+                                                whileInView={{ scaleX: 1 }}
+                                                style={{ transformOrigin: "left" }}
                                                 viewport={{ once: true }}
                                                 transition={{
                                                     duration: 1.2,
@@ -60,8 +61,9 @@ export function Chapters() {
                                         ) : (
                                             <motion.div
                                                 className={styles.progress_bar_pending_fill}
-                                                initial={{ width: "0%" }}
-                                                whileInView={{ width: "10%" }}
+                                                initial={{ scaleX: 0 }}
+                                                whileInView={{ scaleX: 0.1 }}
+                                                style={{ transformOrigin: "left" }}
                                                 viewport={{ once: true }}
                                                 transition={{
                                                     duration: 1.2,

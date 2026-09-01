@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 
 export interface GalleryImage {
@@ -7,14 +7,14 @@ export interface GalleryImage {
     created_at: string | null;
 }
 
-export function useGallery() {
+export function useGallery(enabled = true) {
     const [images, setImages] = useState<GalleryImage[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
     const bucketName = "journey_images";
 
-    async function fetchImages() {
+    const fetchImages = useCallback(async () => {
         setLoading(true);
 
         const { data, error: err } = await supabase.storage.from(bucketName).list("", {
@@ -41,29 +41,37 @@ export function useGallery() {
         }
 
         setLoading(false);
-    }
-
-    useEffect(() => {
-        fetchImages();
     }, []);
 
-    async function uploadImage(file: File) {
-        setLoading(true);
-        const fileExt = file.name.split(".").pop();
-        const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`;
-        const { error: err } = await supabase.storage.from(bucketName).upload(fileName, file);
+    useEffect(() => {
+        if (enabled) {
+            fetchImages();
+        }
+    }, [enabled, fetchImages]);
 
-        if (err) setError("Erro ao fazer upload da imagem.");
-        else await fetchImages();
-    }
+    const uploadImage = useCallback(
+        async (file: File) => {
+            setLoading(true);
+            const fileExt = file.name.split(".").pop();
+            const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`;
+            const { error: err } = await supabase.storage.from(bucketName).upload(fileName, file);
 
-    async function deleteImage(name: string) {
-        setLoading(true);
-        const { error: err } = await supabase.storage.from(bucketName).remove([name]);
+            if (err) setError("Erro ao fazer upload da imagem.");
+            else await fetchImages();
+        },
+        [fetchImages],
+    );
 
-        if (err) setError("Erro ao excluir a imagem.");
-        else await fetchImages();
-    }
+    const deleteImage = useCallback(
+        async (name: string) => {
+            setLoading(true);
+            const { error: err } = await supabase.storage.from(bucketName).remove([name]);
+
+            if (err) setError("Erro ao excluir a imagem.");
+            else await fetchImages();
+        },
+        [fetchImages],
+    );
 
     return { images, loading, error, uploadImage, deleteImage };
 }

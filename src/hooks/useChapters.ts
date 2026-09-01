@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import type { Chapter } from "../types";
 
@@ -7,7 +7,7 @@ export function useChapters() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    async function fetchChapters() {
+    const fetchChapters = useCallback(async () => {
         setLoading(true);
         const { data, error: err } = await supabase.from("chapters").select("*").order("status", { ascending: true });
 
@@ -15,35 +15,44 @@ export function useChapters() {
         else setChapters(data);
 
         setLoading(false);
-    }
+    }, []);
 
     useEffect(() => {
         fetchChapters();
-    }, []);
+    }, [fetchChapters]);
 
-    async function addChapter(chapter: Omit<Chapter, "id" | "created_at">) {
-        setLoading(true);
-        const { error: err } = await supabase.from("chapters").insert(chapter);
+    const addChapter = useCallback(
+        async (chapter: Omit<Chapter, "id" | "created_at">) => {
+            setLoading(true);
+            const { error: err } = await supabase.from("chapters").insert(chapter);
 
-        if (err) setError("Erro ao adicionar capítulo.");
-        else await fetchChapters();
-    }
+            if (err) setError("Erro ao adicionar capítulo.");
+            else await fetchChapters();
+        },
+        [fetchChapters],
+    );
 
-    async function updateChapter(id: string, updates: Partial<Chapter>) {
-        setLoading(true);
-        const { error: err } = await supabase.from("chapters").update(updates).eq("id", id);
+    const updateChapter = useCallback(
+        async (id: string, updates: Partial<Chapter>) => {
+            setLoading(true);
+            const { error: err } = await supabase.from("chapters").update(updates).eq("id", id);
 
-        if (err) setError("Erro ao atualizar capítulo.");
-        else await fetchChapters();
-    }
+            if (err) setError("Erro ao atualizar capítulo.");
+            else await fetchChapters();
+        },
+        [fetchChapters],
+    );
 
-    async function removeChapter(id: string) {
-        setLoading(true);
-        const { error: err } = await supabase.from("chapters").delete().eq("id", id);
+    const removeChapter = useCallback(
+        async (id: string) => {
+            setLoading(true);
+            const { error: err } = await supabase.from("chapters").delete().eq("id", id);
 
-        if (err) setError("Erro ao excluir capítulo.");
-        else await fetchChapters();
-    }
+            if (err) setError("Erro ao excluir capítulo.");
+            else await fetchChapters();
+        },
+        [fetchChapters],
+    );
 
     return { chapters, loading, error, addChapter, updateChapter, removeChapter };
 }

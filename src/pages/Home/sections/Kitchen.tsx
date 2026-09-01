@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { SectionHeader } from "../../../components/SectionHeader";
 import { useRecipes } from "../../../hooks/useRecipes";
 import { KitchenCard } from "../components/KitchenCard";
@@ -5,10 +6,16 @@ import styles from "./Kitchen.module.css";
 
 export function Kitchen() {
     const { recipes } = useRecipes();
-    if (!recipes || recipes.length === 0) return null;
 
-    const leftRecipes = recipes.filter((_, i) => i % 2 === 0);
-    const rightRecipes = recipes.filter((_, i) => i % 2 !== 0);
+    const { leftRecipes, rightRecipes } = useMemo(() => {
+        if (!recipes) return { leftRecipes: [], rightRecipes: [] };
+        return {
+            leftRecipes: recipes.filter((_, i) => i % 2 === 0),
+            rightRecipes: recipes.filter((_, i) => i % 2 !== 0),
+        };
+    }, [recipes]);
+
+    if (!recipes || recipes.length === 0) return null;
 
     return (
         <section className={styles.kitchen_section}>

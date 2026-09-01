@@ -39,6 +39,15 @@
 
     background-color: var(--lp-surface);
     box-shadow: 0 10px 40px rgb(0 0 0 / 8%);
+
+    transition:
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.timeline_masonry_item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 44px rgb(0 0 0 / 12%);
 }
 
 .timeline_masonry_image {

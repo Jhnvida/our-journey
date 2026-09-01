@@ -9,16 +9,16 @@ export function KitchenCard({ recipe, index }: { recipe: Recipe; index: number }
             className={styles.kitchen_masonry_item}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -2, boxShadow: "0 14px 34px rgb(0 0 0 / 0.12)" }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: Math.min(index * 0.1, 0.5) }}
         >
             <img
                 src={recipe.image_url || undefined}
                 alt={recipe.title}
                 className={styles.kitchen_masonry_image}
-                loading="lazy"
+                loading={index < 4 ? "eager" : "lazy"}
                 decoding="async"
+                fetchPriority={index < 2 ? "high" : "auto"}
             />
 
             <div className={styles.kitchen_masonry_content}>

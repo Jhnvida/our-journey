@@ -6,6 +6,7 @@
     width: 100%;
     min-height: 100vh;
     padding: 40px 24px;
+
     background-color: var(--lp-surface-container-low);
 }
 
@@ -14,11 +15,11 @@
     max-width: 440px;
     margin: 0 auto;
     padding: 48px 32px;
+    border: 1px solid rgb(0 0 0 / 5%);
 
     text-align: center;
 
     background-color: var(--lp-surface);
-    border: 1px solid rgb(0 0 0 / 5%);
     box-shadow: 0 10px 40px rgb(0 0 0 / 8%);
 }
 

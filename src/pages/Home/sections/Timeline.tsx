@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { SectionHeader } from "../../../components/SectionHeader";
 import { useTimelineEvents } from "../../../hooks/useTimelineEvents";
 import { TimelineCard } from "../components/TimelineCard";
@@ -5,10 +6,16 @@ import styles from "./Timeline.module.css";
 
 export function Timeline() {
     const { events } = useTimelineEvents();
-    if (!events || events.length === 0) return null;
 
-    const leftEvents = events.filter((_, i) => i % 2 === 0);
-    const rightEvents = events.filter((_, i) => i % 2 !== 0);
+    const { leftEvents, rightEvents } = useMemo(() => {
+        if (!events) return { leftEvents: [], rightEvents: [] };
+        return {
+            leftEvents: events.filter((_, i) => i % 2 === 0),
+            rightEvents: events.filter((_, i) => i % 2 !== 0),
+        };
+    }, [events]);
+
+    if (!events || events.length === 0) return null;
 
     return (
         <section className={styles.timeline_section}>

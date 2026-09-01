@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import type { TimelineEvent } from "../types";
 
@@ -7,7 +7,7 @@ export function useTimelineEvents() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    async function fetchEvents() {
+    const fetchEvents = useCallback(async () => {
         setLoading(true);
         const { data, error: err } = await supabase
             .from("timeline_events")
@@ -18,35 +18,44 @@ export function useTimelineEvents() {
         else setEvents(data);
 
         setLoading(false);
-    }
+    }, []);
 
     useEffect(() => {
         fetchEvents();
-    }, []);
+    }, [fetchEvents]);
 
-    async function addEvent(event: Omit<TimelineEvent, "id" | "created_at">) {
-        setLoading(true);
-        const { error: err } = await supabase.from("timeline_events").insert(event);
+    const addEvent = useCallback(
+        async (event: Omit<TimelineEvent, "id" | "created_at">) => {
+            setLoading(true);
+            const { error: err } = await supabase.from("timeline_events").insert(event);
 
-        if (err) setError("Erro ao adicionar evento.");
-        else await fetchEvents();
-    }
+            if (err) setError("Erro ao adicionar evento.");
+            else await fetchEvents();
+        },
+        [fetchEvents],
+    );
 
-    async function updateEvent(id: string, updates: Partial<TimelineEvent>) {
-        setLoading(true);
-        const { error: err } = await supabase.from("timeline_events").update(updates).eq("id", id);
+    const updateEvent = useCallback(
+        async (id: string, updates: Partial<TimelineEvent>) => {
+            setLoading(true);
+            const { error: err } = await supabase.from("timeline_events").update(updates).eq("id", id);
 
-        if (err) setError("Erro ao atualizar evento.");
-        else await fetchEvents();
-    }
+            if (err) setError("Erro ao atualizar evento.");
+            else await fetchEvents();
+        },
+        [fetchEvents],
+    );
 
-    async function removeEvent(id: string) {
-        setLoading(true);
-        const { error: err } = await supabase.from("timeline_events").delete().eq("id", id);
+    const removeEvent = useCallback(
+        async (id: string) => {
+            setLoading(true);
+            const { error: err } = await supabase.from("timeline_events").delete().eq("id", id);
 
-        if (err) setError("Erro ao excluir evento.");
-        else await fetchEvents();
-    }
+            if (err) setError("Erro ao excluir evento.");
+            else await fetchEvents();
+        },
+        [fetchEvents],
+    );
 
     return { events, loading, error, addEvent, updateEvent, removeEvent };
 }

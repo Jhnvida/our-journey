@@ -10,7 +10,7 @@ interface ImageSelectorProps {
 
 export function ImageSelector({ value, onChange }: ImageSelectorProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const { images, loading } = useGallery();
+    const { images, loading } = useGallery(isModalOpen);
     const [tempSelected, setTempSelected] = useState<string>(value);
 
     function handleConfirm() {

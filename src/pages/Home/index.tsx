@@ -1,20 +1,32 @@
+import { AnimatePresence } from "motion/react";
+import { Preloader } from "../../components/Preloader/Preloader";
+import { useAppPreloader } from "../../hooks/useAppPreloader";
 import { Chapters } from "./sections/Chapters";
 import { Hero } from "./sections/Hero";
 import { Kitchen } from "./sections/Kitchen";
 import { Timeline } from "./sections/Timeline";
 import styles from "./styles.module.css";
 
-export function Home() {
-    return (
-        <main className={styles.container}>
-            <Hero />
-            <Timeline />
-            <Kitchen />
-            <Chapters />
+const mainVisibleStyle = { opacity: 1, transition: "opacity 0.5s ease" } as const;
+const mainHiddenStyle = { opacity: 0, transition: "opacity 0.5s ease" } as const;
 
-            <footer className={styles.footer}>
-                <div className={styles.footer_brand}>A Nossa Jornada</div>
-            </footer>
-        </main>
+export function Home() {
+    const { isReady } = useAppPreloader();
+
+    return (
+        <>
+            <AnimatePresence mode="wait">{!isReady && <Preloader key="preloader" />}</AnimatePresence>
+
+            <main className={styles.container} style={isReady ? mainVisibleStyle : mainHiddenStyle}>
+                <Hero isReady={isReady} />
+                <Timeline />
+                <Kitchen />
+                <Chapters />
+
+                <footer className={styles.footer}>
+                    <div className={styles.footer_brand}>A Nossa Jornada</div>
+                </footer>
+            </main>
+        </>
     );
 }

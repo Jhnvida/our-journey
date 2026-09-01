@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import type { Recipe } from "../types";
 
@@ -7,7 +7,7 @@ export function useRecipes() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    async function fetchRecipes() {
+    const fetchRecipes = useCallback(async () => {
         setLoading(true);
         const { data, error: err } = await supabase
             .from("recipes")
@@ -18,35 +18,44 @@ export function useRecipes() {
         else setRecipes(data);
 
         setLoading(false);
-    }
+    }, []);
 
     useEffect(() => {
         fetchRecipes();
-    }, []);
+    }, [fetchRecipes]);
 
-    async function addRecipe(recipe: Omit<Recipe, "id" | "created_at">) {
-        setLoading(true);
-        const { error: err } = await supabase.from("recipes").insert(recipe);
+    const addRecipe = useCallback(
+        async (recipe: Omit<Recipe, "id" | "created_at">) => {
+            setLoading(true);
+            const { error: err } = await supabase.from("recipes").insert(recipe);
 
-        if (err) setError("Erro ao adicionar receita.");
-        else await fetchRecipes();
-    }
+            if (err) setError("Erro ao adicionar receita.");
+            else await fetchRecipes();
+        },
+        [fetchRecipes],
+    );
 
-    async function updateRecipe(id: string, updates: Partial<Recipe>) {
-        setLoading(true);
-        const { error: err } = await supabase.from("recipes").update(updates).eq("id", id);
+    const updateRecipe = useCallback(
+        async (id: string, updates: Partial<Recipe>) => {
+            setLoading(true);
+            const { error: err } = await supabase.from("recipes").update(updates).eq("id", id);
 
-        if (err) setError("Erro ao atualizar receita.");
-        else await fetchRecipes();
-    }
+            if (err) setError("Erro ao atualizar receita.");
+            else await fetchRecipes();
+        },
+        [fetchRecipes],
+    );
 
-    async function removeRecipe(id: string) {
-        setLoading(true);
-        const { error: err } = await supabase.from("recipes").delete().eq("id", id);
+    const removeRecipe = useCallback(
+        async (id: string) => {
+            setLoading(true);
+            const { error: err } = await supabase.from("recipes").delete().eq("id", id);
 
-        if (err) setError("Erro ao excluir receita.");
-        else await fetchRecipes();
-    }
+            if (err) setError("Erro ao excluir receita.");
+            else await fetchRecipes();
+        },
+        [fetchRecipes],
+    );
 
     return { recipes, loading, error, addRecipe, updateRecipe, removeRecipe };
 }

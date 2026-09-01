@@ -15,7 +15,11 @@ const itemVariants: Variants = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
 };
 
-export function Hero() {
+function formatNumber(num: number) {
+    return num.toString().padStart(2, "0");
+}
+
+export function Hero({ isReady }: { isReady: boolean }) {
     const { settings } = useSettings();
     const [timePassed, setTimePassed] = useState({ years: 0, months: 0, days: 0 });
 
@@ -34,23 +38,19 @@ export function Hero() {
         return () => clearInterval(interval);
     }, [settings?.relationship_start_date]);
 
-    function formatNumber(num: number) {
-        return num.toString().padStart(2, "0");
-    }
-
     return (
         <section className={styles.hero_section}>
             <motion.div
                 className={styles.hero_bg}
                 initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
+                animate={isReady ? { opacity: 1, scale: 1 } : undefined}
                 transition={{ duration: 1.5, ease: "easeOut" }}
             />
 
             <motion.header
                 className={styles.header}
                 initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={isReady ? { opacity: 1, y: 0 } : undefined}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
             >
                 <div className={styles.brand_label}>A Nossa Jornada</div>
@@ -77,7 +77,7 @@ export function Hero() {
                     className={styles.hero_content_inner}
                     variants={containerVariants}
                     initial="hidden"
-                    animate="visible"
+                    animate={isReady ? "visible" : "hidden"}
                 >
                     <div className={styles.counter_container}>
                         <motion.div className={styles.counter_item} variants={itemVariants}>
