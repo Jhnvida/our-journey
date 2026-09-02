@@ -1,4 +1,3 @@
-import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { AuthProvider } from "@/contexts/AuthProvider";
 import { Home } from "@/pages/Home";
 import { lazy, Suspense } from "react";
@@ -15,26 +14,24 @@ const Settings = lazy(() => import("@/pages/Settings").then((m) => ({ default: m
 
 export function App() {
     return (
-        <SmoothScroll>
-            <BrowserRouter>
-                <AuthProvider>
-                    <div className={styles.app_container}>
-                        <Suspense fallback={null}>
-                            <Routes>
-                                <Route path="/" element={<Home />} />
-                                <Route path="/login" element={<Login />} />
-                                <Route path="/dashboard" element={<Dashboard />}>
-                                    <Route index element={<Timeline />} />
-                                    <Route path="gallery" element={<Gallery />} />
-                                    <Route path="chapters" element={<Chapters />} />
-                                    <Route path="recipes" element={<Recipes />} />
-                                    <Route path="settings" element={<Settings />} />
-                                </Route>
-                            </Routes>
-                        </Suspense>
-                    </div>
-                </AuthProvider>
-            </BrowserRouter>
-        </SmoothScroll>
+        <BrowserRouter>
+            <AuthProvider>
+                <div className={styles.app_container}>
+                    <Suspense fallback={null}>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/dashboard" element={<Dashboard />}>
+                                <Route index element={<Timeline />} />
+                                <Route path="gallery" element={<Gallery />} />
+                                <Route path="chapters" element={<Chapters />} />
+                                <Route path="recipes" element={<Recipes />} />
+                                <Route path="settings" element={<Settings />} />
+                            </Route>
+                        </Routes>
+                    </Suspense>
+                </div>
+            </AuthProvider>
+        </BrowserRouter>
     );
 }

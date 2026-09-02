@@ -1,14 +1,15 @@
 # Our Journey (Nossa Jornada)
 
-Uma aplicação web desenvolvida para casais acompanharem e registrarem os marcos do seu relacionamento. O projeto permite visualizar o tempo juntos, uma linha do tempo com momentos especiais e os próximos capítulos planejados para o futuro.
+Uma aplicação web desenvolvida para casais acompanharem e registrarem os marcos do seu relacionamento. O projeto permite visualizar o tempo juntos, uma linha do tempo com momentos especiais, os próximos capítulos planejados para o futuro, uma cozinha compartilhada e galeria de fotos.
 
 ## Funcionalidades
 
 - **Contador de tempo**: Exibe o tempo de relacionamento em anos, meses e dias.
-- **Linha do tempo (Timeline)**: Exibe os principais momentos e eventos marcantes com fotos, títulos, descrições e subeventos.
+- **Linha do tempo (Timeline)**: Exibe os principais momentos e eventos marcantes com fotos, títulos e descrições.
 - **Próximos Capítulos**: Lista de planos e metas futuras do casal, indicando se já foram concluídos ou não.
-- **Livro de Receitas (RecipeBook)**: Lista de receitas favoritas do casal, permitindo consultar pratos especiais.
-- **Autenticação e Painel de Administração**: Sistema de login para acesso a uma área restrita gerenciada pelo Supabase.
+- **A Nossa Cozinha**: Lista de receitas favoritas do casal.
+- **Galeria de Fotos**: Espaço para salvar memórias visuais.
+- **Autenticação e Painel Administrativo**: Sistema de login para acesso a uma área restrita gerenciada pelo Supabase, permitindo edição de todo o conteúdo.
 
 ## Tecnologias Utilizadas
 
@@ -17,6 +18,7 @@ Uma aplicação web desenvolvida para casais acompanharem e registrarem os marco
     - [TypeScript](https://www.typescriptlang.org/)
     - [Vite](https://vitejs.dev/)
     - [React Router DOM](https://reactrouter.com/) para rotas
+    - [Motion](https://motion.dev/) para animações e transições fluidas
     - [CSS Modules](https://github.com/css-modules/css-modules) para estilização
     - [Lucide React](https://lucide.dev/) para ícones
     - [Date-fns](https://date-fns.org/) para manipulação de datas
@@ -28,13 +30,14 @@ Uma aplicação web desenvolvida para casais acompanharem e registrarem os marco
 A estrutura de pastas principal dentro de `src/` está organizada da seguinte forma:
 
 - `/assets`: Imagens e recursos estáticos.
-- `/components`: Componentes menores e reutilizáveis (ex: `Badge`, `SectionHeader`, `ProtectedRoute`).
-- `/hooks`: Custom hooks contendo a lógica de negócios e integração com o Supabase (`useAuth`, `useChapters`, `useRecipes`, `useSettings`, `useTimelineEvents`).
+- `/components`: Componentes globais e reutilizáveis (ex: `SectionHeader`, `ProtectedRoute`).
+- `/contexts`: Contextos globais do React (ex: `AuthProvider`).
+- `/features`: Lógicas de negócios e hooks divididos por domínio (`auth`, `chapters`, `gallery`, `recipes`, `settings`, `timeline`).
 - `/lib`: Configuração de bibliotecas externas (ex: cliente do Supabase).
-- `/pages`: Páginas da aplicação (`Home`, `Login`, `Admin`).
-- `/sections`: Seções principais da interface (`Hero`, `Timeline`, `Chapters`, `RecipeBook`, `Footer`).
+- `/pages`: Telas da aplicação (`Home`, `Login`, `Dashboard` e seus sub-módulos).
 - `/styles`: Estilos globais e variáveis CSS.
 - `/types`: Definições de tipos do TypeScript.
+- `/utils`: Funções utilitárias.
 
 ## Pré-requisitos
 
@@ -88,5 +91,5 @@ Acesse a aplicação no seu navegador padrão (geralmente em `http://localhost:5
 ## Como Usar
 
 - **Página Inicial (`/`)**: Exibe o contador de tempo, a linha do tempo, a lista de próximos capítulos e o livro de receitas (dados provenientes do Supabase).
-- **Login (`/login`)**: Página para autenticação de usuários.
-- **Painel de Administração (`/admin`)**: Área restrita (protegida por autenticação) onde é possível verificar o usuário logado e efetuar logout.
+- **Login (`/login`)**: Página para autenticação de usuários e administradores.
+- **Painel Administrativo (`/dashboard`)**: Área restrita (protegida por autenticação) onde é possível gerenciar (criar, editar, excluir) os eventos da linha do tempo, receitas, capítulos futuros, fotos da galeria e configurações do sistema.

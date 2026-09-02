@@ -2,9 +2,24 @@ import { DashboardHeader } from "@/components/layout/DashboardHeader";
 import { useRecipes } from "@/features/recipes/hooks/useRecipes";
 import styles from "@/styles/admin.module.css";
 import type { Recipe } from "@/types";
+import { AnimatePresence, motion, type Variants } from "motion/react";
 import { useState } from "react";
 import { RecipesForm } from "./components/RecipesForm";
 import { RecipesList } from "./components/RecipesList";
+
+const fadeVariants: Variants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
+    },
+    exit: {
+        opacity: 0,
+        y: -10,
+        transition: { duration: 0.2, ease: "easeIn" },
+    },
+};
 
 export function Recipes() {
     const { recipes, addRecipe, updateRecipe, removeRecipe, loading, error } = useRecipes();
@@ -57,20 +72,22 @@ export function Recipes() {
 
             {error && <div className="alert-error">{error}</div>}
 
-            {isFormOpen ? (
-                <div key="form">
-                    <RecipesForm
-                        data={selectedRecipe}
-                        onSave={handleSave}
-                        onCancel={handleCloseForm}
-                        loading={loading}
-                    />
-                </div>
-            ) : (
-                <div key="list">
-                    <RecipesList recipes={recipes} onEdit={handleEdit} onDelete={handleDelete} />
-                </div>
-            )}
+            <AnimatePresence mode="wait">
+                {isFormOpen ? (
+                    <motion.div key="form" variants={fadeVariants} initial="hidden" animate="visible" exit="exit">
+                        <RecipesForm
+                            data={selectedRecipe}
+                            onSave={handleSave}
+                            onCancel={handleCloseForm}
+                            loading={loading}
+                        />
+                    </motion.div>
+                ) : (
+                    <motion.div key="list" variants={fadeVariants} initial="hidden" animate="visible" exit="exit">
+                        <RecipesList recipes={recipes} onEdit={handleEdit} onDelete={handleDelete} />
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }

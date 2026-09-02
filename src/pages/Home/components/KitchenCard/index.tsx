@@ -1,16 +1,26 @@
 import type { Recipe } from "@/types";
 import { Clock } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, type Variants } from "motion/react";
 import styles from "./styles.module.css";
+
+const kitchenVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (index: number) => ({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: Math.min(index * 0.1, 0.5) },
+    }),
+};
 
 export function KitchenCard({ recipe, index }: { recipe: Recipe; index: number }) {
     return (
         <motion.div
             className={styles.kitchen_masonry_item}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={kitchenVariants}
+            initial="hidden"
+            whileInView="visible"
+            custom={index}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: Math.min(index * 0.1, 0.5) }}
         >
             <img
                 src={recipe.image_url || undefined}
