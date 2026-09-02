@@ -1,8 +1,8 @@
+import { DashboardHeader } from "@/components/layout/DashboardHeader";
+import { useRecipes } from "@/features/recipes/hooks/useRecipes";
+import styles from "@/styles/admin.module.css";
+import type { Recipe } from "@/types";
 import { useState } from "react";
-import { DashboardHeader } from "../../components/DashboardHeader";
-import { useRecipes } from "../../hooks/useRecipes";
-import styles from "../../styles/admin.module.css";
-import type { Recipe } from "../../types";
 import { RecipesForm } from "./components/RecipesForm";
 import { RecipesList } from "./components/RecipesList";
 

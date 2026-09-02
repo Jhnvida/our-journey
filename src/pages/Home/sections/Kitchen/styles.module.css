@@ -1,0 +1,54 @@
+.kitchen_section {
+    padding: 64px 0;
+    background-color: var(--lp-surface-container-low);
+}
+
+.kitchen_container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.kitchen_mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px 0;
+}
+
+.kitchen_desktop {
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    align-items: start;
+
+    padding: 40px 0;
+}
+
+.kitchen_column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+@media (width >= 768px) {
+    .kitchen_section {
+        padding: 128px 0;
+    }
+
+    .kitchen_container {
+        padding: 0 64px;
+    }
+
+    .kitchen_mobile {
+        display: none;
+    }
+
+    .kitchen_desktop {
+        display: grid;
+    }
+
+    .kitchen_staggered {
+        margin-top: 64px;
+    }
+}

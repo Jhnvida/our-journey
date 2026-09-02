@@ -1,5 +1,5 @@
+import { ProtectedRoute } from "@/components/routing/ProtectedRoute";
 import { Outlet } from "react-router-dom";
-import { ProtectedRoute } from "../../components/ProtectedRoute";
 import { Sidebar } from "./components/Sidebar";
 import styles from "./styles.module.css";
 

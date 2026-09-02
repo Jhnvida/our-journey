@@ -1,8 +1,8 @@
+import { DashboardHeader } from "@/components/layout/DashboardHeader";
+import { useChapters } from "@/features/chapters/hooks/useChapters";
+import styles from "@/styles/admin.module.css";
+import type { Chapter } from "@/types";
 import { useState } from "react";
-import { DashboardHeader } from "../../components/DashboardHeader";
-import { useChapters } from "../../hooks/useChapters";
-import styles from "../../styles/admin.module.css";
-import type { Chapter } from "../../types";
 import { ChaptersForm } from "./components/ChaptersForm";
 import { ChaptersList } from "./components/ChaptersList";
 

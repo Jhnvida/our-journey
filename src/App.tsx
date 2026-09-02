@@ -1,17 +1,17 @@
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { AuthProvider } from "@/contexts/AuthProvider";
+import { Home } from "@/pages/Home";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styles from "./App.module.css";
-import { SmoothScroll } from "./components/SmoothScroll";
-import { AuthProvider } from "./contexts/AuthProvider";
-import { Home } from "./pages/Home";
 
-const Login = lazy(() => import("./pages/Login").then((m) => ({ default: m.Login })));
-const Dashboard = lazy(() => import("./pages/Dashboard").then((m) => ({ default: m.Dashboard })));
-const Timeline = lazy(() => import("./pages/Timeline").then((m) => ({ default: m.Timeline })));
-const Gallery = lazy(() => import("./pages/Gallery").then((m) => ({ default: m.Gallery })));
-const Chapters = lazy(() => import("./pages/Chapters").then((m) => ({ default: m.Chapters })));
-const Recipes = lazy(() => import("./pages/Recipes").then((m) => ({ default: m.Recipes })));
-const Settings = lazy(() => import("./pages/Settings").then((m) => ({ default: m.Settings })));
+const Login = lazy(() => import("@/pages/Login").then((m) => ({ default: m.Login })));
+const Dashboard = lazy(() => import("@/pages/Dashboard").then((m) => ({ default: m.Dashboard })));
+const Timeline = lazy(() => import("@/pages/Timeline").then((m) => ({ default: m.Timeline })));
+const Gallery = lazy(() => import("@/pages/Gallery").then((m) => ({ default: m.Gallery })));
+const Chapters = lazy(() => import("@/pages/Chapters").then((m) => ({ default: m.Chapters })));
+const Recipes = lazy(() => import("@/pages/Recipes").then((m) => ({ default: m.Recipes })));
+const Settings = lazy(() => import("@/pages/Settings").then((m) => ({ default: m.Settings })));
 
 export function App() {
     return (

@@ -1,13 +1,13 @@
+import { DashboardHeader } from "@/components/layout/DashboardHeader";
+import { useEvents } from "@/features/timeline/hooks/useEvents";
+import styles from "@/styles/admin.module.css";
+import type { TimelineEvent } from "@/types";
 import { useState } from "react";
-import { DashboardHeader } from "../../components/DashboardHeader";
-import { useTimelineEvents } from "../../hooks/useTimelineEvents";
-import styles from "../../styles/admin.module.css";
-import type { TimelineEvent } from "../../types";
 import { TimelineForm } from "./components/TimelineForm";
 import { TimelineList } from "./components/TimelineList";
 
 export function Timeline() {
-    const { events, addEvent, updateEvent, removeEvent, loading, error } = useTimelineEvents();
+    const { events, addEvent, updateEvent, removeEvent, loading, error } = useEvents();
 
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState<TimelineEvent | null>(null);

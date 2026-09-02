@@ -1,6 +1,6 @@
+import { Preloader } from "@/components/feedback/Preloader";
+import { usePreloader } from "@/hooks/usePreloader";
 import { AnimatePresence } from "motion/react";
-import { Preloader } from "../../components/Preloader/Preloader";
-import { useAppPreloader } from "../../hooks/useAppPreloader";
 import { Chapters } from "./sections/Chapters";
 import { Hero } from "./sections/Hero";
 import { Kitchen } from "./sections/Kitchen";
@@ -11,7 +11,7 @@ const mainVisibleStyle = { opacity: 1, transition: "opacity 0.5s ease" } as cons
 const mainHiddenStyle = { opacity: 0, transition: "opacity 0.5s ease" } as const;
 
 export function Home() {
-    const { isReady } = useAppPreloader();
+    const { isReady } = usePreloader();
 
     return (
         <>

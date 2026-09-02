@@ -1,0 +1,85 @@
+.kitchen_masonry_item {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    padding: 24px;
+    border: 1px solid rgb(0 0 0 / 5%);
+
+    background-color: var(--lp-surface);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 8%);
+
+    transition:
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kitchen_masonry_item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgb(0 0 0 / 12%);
+}
+
+.kitchen_masonry_content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.kitchen_masonry_image {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    margin-bottom: 24px;
+    object-fit: cover;
+}
+
+.kitchen_masonry_title {
+    margin-bottom: 16px;
+
+    font-family: var(--lp-font-hero);
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--lp-primary);
+}
+
+.kitchen_masonry_desc {
+    margin-bottom: 32px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--lp-secondary);
+}
+
+.ingredients_header {
+    overflow: hidden;
+    padding-top: 24px;
+    border-top: 1px solid rgb(196 199 199 / 30%);
+}
+
+.ingredients_label {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    margin-bottom: 16px;
+
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--lp-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+}
+
+.ingredients_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ingredient_item {
+    padding: 8px 12px;
+
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--lp-on-surface-variant);
+
+    background-color: var(--lp-surface-container);
+}
