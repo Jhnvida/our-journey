@@ -1,5 +1,5 @@
 import { DashboardHeader } from "@/components/layout/DashboardHeader";
-import { useRecipes } from "@/features/recipes/hooks/useRecipes";
+import { useRecipes } from "@/hooks/useRecipes";
 import styles from "@/styles/admin.module.css";
 import type { Recipe } from "@/types";
 import { AnimatePresence, motion, type Variants } from "motion/react";

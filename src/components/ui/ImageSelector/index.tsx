@@ -1,4 +1,4 @@
-import { useGallery } from "@/features/gallery/hooks/useGallery";
+import { useGallery } from "@/hooks/useGallery";
 import { Image as ImageIcon, X } from "lucide-react";
 import { useState } from "react";
 import styles from "./styles.module.css";

@@ -1,4 +1,4 @@
-import { useSettings } from "@/features/settings/hooks/useSettings";
+import { useSettings } from "@/hooks/useSettings";
 import { timeDiff } from "@/utils/timeDiff";
 import { motion, type Variants } from "motion/react";
 import { useEffect, useState } from "react";

@@ -1,5 +1,5 @@
 import { DashboardHeader } from "@/components/layout/DashboardHeader";
-import { useEvents } from "@/features/timeline/hooks/useEvents";
+import { useEvents } from "@/hooks/useEvents";
 import styles from "@/styles/admin.module.css";
 import type { TimelineEvent } from "@/types";
 import { AnimatePresence, motion, type Variants } from "motion/react";

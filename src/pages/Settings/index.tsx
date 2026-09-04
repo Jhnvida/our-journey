@@ -1,5 +1,5 @@
 import { DashboardHeader } from "@/components/layout/DashboardHeader";
-import { useSettings } from "@/features/settings/hooks/useSettings";
+import { useSettings } from "@/hooks/useSettings";
 import styles from "@/styles/admin.module.css";
 import { useEffect, useState } from "react";
 

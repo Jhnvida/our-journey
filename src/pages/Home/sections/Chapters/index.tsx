@@ -1,5 +1,5 @@
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { useChapters } from "@/features/chapters/hooks/useChapters";
+import { useChapters } from "@/hooks/useChapters";
 import { Check, CircleDashed } from "lucide-react";
 import { motion, type Variants } from "motion/react";
 import styles from "./styles.module.css";

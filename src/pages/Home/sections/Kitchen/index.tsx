@@ -1,5 +1,5 @@
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { useRecipes } from "@/features/recipes/hooks/useRecipes";
+import { useRecipes } from "@/hooks/useRecipes";
 import { KitchenCard } from "@/pages/Home/components/KitchenCard";
 import { useMemo } from "react";
 import styles from "./styles.module.css";

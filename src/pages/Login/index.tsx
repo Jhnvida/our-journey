@@ -1,5 +1,5 @@
-import { useAuth } from "@/features/auth/hooks/useAuth";
-import { supabase } from "@/lib/supabase";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/utils/supabase";
 import { AnimatePresence, motion, type Variants } from "motion/react";
 import { useEffect, useState, type SubmitEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";

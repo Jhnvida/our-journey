@@ -1,5 +1,5 @@
 import { DashboardHeader } from "@/components/layout/DashboardHeader";
-import { useChapters } from "@/features/chapters/hooks/useChapters";
+import { useChapters } from "@/hooks/useChapters";
 import styles from "@/styles/admin.module.css";
 import type { Chapter } from "@/types";
 import { AnimatePresence, motion, type Variants } from "motion/react";

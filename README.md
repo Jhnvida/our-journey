@@ -32,7 +32,7 @@ A estrutura de pastas principal dentro de `src/` está organizada da seguinte fo
 - `/assets`: Imagens e recursos estáticos.
 - `/components`: Componentes globais e reutilizáveis (ex: `SectionHeader`, `ProtectedRoute`).
 - `/contexts`: Contextos globais do React (ex: `AuthProvider`).
-- `/features`: Lógicas de negócios e hooks divididos por domínio (`auth`, `chapters`, `gallery`, `recipes`, `settings`, `timeline`).
+- `/hooks`: Hooks customizados para integração com o Supabase e lógicas da aplicação.
 - `/lib`: Configuração de bibliotecas externas (ex: cliente do Supabase).
 - `/pages`: Telas da aplicação (`Home`, `Login`, `Dashboard` e seus sub-módulos).
 - `/styles`: Estilos globais e variáveis CSS.

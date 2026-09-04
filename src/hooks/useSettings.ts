@@ -1,5 +1,5 @@
-import { supabase } from "@/lib/supabase";
 import type { Setting } from "@/types";
+import { supabase } from "@/utils/supabase";
 import { useEffect, useState } from "react";
 
 export function useSettings() {

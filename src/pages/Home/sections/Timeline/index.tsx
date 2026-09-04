@@ -1,5 +1,5 @@
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { useEvents } from "@/features/timeline/hooks/useEvents";
+import { useEvents } from "@/hooks/useEvents";
 import { TimelineCard } from "@/pages/Home/components/TimelineCard";
 import { useMemo } from "react";
 import styles from "./styles.module.css";

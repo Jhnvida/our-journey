@@ -1,5 +1,5 @@
 import { DashboardHeader } from "@/components/layout/DashboardHeader";
-import { useGallery } from "@/features/gallery/hooks/useGallery";
+import { useGallery } from "@/hooks/useGallery";
 import { Trash2 } from "lucide-react";
 import { useRef, type ChangeEvent } from "react";
 import styles from "./styles.module.css";
