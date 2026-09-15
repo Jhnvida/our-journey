@@ -23,6 +23,7 @@ export const TimelineForm = ({ data, onSave, onCancel, loading }: TimelineFormPr
             date,
             description: description || null,
             image_url: imageUrl || null,
+            is_milestone: data?.is_milestone || false,
         });
     }
 

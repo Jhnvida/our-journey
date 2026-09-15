@@ -17,7 +17,12 @@ export const ChaptersForm = ({ data, onSave, onCancel, loading }: ChaptersFormPr
 
     function handleSubmit(e: SubmitEvent) {
         e.preventDefault();
-        onSave({ title, status });
+        onSave({
+            title,
+            status,
+            image_url: data?.image_url || null,
+            target_date: data?.target_date || null,
+        });
     }
 
     return (
