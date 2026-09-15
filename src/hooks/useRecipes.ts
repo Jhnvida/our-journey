@@ -1,8 +1,8 @@
+import { supabase } from "@/lib/supabase";
 import type { Recipe } from "@/types";
-import { supabase } from "@/utils/supabase";
 import { useEffect, useState } from "react";
 
-export function useRecipes() {
+export const useRecipes = () => {
     const [recipes, setRecipes] = useState<Recipe[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -49,4 +49,4 @@ export function useRecipes() {
     }
 
     return { recipes, loading, error, addRecipe, updateRecipe, removeRecipe };
-}
+};

@@ -1,18 +1,18 @@
-import { AuthProvider } from "@/contexts/AuthProvider";
-import { Home } from "@/pages/Home";
+import { AuthProvider } from "@/components/providers/AuthProvider";
+import { Home } from "@/pages/Home/Home";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styles from "./App.module.css";
 
-const Login = lazy(() => import("@/pages/Login").then((m) => ({ default: m.Login })));
-const Dashboard = lazy(() => import("@/pages/Dashboard").then((m) => ({ default: m.Dashboard })));
-const Timeline = lazy(() => import("@/pages/Timeline").then((m) => ({ default: m.Timeline })));
-const Gallery = lazy(() => import("@/pages/Gallery").then((m) => ({ default: m.Gallery })));
-const Chapters = lazy(() => import("@/pages/Chapters").then((m) => ({ default: m.Chapters })));
-const Recipes = lazy(() => import("@/pages/Recipes").then((m) => ({ default: m.Recipes })));
-const Settings = lazy(() => import("@/pages/Settings").then((m) => ({ default: m.Settings })));
+const Login = lazy(() => import("@/pages/Login/Login").then((m) => ({ default: m.Login })));
+const Dashboard = lazy(() => import("@/pages/Dashboard/Dashboard").then((m) => ({ default: m.Dashboard })));
+const Timeline = lazy(() => import("@/pages/Timeline/Timeline").then((m) => ({ default: m.Timeline })));
+const Gallery = lazy(() => import("@/pages/Gallery/Gallery").then((m) => ({ default: m.Gallery })));
+const Chapters = lazy(() => import("@/pages/Chapters/Chapters").then((m) => ({ default: m.Chapters })));
+const Recipes = lazy(() => import("@/pages/Recipes/Recipes").then((m) => ({ default: m.Recipes })));
+const Settings = lazy(() => import("@/pages/Settings/Settings").then((m) => ({ default: m.Settings })));
 
-export function App() {
+export const App = () => {
     return (
         <BrowserRouter>
             <AuthProvider>
@@ -34,4 +34,4 @@ export function App() {
             </AuthProvider>
         </BrowserRouter>
     );
-}
+};

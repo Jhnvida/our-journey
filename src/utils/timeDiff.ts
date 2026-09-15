@@ -1,6 +1,6 @@
 import { intervalToDuration, parseISO } from "date-fns";
 
-export function timeDiff(startDate: string) {
+export const timeDiff = (startDate: string) => {
     const start = parseISO(startDate);
     const now = new Date();
     const duration = intervalToDuration({ start, end: now });
@@ -10,4 +10,4 @@ export function timeDiff(startDate: string) {
         months: duration.months || 0,
         days: duration.days || 0,
     };
-}
+};

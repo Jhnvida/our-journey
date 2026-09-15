@@ -1,7 +1,7 @@
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/lib/supabase";
 import { useEffect, useState } from "react";
 
-export function usePreloader() {
+export const usePreloader = () => {
     const [isReady, setIsReady] = useState(false);
 
     useEffect(() => {
@@ -54,4 +54,4 @@ export function usePreloader() {
     }, []);
 
     return { isReady };
-}
+};

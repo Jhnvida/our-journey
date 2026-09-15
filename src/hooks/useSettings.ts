@@ -1,8 +1,8 @@
+import { supabase } from "@/lib/supabase";
 import type { Setting } from "@/types";
-import { supabase } from "@/utils/supabase";
 import { useEffect, useState } from "react";
 
-export function useSettings() {
+export const useSettings = () => {
     const [settings, setSettings] = useState<Setting | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -46,4 +46,4 @@ export function useSettings() {
     }
 
     return { settings, loading, error, updateDate };
-}
+};

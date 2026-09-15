@@ -1,8 +1,8 @@
+import { supabase } from "@/lib/supabase";
 import type { TimelineEvent } from "@/types";
-import { supabase } from "@/utils/supabase";
 import { useEffect, useState } from "react";
 
-export function useEvents() {
+export const useEvents = () => {
     const [events, setEvents] = useState<TimelineEvent[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -49,4 +49,4 @@ export function useEvents() {
     }
 
     return { events, loading, error, addEvent, updateEvent, removeEvent };
-}
+};

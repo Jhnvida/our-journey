@@ -1,8 +1,8 @@
+import { supabase } from "@/lib/supabase";
 import type { Chapter } from "@/types";
-import { supabase } from "@/utils/supabase";
 import { useEffect, useState } from "react";
 
-export function useChapters() {
+export const useChapters = () => {
     const [chapters, setChapters] = useState<Chapter[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -46,4 +46,4 @@ export function useChapters() {
     }
 
     return { chapters, loading, error, addChapter, updateChapter, removeChapter };
-}
+};

@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/lib/supabase";
 import { useEffect, useState } from "react";
 
 export interface GalleryImage {
@@ -7,7 +7,7 @@ export interface GalleryImage {
     created_at: string | null;
 }
 
-export function useGallery(enabled = true) {
+export const useGallery = (enabled = true) => {
     const [images, setImages] = useState<GalleryImage[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -68,4 +68,4 @@ export function useGallery(enabled = true) {
     }
 
     return { images, loading, error, uploadImage, deleteImage };
-}
+};
