@@ -1,4 +1,5 @@
 import { useSettings } from "@/hooks/useSettings";
+import { padNumber } from "@/utils/format";
 import { timeDiff } from "@/utils/timeDiff";
 import { motion, type Variants } from "motion/react";
 import { useEffect, useState } from "react";
@@ -14,10 +15,6 @@ const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
 };
-
-function formatNumber(num: number) {
-    return num.toString().padStart(2, "0");
-}
 
 export const Hero = ({ isReady }: { isReady: boolean }) => {
     const { settings } = useSettings();
@@ -81,17 +78,17 @@ export const Hero = ({ isReady }: { isReady: boolean }) => {
                 >
                     <div className={styles.counter_container}>
                         <motion.div className={styles.counter_item} variants={itemVariants}>
-                            <span className={styles.counter_value}>{formatNumber(timePassed.years)}</span>
+                            <span className={styles.counter_value}>{padNumber(timePassed.years)}</span>
                             <span className={styles.counter_label}>Anos</span>
                         </motion.div>
 
                         <motion.div className={styles.counter_item} variants={itemVariants}>
-                            <span className={styles.counter_value}>{formatNumber(timePassed.months)}</span>
+                            <span className={styles.counter_value}>{padNumber(timePassed.months)}</span>
                             <span className={styles.counter_label}>Meses</span>
                         </motion.div>
 
                         <motion.div className={styles.counter_item} variants={itemVariants}>
-                            <span className={styles.counter_value}>{formatNumber(timePassed.days)}</span>
+                            <span className={styles.counter_value}>{padNumber(timePassed.days)}</span>
                             <span className={styles.counter_label}>Dias</span>
                         </motion.div>
                     </div>

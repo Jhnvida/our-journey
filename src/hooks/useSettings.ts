@@ -9,10 +9,10 @@ export const useSettings = () => {
 
     async function fetchSettings() {
         setLoading(true);
-        const { data, error: err } = await supabase.from("settings").select("*").limit(1).single();
+        const { data, error: err } = await supabase.from("settings").select("*").limit(1).maybeSingle();
 
         if (err) {
-            if (err.code !== "PGRST116") setError("Erro ao carregar configurações.");
+            setError("Erro ao carregar configurações.");
         } else {
             setSettings(data);
         }
