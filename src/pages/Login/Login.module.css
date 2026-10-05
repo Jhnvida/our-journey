@@ -5,77 +5,73 @@
 
     width: 100%;
     min-height: 100vh;
-    padding: 40px 24px;
+    padding: 32px 24px;
 
-    background-color: var(--lp-surface-container-low);
+    background-color: var(--lp-surface-bright);
 }
 
 .content {
-    width: 100%;
-    max-width: 440px;
-    margin: 0 auto;
-    padding: 48px 32px;
-    border: 1px solid rgb(0 0 0 / 5%);
-
-    text-align: center;
-
-    background-color: var(--lp-surface);
-    box-shadow: 0 10px 40px rgb(0 0 0 / 8%);
-}
-
-.header {
-    margin-bottom: 40px;
-}
-
-.subtitle {
-    margin-bottom: 12px;
-
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--lp-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-}
-
-.title {
-    font-family: var(--lp-font-hero);
-    font-size: 32px;
-    font-weight: 400;
-    color: var(--lp-primary);
-}
-
-.form,
-.form_group,
-.button_group {
     display: flex;
     flex-direction: column;
-}
 
-.form {
-    gap: 20px;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+
     text-align: left;
 }
 
+.header {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.brand {
+    font-family: var(--lp-font-hero);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--lp-primary);
+    letter-spacing: -0.01em;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .form_group {
+    display: flex;
+    flex-direction: column;
     gap: 8px;
 }
 
-.button_group {
-    gap: 12px;
-    align-items: center;
-    margin-top: 16px;
+.label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--lp-on-surface);
 }
 
-.button_group > * {
+.button_group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+
+    margin-top: 8px;
+}
+
+.button_group button {
     width: 100%;
 }
 
-@media (width >= 768px) {
-    .content {
-        padding: 56px 48px;
-    }
+.back_link {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--lp-secondary);
+    transition: color 0.15s ease;
+}
 
-    .title {
-        font-size: 36px;
-    }
+.back_link:hover {
+    color: var(--lp-primary);
 }
