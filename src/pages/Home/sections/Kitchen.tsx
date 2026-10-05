@@ -18,13 +18,10 @@ export const Kitchen = () => {
     if (!recipes || recipes.length === 0) return null;
 
     return (
-        <section className={styles.kitchen_section}>
-            <SectionHeader
-                title="A Nossa Cozinha"
-                subtitle="Porque algumas das melhores memórias foram construídas em volta da mesa, entre um tempero e outro."
-            />
+        <section className={styles.kitchen_section} id="kitchen">
+            <div className={styles.section_inner}>
+                <SectionHeader title="Na cozinha" />
 
-            <div className={styles.kitchen_container}>
                 <div className={styles.kitchen_mobile}>
                     {recipes.map((recipe, index) => (
                         <KitchenCard key={`mobile-${recipe.id}`} recipe={recipe} index={index} />
@@ -34,13 +31,13 @@ export const Kitchen = () => {
                 <div className={styles.kitchen_desktop}>
                     <div className={styles.kitchen_column}>
                         {leftRecipes.map((recipe, index) => (
-                            <KitchenCard key={`desktop-left-${recipe.id}`} recipe={recipe} index={index} />
+                            <KitchenCard key={`desktop-left-${recipe.id}`} recipe={recipe} index={index * 2} />
                         ))}
                     </div>
 
                     <div className={`${styles.kitchen_column} ${styles.kitchen_staggered}`}>
                         {rightRecipes.map((recipe, index) => (
-                            <KitchenCard key={`desktop-right-${recipe.id}`} recipe={recipe} index={index} />
+                            <KitchenCard key={`desktop-right-${recipe.id}`} recipe={recipe} index={index * 2 + 1} />
                         ))}
                     </div>
                 </div>

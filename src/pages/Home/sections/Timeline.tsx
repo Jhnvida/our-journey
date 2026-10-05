@@ -18,26 +18,28 @@ export const Timeline = () => {
     if (!events || events.length === 0) return null;
 
     return (
-        <section className={styles.timeline_section}>
-            <SectionHeader title="A Linha do Tempo" subtitle="Relembre os melhores momentos da nossa história." />
+        <section className={styles.timeline_section} id="timeline">
+            <div className={styles.section_inner}>
+                <SectionHeader title="Momentos" />
 
-            <div className={styles.timeline_mobile}>
-                {events.map((event, index) => (
-                    <TimelineCard key={`mobile-${event.id}`} event={event} index={index} />
-                ))}
-            </div>
-
-            <div className={styles.timeline_desktop}>
-                <div className={styles.timeline_column}>
-                    {leftEvents.map((event, index) => (
-                        <TimelineCard key={`desktop-left-${event.id}`} event={event} index={index} />
+                <div className={styles.timeline_mobile}>
+                    {events.map((event, index) => (
+                        <TimelineCard key={`mobile-${event.id}`} event={event} index={index} />
                     ))}
                 </div>
 
-                <div className={`${styles.timeline_column} ${styles.timeline_staggered}`}>
-                    {rightEvents.map((event, index) => (
-                        <TimelineCard key={`desktop-right-${event.id}`} event={event} index={index} />
-                    ))}
+                <div className={styles.timeline_desktop}>
+                    <div className={styles.timeline_column}>
+                        {leftEvents.map((event, index) => (
+                            <TimelineCard key={`desktop-left-${event.id}`} event={event} index={index * 2} />
+                        ))}
+                    </div>
+
+                    <div className={`${styles.timeline_column} ${styles.timeline_staggered}`}>
+                        {rightEvents.map((event, index) => (
+                            <TimelineCard key={`desktop-right-${event.id}`} event={event} index={index * 2 + 1} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

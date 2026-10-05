@@ -2,14 +2,15 @@ import styles from "./SectionHeader.module.css";
 
 interface SectionHeaderProps {
     title: string;
-    subtitle: string;
+    subtitle?: string;
+    id?: string;
 }
 
-export const SectionHeader = ({ title, subtitle }: SectionHeaderProps) => {
+export const SectionHeader = ({ title, subtitle, id }: SectionHeaderProps) => {
     return (
-        <div className={styles.header}>
+        <header className={styles.header} id={id}>
             <h2 className={styles.title}>{title}</h2>
-            <p className={styles.subtitle}>{subtitle}</p>
-        </div>
+            {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+        </header>
     );
 };

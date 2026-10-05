@@ -1,14 +1,15 @@
 import { Preloader } from "@/components/feedback/Preloader";
 import { usePreloader } from "@/hooks/usePreloader";
 import { AnimatePresence } from "motion/react";
+import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
 import { Chapters } from "./sections/Chapters";
 import { Hero } from "./sections/Hero";
 import { Kitchen } from "./sections/Kitchen";
 import { Timeline } from "./sections/Timeline";
 
-const mainVisibleStyle = { opacity: 1, transition: "opacity 0.5s ease" } as const;
-const mainHiddenStyle = { opacity: 0, transition: "opacity 0.5s ease" } as const;
+const mainVisibleStyle = { opacity: 1, transition: "opacity 0.4s ease" } as const;
+const mainHiddenStyle = { opacity: 0, transition: "opacity 0.4s ease" } as const;
 
 export const Home = () => {
     const { isReady } = usePreloader();
@@ -24,7 +25,23 @@ export const Home = () => {
                 <Chapters />
 
                 <footer className={styles.footer}>
-                    <div className={styles.footer_brand}>A Nossa Jornada</div>
+                    <div className={styles.footer_inner}>
+                        <span className={styles.brand}>A Nossa Jornada</span>
+
+                        <div className={styles.links}>
+                            <a
+                                href="https://github.com/Jhnvida/our-journey"
+                                target="_blank"
+                                rel="noreferrer"
+                                className={styles.link}
+                            >
+                                GitHub
+                            </a>
+                            <Link to="/dashboard" className={styles.link}>
+                                Painel
+                            </Link>
+                        </div>
+                    </div>
                 </footer>
             </main>
         </>

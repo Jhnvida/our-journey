@@ -1,43 +1,46 @@
 .kitchen_section {
-    padding: 64px 0;
-    background-color: var(--lp-surface-container-low);
+    width: 100%;
+    padding: 48px 0 64px;
+    border-top: 1px solid var(--lp-outline-variant);
+    background-color: var(--lp-surface-bright);
 }
 
-.kitchen_container {
-    max-width: 1280px;
+.section_inner {
+    width: 100%;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
 }
 
 .kitchen_mobile {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    padding: 40px 0;
+    gap: 36px;
+    width: 100%;
 }
 
 .kitchen_desktop {
     display: none;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 48px;
     align-items: start;
 
-    padding: 40px 0;
+    width: 100%;
 }
 
 .kitchen_column {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 48px;
 }
 
 @media (width >= 768px) {
     .kitchen_section {
-        padding: 128px 0;
+        padding: 64px 0 96px;
     }
 
-    .kitchen_container {
-        padding: 0 64px;
+    .section_inner {
+        padding: 0 48px;
     }
 
     .kitchen_mobile {
@@ -49,6 +52,12 @@
     }
 
     .kitchen_staggered {
-        margin-top: 64px;
+        margin-top: 48px;
+    }
+}
+
+@media (width >= 1024px) {
+    .section_inner {
+        padding: 0 64px;
     }
 }

@@ -6,9 +6,13 @@ import styles from "./TimelineCard.module.css";
 export const TimelineCard = ({ event, index }: { event: TimelineEvent; index: number }) => {
     return (
         <MasonryCard index={index} imageUrl={event.image_url || undefined} imageAlt={event.title}>
-            <p className={styles.timeline_masonry_date}>{formatDate(event.date)}</p>
-            <h3 className={styles.timeline_masonry_title}>{event.title}</h3>
-            <p className={styles.timeline_masonry_text}>{event.description}</p>
+            <div className={styles.meta}>
+                <span className={styles.date}>{formatDate(event.date)}</span>
+                {event.is_milestone && <span className={styles.milestone_mark}>· marco</span>}
+            </div>
+
+            <h3 className={styles.title}>{event.title}</h3>
+            {event.description && <p className={styles.description}>{event.description}</p>}
         </MasonryCard>
     );
 };
