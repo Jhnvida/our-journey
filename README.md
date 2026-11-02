@@ -53,6 +53,7 @@ Além da área pública concebida para visualização das memórias, a aplicaç�
 ## Tecnologias Utilizadas
 
 ### Frontend
+
 - **[React 19](https://react.dev/):** Biblioteca para construção da interface com suporte ao React Compiler.
 - **[TypeScript](https://www.typescriptlang.org/):** Tipagem estática rigorosa para componentes e esquemas de dados.
 - **[Vite 8](https://vitejs.dev/):** Ferramenta de build rápida com recarregamento em tempo real (HMR).
@@ -63,9 +64,11 @@ Além da área pública concebida para visualização das memórias, a aplicaç�
 - **[Lucide React](https://lucide.dev/):** Biblioteca de ícones vetoriais.
 
 ### Backend & Serviços
+
 - **[Supabase](https://supabase.com/):** Backend-as-a-Service para persistência relacional no PostgreSQL e autenticação segura de usuários.
 
 ### Qualidade de Código
+
 - **[ESLint 10](https://eslint.org/):** Padronização e verificação de regras JavaScript/TypeScript com `typescript-eslint` e regras do ecossistema React.
 - **[Stylelint 17](https://stylelint.io/):** Validação e ordenação de regras em arquivos CSS (`stylelint-config-clean-order`).
 
@@ -77,23 +80,26 @@ Além da área pública concebida para visualização das memórias, a aplicaç�
 our-journey/
 ├── public/                 # Favicons e manifestos estáticos
 ├── src/
-│   ├── components/         # Componentes React de UI e estrutura
-│   │   ├── admin/          # Componentes do painel de administração
-│   │   ├── common/         # Componentes compartilhados (Header, Modals, etc.)
-│   │   ├── home/           # Seções da página inicial (Hero, Timeline, Cozinha, etc.)
-│   │   └── ui/             # Primitivas visuais reutilizáveis
+│   ├── components/         # Componentes React compartilhados
+│   │   ├── feedback/       # Indicadores e tela de pré-carregamento (Preloader)
+│   │   ├── layout/         # Cabeçalho administrativo (DashboardHeader)
+│   │   ├── providers/      # Provedores de contexto (AuthProvider)
+│   │   ├── routing/        # Guardas de proteção de rota (ProtectedRoute)
+│   │   └── ui/             # Primitivas visuais (MasonryCard, SectionHeader, etc.)
 │   ├── hooks/              # Hooks customizados para dados e autenticação
-│   ├── lib/                # Configuração do cliente Supabase e integrações
+│   ├── lib/                # Configuração do cliente Supabase
 │   ├── pages/              # Telas da aplicação (Home, Login, Dashboard e módulos)
 │   ├── styles/             # Tokens de tema, fontes e resets globais
 │   ├── types/              # Definições de tipos TypeScript
 │   ├── utils/              # Funções de formatação e cálculos de datas
-│   ├── App.tsx             # Estrutura de rotas e provedores
+│   ├── App.tsx             # Estrutura de rotas declarativas e Suspense
 │   └── main.tsx            # Ponto de entrada da aplicação
 ├── .env.example            # Modelo de configuração de variáveis
-├── eslint.config.mjs       # Configuração do ESLint
+├── .stylelintrc.json       # Configuração do Stylelint
+├── eslint.config.js        # Configuração do ESLint
 ├── package.json            # Manifesto de dependências e scripts npm
 ├── tsconfig.json           # Configuração do TypeScript
+├── vercel.json             # Configurações de deploy na Vercel
 └── vite.config.ts          # Configuração do Vite
 ```
 
@@ -119,30 +125,33 @@ cp .env.example .env
 
 Preencha os valores conforme seu projeto Supabase:
 
-| Variável | Descrição | Exemplo |
-|---|---|---|
-| `VITE_SUPABASE_URL` | URL de endpoint do projeto Supabase | `https://seu-projeto.supabase.co` |
-| `VITE_SUPABASE_PUBLISHABLE_KEY` | Chave pública anônima do Supabase | `sua_chave_publica_aqui` |
+| Variável                        | Descrição                           | Exemplo                           |
+| ------------------------------- | ----------------------------------- | --------------------------------- |
+| `VITE_SUPABASE_URL`             | URL de endpoint do projeto Supabase | `https://seu-projeto.supabase.co` |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | Chave pública anônima do Supabase   | `sua_chave_publica_aqui`          |
 
 ---
 
 ## Instalação e Execução
 
 1. **Clone o repositório:**
-   ```bash
-   git clone https://github.com/Jhnvida/our-journey.git
-   cd our-journey
-   ```
+
+    ```bash
+    git clone https://github.com/Jhnvida/our-journey.git
+    cd our-journey
+    ```
 
 2. **Instale as dependências:**
-   ```bash
-   npm install
-   ```
+
+    ```bash
+    npm install
+    ```
 
 3. **Inicie o servidor de desenvolvimento:**
-   ```bash
-   npm run dev
-   ```
+
+    ```bash
+    npm run dev
+    ```
 
 4. **Acesse no navegador:**
    Abra [http://localhost:5173](http://localhost:5173).
@@ -151,22 +160,27 @@ Preencha os valores conforme seu projeto Supabase:
 
 ## Scripts Disponíveis
 
-| Comando | Descrição |
-|---|---|
-| `npm run dev` | Inicia o servidor local de desenvolvimento Vite. |
-| `npm run build` | Checagem de tipos (`tsc -b`) e geração do pacote de produção em `dist/`. |
-| `npm run preview` | Inicia um servidor HTTP local para testar a versão compilada de produção. |
-| `npm run lint` | Executa o linter ESLint em todo o código da aplicação. |
-| `npm run lint:css` | Verifica a conformidade das folhas de estilo CSS via Stylelint. |
-| `npm run lint:css:fix` | Corrige de forma automatizada problemas de formatação no CSS. |
+| Comando                | Descrição                                                                 |
+| ---------------------- | ------------------------------------------------------------------------- |
+| `npm run dev`          | Inicia o servidor local de desenvolvimento Vite.                          |
+| `npm run build`        | Checagem de tipos (`tsc -b`) e geração do pacote de produção em `dist/`.  |
+| `npm run preview`      | Inicia um servidor HTTP local para testar a versão compilada de produção. |
+| `npm run lint`         | Executa o linter ESLint em todo o código da aplicação.                    |
+| `npm run lint:css`     | Verifica a conformidade das folhas de estilo CSS via Stylelint.           |
+| `npm run lint:css:fix` | Corrige de forma automatizada problemas de formatação no CSS.             |
 
 ---
 
 ## Módulos e Navegação
 
-- **Página Inicial (`/`):** Exibição pública com contador dinâmico de relacionamento, linha do tempo dos momentos principais, próximos capítulos, receitas e galeria.
+- **Página Inicial (`/`):** Exibição pública com contador dinâmico de relacionamento, linha do tempo dos momentos principais, próximos capítulos, receitas e galeria de fotos.
 - **Login (`/login`):** Tela de autenticação com validação de credenciais ou chave de acesso para entrada no painel.
-- **Dashboard (`/dashboard`):** Área administrativa restrita para inserção, edição e exclusão de itens de todas as seções e gestão de configurações.
+- **Painel Administrativo (`/dashboard`):** Área restrita protegida por autenticação para gestão completa do conteúdo:
+    - `/dashboard`: Gerenciamento da linha do tempo (criação, edição e exclusão de marcos históricos).
+    - `/dashboard/gallery`: Upload, categorização e exclusão de fotos do acervo afetivo.
+    - `/dashboard/chapters`: Cadastro e acompanhamento de metas e planos do casal.
+    - `/dashboard/recipes`: Caderno de receitas compartilhadas e preparos culinários.
+    - `/dashboard/settings`: Gerenciamento da chave de acesso e configurações da conta.
 
 ---
 
